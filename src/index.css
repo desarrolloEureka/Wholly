@@ -1,0 +1,74 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+/* src/index.css */
+@font-face {
+  font-family: 'Gabriela';
+  src: url('./assets/fonts/Gabriela/Gabriela-Regular.ttf') format('truetype');
+}
+
+.bg_login_image {
+  background: url(./assets/fondo_login.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding-bottom: 10%;
+}
+.bg_register_image {
+  background: url(./assets/register.png) no-repeat;
+  background-size: cover; /* Ajusta la altura de la imagen para cubrir el fondo sin cortar */
+  background-position: center top; /* Alinea la imagen en la parte superior */
+  min-height: 100vh;
+}
+.logo {
+  height: auto;
+}
+
+/* Estilos del Footer */
+.footerBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espaciado entre los elementos de la columna */
+}
+
+/* Estilo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .footerBox {
+    flex-direction: column;
+    gap: 16px; /* Espaciado entre las columnas */
+  }
+
+  .footerColumn {
+    width: 100%; /* Hacer que las columnas ocupen el ancho completo */
+  }
+
+  .footerColumn .footerColumn {
+    margin-bottom: 16px; /* Separar un poco más las columnas */
+  }
+
+  /* Ajustar tamaño de fuente en pantallas pequeñas */
+  .footerBox {
+    font-size: 0.75rem; /* Reducir el tamaño de la fuente en móviles */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ajustes para pantallas muy pequeñas */
+  .footerBox {
+    font-size: 0.7rem; /* Reducir aún más el tamaño de la fuente */
+  }
+
+  .footerColumn {
+    gap: 8px; /* Reducir el espaciado entre los elementos de las columnas */
+  }
+}
