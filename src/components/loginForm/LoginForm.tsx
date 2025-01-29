@@ -52,8 +52,8 @@ const LoginForm = () => {
     event.preventDefault();
   };
 
-  // console.log('pass', password);
-  // console.log('email', email);
+  console.log('pass', password);
+  console.log('email', email);
 
   const handleLogin = () => {
     setIsLogged(true);

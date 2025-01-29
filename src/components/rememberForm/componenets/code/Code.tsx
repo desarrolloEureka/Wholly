@@ -72,6 +72,7 @@ export const Code = ({ setCode }: { setCode: (e: string) => void }) => {
               },
             }}
             startAdornment={<InputAdornment position='start'></InputAdornment>}
+            onChange={(e) => setCode(e.target.value)}
           />
         </FormControl>
       </Box>
