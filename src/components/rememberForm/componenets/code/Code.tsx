@@ -8,6 +8,8 @@ import {
 import { t } from 'i18next';
 
 export const Code = ({ setCode }: { setCode: (e: string) => void }) => {
+  console.log('sss');
+
   return (
     <Box sx={{ width: '100%' }}>
       <p
