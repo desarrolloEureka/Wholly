@@ -21,94 +21,46 @@ const RegisterForm = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   const options2: OptionsButtons[] = [
-    {
-      id: 1,
-      name: 'name button',
-    },
-    {
-      id: 2,
-      name: 'name button',
-    },
-    {
-      id: 3,
-      name: 'name button',
-    },
-    {
-      id: 4,
-      name: 'name button',
-    },
-    {
-      id: 5,
-      name: 'name button',
-    },
-    {
-      id: 6,
-      name: 'name button',
-    },
-    {
-      id: 7,
-      name: 'name button',
-    },
-    {
-      id: 8,
-      name: 'name button',
-    },
-    {
-      id: 9,
-      name: 'name button',
-    },
-    {
-      id: 10,
-      name: 'name button',
-    },
-    {
-      id: 11,
-      name: 'name button',
-    },
-    {
-      id: 12,
-      name: 'name button',
-    },
-    {
-      id: 13,
-      name: 'name button',
-    },
-    {
-      id: 14,
-      name: 'name button',
-    },
-    {
-      id: 15,
-      name: 'name button',
-    },
-    {
-      id: 16,
-      name: 'name button',
-    },
+    { id: 1, name: 'Oily hair' },
+    { id: 2, name: 'Dry hair' },
+    { id: 3, name: 'Thin hair' },
+    { id: 4, name: 'Hair loss' },
+    { id: 5, name: 'A lot of hair' },
+    { id: 6, name: 'Lorem Impsum Hair' },
+    { id: 7, name: 'Lorem Impsum Hair' },
+    { id: 8, name: 'Lorem Impsum Hair' },
+    { id: 9, name: 'Lorem Impsum Hair' },
+    { id: 10, name: 'Lorem Impsum Hair' },
+    { id: 11, name: 'Lorem Impsum Hair' },
+    { id: 12, name: 'Lorem Impsum Hair' },
+    { id: 13, name: 'Lorem Impsum Hair' },
+    { id: 14, name: 'Lorem Impsum Hair' },
+    { id: 15, name: 'Lorem Impsum Hair' },
+    { id: 16, name: 'Lorem Impsum Hair' },
   ];
 
   const options3: OptionsButtons[] = [
     {
       id: 1,
-      name: 'name button',
+      name: 'Walnuts  ',
     },
     {
       id: 2,
-      name: 'name button',
+      name: 'Brazil nuts',
     },
   ];
 
   const options4: OptionsButtons[] = [
     {
       id: 1,
-      name: 'name button',
+      name: 'Sertraline',
     },
   ];
 
   const options5: OptionsButtons[] = [
     {
       id: 1,
-      name: 'name button',
+      name: 'Epilepsy',
     },
   ];
   // Definimos los pasos correctamente
@@ -137,7 +89,9 @@ const RegisterForm = () => {
       label: '4',
       description: (
         <ContentStepper
-          title1='select the allergies you have'
+          title1='select the '
+          title2='allergies '
+          title3='you have'
           ButtonsOptions={options3}
           description='Enter the name of what you are looking for as many times as you need and add them one by one.'
         />
@@ -147,7 +101,9 @@ const RegisterForm = () => {
       label: '5',
       description: (
         <ContentStepper
-          title1='select the medicines you have'
+          title1='select the '
+          title2='medicines '
+          title3='you have'
           ButtonsOptions={options4}
           description='Enter the name of what you are looking for as many times as you need and add them one by one.'
         />
@@ -157,7 +113,9 @@ const RegisterForm = () => {
       label: '6',
       description: (
         <ContentStepper
-          title1='select the diseases you have'
+          title1='select the '
+          title2='diseases '
+          title3='you have'
           ButtonsOptions={options5}
           description='Enter the name of what you are looking for as many times as you need and add them one by one.'
         />
