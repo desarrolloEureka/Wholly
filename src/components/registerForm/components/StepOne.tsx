@@ -69,19 +69,6 @@ export const StepOne = () => {
 
   return (
     <Box>
-      <Box sx={{ textAlign: 'end', marginTop: '10px' }}>
-        <InteractiveText
-          // onClick={() => navigate("/remember")}
-          data-position='end'
-          style={{
-            textDecoration: 'underline',
-            fontSize: '0.845rem',
-            cursor: 'pointer',
-          }}
-        >
-          {t('registerForm.later')}
-        </InteractiveText>
-      </Box>
       <Box sx={{ textAlign: 'center' }}>
         <Box>
           <Typography
