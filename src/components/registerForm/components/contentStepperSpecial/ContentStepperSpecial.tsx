@@ -1,10 +1,74 @@
-import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { Box, Typography } from '@mui/material';
 import { t } from 'i18next';
+import { OptionsButtons } from '../../../../globals/types';
+import RenderOptions from '../renderOptions/RenderOptions';
 
 export const ContentStepperSpecial = () => {
+  const options: OptionsButtons[] = [
+    {
+      id: 1,
+      name: 'name button',
+    },
+    {
+      id: 2,
+      name: 'name button',
+    },
+    {
+      id: 3,
+      name: 'name button',
+    },
+    // {
+    //   id: 4,
+    //   name: 'name button',
+    // },
+    // {
+    //   id: 5,
+    //   name: 'name button',
+    // },
+    // {
+    //   id: 1,
+    //   name: 'name button',
+    // },
+    // {
+    //   id: 2,
+    //   name: 'name button',
+    // },
+    // {
+    //   id: 3,
+    //   name: 'name button',
+    // },
+    // {
+    //   id: 4,
+    //   name: 'name button',
+    // },
+    // {
+    //   id: 5,
+    //   name: 'name button',
+    // },
+    // {
+    //   id: 1,
+    //   name: 'name button',
+    // },
+    // {
+    //   id: 2,
+    //   name: 'name button',
+    // },
+    // {
+    //   id: 3,
+    //   name: 'name button',
+    // },
+  ];
   return (
-    <Box>
+    <Box
+      sx={{
+        mt: 3,
+        display: 'flex',
+        flexDirection: 'column',
+        height: 400,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
+    >
       <Box sx={{ textAlign: 'center' }}>
         <Typography
           variant='h5'
@@ -32,93 +96,7 @@ export const ContentStepperSpecial = () => {
         </Typography>
       </Box>
 
-      {/* Contenedor de botones alineados horizontalmente */}
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 2,
-          marginTop: '18px',
-          marginBottom: '18px',
-        }}
-      >
-        <Button
-          variant='contained'
-          sx={{
-            backgroundColor: '#A5AB94',
-            borderRadius: '16px',
-            padding: '5px 75px',
-            textTransform: 'none',
-            boxShadow: '0px 2px 9px rgba(26, 26, 26, 0.16)',
-            '&:hover': {
-              backgroundColor: 'rgb(87, 90, 77)',
-            },
-          }}
-          disableElevation
-        >
-          {t('Acne')}
-        </Button>
-        <Button
-          variant='outlined'
-          color='secondary'
-          sx={{
-            border: '1px solid #A5AB95',
-            color: '#000',
-            borderRadius: '7px',
-            padding: '5px 40px',
-            textTransform: 'none',
-            minWidth: '130px',
-          }}
-        >
-          {t('Facial acne')}
-        </Button>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            width: '16%',
-            padding: '3px',
-            border: '1px solid  #A5AB95',
-            borderRadius: '5px',
-          }}
-        >
-          <Typography sx={{ marginRight: '4px' }}>other:</Typography>
-          <TextField
-            id='custom-input'
-            variant='standard'
-            size='small'
-            InputProps={{
-              disableUnderline: false,
-              sx: {
-                '&:after': {
-                  borderBottom: '1px solid rgb(87, 90, 77)', // Color de la línea al hacer clic
-                },
-              },
-            }}
-            sx={{
-              width: '65%',
-
-              '& .MuiInputBase-input': {
-                padding: '4px',
-                fontSize: '12px',
-              },
-            }}
-          />
-        </Box>
-        <IconButton
-          onClick={() => console.log('Botón clickeado')}
-          sx={{
-            fontSize: '1.0em',
-            color: 'black',
-            '&:hover': {
-              color: ' rgb(96, 102, 75)',
-            },
-          }}
-        >
-          <AddCircleOutlineIcon />
-          Other
-        </IconButton>
-      </Box>
+      <RenderOptions options={options} additionalButtons />
     </Box>
   );
 };

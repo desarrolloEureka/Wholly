@@ -18,10 +18,10 @@ export const ContentStepper = ({
   return (
     <Box
       sx={{
+        mt: 3,
         flex: 1,
         justifyContent: 'space-between',
         alignItems: 'flex-start',
-        bgcolor: 'blue',
       }}
     >
       <Box sx={{ textAlign: 'center' }}>
