@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   Box,
   Button,
@@ -15,9 +15,11 @@ import { ContentStepperSpecial } from './components/contentStepperSpecial/Conten
 import { InteractiveText } from '../../globals/elements';
 
 const RegisterForm = () => {
+  const stepOneRef = useRef<{ validateForm: () => boolean }>(null);
   const theme = useTheme();
   const { t } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
+
   const options2: OptionsButtons[] = [
     {
       id: 1,
@@ -113,7 +115,7 @@ const RegisterForm = () => {
   const steps = [
     {
       label: 'Select campaign settings',
-      description: <StepOne />,
+      description: <StepOne ref={stepOneRef} />,
     },
     {
       label: '2',
@@ -166,6 +168,9 @@ const RegisterForm = () => {
   const maxSteps = steps.length;
 
   const handleNext = () => {
+    if (stepOneRef.current && !stepOneRef.current.validateForm()) {
+      return;
+    }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
