@@ -1,5 +1,10 @@
 import PersonIcon from '@mui/icons-material/Person';
-import { useState, SetStateAction } from 'react';
+import {
+  useState,
+  SetStateAction,
+  useImperativeHandle,
+  forwardRef,
+} from 'react';
 import KeyIcon from '@mui/icons-material/Key';
 import {
   Box,
@@ -22,32 +27,42 @@ import EmailIcon from '@mui/icons-material/Email';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import { InteractiveText } from '../../../globals/elements';
 import { useTranslation } from 'react-i18next';
-
-export const StepOne = () => {
+import { StepOneHandle } from '../../../globals/types';
+const dataErrors = {
+  name: false,
+  email: false,
+  confirmEmail: false,
+  password: false,
+  confirmPassword: false,
+  lastName: false,
+  dateOfBirth: false,
+  biologicalSex: false,
+  gender: false,
+  optionsList: false,
+};
+export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
   const { t } = useTranslation();
-
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [confirmEmail, setConfirmEmail] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [date1, setDate1] = useState(''); // Estado para el primer grupo
+  const [date2, setDate2] = useState(''); // Estado para el segundo grupo
+  const [date3, setDate3] = useState(''); // Estado para el tercer grupo
+  const [errors, setErrors] = useState(dataErrors);
+  const [generalError, setGeneralError] = useState('');
+
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
   const handleConfirmPasswordChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => setConfirmPassword(e.target.value);
-
-  const [date, setDate] = useState('');
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDate(event.target.value);
-  };
-
-  const [date1, setDate1] = useState(''); // Estado para el primer grupo
-  const [date2, setDate2] = useState(''); // Estado para el segundo grupo
-  const [date3, setDate3] = useState(''); // Estado para el tercer grupo
 
   const handleChange1 = (event: {
     target: { value: SetStateAction<string> };
@@ -67,22 +82,91 @@ export const StepOne = () => {
     setDate3(event.target.value); // Actualiza el estado para el tercer grupo
   };
 
+  const validateForm = () => {
+    const newErrors = {
+      name: !name,
+      email: !email,
+      confirmEmail: !confirmEmail,
+      password: !password,
+      confirmPassword: !confirmPassword,
+      lastName: !lastName,
+      dateOfBirth: !dateOfBirth,
+      biologicalSex: !date1,
+      gender: !date2,
+      optionsList: !date3,
+    };
+
+    console.log('newErrors', newErrors);
+
+    setErrors(newErrors);
+
+    const hasErrors = Object.values(newErrors).some((error) => error);
+
+    if (hasErrors) {
+      setGeneralError('Todos los campos son requeridos');
+      return false;
+    }
+
+    // Validar que las contraseñas coincidan
+    if (password !== confirmPassword) {
+      setGeneralError('Las contraseñas no coinciden');
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: true,
+        confirmPassword: true,
+      }));
+      return false;
+    }
+
+    // Validar que los correos electrónicos coincidan
+    if (email !== confirmEmail) {
+      setGeneralError('Los correos electrónicos no coinciden');
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: true,
+        confirmEmail: true,
+      }));
+      return false;
+    }
+
+    // Validar formato de correo electrónico
+    const validateEmail = (email: string) => {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(String(email).toLowerCase());
+    };
+
+    if (!validateEmail(email)) {
+      setGeneralError('El correo electrónico no es válido');
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: true,
+      }));
+      return false;
+    }
+
+    setGeneralError('');
+    return true;
+  };
+
+  useImperativeHandle(ref, () => ({
+    validateForm,
+  }));
+
+  console.log('error.name', errors.name);
+
   return (
     <Box>
-      <Box sx={{ textAlign: 'end', marginTop: '10px' }}>
-        <InteractiveText
-          // onClick={() => navigate("/remember")}
-          data-position='end'
-          style={{
-            textDecoration: 'underline',
-            fontSize: '0.845rem',
-            cursor: 'pointer',
-          }}
-        >
-          {t('registerForm.later')}
-        </InteractiveText>
-      </Box>
+      {/* header form */}
       <Box sx={{ textAlign: 'center' }}>
+        {generalError && (
+          <Typography
+            variant='body1'
+            color='error'
+            sx={{ marginBottom: '16px' }}
+          >
+            {generalError}
+          </Typography>
+        )}
         <Box>
           <Typography
             variant='h5'
@@ -104,7 +188,7 @@ export const StepOne = () => {
           </Typography>
         </Box>
       </Box>
-
+      {/* content form */}
       <Box>
         <Box
           sx={{
@@ -133,20 +217,23 @@ export const StepOne = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '10px',
-                    color: '#3C3C3C',
+                    color: errors.name ? 'red' : '#3C3C3C',
                   }}
                 >
-                  <PersonIcon sx={{ color: '#3C3C3C' }} />
+                  <PersonIcon sx={{ color: errors.name ? 'red' : '#3C3C3C' }} />
                   {t('registerForm.yourName')}
                 </Box>
               </Typography>
               <OutlinedInput
                 placeholder={t('registerForm.yourNamePlaceholder')}
                 sx={{
+                  mt: 1,
                   borderRadius: '16px',
                   backgroundColor: '#ffffff',
                   boxShadow: ' 0px 3px 3px rgba(0, 0, 0, 0.4)',
                 }}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </FormControl>
 
@@ -157,20 +244,23 @@ export const StepOne = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '10px',
-                    color: '#3C3C3C',
+                    color: errors.email ? 'red' : '#3C3C3C',
                   }}
                 >
-                  <EmailIcon sx={{ color: '#3C3C3C' }} />
+                  <EmailIcon sx={{ color: errors.email ? 'red' : '#3C3C3C' }} />
                   {t('registerForm.yourEmail')}
                 </Box>
               </Typography>
               <OutlinedInput
                 sx={{
+                  mt: 1,
                   borderRadius: '16px',
                   backgroundColor: '#ffffff',
                   boxShadow: ' 0px 3px 3px rgba(0, 0, 0, 0.4)',
                 }}
                 placeholder={t('registerForm.emailPlaceholder')}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </FormControl>
 
@@ -181,20 +271,25 @@ export const StepOne = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '10px',
-                    color: '#3C3C3C',
+                    color: errors.confirmEmail ? 'red' : '#3C3C3C',
                   }}
                 >
-                  <EmailIcon sx={{ color: '#3C3C3C' }} />
+                  <EmailIcon
+                    sx={{ color: errors.confirmEmail ? 'red' : '#3C3C3C' }}
+                  />
                   {t('registerForm.confirmEmail')}
                 </Box>
               </Typography>
               <OutlinedInput
                 sx={{
+                  mt: 1,
                   borderRadius: '16px',
                   backgroundColor: '#ffffff',
                   boxShadow: ' 0px 3px 3px rgba(0, 0, 0, 0.4)',
                 }}
                 placeholder={t('registerForm.confirmEmailPlaceholder')}
+                value={confirmEmail}
+                onChange={(e) => setConfirmEmail(e.target.value)}
               />
             </FormControl>
 
@@ -205,13 +300,13 @@ export const StepOne = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '7px',
-                    color: '#3C3C3C',
+                    color: errors.password ? 'red' : '#3C3C3C',
                   }}
                 >
                   <KeyIcon
                     sx={{
                       transform: 'rotate(130deg)',
-                      color: '#3C3C3C',
+                      color: errors.password ? 'red' : '#3C3C3C',
                     }}
                   />
                   {t('registerForm.password')}
@@ -219,6 +314,7 @@ export const StepOne = () => {
               </Typography>
               <OutlinedInput
                 sx={{
+                  mt: 1,
                   borderRadius: '16px',
                   backgroundColor: '#ffffff',
                   boxShadow: ' 0px 3px 3px rgba(0, 0, 0, 0.4)',
@@ -244,13 +340,13 @@ export const StepOne = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '7px',
-                    color: '#3C3C3C',
+                    color: errors.confirmPassword ? 'red' : '#3C3C3C',
                   }}
                 >
                   <KeyIcon
                     sx={{
                       transform: 'rotate(130deg)',
-                      color: '#3C3C3C',
+                      color: errors.confirmPassword ? 'red' : '#3C3C3C',
                     }}
                   />
                   {t('registerForm.confirmPassword')}
@@ -258,6 +354,7 @@ export const StepOne = () => {
               </Typography>
               <OutlinedInput
                 sx={{
+                  mt: 1,
                   borderRadius: '16px',
                   backgroundColor: '#ffffff',
                   boxShadow: ' 0px 3px 3px rgba(0, 0, 0, 0.4)',
@@ -284,7 +381,7 @@ export const StepOne = () => {
               display: 'flex',
               flexDirection: 'column', // Alineamos en columna
               alignItems: 'flex-start',
-              gap: '9px',
+              gap: '18px',
             }}
           >
             <FormControl fullWidth sx={{ marginBottom: '16px' }}>
@@ -294,32 +391,40 @@ export const StepOne = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px',
-                    color: '#3C3C3C',
+                    color: errors.lastName ? 'red' : '#3C3C3C',
                   }}
                 >
-                  <PersonOutlineIcon sx={{ color: '#3C3C3C' }} />
+                  <PersonOutlineIcon
+                    sx={{ color: errors.lastName ? 'red' : '#3C3C3C' }}
+                  />
                   {t('registerForm.your_last_Name')}
                 </Box>
               </Typography>
               <OutlinedInput
                 placeholder={t('registerForm.yourNamePlaceholder')}
                 sx={{
+                  mt: 1,
                   borderRadius: '16px',
                   backgroundColor: '#ffffff',
                   boxShadow: ' 0px 3px 3px rgba(0, 0, 0, 0.4)',
                 }}
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </FormControl>
+
             <Typography>
               <Box
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  color: '#3C3C3C',
+                  gap: '6px',
+                  color: errors.dateOfBirth ? 'red' : '#3C3C3C',
                 }}
               >
-                <CalendarMonthIcon sx={{ color: '#3C3C3C' }} />
+                <CalendarMonthIcon
+                  sx={{ color: errors.dateOfBirth ? 'red' : '#3C3C3C' }}
+                />
                 {t('registerForm.dateOfBirth')}
               </Box>
             </Typography>
@@ -327,21 +432,21 @@ export const StepOne = () => {
             <Box sx={{ width: '100%' }}>
               <TextField
                 type='date'
-                value={date}
-                onChange={handleChange}
+                value={dateOfBirth}
+                onChange={(e) => setDateOfBirth(e.target.value)}
                 InputLabelProps={{
                   shrink: true,
                 }}
                 InputProps={{
                   style: {
-                    borderRadius: '16px', // Ajusta el radio del borde
+                    borderRadius: '16px',
                     backgroundColor: '#ffffff',
-                    // Color de fondo del input
                     boxShadow: ' 0px 3px 3px rgba(0, 0, 0, 0.4)',
                   },
                 }}
                 sx={{
-                  width: '60%', // Ancho del campo
+                  width: '60%',
+                  mt: -1.1,
                   marginBottom: '44px',
                 }}
               />
@@ -576,4 +681,4 @@ export const StepOne = () => {
       </Box>
     </Box>
   );
-};
+});
