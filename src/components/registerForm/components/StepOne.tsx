@@ -41,7 +41,7 @@ const dataErrors = {
   gender: false,
   optionsList: false,
 };
-export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
+export const StepOne = forwardRef<StepOneHandle>(( ref) => {
   const { t } = useTranslation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
