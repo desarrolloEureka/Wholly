@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import {
   Box,
   CardContent,
@@ -10,6 +10,8 @@ import {
 import { OptionsButtons } from "../../../../globals/types";
 import RenderOptions from "../renderOptions/RenderOptions";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
+import ErrorLabel from "../../../errorLabel/ErrorLabel";
+import { t } from "i18next";
 
 export const ContentStepper = ({
   title1,
@@ -17,17 +19,34 @@ export const ContentStepper = ({
   title3,
   ButtonsOptions,
   description,
+  placeholderg,
 }: {
   title1?: string;
   title2?: string;
   title3?: string;
   ButtonsOptions: OptionsButtons[];
   description: string;
+  placeholderg: string;
 }) => {
-  // Estado para el campo de búsqueda
   const [searchTerm, setSearchTerm] = useState("");
+  const [errorMessage, setErrorMessage] = useState<ReactNode>("");
 
-  // Filtrar opciones según el término de búsqueda
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    const hasResults = ButtonsOptions.some((option) =>
+      option.name.toLowerCase().includes(value.toLowerCase())
+    );
+
+    if (value && !hasResults) {
+      setErrorMessage(<ErrorLabel text={t("registerForm.ErrorMessage")} />);
+    } else {
+      setErrorMessage(null);
+    }
+  };
+
+  // Filtrar opciones
   const filteredOptions = ButtonsOptions.filter((option) =>
     option.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -57,16 +76,43 @@ export const ContentStepper = ({
         </Typography>
       </Box>
       <Typography sx={{ textAlign: "center", mt: 2 }}>{description}</Typography>
+
       <Box
         sx={{
-          flex: 1,
           height: 90,
-          mt: 4,
+          mt: 2,
+          flexDirection: "column",
+          alignItems: "center",
+          position: "relative",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          textAlign: "center",
+          minHeight: "60px",
         }}
       >
+        {errorMessage && (
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: "50%",
+              transform: "translateX(-50%)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            <Typography
+              color="error"
+              sx={{ fontSize: "14px", fontWeight: "bold" }}
+            >
+              {errorMessage}
+            </Typography>
+          </Box>
+        )}
+
         <CardContent
           sx={{
             display: "flex",
@@ -75,24 +121,30 @@ export const ContentStepper = ({
             gap: 2,
             width: "60%",
             maxWidth: "800px",
+            padding: 7,
           }}
         >
           <TextField
             variant="outlined"
             fullWidth
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Hair...."
+            onChange={handleSearchChange}
+            placeholder={placeholderg}
             sx={{
               backgroundColor: "white",
               borderRadius: "20px",
               boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
               "& .MuiOutlinedInput-input": {
                 padding: "13px 25px",
+                color: errorMessage ? "red" : "black",
               },
               "& .MuiOutlinedInput-root": {
                 borderRadius: "20px",
                 minHeight: "40px",
+                borderColor: errorMessage ? "red" : "inherit",
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: errorMessage ? "red !important" : "inherit",
               },
             }}
             InputProps={{
@@ -109,9 +161,7 @@ export const ContentStepper = ({
                       width: "28px",
                       height: "28px",
                       backgroundColor: "rgba(49, 48, 48, 0.06)",
-                      "&:hover": {
-                        backgroundColor: "rgba(49, 48, 48, 0.3)",
-                      },
+                      "&:hover": { backgroundColor: "rgba(49, 48, 48, 0.3)" },
                     }}
                   >
                     <KeyboardArrowRightOutlinedIcon fontSize="small" />
@@ -122,6 +172,7 @@ export const ContentStepper = ({
           />
         </CardContent>
       </Box>
+
       {/* Renderizar solo las opciones filtradas */}
       <RenderOptions options={filteredOptions} />
     </Box>

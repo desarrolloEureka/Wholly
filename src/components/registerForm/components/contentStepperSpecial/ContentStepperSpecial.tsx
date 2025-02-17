@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import {
   Box,
   CardContent,
@@ -11,17 +11,35 @@ import { t } from "i18next";
 import { OptionsButtons } from "../../../../globals/types";
 import RenderOptions from "../renderOptions/RenderOptions";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
+import ErrorLabel from "../../../errorLabel/ErrorLabel";
 
 export const ContentStepperSpecial = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [errorMessage, setErrorMessage] = useState<ReactNode>("");
+  const [isError, setIsError] = useState(false);
 
-  // Definir las opciones antes de usarlas
   const options: OptionsButtons[] = [
     { id: 1, name: "Acne" },
     { id: 2, name: "Facial acne" },
   ];
 
-  // Filtrar las opciones después de haberlas definido
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    const hasResults = options.some((option) =>
+      option.name.toLowerCase().includes(value.toLowerCase())
+    );
+
+    if (value && !hasResults) {
+      setErrorMessage(<ErrorLabel text={t("registerForm.ErrorMessage")} />);
+      setIsError(true);
+    } else {
+      setErrorMessage("");
+      setIsError(false);
+    }
+  };
+
   const filteredOptions = options.filter((option) =>
     option.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -42,7 +60,7 @@ export const ContentStepperSpecial = () => {
           variant="h5"
           sx={{ fontFamily: "Inter", fontSize: "27px", marginBottom: "18px" }}
         >
-          {t("select the ")}
+          {t("registerForm.selectThe")}{" "}
           <span
             style={{
               fontFamily: "Gabriela",
@@ -50,47 +68,65 @@ export const ContentStepperSpecial = () => {
               fontWeight: "bold",
             }}
           >
-            {t("trends")}
-          </span>
-          {t(" you have")}
+            {t("registerForm.trends")}
+          </span>{" "}
+          {t("registerForm.youHave")}
         </Typography>
         <Typography sx={{ fontSize: "0.9em" }}>
-          Enter the name of what you are looking for as many times as you need
-          and add them one by one.
+          {t("registerForm.enterName")}
         </Typography>
         <Box
           sx={{
             flex: 1,
             height: 115,
-            // backgroundColor: "blue",
-            mt: 3,
-            p: 2,
             borderRadius: 2,
+            marginLeft: 3,
+            marginRight: 3,
           }}
         >
           <CardContent
             sx={{
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
-              gap: 2,
+              gap: 1.5,
             }}
           >
+            <Box sx={{ minHeight: "22px" }}>
+              {errorMessage && (
+                <Typography
+                  color="error"
+                  sx={{ fontSize: "0.9rem", fontWeight: "bold" }}
+                >
+                  {errorMessage}
+                </Typography>
+              )}
+            </Box>
+
             <TextField
               variant="outlined"
               fullWidth
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Acne...."
+              onChange={handleSearchChange}
+              placeholder={t("registerForm.placeholder")}
               sx={{
                 backgroundColor: "white",
-                borderRadius: "20px", // Reduce el radio para menos altura
-                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Reduce la sombra
+                borderRadius: "20px",
+                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
                 "& .MuiOutlinedInput-input": {
                   padding: "13px 25px",
+                  color: isError ? "error.main" : "inherit",
                 },
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "20px",
                   minHeight: "40px",
+                  borderColor: isError ? "error.main" : "rgba(0, 0, 0, 0.23)",
+                  "&:hover fieldset": {
+                    borderColor: isError ? "error.main" : "rgba(0, 0, 0, 0.5)",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: isError ? "error.main" : "primary.main",
+                  },
                 },
               }}
               InputProps={{
