@@ -10,7 +10,7 @@ import {
 import { t } from 'i18next';
 import React, { SetStateAction, useState } from 'react';
 
-export const Paswords = () => {
+export const Passwords = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
 
@@ -44,7 +44,7 @@ export const Paswords = () => {
           margin: '0 auto', // Centra el contenedor en su contenedor principal
         }}
       >
-        <p
+        <Typography
           style={{
             fontSize: '0.880rem',
             marginTop: '28px',
@@ -52,7 +52,7 @@ export const Paswords = () => {
           }}
         >
           {t('loginForm.new_password_text')}
-        </p>
+        </Typography>
       </Box>
 
       <Box

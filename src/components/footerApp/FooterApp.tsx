@@ -55,12 +55,12 @@ const FooterApp = () => {
             t('footerApp.aboutWholly'),
           ],
           [
-            t('footerApp.blogSamper'),
+            t('footerApp.blogSample'),
             t('footerApp.blogLorem'),
-            t('footerApp.blogNatural'),
+            t('footerApp.blogNaturalProducts'),
           ],
           [
-            t('footerApp.blogSoster'),
+            t('footerApp.blogSisterFirer'),
             t('footerApp.support'),
             t('footerApp.myOrders'),
           ],

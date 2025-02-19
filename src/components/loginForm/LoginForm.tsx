@@ -52,9 +52,6 @@ const LoginForm = () => {
     event.preventDefault();
   };
 
-  console.log('pass', password);
-  console.log('email', email);
-
   const handleLogin = () => {
     setIsLogged(true);
     if (!errorTerms && !errorEmail && !errorPassword) {
@@ -303,7 +300,7 @@ const LoginForm = () => {
           label={undefined}
         />
         <Box sx={{ marginLeft: -3 }}>
-          <p
+          <span
             style={{
               fontSize: '0.720rem',
             }}
@@ -343,7 +340,7 @@ const LoginForm = () => {
               {/* multilenguaje */}
               {t('loginForm.privacyPolicy')}
             </a>
-          </p>
+          </span>
         </Box>
       </FormGroup>
 

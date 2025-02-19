@@ -10,7 +10,7 @@ import { t } from 'i18next';
 export const Code = ({ setCode }: { setCode: (e: string) => void }) => {
   return (
     <Box sx={{ width: '100%' }}>
-      <p
+      <Typography
         style={{
           fontSize: '0.880rem',
           textAlign: 'center',
@@ -19,7 +19,7 @@ export const Code = ({ setCode }: { setCode: (e: string) => void }) => {
         }}
       >
         {t('loginForm.verificationCodeText')}
-      </p>
+      </Typography>
       <Box
         sx={{
           display: 'flex',
@@ -36,13 +36,13 @@ export const Code = ({ setCode }: { setCode: (e: string) => void }) => {
             left: '1px',
           }}
         >
-          <p
+          <Typography
             style={{
               fontSize: '0.770rem',
             }}
           >
             {t('loginForm.code')}
-          </p>
+          </Typography>
         </Typography>
 
         <FormControl
