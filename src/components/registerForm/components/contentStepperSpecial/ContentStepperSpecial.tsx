@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
 import {
   Box,
   CardContent,
@@ -8,10 +8,10 @@ import {
   Typography,
 } from '@mui/material';
 import { t } from 'i18next';
+import { useState } from 'react';
 import { OptionsButtons } from '../../../../globals/types';
-import RenderOptions from '../renderOptions/RenderOptions';
-import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
 import ErrorLabel from '../../../errorLabel/ErrorLabel';
+import RenderOptions from '../renderOptions/RenderOptions';
 
 export const ContentStepperSpecial = () => {
   const [searchTerm, setSearchTerm] = useState('');

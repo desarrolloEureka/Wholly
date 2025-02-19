@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
 import {
   Box,
   CardContent,
@@ -7,11 +7,11 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { OptionsButtons } from '../../../../globals/types';
-import RenderOptions from '../renderOptions/RenderOptions';
-import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
-import ErrorLabel from '../../../errorLabel/ErrorLabel';
 import { t } from 'i18next';
+import { useState } from 'react';
+import { OptionsButtons } from '../../../../globals/types';
+import ErrorLabel from '../../../errorLabel/ErrorLabel';
+import RenderOptions from '../renderOptions/RenderOptions';
 
 export const ContentStepper = ({
   title1,
