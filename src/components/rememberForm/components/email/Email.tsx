@@ -11,7 +11,7 @@ import EmailIcon from '@mui/icons-material/Email';
 export const Email = () => {
   return (
     <Box sx={{ width: '100%' }}>
-      <p
+      <Typography
         style={{
           fontSize: '0.880rem',
           textAlign: 'center',
@@ -20,7 +20,7 @@ export const Email = () => {
         }}
       >
         {t('loginForm.passwordRecoveryText')}
-      </p>
+      </Typography>
       <Box
         sx={{
           minWidth: '85%',
@@ -37,15 +37,15 @@ export const Email = () => {
             marginTop: '20px',
           }}
         >
-          <p
+          <Typography
             style={{
               fontSize: '0.770rem',
               textAlign: 'start',
-              margin: 0, // Eliminamos el margen predeterminado de <p>
+              margin: 0, // Eliminamos el margen predeterminado de <Typography>
             }}
           >
             {t('loginForm.email')}
-          </p>
+          </Typography>
         </Typography>
 
         <FormControl
