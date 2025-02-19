@@ -55,10 +55,12 @@ const LoginForm = () => {
   const handleLogin = () => {
     setIsLogged(true);
     if (!errorTerms && !errorEmail && !errorPassword) {
-      console.log('hace el login');
       setIsLogged(false);
     }
   };
+
+  console.log('email', email);
+  console.log('password', password);
 
   return (
     <Box
