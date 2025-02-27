@@ -36,10 +36,10 @@ export const HomeCare = () => {
       <Box
         sx={{
           position: "absolute",
-          top: "50%", // Ajusta la posición según necesites
+          top: "50%",
           left: "61%",
-          transform: "translate(-50%, -50%)", // Centra el contenedor
-          backgroundColor: "rgba(0, 0, 0, 0.5)", // Fondo semi-transparente
+          transform: "translate(-50%, -50%)",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
           padding: "25px",
           borderRadius: "10px",
           color: "#FBFFDD",
@@ -54,9 +54,9 @@ export const HomeCare = () => {
             fontFamily: "Inter",
             marginBottom: "12px",
 
-            padding: "6px 4px", // Reduce el espacio interno
-            minWidth: "auto", // Evita que tenga un ancho mínimo grande
-            lineHeight: 1, // Hace que el botón sea más compacto
+            padding: "6px 4px",
+            minWidth: "auto",
+            lineHeight: 1,
             "&:hover": {
               backgroundColor: "rgb(172, 180, 154)", // Color en el hover
             },
