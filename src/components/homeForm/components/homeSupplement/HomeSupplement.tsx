@@ -15,7 +15,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useState, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 
-export const HomeForm = () => {
+export const HomeSupplement = () => {
   const { t } = useTranslation();
   const [selectedValue, setSelectedValue] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -53,19 +53,18 @@ export const HomeForm = () => {
         variant="h3"
         sx={{ mb: 4, fontFamily: "Montserrat ", color: "#3C3C3C" }}
       >
-        What supplement do you want today?
+        {t("homeform.title")}
       </Typography>
       <Typography sx={{ fontSize: "1.8rem", color: "#333", mb: 4 }}>
-        Consult the supplement indicated for you, that is 100% compatible with
-        you.
+        {t("homeform.subtitle")}
       </Typography>
       <Box
         gap={5}
         sx={{
-          alignSelf: "flex-start", // Mueve el Box a la izquierda
+          alignSelf: "flex-start",
           display: "flex",
-          justifyContent: "flex-start", // Asegura que el contenido también se alinee a la izquierda
-          width: "100%", // O ajusta el ancho según lo necesites
+          justifyContent: "flex-start",
+          width: "100%",
         }}
       >
         <FormControl component="fieldset">
@@ -92,7 +91,9 @@ export const HomeForm = () => {
                 />
               }
               label={
-                <span style={{ fontSize: "1.1rem" }}>{t("Supplements")}</span>
+                <span style={{ fontSize: "1.1rem" }}>
+                  {t("homeform.supplements")}
+                </span>
               }
             />
             <FormControlLabel
@@ -109,7 +110,9 @@ export const HomeForm = () => {
                 />
               }
               label={
-                <span style={{ fontSize: "1.1rem" }}>{t("Indications")}</span>
+                <span style={{ fontSize: "1.1rem" }}>
+                  {t("homeform.indications")}
+                </span>
               }
             />
           </RadioGroup>
@@ -132,7 +135,7 @@ export const HomeForm = () => {
           fullWidth
           value={searchTerm}
           onChange={handleSearchChange}
-          placeholder="Sunscree..."
+          placeholder={t("homeform.searchPlaceholder")}
           sx={{
             backgroundColor: "white",
             borderRadius: "20px",

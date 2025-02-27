@@ -6,27 +6,27 @@ export interface OptionsButtons {
 export interface StepOneHandle {
   validateForm: () => boolean;
 }
-export interface ImagesValue {
+export interface ImagesCategories {
   subtitle: string;
   id: number;
   src: string;
   title: string;
+  description: string;
 }
-export interface CarouselItemProps {
+export interface ImagesVariety {
+  subtitle: string;
   id: number;
   src: string;
   title: string;
-  subtitle: string;
-  tex: string;
+  description: string;
 }
-export interface ImagesExperts {
+export interface ImagesExclusive {
   subtitle: string;
   id: number;
   src: string;
   title: string;
-  socialLinks?: {
-    facebook: string;
-    twitter: string;
-    instagram: string;
-  };
+  description: string;
+  description1: string;
+  description2: string;
+  description3: string;
 }

@@ -1,10 +1,13 @@
 import { Box, Container, Typography } from "@mui/material";
 import CustomAppBar from "../components/customAppBar/CustomAppBar";
 import FooterApp from "../components/footerApp/FooterApp";
-import { HomeForm } from "../components/homeForm/components/homeSupplement/HomeSupplement";
+import { HomeSupplement } from "../components/homeForm/components/homeSupplement/HomeSupplement";
 import { RegisterHome } from "../components/homeForm/components/registerHome/RegisterHome";
 import { HomeExclusive } from "../components/homeForm/components/homeExclusive/HomeExclusive";
 import { HomeCare } from "../components/homeForm/components/homeCare/HomeCare";
+import { HomeCategories } from "../components/homeForm/components/homeCategories/HomeCategories";
+import { Homevariety } from "../components/homeForm/components/homeVariety/homevariety";
+import { fondo_Vetor } from "../assets/images";
 
 export const Home = () => {
   return (
@@ -28,10 +31,12 @@ export const Home = () => {
             marginRight: "100px", // Mueve el contenedor hacia la derecha
           }}
         >
-          <HomeForm />
+          <HomeSupplement />
         </Container>
       </Box>
       <RegisterHome />
+      <HomeCategories />
+
       <Box
         sx={{
           display: "flex",
@@ -42,7 +47,8 @@ export const Home = () => {
         <Typography
           variant="h3"
           sx={{
-            marginBottom: "10px",
+            marginTop: "5%",
+            marginBottom: "3%",
             fontWeight: "bold",
             fontFamily: "Gabriela",
             color: "#3C3C3C",
@@ -51,6 +57,8 @@ export const Home = () => {
           variety
         </Typography>
       </Box>
+      <Homevariety />
+
       <HomeExclusive />
       <HomeCare />
 

@@ -5,8 +5,6 @@ import {
   Box,
   Button,
   IconButton,
-  MenuItem,
-  Select,
   Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -15,8 +13,34 @@ import { t } from "i18next";
 import AddIcon from "@mui/icons-material/Add";
 
 export const RegisterHome = () => {
-  const [option, setOption] = useState("");
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState<string | false>(false);
+
+  const handleChange =
+    (panel: string) => (_: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
+  const accordionData = [
+    {
+      id: "panel1",
+      title: "Enter your conditions",
+      content: "Detalles",
+    },
+    {
+      id: "panel2",
+      title: "Enter your allergies",
+      content: "Detalles",
+    },
+    {
+      id: "panel3",
+      title: "Enter your illnesses",
+      content: "Detalles",
+    },
+    {
+      id: "panel4",
+      title: "Enter your medications",
+      content: "Detalles",
+    },
+  ];
 
   return (
     <Box
@@ -34,8 +58,8 @@ export const RegisterHome = () => {
           alignItems: "start",
           justifyContent: "flex-start",
           flexDirection: "column",
-          height: "100vh",
-          marginTop: "13%",
+          height: "70vh",
+          marginBottom: "4%",
         }}
       >
         <Typography
@@ -64,7 +88,7 @@ export const RegisterHome = () => {
           }}
           disableElevation
         >
-          {t("loginForm.register")}
+          {t("REGISTER")}
         </Button>
       </Box>
       {/* pendiente */}
@@ -95,6 +119,7 @@ export const RegisterHome = () => {
             boxShadow: 5,
             width: "100%",
             margin: "15px 10px",
+            marginBottom: "25px",
             height: "auto",
             padding: "20px",
             textAlign: "left",
@@ -147,100 +172,30 @@ export const RegisterHome = () => {
             justifyContent: "center",
           }}
         >
-          <Accordion
-            sx={{
-              border: "1px solid #ccc",
-              borderRadius: "30px !important", // Forzar el borde redondeado
-              overflow: "hidden",
-              "&:before": { display: "none" },
-              "&.MuiPaper-root": {
-                borderRadius: "30px !important", // Sobrescribe estilos predeterminados
-              },
-            }}
-            expanded={expanded}
-            onChange={() => setExpanded(!expanded)}
-          >
-            <AccordionSummary expandIcon={<AddIcon />}>
-              <Typography>Sección 1</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Contenido de la sección 1. Puedes poner cualquier información
-                aquí.
-              </Typography>
-              <Typography>
-                Contenido de la sección 1. Puedes poner cualquier información
-                aquí.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-
-          <Select
-            value={option}
-            onChange={(e) => setOption(e.target.value)}
-            displayEmpty
-            sx={{
-              mt: 3,
-              width: "100%",
-              borderRadius: "50px",
-              height: "50px",
-              border: "1px solid #A5AB94", // Color inicial del borde
-              "&:hover": {
-                borderColor: "rgb(87, 90, 77)", // Color del borde al pasar el mouse
-              },
-            }}
-          >
-            <MenuItem value="" disabled>
-              Enter your allergies
-            </MenuItem>
-            <MenuItem value="opcion1">Opción 1</MenuItem>
-            <MenuItem value="opcion2">Opción 2</MenuItem>
-            <MenuItem value="opcion3">Opción 3</MenuItem>
-          </Select>
-          <Select
-            value={option}
-            onChange={(e) => setOption(e.target.value)}
-            displayEmpty
-            sx={{
-              mt: 3,
-              width: "100%",
-              borderRadius: "50px",
-              height: "50px",
-              border: "1px solid #A5AB94", // Color inicial del borde
-              "&:hover": {
-                borderColor: "rgb(87, 90, 77)", // Color del borde al pasar el mouse
-              },
-            }}
-          >
-            <MenuItem value="" disabled>
-              Enter your illnesses{" "}
-            </MenuItem>
-            <MenuItem value="opcion1">Opción 1</MenuItem>
-            <MenuItem value="opcion2">Opción 2</MenuItem>
-            <MenuItem value="opcion3">Opción 3</MenuItem>
-          </Select>
-          <Select
-            value={option}
-            onChange={(e) => setOption(e.target.value)}
-            displayEmpty
-            sx={{
-              mt: 3,
-              width: "100%",
-              borderRadius: "50px",
-              height: "50px",
-              border: "1px solid #A5AB94", // Color inicial del borde
-              "&:hover": {
-                borderColor: "rgb(87, 90, 77)", // Color del borde al pasar el mouse
-              },
-            }}
-          >
-            <MenuItem value="" disabled>
-              Enter your medications
-            </MenuItem>
-            <MenuItem value="opcion1">Opción 1</MenuItem>
-            <MenuItem value="opcion2">Opción 2</MenuItem>
-            <MenuItem value="opcion3">Opción 3</MenuItem>
-          </Select>
+          {accordionData.map(({ id, title, content }) => (
+            <Accordion
+              sx={{
+                border: "1px solid #ccc",
+                borderRadius: "30px !important",
+                overflow: "hidden",
+                marginBottom: "20px",
+                "&:before": { display: "none" },
+                "&.MuiPaper-root": {
+                  borderRadius: "30px !important",
+                },
+              }}
+              key={id}
+              expanded={expanded === id}
+              onChange={handleChange(id)}
+            >
+              <AccordionSummary expandIcon={<AddIcon />}>
+                <Typography>{title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>{content}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          ))}
         </Box>
       </Box>
     </Box>

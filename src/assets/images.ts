@@ -10,6 +10,15 @@ import fondo_home_path from "./Home.png";
 import fondo_Vetor_path from "./Vector.png";
 import imagen_2_path from "./magen_2.png";
 import Vector_Icono_path from "./VectorIcono.png";
+import rectangle1_path from "./Rectangle1.png";
+import rectangle2_path from "./Rectangle2.png";
+import rectangle3_path from "./Rectangle3.png";
+import group_variety1_path from "./Group_variety1.png";
+import group_variety2_path from "./Group_variety2.png";
+import group_variety3_path from "./Group_variety3.png";
+import exclusive_1_path from "./exclusive_1.png";
+import exclusive_2_path from "./exclusive_2.png";
+import exclusive_3_path from "./exclusive_3.png";
 
 const logo_app = logo_app_path;
 const fondo_login = fondo_login_path;
@@ -23,6 +32,16 @@ const fondo_home = fondo_home_path;
 const fondo_Vetor = fondo_Vetor_path;
 const imagen_2 = imagen_2_path;
 const VectorIcono = Vector_Icono_path;
+const rectangle1 = rectangle1_path;
+const rectangle2 = rectangle2_path;
+const rectangle3 = rectangle3_path;
+const variety1 = group_variety1_path;
+const variety2 = group_variety2_path;
+const variety3 = group_variety3_path;
+const exclusive_1 = exclusive_1_path;
+const exclusive_2 = exclusive_2_path;
+const exclusive_3 = exclusive_3_path;
+
 export {
   logo_app,
   fondo_login,
@@ -36,4 +55,13 @@ export {
   fondo_Vetor,
   imagen_2,
   VectorIcono,
+  rectangle1,
+  rectangle2,
+  rectangle3,
+  variety1,
+  variety2,
+  variety3,
+  exclusive_1,
+  exclusive_2,
+  exclusive_3,
 };
