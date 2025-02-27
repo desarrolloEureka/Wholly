@@ -6,8 +6,25 @@
 
 /* src/index.css */
 @font-face {
-  font-family: 'Gabriela';
-  src: url('./assets/fonts/Gabriela/Gabriela-Regular.ttf') format('truetype');
+  font-family: "Gabriela";
+  src: url("./assets/fonts/Gabriela/Gabriela-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Futura";
+  src: url("./assets/fonts/futura-pt/FuturaCyrillicMedium.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "Mango";
+  src: url("./assets/fonts/mango/mango.ttf") format("truetype");
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Mango", sans-serif;
 }
 
 .bg_login_image {
@@ -17,6 +34,13 @@
   min-height: 100vh;
   padding-bottom: 10%;
 }
+.bg_Home_image {
+  background: url(./assets/Home.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
 .bg_register_image {
   background: url(./assets/register.png) no-repeat;
   background-size: cover; /* Ajusta la altura de la imagen para cubrir el fondo sin cortar */

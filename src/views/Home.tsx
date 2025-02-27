@@ -1,0 +1,66 @@
+import { Box, Container, Typography } from "@mui/material";
+import CustomAppBar from "../components/customAppBar/CustomAppBar";
+import FooterApp from "../components/footerApp/FooterApp";
+import { HomeSupplement } from "../components/homeForm/components/homeSupplement/HomeSupplement";
+import { RegisterHome } from "../components/homeForm/components/registerHome/RegisterHome";
+import { HomeExclusive } from "../components/homeForm/components/homeExclusive/HomeExclusive";
+import { HomeCare } from "../components/homeForm/components/homeCare/HomeCare";
+import { HomeCategories } from "../components/homeForm/components/homeCategories/HomeCategories";
+import { Homevariety } from "../components/homeForm/components/homeVariety/HomeVariety";
+
+export const Home = () => {
+  return (
+    <Box justifyContent="space-between">
+      <Box className="bg_Home_image">
+        <CustomAppBar />
+        <Container
+          component="main"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "80vh",
+            width: {
+              xs: "90%", // 90% del ancho en pantallas extra pequeñas
+              sm: "70%", // 70% del ancho en pantallas pequeñas
+              md: "50%", // 50% del ancho en pantallas medianas
+              lg: "40%", // 40% del ancho en pantallas grandes
+              xl: "38%", // 38% del ancho en pantallas extra grandes
+            },
+            marginRight: "100px", // Mueve el contenedor hacia la derecha
+          }}
+        >
+          <HomeSupplement />
+        </Container>
+      </Box>
+      <RegisterHome />
+      <HomeCategories />
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          variant="h3"
+          sx={{
+            marginTop: "5%",
+            marginBottom: "3%",
+            fontWeight: "bold",
+            color: "#3C3C3C",
+          }}
+        >
+          Variety
+        </Typography>
+      </Box>
+      <Homevariety />
+
+      <HomeExclusive />
+      <HomeCare />
+
+      <FooterApp />
+    </Box>
+  );
+};
