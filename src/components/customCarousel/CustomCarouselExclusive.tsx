@@ -99,7 +99,14 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
               {item.description}
             </span>
             {item.description1}
-            {item.description2}
+            <span
+              style={{
+                opacity: 0.6,
+                marginLeft: "7px",
+              }}
+            >
+              {item.description2}
+            </span>
           </Typography>
 
           <Box

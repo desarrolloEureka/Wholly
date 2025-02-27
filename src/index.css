@@ -9,6 +9,23 @@
   font-family: "Gabriela";
   src: url("./assets/fonts/Gabriela/Gabriela-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Futura";
+  src: url("./assets/fonts/futura-pt/FuturaCyrillicMedium.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "Mango";
+  src: url("./assets/fonts/mango/mango.ttf") format("truetype");
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Mango", sans-serif;
+}
 
 .bg_login_image {
   background: url(./assets/fondo_login.png) no-repeat;

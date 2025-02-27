@@ -6,8 +6,7 @@ import { RegisterHome } from "../components/homeForm/components/registerHome/Reg
 import { HomeExclusive } from "../components/homeForm/components/homeExclusive/HomeExclusive";
 import { HomeCare } from "../components/homeForm/components/homeCare/HomeCare";
 import { HomeCategories } from "../components/homeForm/components/homeCategories/HomeCategories";
-import { Homevariety } from "../components/homeForm/components/homeVariety/homevariety";
-import { fondo_Vetor } from "../assets/images";
+import { Homevariety } from "../components/homeForm/components/homeVariety/HomeVariety";
 
 export const Home = () => {
   return (
@@ -50,11 +49,10 @@ export const Home = () => {
             marginTop: "5%",
             marginBottom: "3%",
             fontWeight: "bold",
-            fontFamily: "Gabriela",
             color: "#3C3C3C",
           }}
         >
-          variety
+          Variety
         </Typography>
       </Box>
       <Homevariety />

@@ -64,7 +64,7 @@ export const RegisterHome = () => {
       >
         <Typography
           variant="h3"
-          sx={{ mb: 4, fontFamily: "Montserrat ", color: "#3C3C3C" }}
+          sx={{ mb: 4, fontSize: "2.1rem", color: "#3C3C3C" }}
         >
           Register and customize your searches automatically
         </Typography>

@@ -75,7 +75,6 @@ export const HomeExclusive = () => {
           variant="h3"
           sx={{
             fontWeight: "bold",
-            fontFamily: "Gabriela",
             color: "#3C3C3C",
             padding: "10px",
             borderRadius: "8px",
