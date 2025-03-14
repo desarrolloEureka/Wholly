@@ -9,10 +9,12 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import AddIcon from "@mui/icons-material/Add";
 
 export const RegisterHome = () => {
+  const { t } = useTranslation();
+
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange =
@@ -22,23 +24,23 @@ export const RegisterHome = () => {
   const accordionData = [
     {
       id: "panel1",
-      title: "Enter your conditions",
-      content: "Detalles",
+      title: t("homeform.enterConditions"),
+      content: t("homeform.details1"),
     },
     {
       id: "panel2",
-      title: "Enter your allergies",
-      content: "Detalles",
+      title: t("homeform.enterAllergies"),
+      content: t("homeform.details2"),
     },
     {
       id: "panel3",
-      title: "Enter your illnesses",
-      content: "Detalles",
+      title: t("homeform.enterIllnesses"),
+      content: t("homeform.details3"),
     },
     {
       id: "panel4",
-      title: "Enter your medications",
-      content: "Detalles",
+      title: t("homeform.enterMedications"),
+      content: t("homeform.details4"),
     },
   ];
 
@@ -48,8 +50,11 @@ export const RegisterHome = () => {
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         alignItems: "center",
-        gap: { xs: 3, md: 15 },
+        gap: { xs: 3, md: 30 },
         marginLeft: "4%",
+        marginBottom: 0,
+        height: "80vh",
+        marginTop: "5%",
       }}
     >
       <Box
@@ -59,19 +64,17 @@ export const RegisterHome = () => {
           justifyContent: "flex-start",
           flexDirection: "column",
           height: "70vh",
-          marginBottom: "4%",
+          width: { xs: "80%" },
         }}
       >
         <Typography
           variant="h3"
           sx={{ mb: 4, fontSize: "2.1rem", color: "#3C3C3C" }}
         >
-          Register and customize your searches automatically
+          {t("homeform.title2")}
         </Typography>
         <Typography sx={{ fontSize: "1.1rem", color: "#333", mb: 4 }}>
-          Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit.
-          Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend
-          tellus nonole tincidunt aliquet.
+          {t("homeform.description")}
         </Typography>
         <Button
           variant="contained"
@@ -88,7 +91,7 @@ export const RegisterHome = () => {
           }}
           disableElevation
         >
-          {t("REGISTER")}
+          {t("homeform.register")}
         </Button>
       </Box>
       {/* pendiente */}
@@ -101,7 +104,7 @@ export const RegisterHome = () => {
           marginTop: "5%",
           marginLeft: "1%",
           marginRight: "7%",
-          width: "60%",
+          width: { xs: "80%", md: "60%" },
 
           height: "100vh",
         }}
@@ -148,7 +151,7 @@ export const RegisterHome = () => {
               color: "#333",
             }}
           >
-            Enter your trends
+            {t("homeform.enterTrends")}
           </Typography>
           <Typography
             sx={{
@@ -161,9 +164,7 @@ export const RegisterHome = () => {
               wordWrap: "break-word",
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus
-            non tincidunt aliquet. Fusce aliquam mi felis.
+            {t("homeform.loremText")}
           </Typography>
         </Box>
         <Box

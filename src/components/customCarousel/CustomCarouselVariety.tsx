@@ -56,10 +56,9 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           }}
         >
           <Typography
-            variant="body1"
+            variant="h4"
             sx={{
               fontSize: "1.2rem",
-              fontFamily: "Montserrat, sans-serif",
               fontWeight: "bold",
               color: textColor,
             }}
@@ -68,10 +67,8 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           </Typography>
 
           <Typography
-            variant="body2"
             sx={{
-              fontSize: "0.8rem",
-              fontFamily: "Montserrat, sans-serif",
+              fontSize: "1.0rem",
               marginTop: "3px",
               color: textColor,
               marginBottom: "8px",

@@ -1,8 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
 import { imagen_2, VectorIcono } from "../../../../assets/images";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { useTranslation } from "react-i18next";
 
 export const HomeCare = () => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -37,44 +39,45 @@ export const HomeCare = () => {
         sx={{
           position: "absolute",
           top: "50%",
-          left: "61%",
+          left: "60%",
           transform: "translate(-50%, -50%)",
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          backgroundColor: "rgba(40, 40, 40, 0.5)",
+          backdropFilter: "blur(6px)",
           padding: "25px",
-          borderRadius: "10px",
+          borderRadius: "16px",
           color: "#FBFFDD",
+          width: "30%",
         }}
       >
         <Button
           variant="contained"
           size="small"
           sx={{
-            color: "black",
             backgroundColor: "#FBFFDD",
-            fontFamily: "Inter",
-            marginBottom: "12px",
-
-            padding: "6px 4px",
+            marginBottom: "18px",
+            padding: "6px 8px",
             minWidth: "auto",
             lineHeight: 1,
+            color: "rgba(35, 35, 35, 0.96)",
+            textTransform: "capitalize",
             "&:hover": {
               backgroundColor: "rgb(172, 180, 154)", // Color en el hover
             },
           }}
         >
-          blog
+          {t("homeform.blog")}
         </Button>
         <Box>
           <Typography
             variant="h4"
             sx={{
-              marginRight: "70px",
-              fontSize: "1.6rem",
-              fontWeight: "bold",
-              marginBottom: "14px",
+              marginRight: "40px",
+              fontSize: "1.2rem",
+              fontWeight: "500",
+              marginBottom: "22px",
             }}
           >
-            Best care to prevent acne
+            {t("homeform.bestCare")}
           </Typography>
         </Box>
         <Box
@@ -82,7 +85,7 @@ export const HomeCare = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "row",
-            marginBottom: "30px",
+            marginBottom: "40px",
           }}
         >
           <Box
@@ -102,7 +105,7 @@ export const HomeCare = () => {
             }}
           >
             <Typography sx={{ lineHeight: 1 }}>Wholly</Typography>
-            <Typography sx={{ lineHeight: 1 }}>Jan 18, 2024</Typography>
+            <Typography sx={{ lineHeight: 1 }}>{t("homeform.date")}</Typography>
           </Box>
         </Box>
 
@@ -113,13 +116,13 @@ export const HomeCare = () => {
             width: "50%",
             cursor: "pointer",
             transition: "transform 0.2s ease-in-out",
-            marginLeft: "67%", // Mueve el Box al extremo derecho
+            marginLeft: "73%", // Mueve el Box al extremo derecho
             "&:hover": {
               transform: "translateX(5px)",
             },
           }}
         >
-          <Typography>LEARN MORE</Typography>
+          <Typography>{t("homeform.learnMore")}</Typography>
           <ChevronRightIcon sx={{ fontSize: 20, color: "#FBFFDD" }} />
         </Box>
       </Box>

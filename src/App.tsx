@@ -8,6 +8,8 @@ import { RememberPassword } from "./views/RememberPassword";
 import theme from "./providers/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { Home } from "./views/Home";
+import { Categories } from "./views/Categories";
+import { InternalCategoriesty } from "./views/InternalCategoriesty";
 
 function App() {
   return (
@@ -15,6 +17,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/category" element={<Categories />} />
+          <Route
+            path="/internalCategoriesty"
+            element={<InternalCategoriesty />}
+          />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/remember" element={<RememberPassword />} />

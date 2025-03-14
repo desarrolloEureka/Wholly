@@ -62,10 +62,9 @@ const CustomCarouselCategories = ({
           }}
         >
           <Typography
-            variant="body1"
+            variant="h4"
             sx={{
-              fontSize: "1.4rem",
-              fontFamily: "Montserrat, sans-serif",
+              fontSize: "1.2rem",
               fontWeight: "bold",
               color: textColor,
             }}
@@ -74,10 +73,8 @@ const CustomCarouselCategories = ({
           </Typography>
 
           <Typography
-            variant="body2"
             sx={{
               fontSize: "1.2rem",
-              fontFamily: "Montserrat, sans-serif",
               marginTop: "4px",
               color: textColor,
               marginBottom: "28px",
@@ -93,7 +90,6 @@ const CustomCarouselCategories = ({
               width: "50%",
               cursor: "pointer",
               transition: "transform 0.2s ease-in-out",
-              fontFamily: "Montserrat, sans-serif",
               fontWeight: "bold",
               fontSize: "0.9rem",
               color: textColor,

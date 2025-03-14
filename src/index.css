@@ -40,6 +40,20 @@ h6 {
   background-position: center;
   min-height: 100vh;
 }
+.bg_Category_image {
+  background: url(./assets/category.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 600px 0px 200px rgba(0, 0, 0, 0.288); /* Sombra dentro de la imagen hacia la derecha */
+  min-height: 80vh;
+}
+.bg_InternalCategoriesty_image {
+  background: url(./assets/InternalCategoriesty.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 600px 0px 200px rgba(0, 0, 0, 0.288); /* Sombra dentro de la imagen hacia la derecha */
+  min-height: 70vh;
+}
 
 .bg_register_image {
   background: url(./assets/register.png) no-repeat;

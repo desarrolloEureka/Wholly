@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next"; // Importar la función de traducción
 import {
   exclusive_1,
   exclusive_2,
@@ -9,38 +10,41 @@ import CustomCarouselExclusive from "../../../customCarousel/CustomCarouselExclu
 import { ImagesExclusive } from "../../../../globals/types.tsx";
 
 export const HomeExclusive = () => {
+  const { t } = useTranslation(); // Inicializar la función de traducción
+
   const imagesAreas: ImagesExclusive[] = [
     {
       id: 1,
       src: exclusive_1,
-      title: "Lorem Ipsum",
-      subtitle: "Lorem ipsum dolor sit amet consecte tur SKU-#S146",
-      description: "$24.00",
-      description1: "$16.00",
-      description2: "  sale",
-      description3: "SHOP NOW",
+      title: t("homeform.titleExclusive1"),
+      subtitle: t("homeform.subtitleExclusive1"),
+      description: t("homeform.priceExclusiveBefore1"),
+      description1: t("homeform.priceExclusiveNow1"),
+      description2: t("homeform.saleExclusive"),
+      description3: t("homeform.shopNowExclusive1"),
     },
     {
       id: 2,
       src: exclusive_2,
-      title: "Lorem Ipsum",
-      subtitle: "Lorem ipsum dolor sit amet consecte tur SKU-#S146",
-      description: "$24.00",
-      description1: "$16.00",
-      description2: "  sale",
-      description3: "SHOP NOW",
+      title: t("homeform.titleExclusive2"),
+      subtitle: t("homeform.subtitleExclusive2"),
+      description: t("homeform.priceExclusiveBefore2"),
+      description1: t("homeform.priceExclusiveNow2"),
+      description2: t("homeform.saleExclusive"),
+      description3: t("homeform.shopNowExclusive2"),
     },
     {
-      id: 2,
+      id: 3,
       src: exclusive_3,
-      title: "Lorem Ipsum",
-      subtitle: "Lorem ipsum dolor sit amet consecte tur SKU-#F479",
-      description: "$24.00",
-      description1: "$16.00",
-      description2: "  sale",
-      description3: "SHOP NOW",
+      title: t("homeform.titleExclusive3"),
+      subtitle: t("homeform.subtitleExclusive3"),
+      description: t("homeform.priceExclusiveBefore3"),
+      description1: t("homeform.priceExclusiveNow3"),
+      description2: t("homeform.saleExclusive"),
+      description3: t("homeform.shopNowExclusive3"),
     },
   ];
+
   return (
     <Box
       sx={{
@@ -80,7 +84,7 @@ export const HomeExclusive = () => {
             borderRadius: "8px",
           }}
         >
-          Exclusive offers
+          {t("homeform.Exclusive")}
         </Typography>
       </Box>
       <Box
