@@ -10,6 +10,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { Home } from "./views/Home";
 import { Categories } from "./views/Categories";
 import { InternalCategoriesty } from "./views/InternalCategoriesty";
+import { Supplements } from "./views/Supplements";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/remember" element={<RememberPassword />} />
+          <Route path="/Supplements" element={<Supplements />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

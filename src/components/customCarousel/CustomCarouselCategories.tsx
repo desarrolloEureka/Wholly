@@ -2,6 +2,7 @@ import { Carousel } from "primereact/carousel";
 import { Box, Typography } from "@mui/material";
 import { ImagesCategories } from "../../globals/types";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { useNavigate } from "react-router-dom";
 
 const CustomCarouselCategories = ({
   images,
@@ -23,6 +24,7 @@ const CustomCarouselCategories = ({
     const backgroundColor = backgroundColors[index % backgroundColors.length];
     const textColor = textColors[index % textColors.length];
 
+    const navigate = useNavigate();
     return (
       <Box
         key={item.id}
@@ -37,7 +39,9 @@ const CustomCarouselCategories = ({
           marginBottom: "20px",
           marginTop: "10px",
           marginLeft: "10px",
+          cursor: "pointer", //  Agregamos cursor pointer
         }}
+        onClick={() => navigate("/category")} //  Ahora funciona correctamente
       >
         <img
           src={item.src}

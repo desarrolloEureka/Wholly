@@ -25,6 +25,8 @@ import exclusive_2_path from "./exclusive_2.png";
 import exclusive_3_path from "./exclusive_3.png";
 import fondo_categories_path from "./category.png";
 import fondo_InternalCategoriesty_path from "./InternalCategoriesty.png";
+import Session_1_path from "./Session_1.png";
+import Session_2_path from "./Session_2.png";
 
 const logo_app = logo_app_path;
 const fondo_login = fondo_login_path;
@@ -55,6 +57,8 @@ const exclusive_3 = exclusive_3_path;
 
 const fondo_categories = fondo_categories_path;
 const fondo_InternalCategoriesty = fondo_InternalCategoriesty_path;
+const Session_1 = Session_1_path;
+const Session_2 = Session_2_path;
 
 export {
   logo_app,
@@ -84,4 +88,6 @@ export {
   exclusive_3,
   fondo_categories,
   fondo_InternalCategoriesty,
+  Session_1,
+  Session_2,
 };

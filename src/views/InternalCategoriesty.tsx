@@ -4,7 +4,7 @@ import CustomAppBar from "../components/customAppBar/CustomAppBar";
 import FooterApp from "../components/footerApp/FooterApp";
 import { HomeCategories } from "../components/homeForm/components/homeCategories/HomeCategories";
 import { HomeExclusive } from "../components/homeForm/components/homeExclusive/HomeExclusive";
-import { InternalCategoriestyform } from "../components/categoriesForm.ts/componets/InternalCategoriestyform";
+import { InternalCategoriestyform } from "../components/categoriesForm.ts/componets/internalCategoriestyform/InternalCategoriestyform";
 
 export const InternalCategoriesty = () => {
   return (

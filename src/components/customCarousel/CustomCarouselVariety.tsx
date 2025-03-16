@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Carousel } from "primereact/carousel";
 import { Box, Typography } from "@mui/material";
 import { ImagesVariety } from "../../globals/types";
+import { useNavigate } from "react-router-dom";
 
 const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -15,6 +16,7 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
 
   const backgroundColor = "#EEF1F0";
   const textColor = "#3C3C3C";
+  const navigate = useNavigate();
 
   const itemTemplate = (item: ImagesVariety) => {
     return (
@@ -30,7 +32,9 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           marginBottom: "15px",
           marginTop: "5px",
           marginLeft: "100px",
+          cursor: "pointer",
         }}
+        onClick={() => navigate("/Supplements")} //  Ahora funciona correctamente
       >
         <img
           src={item.src}

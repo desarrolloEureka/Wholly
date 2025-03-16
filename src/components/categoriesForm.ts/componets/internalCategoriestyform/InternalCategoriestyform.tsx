@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { t } from "i18next";
 import { variety1, variety2, variety3 } from "./../../../assets/images";
 import { ImagesVariety } from "../../../globals/types";
+import { useNavigate } from "react-router-dom";
 
 export const InternalCategoriestyform = () => {
   const imagesAreas: ImagesVariety[] = [
@@ -51,6 +52,7 @@ export const InternalCategoriestyform = () => {
 
   const backgroundColor = "#EEF1F0";
   const textColor = "#3C3C3C";
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -79,7 +81,9 @@ export const InternalCategoriestyform = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 borderRadius: "10px",
+                cursor: "pointer",
               }}
+              onClick={() => navigate("/Supplements")} //  Ahora funciona correctamente
             >
               <img
                 src={item.src}

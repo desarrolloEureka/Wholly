@@ -9,6 +9,7 @@ import {
   rectangle7,
 } from "../../../assets/images";
 import { ImagesCategories } from "../../../globals/types";
+import { useNavigate } from "react-router-dom";
 
 const backgroundColors = ["#EEF1F0", "#A5AB94", "#E8E4DF"];
 const textColors = ["#3C3C3C", "#FBFFDD", "#3C3C3C"];
@@ -58,6 +59,7 @@ export const CategoriesForm = () => {
       description: "SHOP NOW6",
     },
   ];
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -87,7 +89,9 @@ export const CategoriesForm = () => {
               borderRadius: "10px",
               marginBottom: "20px",
               marginTop: "10px",
+              cursor: "pointer",
             }}
+            onClick={() => navigate("/InternalCategoriesty")}
           >
             <img
               src={item.src}
