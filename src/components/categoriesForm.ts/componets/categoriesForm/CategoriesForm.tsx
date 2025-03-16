@@ -1,15 +1,16 @@
 import { Typography, Box } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
+import { useNavigate } from "react-router-dom";
 import {
   rectangle1,
-  rectangle3,
   rectangle4,
+  rectangle3,
   rectangle5,
-  rectangle6,
   rectangle7,
-} from "../../../assets/images";
-import { ImagesCategories } from "../../../globals/types";
-import { useNavigate } from "react-router-dom";
+  rectangle6,
+} from "../../../../assets/images";
+import { ImagesCategories } from "../../../../globals/types";
 
 const backgroundColors = ["#EEF1F0", "#A5AB94", "#E8E4DF"];
 const textColors = ["#3C3C3C", "#FBFFDD", "#3C3C3C"];

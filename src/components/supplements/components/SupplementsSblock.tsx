@@ -4,48 +4,66 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { t } from "i18next";
 import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 
 export const SupplementsSblock = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detecta si es móvil
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md")); // Detecta si es tablet
+
   const accordionSblock = [
     {
       id: "panel0",
       number: "00",
-      title: t("homeform.enterConditions"),
-      content: t("homeform.details1"),
+      title: t("Description"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
+      ),
     },
     {
       id: "panel1",
       number: "01",
-      title: t("homeform.enterAllergies"),
-      content: t("homeform.details2"),
+      title: t("Indications"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
+      ),
     },
     {
       id: "panel2",
       number: "02",
-      title: t("homeform.enterIllnesses"),
-      content: t("homeform.details3"),
+      title: t("How to use"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
+      ),
     },
     {
       id: "panel3",
       number: "03",
-      title: t("homeform.enterMedications"),
-      content: t("homeform.details4"),
+      title: t("Precautions"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
+      ),
     },
     {
       id: "panel4",
       number: "04",
-      title: t("homeform.enterIllnesses"),
-      content: t("homeform.details3"),
+      title: t("Interactions"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
+      ),
     },
     {
       id: "panel5",
       number: "05",
-      title: t("homeform.enterIllnesses"),
-      content: t("homeform.details3"),
+      title: t("Contraindications"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
+      ),
     },
   ];
 
@@ -60,28 +78,33 @@ export const SupplementsSblock = () => {
     <Box
       sx={{
         display: "flex",
+        flexDirection: isMobile || isTablet ? "column" : "row",
         alignItems: "center",
         justifyContent: "center",
-        flexDirection: "row",
         marginTop: "5%",
         width: "100%",
         height: "auto",
-        gap: "5%",
+        gap: isMobile || isTablet ? "15px" : "5%",
       }}
     >
       {/* Sección de los Acordeones */}
-      <Box sx={{ width: "45%", marginBottom: "3%" }}>
+      <Box
+        sx={{
+          width: isMobile || isTablet || isTablet ? "90%" : "45%",
+          marginBottom: "3%",
+        }}
+      >
         <Typography
-          variant="h4"
+          variant="h5"
           gutterBottom
           sx={{
-            color: "#3C3C3C",
-            marginTop: "70px",
-            fontSize: "1.8rem",
-            marginBottom: "5px",
-            height: "60px",
-            width: "90%",
+            color: "rgba(31, 31, 31, 0.85)",
+            marginTop: isMobile || isTablet ? "20px" : "70px",
+            marginBottom: "10px",
+            paddingBottom: "15px",
+            fontWeight: 400,
             borderBottom: "1px solid #A5AB94",
+            width: "100%",
           }}
         >
           Sun Block
@@ -90,22 +113,30 @@ export const SupplementsSblock = () => {
           <Accordion
             sx={{
               overflow: "hidden",
-              marginBottom: "20px",
+              marginBottom: "10px",
+              paddingBottom: "10px",
               boxShadow: "none",
               backgroundColor: "#E8E4DE",
-              borderBottom: id === "panel5" ? "none" : "1px solid #A5AB94", // Quita el borde solo en el panel5
-              borderTop: id === "panel0" ? "none" : "1px solid #A5AB94", // Quita el borde solo en el panel5
-
+              borderBottom: id === "panel5" ? "none" : "1px solid #A5AB94",
+              borderTop: "0",
               "&:before": { display: "none" },
-              width: "90%",
+              width: "100%",
             }}
             key={id}
             expanded={expanded === id}
             onChange={handleChange(id)}
           >
-            <AccordionSummary expandIcon={<AddIcon />}>
+            <AccordionSummary
+              expandIcon={
+                <AddIcon
+                  sx={{ fontSize: "20px", color: "rgba(19, 19, 19, 0.82)" }}
+                />
+              }
+            >
               <Typography
+                variant="h6"
                 sx={{
+                  fontSize: "1.1rem",
                   fontWeight: "bold",
                   marginRight: "10px",
                   minWidth: "30px",
@@ -114,7 +145,12 @@ export const SupplementsSblock = () => {
               >
                 {number}
               </Typography>
-              <Typography sx={{ color: "#3C3C3C" }}>{title}</Typography>
+              <Typography
+                variant="h6"
+                sx={{ color: "#3C3C3C", fontSize: "1.0rem" }}
+              >
+                {title}
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography sx={{ color: "#3C3C3C" }}>{content}</Typography>
@@ -123,10 +159,10 @@ export const SupplementsSblock = () => {
         ))}
       </Box>
 
-      {/* Sección de Información - Centrada */}
+      {/* Sección de Información */}
       <Box
         sx={{
-          width: "45%",
+          width: isMobile || isTablet ? "90%" : "45%",
           display: "flex",
           justifyContent: "center",
         }}
@@ -139,12 +175,12 @@ export const SupplementsSblock = () => {
             justifyContent: "center",
             padding: "20px",
             borderRadius: "10px",
-            width: "480px",
-            height: "250px",
+            width: isMobile || isTablet ? "100%" : "480px",
+            height: isMobile || isTablet ? "auto" : "250px",
             textAlign: "center",
             backgroundColor: "#fff",
             boxShadow: "0px 1px 12px rgba(0, 0, 0, 0.35)",
-            marginTop: "10px",
+            marginTop: isMobile || isTablet ? "0" : "10px",
           }}
         >
           <Box
@@ -153,7 +189,7 @@ export const SupplementsSblock = () => {
               maxWidth: "335px",
               display: "flex",
               flexDirection: "column",
-              gap: "15px",
+              gap: "30px",
             }}
           >
             {/* Reference Section */}
@@ -184,7 +220,7 @@ export const SupplementsSblock = () => {
                   textAlign: "center",
                   fontSize: "1.0rem",
                   color: "#3C3C3C",
-                  fontWeight: 600,
+                  fontWeight: 400,
                 }}
               >
                 0.7 oz/20 ml
@@ -221,7 +257,7 @@ export const SupplementsSblock = () => {
                   textAlign: "center",
                   fontSize: "1.0rem",
                   color: "#3C3C3C",
-                  fontWeight: 600,
+                  fontWeight: 400,
                 }}
               >
                 6 months
@@ -230,12 +266,28 @@ export const SupplementsSblock = () => {
           </Box>
 
           {/* Compatibility Message */}
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: "bold", marginTop: "15px" }}
+          <Box
+            sx={{
+              backgroundColor: "#A5AB94",
+              width: "76%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start", // Asegura que el contenido esté arriba
+              paddingBottom: "2px", // Ajusta según sea necesario
+              marginTop: "30px",
+            }}
           >
-            This product is compatible with you
-          </Typography>
+            <Typography
+              sx={{
+                width: "80%",
+                backgroundColor: "#ffff",
+                marginLeft: "80px",
+                color: "#3C3C3C",
+              }}
+            >
+              This product is compatible with you
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </Box>

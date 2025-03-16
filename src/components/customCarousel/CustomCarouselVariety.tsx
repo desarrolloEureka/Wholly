@@ -14,7 +14,7 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
     { breakpoint: "575px", numVisible: 1, numScroll: 1 },
   ];
 
-  const backgroundColor = "#EEF1F0";
+  const backgroundColor = "#ffff";
   const textColor = "#3C3C3C";
   const navigate = useNavigate();
 
@@ -60,7 +60,7 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           }}
         >
           <Typography
-            variant="h4"
+            variant="h6"
             sx={{
               fontSize: "1.2rem",
               fontWeight: "bold",

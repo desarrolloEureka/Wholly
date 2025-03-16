@@ -1,6 +1,6 @@
 import { Box, Button, Paper, Rating, Typography } from "@mui/material";
 import { useState } from "react";
-import { Session_1, Session_2, variety2 } from "./../../../assets/images";
+import { Session_1, Session_2, variety2 } from "../../../assets/images";
 
 export const SupplementSession = () => {
   const [products] = useState([
@@ -31,7 +31,7 @@ export const SupplementSession = () => {
     {
       id: 4,
       src: variety2,
-      title: "Sun Block 3",
+      title: "Sun Block 4",
       subtitle: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem  3",
       description: "$19.99",
       rating: 4.5,
@@ -62,9 +62,12 @@ export const SupplementSession = () => {
                 cursor: "pointer",
                 overflow: "hidden",
                 borderRadius: 2,
-                boxShadow: selectedProduct.id === product.id ? 4 : 1,
-                width: "90%",
-                height: 110,
+                boxShadow:
+                  selectedProduct.id === product.id
+                    ? "-3px 3px 6px rgba(0, 0, 0, 0.8)"
+                    : "0px 4px 4px rgba(0, 0, 0, 0.58)",
+                width: 100,
+                height: 100,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -89,21 +92,22 @@ export const SupplementSession = () => {
         <Box
           sx={{
             width: "80%",
+            height: "100%",
             display: "flex",
             gap: 2,
-            alignItems: "center",
-            marginLeft: "40px",
+            alignItems: "flex-start",
+            marginLeft: "20px",
           }}
         >
           <img
             src={selectedProduct.src}
             alt={selectedProduct.title}
             style={{
-              width: 400,
-              height: 400,
+              width: 450,
+              height: 450,
               objectFit: "cover", // Asegura que la imagen llene el espacio sin distorsionarse
-              borderRadius: "60px",
-              boxShadow: "5px 5px 20px rgba(0, 0, 0, 0.27)",
+              borderRadius: "20px",
+              boxShadow: "-3px 6px 5px rgba(0, 0, 0, 0.56)",
             }}
           />
 
@@ -113,15 +117,26 @@ export const SupplementSession = () => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
+              marginTop: "28px",
               marginLeft: "10%",
               width: "50%",
             }}
           >
             <Typography
               variant="h4"
-              sx={{ fontSize: "2rem", fontWeight: "bold", color: "#3C3C3C" }}
+              sx={{
+                fontWeight: "bold",
+                color: "#3C3C3C",
+                marginBottom: "35px",
+              }}
             >
               {selectedProduct.title}
+            </Typography>
+
+            <Typography
+              sx={{ fontSize: "1.5rem", color: "gray", marginBottom: "30px" }}
+            >
+              {selectedProduct.subtitle}
             </Typography>
             <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
               <Typography
@@ -139,30 +154,32 @@ export const SupplementSession = () => {
                 sx={{ color: "#A5AB94" }}
               />
             </Box>
-
-            <Typography sx={{ fontSize: "1.5rem", color: "gray" }}>
-              {selectedProduct.subtitle}
-            </Typography>
-            <Typography color="primary" sx={{ fontSize: "2rem" }}>
+            <Typography
+              color="primary"
+              sx={{ fontSize: "1.8rem", marginTop: "10px" }}
+            >
               {selectedProduct.description}
             </Typography>
             <span
               style={{
                 opacity: 0.6,
                 marginLeft: "7px",
+                marginBottom: "11px",
+                marginTop: "11px",
               }}
             >
-              {/* ${selectedProduct.description2 ?? "}*/}
+              10 units in stock
             </span>
 
             <Button
               variant="contained"
               color="primary"
               sx={{
-                mt: 2,
+                mt: "35px",
                 backgroundColor: "#A5AB94",
                 borderRadius: "40px",
-                width: "35%",
+                height: "38px",
+                width: "28%",
               }}
             >
               Add to basket
@@ -170,7 +187,7 @@ export const SupplementSession = () => {
           </Box>
         </Box>
       </Box>
-      <Typography sx={{ marginLeft: "30px" }}>See all - 12</Typography>
+      <Typography sx={{ marginLeft: "50px" }}>See all - 12</Typography>
     </Box>
   );
 };

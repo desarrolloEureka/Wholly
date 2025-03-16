@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import FooterApp from "../components/footerApp/FooterApp";
 import CustomAppBar from "../components/customAppBar/CustomAppBar";
-import { CategoriesForm } from "../components/categoriesForm.ts/componets/CategoriesForm";
+import { CategoriesForm } from "../components/categoriesForm.ts/componets/categoriesForm/CategoriesForm";
 
 export const Categories = () => {
   return (

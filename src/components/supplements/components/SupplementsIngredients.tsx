@@ -13,23 +13,38 @@ export const SupplementsIngredients = () => {
   const accordionData = [
     {
       id: "panel1",
-      title: t("homeform.enterConditions"),
-      content: t("homeform.details1"),
+      title: t("Ciprofibrato"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
+      ),
     },
     {
       id: "panel2",
-      title: t("homeform.enterAllergies"),
-      content: t("homeform.details2"),
+      title: t("Levemir"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
+      ),
     },
     {
       id: "panel3",
-      title: t("homeform.enterIllnesses"),
-      content: t("homeform.details3"),
+      title: t("Locusim"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
+      ),
     },
     {
       id: "panel4",
-      title: t("homeform.enterMedications"),
-      content: t("homeform.details4"),
+      title: t("Ultrasomes"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
+      ),
+    },
+    {
+      id: "panel4",
+      title: t("Epidermosil"),
+      content: t(
+        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
+      ),
     },
   ];
   const [expanded, setExpanded] = useState<string | false>(false);
@@ -65,17 +80,21 @@ export const SupplementsIngredients = () => {
           gutterBottom
           sx={{
             color: "#A5AB94",
+            paddingBottom: "5px", // Ajusta según necesites
+            borderBottom: "1px solid #A5AB94",
+            marginBottom: "10px",
+            width: "90%",
           }}
         >
-          Excipient Ingredients
+          Main ingredients
         </Typography>
         {accordionData.map(({ id, title, content }) => (
           <Accordion
             sx={{
               overflow: "hidden",
-              marginBottom: "20px",
+              marginBottom: "8px",
               boxShadow: "none",
-              borderTop: "1px solid #A5AB94",
+              paddingBottom: "8px", // Ajusta según necesites
               borderBottom: "1px solid #A5AB94",
               "&:before": { display: "none" },
               width: "90%", // Igual al de los acordeones
@@ -84,11 +103,22 @@ export const SupplementsIngredients = () => {
             expanded={expanded === id}
             onChange={handleChange(id)}
           >
-            <AccordionSummary expandIcon={<AddIcon />}>
-              <Typography>{title}</Typography>
+            <AccordionSummary
+              expandIcon={
+                <AddIcon
+                  sx={{ fontSize: "20px", color: "rgba(19, 19, 19, 0.82)" }}
+                />
+              }
+            >
+              <Typography
+                variant="h6"
+                sx={{ color: "#3C3C3C", fontSize: "1.0rem" }}
+              >
+                {title}
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>{content}</Typography>
+              <Typography sx={{ color: "#3C3C3C" }}>{content}</Typography>
             </AccordionDetails>
           </Accordion>
         ))}
@@ -112,11 +142,11 @@ export const SupplementsIngredients = () => {
           </Typography>
         </Box>
         <Typography
-          variant="body1"
           paragraph
           sx={{
             marginTop: "15px",
             width: "84%",
+            color: "#3C3C3C",
           }}
         >
           Lorem ipsum, dolor sit amet, consectetur adipiscing elit. Integer
@@ -125,7 +155,7 @@ export const SupplementsIngredients = () => {
         </Typography>
         <Box sx={{ borderBottom: "1px solid #A5AB94" }}>
           <Typography
-            variant="h5"
+            variant="h4"
             gutterBottom
             sx={{
               color: "#A5AB94",
@@ -140,6 +170,9 @@ export const SupplementsIngredients = () => {
             //fontSize: "1px",
             fontWeight: "500",
             marginTop: "15px",
+            color: "#3C3C3C",
+            borderBottom: "1px solid rgba(60, 60, 60, 0.55)",
+            width: "19%",
           }}
         >
           List of 5 references

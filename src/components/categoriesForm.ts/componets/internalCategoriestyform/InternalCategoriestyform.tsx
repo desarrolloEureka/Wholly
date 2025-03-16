@@ -1,8 +1,8 @@
 import { Box, Button, Typography } from "@mui/material";
 import { t } from "i18next";
-import { variety1, variety2, variety3 } from "./../../../assets/images";
-import { ImagesVariety } from "../../../globals/types";
 import { useNavigate } from "react-router-dom";
+import { variety1, variety2, variety3 } from "../../../../assets/images";
+import { ImagesVariety } from "../../../../globals/types";
 
 export const InternalCategoriestyform = () => {
   const imagesAreas: ImagesVariety[] = [
