@@ -42,6 +42,7 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
             boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.38)",
           }}
         />
+        {/* Contenedor del título y subtítulo */}
 
         <Box
           sx={{
@@ -54,10 +55,9 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
           }}
         >
           <Typography
-            variant="body1"
+            variant="h4"
             sx={{
               fontSize: "1.2rem",
-              fontFamily: "Montserrat, sans-serif",
               fontWeight: "bold",
               color: textColor,
             }}
@@ -66,10 +66,8 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
           </Typography>
 
           <Typography
-            variant="body2"
             sx={{
-              fontSize: "0.8rem",
-              fontFamily: "Montserrat, sans-serif",
+              fontSize: "1.0rem",
               marginTop: "3px",
               color: textColor,
               marginBottom: "8px",

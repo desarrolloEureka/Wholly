@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Carousel } from "primereact/carousel";
 import { Box, Typography } from "@mui/material";
 import { ImagesVariety } from "../../globals/types";
+import { useNavigate } from "react-router-dom";
 
 const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -13,8 +14,9 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
     { breakpoint: "575px", numVisible: 1, numScroll: 1 },
   ];
 
-  const backgroundColor = "#EEF1F0";
+  const backgroundColor = "#ffff";
   const textColor = "#3C3C3C";
+  const navigate = useNavigate();
 
   const itemTemplate = (item: ImagesVariety) => {
     return (
@@ -30,7 +32,9 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           marginBottom: "15px",
           marginTop: "5px",
           marginLeft: "100px",
+          cursor: "pointer",
         }}
+        onClick={() => navigate("/Supplements")} //  Ahora funciona correctamente
       >
         <img
           src={item.src}
@@ -56,10 +60,9 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           }}
         >
           <Typography
-            variant="body1"
+            variant="h6"
             sx={{
               fontSize: "1.2rem",
-              fontFamily: "Montserrat, sans-serif",
               fontWeight: "bold",
               color: textColor,
             }}
@@ -68,10 +71,8 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           </Typography>
 
           <Typography
-            variant="body2"
             sx={{
-              fontSize: "0.8rem",
-              fontFamily: "Montserrat, sans-serif",
+              fontSize: "1.0rem",
               marginTop: "3px",
               color: textColor,
               marginBottom: "8px",

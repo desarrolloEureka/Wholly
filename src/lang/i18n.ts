@@ -82,7 +82,7 @@ i18n
             kits: "Equipos",
             login: "Ingresar",
             register: "Registro",
-            nameLogin: "iniciar sesión",
+            nameLogin: "iniciar sesion",
             nameRecord: "Registro",
             en: "En",
             es: "Es",
@@ -152,6 +152,68 @@ i18n
             title: "¿Qué suplemento quieres hoy?",
             subtitle:
               "Consulta el suplemento indicado para ti, que sea 100% compatible contigo.",
+            register: "Registrarse",
+            title2: "Regístrate y personaliza tus búsquedas automáticamente",
+            description:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Entero mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet.",
+            loremText:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enteromattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellusaliquet no tincidiente. Fusce aliquam mi felis.",
+            enterConditions: "Ingresa tus condiciones",
+            enterAllergies: "Ingresa tus alergias",
+            enterIllnesses: "Ingresa tus enfermedades",
+            enterMedications: "Ingresa tus medicamentos",
+            details1: "detalle1",
+            details2: "detalle2",
+            details3: "detalle3",
+            details4: "detalle4",
+            enterTrends: "Ingresa tus tendencias",
+            AntiAging: "Antienvejecimiento",
+            AntiAgingSubtitle:
+              "Nadie ama el dolor en sí, que lo busca y lo quiere tener.",
+            SkinCare: "Cuidado de la piel",
+            SkinCareSubtitle:
+              "Nadie ama el dolor en sí, que lo busca y lo quiere tener.",
+            FaceCare: "Cuidado facial",
+            FaceCareSubtitle:
+              "Nadie ama el dolor en sí, que lo busca y lo quiere tener.",
+            ShopNow: "COMPRA AHORA",
+            Variety: "Variedad",
+            titleVariety1: "Lorem Ipsum Español",
+            subtitleVariety1:
+              "Lorem ipsum dolor sit amet consecte tur SKU-#S385 Español SKU-#S385",
+            titleVariety2: "Lorem Ipsum Español",
+            subtitleVariety2:
+              "Lorem ipsum dolor sit amet consecte tur SKU-#S385 Español SKU-#S385",
+            titleVariety3: "Lorem Ipsum Español",
+            subtitleVariety3:
+              "Lorem ipsum dolor sit amet consecte tur SKU-#S385 Español SKU-#S385",
+            priceVariety1: "$24.00",
+            priceVariety2: "$24.00",
+            priceVariety3: "$24.00",
+            Exclusive: "Ofertas exclusivas",
+            titleExclusive1: "Lorem Ipsum Español",
+            subtitleExclusive1:
+              "Lorem ipsum dolor sit amet consecte tur Español SKU-#S146",
+            titleExclusive2: "Lorem Ipsum Español",
+            subtitleExclusive2:
+              "Lorem ipsum dolor sit amet consecte tur Español SKU-#S146",
+            titleExclusive3: "Lorem Ipsum Español",
+            subtitleExclusive3:
+              "Lorem ipsum dolor sit amet consecte tur Español SKU-#F479",
+            priceExclusiveBefore1: "$24.00",
+            priceExclusiveBefore2: "$24.00",
+            priceExclusiveBefore3: "$24.00",
+            priceExclusiveNow1: "$16.00",
+            priceExclusiveNow2: "$16.00",
+            priceExclusiveNow3: "$16.00",
+            saleExclusive: "venta",
+            shopNowExclusive1: "COMPRA AHORA",
+            shopNowExclusive2: "COMPRA AHORA",
+            shopNowExclusive3: "COMPRA AHORA",
+            blog: "Blog",
+            bestCare: "Mejor cuidado para prevenir el acné",
+            learnMore: "APRENDE MÁS",
+            date: "18 de enero de 2024",
           },
           stepper: {
             nextButton: "Siguiente",
@@ -295,6 +357,68 @@ i18n
             title: "What supplement do you want today?",
             subtitle:
               "Consult the supplement indicated for you, that is 100% compatible with you.",
+            register: "Register",
+            title2: "Register and customize your searches automatically",
+            description:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Entero mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet.",
+            loremText:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integermattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellusnon tincidunt aliquet. Fusce aliquam mi felis.",
+            enterConditions: "Enter your conditions",
+            enterAllergies: "Enter your allergies",
+            enterIllnesses: "Enter your illnesses",
+            enterMedications: "Enter your medications",
+            details1: "details1",
+            details2: "details2",
+            details3: "details3",
+            details4: "details4",
+            enterTrends: "Enter your trends",
+            AntiAging: "Anti-aging",
+            AntiAgingSubtitle:
+              "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
+            SkinCare: "Skin care",
+            SkinCareSubtitle:
+              "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
+            FaceCare: "Face care",
+            FaceCareSubtitle:
+              "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
+            ShopNow: "SHOP NOW",
+            Variety: " Variety",
+            titleVariety1: "Lorem Ipsum English",
+            subtitleVariety1:
+              "Lorem ipsum dolor sit amet consecte tur SKU-#S385 English SKU-#S385",
+            titleVariety2: "Lorem Ipsum English",
+            subtitleVariety2:
+              "Lorem ipsum dolor sit amet consecte tur SKU-#S385 English SKU-#S385",
+            titleVariety3: "Lorem Ipsum English",
+            subtitleVariety3:
+              "Lorem ipsum dolor sit amet consecte tur SKU-#S385 English SKU-#S385",
+            priceVariety1: "$24.00",
+            priceVariety2: "$24.00",
+            priceVariety3: "$24.00",
+            Exclusive: "Exclusive Offers",
+            titleExclusive1: "Lorem Ipsum English",
+            subtitleExclusive1:
+              "Lorem ipsum dolor sit amet consecte tur English SKU-#S146",
+            titleExclusive2: "Lorem Ipsum English",
+            subtitleExclusive2:
+              "Lorem ipsum dolor sit amet consecte tur English SKU-#S146",
+            titleExclusive3: "Lorem Ipsum English",
+            subtitleExclusive3:
+              "Lorem ipsum dolor sit amet consecte tur English SKU-#F479",
+            priceExclusiveBefore1: "$24.00",
+            priceExclusiveBefore2: "$24.00",
+            priceExclusiveBefore3: "$24.00",
+            priceExclusiveNow1: "$16.00",
+            priceExclusiveNow2: "$16.00",
+            priceExclusiveNow3: "$16.00",
+            saleExclusive: "Sale",
+            shopNowExclusive1: "shopNow",
+            shopNowExclusive2: "shopNow",
+            shopNowExclusive3: "shopNow",
+            blog: "Blog",
+            bestCare: "Best care to prevent acne",
+            learnMore: "LEARN MORE",
+            date: "Jan 18, 2024",
           },
           stepper: {
             nextButton: "Next",

@@ -7,8 +7,11 @@ import { HomeExclusive } from "../components/homeForm/components/homeExclusive/H
 import { HomeCare } from "../components/homeForm/components/homeCare/HomeCare";
 import { HomeCategories } from "../components/homeForm/components/homeCategories/HomeCategories";
 import { Homevariety } from "../components/homeForm/components/homeVariety/HomeVariety";
+import { useTranslation } from "react-i18next";
 
 export const Home = () => {
+  const { t } = useTranslation();
+
   return (
     <Box justifyContent="space-between">
       <Box className="bg_Home_image">
@@ -50,9 +53,10 @@ export const Home = () => {
             marginBottom: "3%",
             fontWeight: "bold",
             color: "#3C3C3C",
+            fontSize: "2.1rem",
           }}
         >
-          Variety
+          {t("homeform.Variety")}
         </Typography>
       </Box>
       <Homevariety />
