@@ -40,7 +40,7 @@ export const SupplementsIngredients = () => {
       ),
     },
     {
-      id: "panel4",
+      id: "panel5",
       title: t("Epidermosil"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "

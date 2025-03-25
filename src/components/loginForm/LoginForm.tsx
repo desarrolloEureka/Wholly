@@ -1,6 +1,6 @@
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import EmailIcon from '@mui/icons-material/Email';
-import KeyIcon from '@mui/icons-material/Key';
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import EmailIcon from "@mui/icons-material/Email";
+import KeyIcon from "@mui/icons-material/Key";
 import {
   Box,
   Button,
@@ -12,20 +12,21 @@ import {
   InputAdornment,
   OutlinedInput,
   Typography,
-} from '@mui/material';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { logo_app } from '../../assets/images';
-import { InteractiveText } from '../../globals/elements';
-import ErrorLabel from '../errorLabel/ErrorLabel';
+  useMediaQuery,
+} from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { logo_app } from "../../assets/images";
+import { InteractiveText } from "../../globals/elements";
+import ErrorLabel from "../errorLabel/ErrorLabel";
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const [errorTerms, setErrorTerms] = useState(true);
   const [errorEmail, setErrorEmail] = useState(true);
@@ -33,9 +34,9 @@ const LoginForm = () => {
   const [isLogged, setIsLogged] = useState(false);
 
   const textError = {
-    terms: t('loginForm.errorTerms'),
-    email: t('loginForm.errorEmail'),
-    password: t('loginForm.errorPassword'),
+    terms: t("loginForm.errorTerms"),
+    email: t("loginForm.errorEmail"),
+    password: t("loginForm.errorPassword"),
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -59,35 +60,41 @@ const LoginForm = () => {
     }
   };
 
-  console.log('email', email);
-  console.log('password', password);
+  console.log("email", email);
+  console.log("password", password);
+  const isMobile = useMediaQuery("(max-width: 768px)"); // Detecta si la pantalla es de móvil o tablet
 
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 5,
-        backgroundColor: 'background.paper',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: isMobile ? 3 : 3, // Reduce el padding en móviles para más espacio interno
+        backgroundColor: "background.paper",
         borderRadius: 4,
         boxShadow: 8,
-        width: '100%',
-        marginTop: '60px',
-        marginBottom: '45px',
+        width: isMobile ? "100%" : "90%", // Mantiene un tamaño adecuado en móviles
+        maxWidth: isMobile ? "400px" : "500px", // Fija el tamaño máximo en móviles
+        marginTop: isMobile ? "40px" : "60px",
+        marginBottom: isMobile ? "30px" : "45px",
+        marginLeft: "0",
+        marginRight: "0",
       }}
     >
-      <img src={logo_app} alt='logo' style={{ width: '60%' }} />
-
-      {/* <img style={{ width: "100%" }} src={logo_app} alt="logo" /> */}
+      <img
+        src={logo_app}
+        alt="logo"
+        style={{ width: isMobile ? "50%" : "60%" }}
+      />
       <Box
         sx={{
-          height: '1px', // Ajusta la altura según lo necesites
-          width: '98%',
-          backgroundColor: ' #A5AB94',
-          marginTop: '38px',
-          marginBottom: '22px', // Espaciado entre el texto y el input
+          height: "1px",
+          width: "98%",
+          backgroundColor: "#A5AB94",
+          marginTop: "30px",
+          marginBottom: "20px",
         }}
       />
       {isLogged && (
@@ -101,62 +108,60 @@ const LoginForm = () => {
           }
         />
       )}
-
       <Box
-        component='form'
-        sx={{ m: 1, width: '100%' }}
+        component="form"
+        sx={{ m: 1, width: "100%" }}
         noValidate
-        autoComplete='off'
+        autoComplete="off"
       >
         <Box
           sx={{
-            width: '100%',
-            height: '10vh', // Asegura que el contenedor ocupe toda la altura de la ventana
-            display: 'flex', // Habilita el modelo flexbox
-            flexDirection: 'column', // Alinea los elementos hijos en columna
-            justifyContent: 'center', // Centra verticalmente
-            alignItems: 'center', // Centra horizontalmente
+            width: "100%",
+            height: "auto",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          {/* Texto de la etiqueta */}
           <Typography
-            variant='subtitle1'
+            variant="subtitle1"
             sx={{
-              width: '82%', // Coincide con el ancho del campo de entrada
-              fontSize: '0.880rem', // Ajusta el tamaño del texto
-              textAlign: 'left', // Alinea el texto a la izquierda
+              width: isMobile ? "95%" : "82%",
+              fontSize: isMobile ? "0.75rem" : "0.875rem",
+              textAlign: "left",
+              marginLeft: isMobile ? "20px" : "none",
             }}
           >
-            {t('loginForm.email')}
+            {t("loginForm.email")}
           </Typography>
 
-          {/* Campo de entrada */}
           <FormControl
             sx={{
-              width: '82%', // Ajusta el ancho del campo de entrada
-              height: '35px',
+              width: isMobile ? "90%" : "82%",
+              height: isMobile ? "28px" : "35px",
             }}
-            variant='outlined'
+            variant="outlined"
           >
             <OutlinedInput
-              id='outlined-adornment-email'
-              type='email'
+              id="outlined-adornment-email"
+              type="email"
               sx={{
-                fontSize: '0.875rem',
-                padding: '8px 8px',
-                height: '100%',
-                lineHeight: '1.5',
-                borderRadius: '8px',
+                fontSize: isMobile ? "0.75rem" : "0.875rem",
+                padding: isMobile ? "6px 6px" : "8px 8px",
+                height: "100%",
+                lineHeight: "1.5",
+                borderRadius: "8px",
               }}
               startAdornment={
-                <InputAdornment position='start'>
-                  <EmailIcon fontSize='small' />
+                <InputAdornment position="start">
+                  <EmailIcon fontSize="small" />
                 </InputAdornment>
               }
               onChange={(e) => {
                 setIsLogged(false);
-                if (e.target.value == '') {
-                  setEmail('');
+                if (e.target.value === "") {
+                  setEmail("");
                   setErrorEmail(true);
                 } else {
                   setEmail(e.target.value);
@@ -169,73 +174,77 @@ const LoginForm = () => {
 
         <Box
           sx={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          {/* Texto de la etiqueta */}
           <Typography
-            variant='subtitle1'
+            variant="subtitle1"
             sx={{
-              fontSize: '0.880rem',
-              width: '82%', // Igualar al ancho del FormControl
-              textAlign: 'sartar',
-              marginTop: '22px',
+              fontSize: isMobile ? "0.75rem" : "0.875rem",
+              width: isMobile ? "95%" : "82%",
+              textAlign: "start",
+              marginTop: isMobile ? "16px" : "22px",
+              marginLeft: isMobile ? "20px" : "none",
             }}
           >
-            {t('loginForm.password')}
+            {t("loginForm.password")}
           </Typography>
 
-          {/* Contenedor del input */}
           <FormControl
             sx={{
-              width: '82%', // Igualar al ancho del texto
-              height: '35px',
+              width: isMobile ? "90%" : "82%",
+              height: isMobile ? "28px" : "35px",
             }}
-            variant='outlined'
+            variant="outlined"
           >
             <OutlinedInput
-              id='outlined-adornment-password'
-              type={showPassword ? 'text' : 'password'}
+              id="outlined-adornment-password"
+              type={showPassword ? "text" : "password"}
               sx={{
-                fontSize: '0.875rem',
-                padding: '6px 8px',
-                height: '100%',
-                lineHeight: '1.5',
-                borderRadius: '8px',
+                fontSize: isMobile ? "0.75rem" : "0.875rem",
+                padding: isMobile ? "6px 6px" : "8px 8px",
+                height: "100%",
+                lineHeight: "1.5",
+                borderRadius: "8px",
               }}
               startAdornment={
-                <InputAdornment position='start'>
-                  <KeyIcon
-                    sx={{
-                      transform: 'rotate(130deg)',
-                    }}
-                  />
+                <InputAdornment position="start">
+                  <KeyIcon sx={{ transform: "rotate(130deg)" }} />
                 </InputAdornment>
               }
               endAdornment={
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   <IconButton
                     aria-label={
                       showPassword
-                        ? 'hide the password'
-                        : 'display the password'
+                        ? "hide the password"
+                        : "display the password"
                     }
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                     onMouseUp={handleMouseUpPassword}
-                    edge='end'
+                    edge="end"
+                    sx={{}}
                   >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                    {showPassword ? (
+                      <VisibilityOff
+                        sx={{ fontSize: isMobile ? "18px" : "none" }}
+                      />
+                    ) : (
+                      <Visibility
+                        sx={{ fontSize: isMobile ? "18px" : "none" }}
+                      />
+                    )}
                   </IconButton>
                 </InputAdornment>
               }
               onChange={(e) => {
                 setIsLogged(false);
-                if (e.target.value == '') {
-                  setPassword('');
+                if (e.target.value === "") {
+                  setPassword("");
                   setErrorPassword(true);
                 } else {
                   setPassword(e.target.value);
@@ -245,125 +254,123 @@ const LoginForm = () => {
             />
           </FormControl>
 
-          {/* Enlace interactivo */}
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'end',
-              width: '82%', // Igualar al ancho del texto y del input
-              marginTop: '8px', // Espaciado superior para separar del input
+              display: "flex",
+              justifyContent: "end",
+              width: isMobile ? "95%" : "82%",
+              marginTop: isMobile ? "6px" : "8px",
             }}
           >
             <Typography>
               <InteractiveText
-                onClick={() => navigate('/remember')}
-                data-position='end'
+                onClick={() => navigate("/remember")}
+                data-position="end"
                 style={{
-                  textDecoration: 'underline',
-                  fontSize: '0.845rem',
-                  cursor: 'pointer', // Cambia el cursor al pasar sobre el enlace
+                  textDecoration: "underline",
+                  fontSize: isMobile ? "0.75rem" : "0.845rem",
+                  cursor: "pointer",
                 }}
               >
-                {t('loginForm.forgotPassword')}
+                {t("loginForm.forgotPassword")}
               </InteractiveText>
             </Typography>
           </Box>
         </Box>
       </Box>
-
       <FormGroup
         sx={{
-          marginTop: 4,
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          alignItems: 'center',
+          marginTop: 2,
+          display: "flex",
+          flexDirection: "row", // Mantiene el checkbox al lado del texto
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <FormControlLabel
           control={
             <Checkbox
               sx={{
-                color: 'default', // Color por defecto cuando no está marcado
-                '&.Mui-checked': {
-                  color: ' #A5AB94', // Color cuando está marcado
+                color: "default",
+                "&.Mui-checked": {
+                  color: "#A5AB94",
                 },
               }}
               onChange={(e) => {
                 setIsLogged(false);
-                if (!e.target.checked) {
-                  setErrorTerms(true);
-                } else {
-                  setErrorTerms(false);
-                }
+                setErrorTerms(!e.target.checked);
               }}
             />
           }
-          label={undefined}
+          label={
+            <Box sx={{ textAlign: "left" }}>
+              <span
+                style={{
+                  fontSize: isMobile ? "0.595rem" : "0.875rem", // Texto más grande en pantallas grandes
+                }}
+              >
+                {t("loginForm.accept")}{" "}
+                <a
+                  href="/documents/politica.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "black",
+                    textDecoration: "underline",
+                  }}
+                >
+                  {t("loginForm.termsAndConditions")}
+                </a>
+                <span
+                  style={{
+                    color: "#ccc",
+                    marginLeft: 3,
+                    marginRight: 3,
+                  }}
+                >
+                  |
+                </span>
+                <a
+                  href="/documents/politica.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "black",
+                    textDecoration: "underline",
+                  }}
+                >
+                  {t("loginForm.privacyPolicy")}
+                </a>
+              </span>
+            </Box>
+          }
+          sx={{
+            display: "flex",
+            alignItems: "center",
+          }}
         />
-        <Box sx={{ marginLeft: -3 }}>
-          <span
-            style={{
-              fontSize: '0.720rem',
-            }}
-          >
-            {/* multilenguaje */}
-            {t('loginForm.accept')}{' '}
-            <a
-              href='/documents/politica.pdf'
-              target='_blank'
-              rel='noopener noreferrer'
-              style={{
-                color: 'black',
-                textDecoration: 'underline', // Aplica el subrayado al texto
-              }}
-            >
-              {/* multilenguaje */}
-              {t('loginForm.termsAndConditions')}
-            </a>
-            <span
-              style={{
-                color: '#ccc',
-                marginLeft: 4,
-                marginRight: 4,
-              }}
-            >
-              |
-            </span>
-            <a
-              href='/documents/politica.pdf'
-              target='_blank'
-              rel='noopener noreferrer'
-              style={{
-                color: 'black',
-                textDecoration: 'underline', // Aplica el subrayado al texto
-              }}
-            >
-              {/* multilenguaje */}
-              {t('loginForm.privacyPolicy')}
-            </a>
-          </span>
-        </Box>
       </FormGroup>
 
       <Button
-        variant='contained'
+        variant="contained"
         sx={{
-          backgroundColor: ' #A5AB94', // Cambia el color de fondo (puedes elegir otro color como 'success.main', 'error.main', etc.)
-          borderRadius: '25px', // Bordes redondeados
-          padding: '10px 20px', // Tamaño del botón
-          marginTop: '18px',
-          textTransform: 'none',
-          width: 145,
-          // color: 'white',
-          '&:hover': {
-            backgroundColor: 'rgb(87, 90, 77)', // Color en el hover
+          backgroundColor: "#A5AB94",
+          borderRadius: "25px",
+          padding: isMobile ? "5px 12px" : "10px 20px", // Reducir padding solo en móviles
+          marginTop: "15px",
+          marginRight: isMobile ? 1 : "none",
+          textTransform: "none",
+          width: isMobile ? 130 : 145, // Ancho más pequeño en móviles
+          fontSize: isMobile ? "0.75rem" : "0.875rem", // Reducir tamaño del texto solo en móviles
+          minHeight: isMobile ? "35px" : "40px", // Reducir altura solo en móviles
+          "&:hover": {
+            backgroundColor: "rgb(87, 90, 77)",
           },
         }}
         disableElevation
         onClick={handleLogin}
       >
-        {t('loginForm.login')}
+        {t("loginForm.login")}
       </Button>
     </Box>
   );

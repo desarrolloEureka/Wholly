@@ -161,13 +161,13 @@ export const InternalCategoriestyform = () => {
         <Typography
           sx={{
             fontSize: "1rem",
-            fontWeight: "bold",
+            fontWeight: 500,
             marginBottom: "10px",
             marginRight: "30px",
             color: "#3C3C3C",
           }}
         >
-          1-60 of 1921 results
+          1-60 of 1921 Results
         </Typography>
         <Button
           variant="contained"
@@ -177,7 +177,7 @@ export const InternalCategoriestyform = () => {
             height: "45px",
             color: "#000",
             border: "2px solid #000",
-            "&:hover": { backgroundColor: "#0056b3", color: "#fff" },
+            "&:hover": { backgroundColor: "#A5AB94", color: "#fff" },
           }}
         >
           show more products
