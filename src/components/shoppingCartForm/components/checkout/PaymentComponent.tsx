@@ -96,7 +96,7 @@ export const PaymentComponent = () => {
                 "& input": {
                   textAlign: "start",
                   fontSize: "16px",
-                  letterSpacing: "1px", // Añade espaciado entre caracteres
+                  letterSpacing: "1px",
                 },
               },
             }}
@@ -131,7 +131,7 @@ export const PaymentComponent = () => {
             textTransform: "uppercase",
           }}
         >
-          CONTINUE TO SHIPPING
+          MAKE A PURCHASE
         </Button>
       </Box>
     </Box>

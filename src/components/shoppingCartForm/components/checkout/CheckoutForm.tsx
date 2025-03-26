@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Typography, Collapse } from "@mui/material";
+import { Box, Typography, Collapse, Button } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { InformationComponent } from "./InformationComponent";
 import { ShippingComponent } from "./ShippingComponent";
@@ -55,8 +55,9 @@ export const CheckoutForm = () => {
               }}
             >
               <Typography
+                variant="h6"
                 sx={{
-                  fontSize: "0.9rem",
+                  fontSize: "10px",
                   color: expanded === option ? "#A5AB94" : "inherit",
                   opacity: expanded === option ? 1 : 0.6,
                   transition:
@@ -163,6 +164,40 @@ export const CheckoutForm = () => {
           )
         )}
       </Box>
+      <Box
+        sx={{
+          padding: "20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          backgroundColor: "#f5f5f5",
+          borderRadius: "10px",
+          width: "420px",
+          height: "95px",
+          marginTop: "30px",
+          marginBottom: "30px",
+          color: "rgba(60, 60, 60, 0.93)",
+        }}
+      >
+        <Typography variant="body1">
+          To continue with your purchase you must register firs
+        </Typography>
+      </Box>
+      <Button
+        variant="contained"
+        sx={{
+          width: "80%",
+          borderRadius: "16px",
+          boxShadow: "2px 3px 10px rgba(0, 0, 0, 0.5)",
+          backgroundColor: "#A5AB94",
+          height: "38px",
+        }}
+        onClick={() => navigate("/register")}
+      >
+        REGISTER
+      </Button>
     </Box>
   );
 };

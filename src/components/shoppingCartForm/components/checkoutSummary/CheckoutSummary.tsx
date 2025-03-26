@@ -1,5 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { CheckoutSummarySelect } from "./checkoutSummarySlect";
 export const CheckoutSummary = () => {
   return (
     <Box>
@@ -11,6 +12,7 @@ export const CheckoutSummary = () => {
             padding: "10px",
             color: "#3C3C3C",
             fontSize: "12px",
+            margin: "15px 0px",
           }}
         >
           ORDER SUMMARY
@@ -21,6 +23,7 @@ export const CheckoutSummary = () => {
             flexDirection: "column",
           }}
         >
+          <CheckoutSummarySelect />
           <Box
             sx={{
               width: "100%",
@@ -161,8 +164,8 @@ export const CheckoutSummary = () => {
             flexDirection: "row",
             width: "50%",
             alignItems: "center",
-            justifyContent: "center", // Centra el contenido dentro del Box
-            margin: "0 auto", // Centra horizontalmente
+            justifyContent: "center",
+            margin: "0 auto",
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>

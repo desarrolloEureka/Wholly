@@ -34,7 +34,7 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           marginLeft: "100px",
           cursor: "pointer",
         }}
-        onClick={() => navigate("/Supplements")} //  Ahora funciona correctamente
+        onClick={() => navigate("/Supplements")}
       >
         <img
           src={item.src}
@@ -54,7 +54,7 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
             backgroundColor: backgroundColor,
             padding: "10px 15px",
             textAlign: "start",
-            border: "1px solid #3C3C3C",
+            border: "1px solid rgba(60, 60, 60, 0.64)",
             borderTop: "none",
             borderRadius: "0 0 10px 10px",
           }}

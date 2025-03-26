@@ -10,6 +10,15 @@ import { t } from "i18next";
 import { useState } from "react";
 
 export const SupplementsIngredients = () => {
+  const references = [
+    {
+      id: "1",
+      content: t(
+        "1 TW. Medications & Mothers' Milk. 1991- . Springer Publishing Company. Available from https://www.halesmeds.comConsultado el 10 de Abril de 2024TEXTO COMPLETO (ENLACE A FUENTE ORIGINAL)"
+      ),
+    },
+  ];
+
   const accordionData = [
     {
       id: "panel1",
@@ -53,6 +62,10 @@ export const SupplementsIngredients = () => {
     (panel: string) => (_: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+
+  const handleToggle = () => {
+    setExpanded((prev) => (prev ? false : "1"));
+  };
   return (
     <Box
       sx={{
@@ -63,10 +76,10 @@ export const SupplementsIngredients = () => {
         marginTop: "5%",
         marginLeft: "3%",
         marginRight: "3%",
-        maxWidth: "94%", // Limita el ancho máximo para evitar que se salga
+        maxWidth: "94%",
         width: "100%",
         height: "auto",
-        gap: "5%", // Espacio uniforme entre los elementos
+        gap: "5%",
       }}
     >
       {/* Sección de los Acordeones */}
@@ -80,7 +93,7 @@ export const SupplementsIngredients = () => {
           gutterBottom
           sx={{
             color: "#A5AB94",
-            paddingBottom: "5px", // Ajusta según necesites
+            paddingBottom: "5px",
             borderBottom: "1px solid #A5AB94",
             marginBottom: "10px",
             width: "90%",
@@ -94,10 +107,10 @@ export const SupplementsIngredients = () => {
               overflow: "hidden",
               marginBottom: "8px",
               boxShadow: "none",
-              paddingBottom: "8px", // Ajusta según necesites
+              paddingBottom: "8px",
               borderBottom: "1px solid #A5AB94",
               "&:before": { display: "none" },
-              width: "90%", // Igual al de los acordeones
+              width: "90%",
             }}
             key={id}
             expanded={expanded === id}
@@ -127,7 +140,7 @@ export const SupplementsIngredients = () => {
       {/* Sección de Información */}
       <Box
         sx={{
-          width: "45%", // Igual al de los acordeones
+          width: "45%",
         }}
       >
         <Box sx={{ borderBottom: "1px solid #A5AB94" }}>
@@ -167,16 +180,39 @@ export const SupplementsIngredients = () => {
         </Box>
         <Typography
           sx={{
-            //fontSize: "1px",
             fontWeight: "500",
             marginTop: "15px",
             color: "#3C3C3C",
             borderBottom: "1px solid rgba(60, 60, 60, 0.55)",
-            width: "19%",
+            display: "inline-block", // Se ajusta al ancho del texto
+            cursor: "pointer",
+            marginBottom: "25px",
           }}
+          onClick={handleToggle}
         >
-          List of 5 references
+          {expanded ? "Close list" : "List of 5 references"}
         </Typography>
+
+        {/* Muestra los acordeones solo cuando expanded es true */}
+        {expanded &&
+          references.map(({ id, content }) => (
+            <Accordion
+              key={id}
+              sx={{
+                overflow: "hidden",
+                marginBottom: "8px",
+                boxShadow: "none",
+                paddingBottom: "8px",
+                borderTop: "1px solid #A5AB94",
+                "&:before": { display: "none" },
+                width: "90%",
+              }}
+            >
+              <AccordionDetails>
+                <Typography sx={{ color: "#3C3C3C" }}>{content}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          ))}
       </Box>
     </Box>
   );

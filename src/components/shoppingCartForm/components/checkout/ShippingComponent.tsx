@@ -110,7 +110,7 @@ export const ShippingComponent = ({ onOpen }: { onOpen: () => void }) => {
             boxShadow: "2px 3px 10px rgba(0, 0, 0, 0.5)",
             backgroundColor: "#A5AB94",
           }}
-          onClick={onOpen} // 👈 Llamar la función para abrir el acordeón de Shipping
+          onClick={onOpen}
         >
           CONTINUE PAYMENT
         </Button>
