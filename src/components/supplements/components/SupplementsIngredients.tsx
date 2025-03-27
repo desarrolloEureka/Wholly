@@ -10,64 +10,49 @@ import { t } from "i18next";
 import { useState } from "react";
 
 export const SupplementsIngredients = () => {
-  const references = [
-    {
-      id: "1B",
-      content: t(
-        "1 TW. Medications & Mothers' Milk. 1991- . Springer Publishing Company. Available from https://www.halesmeds.comConsultado el 10 de Abril de 2024TEXTO COMPLETO (ENLACE A FUENTE ORIGINAL)"
-      ),
-    },
-  ];
-
   const accordionData = [
     {
       id: "panel1",
-      title: t("supplementsForm.Ciprofibrato"),
+      title: t("Ciprofibrato"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
       ),
     },
     {
       id: "panel2",
-      title: t("supplementsForm.Levemir"),
+      title: t("Levemir"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
       ),
     },
     {
       id: "panel3",
-      title: t("supplementsForm.Locusim"),
+      title: t("Locusim"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
       ),
     },
     {
       id: "panel4",
-      title: t("supplementsForm.Ultrasomes"),
+      title: t("Ultrasomes"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
       ),
     },
     {
-      id: "panel5",
-      title: t("supplementsForm.Epidermosil"),
+      id: "panel4",
+      title: t("Epidermosil"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
       ),
     },
   ];
-
   const [expanded, setExpanded] = useState<string | false>(false);
-  const [expanded1, setExpanded1] = useState<string | false>(false);
 
-  // Maneja los acordeones de la primera sección
   const handleChange =
     (panel: string) => (_: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-
-  // Maneja los acordeones de la segunda sección (independiente)
-
   return (
     <Box
       sx={{
@@ -78,10 +63,10 @@ export const SupplementsIngredients = () => {
         marginTop: "5%",
         marginLeft: "3%",
         marginRight: "3%",
-        maxWidth: "94%",
+        maxWidth: "94%", // Limita el ancho máximo para evitar que se salga
         width: "100%",
         height: "auto",
-        gap: "5%",
+        gap: "5%", // Espacio uniforme entre los elementos
       }}
     >
       {/* Sección de los Acordeones */}
@@ -95,13 +80,13 @@ export const SupplementsIngredients = () => {
           gutterBottom
           sx={{
             color: "#A5AB94",
-            paddingBottom: "5px",
+            paddingBottom: "5px", // Ajusta según necesites
             borderBottom: "1px solid #A5AB94",
             marginBottom: "10px",
             width: "90%",
           }}
         >
-          {t("supplementsForm.Main_ingredients")}
+          Main ingredients
         </Typography>
         {accordionData.map(({ id, title, content }) => (
           <Accordion
@@ -109,10 +94,10 @@ export const SupplementsIngredients = () => {
               overflow: "hidden",
               marginBottom: "8px",
               boxShadow: "none",
-              paddingBottom: "8px",
+              paddingBottom: "8px", // Ajusta según necesites
               borderBottom: "1px solid #A5AB94",
               "&:before": { display: "none" },
-              width: "90%",
+              width: "90%", // Igual al de los acordeones
             }}
             key={id}
             expanded={expanded === id}
@@ -142,7 +127,7 @@ export const SupplementsIngredients = () => {
       {/* Sección de Información */}
       <Box
         sx={{
-          width: "45%",
+          width: "45%", // Igual al de los acordeones
         }}
       >
         <Box sx={{ borderBottom: "1px solid #A5AB94" }}>
@@ -153,7 +138,7 @@ export const SupplementsIngredients = () => {
               color: "#A5AB94",
             }}
           >
-            {t("supplementsForm.Excipient_Ingredients")}
+            Excipient Ingredients
           </Typography>
         </Box>
         <Typography
@@ -177,46 +162,21 @@ export const SupplementsIngredients = () => {
               marginTop: "55px",
             }}
           >
-            {t("supplementsForm.Bibliography")}
+            Bibliography
           </Typography>
         </Box>
         <Typography
           sx={{
+            //fontSize: "1px",
             fontWeight: "500",
             marginTop: "15px",
             color: "#3C3C3C",
             borderBottom: "1px solid rgba(60, 60, 60, 0.55)",
-            display: "inline-block",
-            cursor: "pointer",
-            marginBottom: "25px",
+            width: "19%",
           }}
-          onClick={() => setExpanded1((prev) => (prev ? false : "1B"))}
         >
-          {expanded1
-            ? t("supplementsForm.Close_list")
-            : t("supplementsForm.List")}
+          List of 5 references
         </Typography>
-
-        {/* Muestra los acordeones solo cuando expanded es true */}
-        {expanded1 &&
-          references.map(({ id, content }) => (
-            <Accordion
-              key={id}
-              sx={{
-                overflow: "hidden",
-                marginBottom: "8px",
-                boxShadow: "none",
-                paddingBottom: "8px",
-                borderTop: "1px solid #A5AB94",
-                "&:before": { display: "none" },
-                width: "90%",
-              }}
-            >
-              <AccordionDetails>
-                <Typography sx={{ color: "#3C3C3C" }}>{content}</Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
       </Box>
     </Box>
   );

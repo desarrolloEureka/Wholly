@@ -14,12 +14,12 @@ export const InternalCategoriesty = () => {
         <Typography
           variant="h2"
           sx={{
-            textAlign: "start",
-            width: "50%",
+            textAlign: "start", // Centrar el texto
+            width: "50%", // Reducir el ancho del texto
             mt: "9%",
             marginLeft: "50px",
             fontSize: "2.6rem",
-            fontWeight: 100,
+            fontWeight: "10",
             color: "#Ffff",
           }}
         >
