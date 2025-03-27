@@ -1,4 +1,4 @@
-import { Box, Button, Paper, Typography } from "@mui/material";
+import { Box, Button, Paper, Rating, Typography } from "@mui/material";
 import { useState } from "react";
 import { Session_1, Session_2, variety2 } from "../../../assets/images";
 
@@ -105,7 +105,7 @@ export const SupplementSession = () => {
             style={{
               width: 450,
               height: 450,
-              objectFit: "cover",
+              objectFit: "cover", // Asegura que la imagen llene el espacio sin distorsionarse
               borderRadius: "20px",
               boxShadow: "-3px 6px 5px rgba(0, 0, 0, 0.56)",
             }}
@@ -138,7 +138,7 @@ export const SupplementSession = () => {
             >
               {selectedProduct.subtitle}
             </Typography>
-            {/*<Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
               <Typography
                 variant="h6"
                 sx={{ fontWeight: 300, color: "#A5AB94" }}
@@ -149,12 +149,11 @@ export const SupplementSession = () => {
                 name="product-rating"
                 value={selectedProduct.rating}
                 precision={0.5}
-                readOnly
+                readOnly // <-- Hace que la calificación sea fija
                 size="large"
                 sx={{ color: "#A5AB94" }}
               />
             </Box>
-            */}
             <Typography
               color="primary"
               sx={{ fontSize: "1.8rem", marginTop: "10px" }}
