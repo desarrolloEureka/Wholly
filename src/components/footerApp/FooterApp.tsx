@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Divider,
-  styled,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Button, Divider, styled, Typography } from "@mui/material";
 import {
   facebook_Footer,
   instagram_Footer,
@@ -28,7 +21,6 @@ const FooterApp = () => {
       textDecorationColor: "#FBFFDD",
     },
   });
-  const isSmallScreen = useMediaQuery("(max-width:1025px)");
 
   return (
     <Box
