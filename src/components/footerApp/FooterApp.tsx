@@ -29,7 +29,7 @@ const FooterApp = () => {
         backgroundColor: "#3C3C3C",
         color: "white",
         padding: "0% 0",
-        flexWrap: "wrap", // Permite que los elementos se ajusten en pantallas pequeñas
+        flexWrap: "wrap", // Permfite que los elementos se ajusten en pantallas pequeñas
       }}
     >
       <Box
