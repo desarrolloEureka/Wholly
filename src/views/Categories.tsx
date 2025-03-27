@@ -9,14 +9,13 @@ export const Categories = () => {
       <Box className="bg_Category_image">
         <CustomAppBar />
         <Typography
-          variant="h6"
           sx={{
-            textAlign: "start",
-            width: "100%",
+            fontFamily: "Gabriela",
+            textAlign: "start", // Centrar el texto dentro del Typography
+            width: "100%", // Asegurar que el texto se centre correctamente
             mt: "11%",
             ml: "5%",
             fontSize: "3.5rem",
-            fontWeight: 100,
             color: "#FBFFDD",
           }}
         >

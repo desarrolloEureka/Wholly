@@ -11,7 +11,6 @@ import { Home } from "./views/Home";
 import { Categories } from "./views/Categories";
 import { InternalCategoriesty } from "./views/InternalCategoriesty";
 import { Supplements } from "./views/Supplements";
-import { ShoppingCart } from "./views/ShoppingCart";
 
 function App() {
   return (
@@ -20,15 +19,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/category" element={<Categories />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/remember" element={<RememberPassword />} />
-          <Route path="/Supplements" element={<Supplements />} />
           <Route
             path="/internalCategoriesty"
             element={<InternalCategoriesty />}
           />
-          <Route path="/shoppingCart" element={<ShoppingCart />} />
+
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/remember" element={<RememberPassword />} />
+          <Route path="/Supplements" element={<Supplements />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

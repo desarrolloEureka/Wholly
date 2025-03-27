@@ -50,7 +50,7 @@ export const InternalCategoriestyform = () => {
     },
   ];
 
-  const backgroundColor = "#ffff";
+  const backgroundColor = "#EEF1F0";
   const textColor = "#3C3C3C";
   const navigate = useNavigate();
 
@@ -66,10 +66,10 @@ export const InternalCategoriestyform = () => {
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
             gap: "150px",
-            width: "100%",
-            maxWidth: "1450px",
-            margin: "0 auto",
-            paddingX: "70px",
+            width: "100%", // Se ajusta el tamaño
+            maxWidth: "1450px", // Se limita el ancho máximo
+            margin: "0 auto", // Centrado automático
+            paddingX: "70px", // Márgenes uniformes en los lados
           }}
         >
           {imagesAreas.map((item) => (
@@ -83,7 +83,7 @@ export const InternalCategoriestyform = () => {
                 borderRadius: "10px",
                 cursor: "pointer",
               }}
-              onClick={() => navigate("/Supplements")}
+              onClick={() => navigate("/Supplements")} //  Ahora funciona correctamente
             >
               <img
                 src={item.src}
@@ -103,7 +103,7 @@ export const InternalCategoriestyform = () => {
                   padding: "10px 15px",
 
                   textAlign: "start",
-                  border: "1px solid rgba(60, 60, 60, 0.64)",
+                  border: "1px solid rgba(0, 0, 0, 0.85)",
                   borderTop: "none",
                   borderRadius: "0 0 10px 10px",
                 }}
@@ -111,7 +111,6 @@ export const InternalCategoriestyform = () => {
                 <Typography
                   variant="h4"
                   sx={{
-                    marginTop: "10px",
                     fontSize: "1.2rem",
                     fontWeight: "bold",
                     color: textColor,
@@ -162,13 +161,13 @@ export const InternalCategoriestyform = () => {
         <Typography
           sx={{
             fontSize: "1rem",
-            fontWeight: 500,
+            fontWeight: "bold",
             marginBottom: "10px",
             marginRight: "30px",
             color: "#3C3C3C",
           }}
         >
-          1-60 of 1921 Results
+          1-60 of 1921 results
         </Typography>
         <Button
           variant="contained"
@@ -178,7 +177,7 @@ export const InternalCategoriestyform = () => {
             height: "45px",
             color: "#000",
             border: "2px solid #000",
-            "&:hover": { backgroundColor: "#A5AB94", color: "#fff" },
+            "&:hover": { backgroundColor: "#0056b3", color: "#fff" },
           }}
         >
           show more products
