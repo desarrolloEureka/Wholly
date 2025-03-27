@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import CustomAppBar from "../components/customAppBar/CustomAppBar";
 import FooterApp from "../components/footerApp/FooterApp";
-import { CheckoutSummary } from "../components/shoppingCartForm/components/checkoutSummary/CheckoutSummary";
-import { CheckoutForm } from "../components/shoppingCartForm/components/checkout/CheckoutForm";
+import { CheckoutSummary } from "../components/shoppingCartForm/CheckoutSummary";
+import { CheckoutForm } from "../components/shoppingCartForm/CheckoutForm";
 
 export const ShoppingCart = () => {
   return (

@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { CheckoutSummarySelect } from "./checkoutSummarySlect";
+import { CheckoutSummarySelect } from "./components/checkoutSummary/checkoutSummarySlect";
 export const CheckoutSummary = () => {
   return (
     <Box>
@@ -13,6 +13,7 @@ export const CheckoutSummary = () => {
             color: "#3C3C3C",
             fontSize: "12px",
             margin: "15px 0px",
+            marginTop: "30px",
           }}
         >
           ORDER SUMMARY
@@ -28,7 +29,7 @@ export const CheckoutSummary = () => {
             sx={{
               width: "100%",
               height: "1px",
-              backgroundColor: " rgba(76, 76, 76, 0.49)",
+              backgroundColor: " rgba(76, 76, 76, 0.25)",
               mt: 1,
             }}
           />
@@ -41,7 +42,7 @@ export const CheckoutSummary = () => {
               marginBottom: "12px",
             }}
           >
-            <Typography sx={{ color: "#3C3C3C" }}>
+            <Typography sx={{ color: "rgba(60, 60, 60, 0.7)" }}>
               If you have a discount code, enter it to redeem it
             </Typography>
             <Box
@@ -84,9 +85,8 @@ export const CheckoutSummary = () => {
 
           <Box
             sx={{
-              width: "80%",
               height: "1px",
-              backgroundColor: " rgba(76, 76, 76, 0.49)",
+              backgroundColor: " rgba(76, 76, 76, 0.25)",
               mt: 1,
             }}
           />
@@ -135,7 +135,7 @@ export const CheckoutSummary = () => {
           sx={{
             width: "100%",
             height: "1px",
-            backgroundColor: " rgba(76, 76, 76, 0.49)",
+            backgroundColor: " rgba(76, 76, 76, 0.25)",
             mt: 1,
           }}
         />
@@ -168,7 +168,14 @@ export const CheckoutSummary = () => {
             margin: "0 auto",
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 2,
+              marginBottom: "20px",
+            }}
+          >
             <Typography sx={{ color: "#3C3C3C" }}>Secure Checkout</Typography>
             <LockOutlinedIcon sx={{ color: "#3C3C3C" }} />
           </Box>

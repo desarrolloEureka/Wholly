@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Box, Typography, Collapse, Button } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { InformationComponent } from "./InformationComponent";
-import { ShippingComponent } from "./ShippingComponent";
-import { PaymentComponent } from "./PaymentComponent";
+import { InformationComponent } from "./components/checkout/InformationComponent";
+import { ShippingComponent } from "./components/checkout/ShippingComponent";
+import { PaymentComponent } from "./components/checkout/PaymentComponent";
 import { useNavigate } from "react-router-dom";
 
 type OptionType = "Information" | "Shipping" | "Payment";
@@ -57,8 +57,8 @@ export const CheckoutForm = () => {
               <Typography
                 variant="h6"
                 sx={{
-                  fontSize: "10px",
-                  color: expanded === option ? "#A5AB94" : "inherit",
+                  fontSize: "9px",
+                  color: expanded === option ? "#A5AB94" : " #A5AB94",
                   opacity: expanded === option ? 1 : 0.6,
                   transition:
                     "color 0.2s ease-in-out, opacity 0.2s ease-in-out",
@@ -74,7 +74,7 @@ export const CheckoutForm = () => {
                   transform:
                     expanded === option ? "rotate(90deg)" : "rotate(0)",
                   transition: "transform 0.3s ease",
-                  color: expanded === option ? "#A5AB94" : "inherit",
+                  color: expanded === option ? "#A5AB94" : " #A5AB94",
                   opacity: expanded === option ? 1 : 0.6,
                 }}
               />
@@ -97,7 +97,7 @@ export const CheckoutForm = () => {
           marginTop: "30px",
         }}
       >
-        <Typography variant="body1">
+        <Typography sx={{ fontWeight: 500, color: "#3C3C3C" }}>
           Already have an account?
           <span
             onClick={() => navigate("/login")}
@@ -110,7 +110,7 @@ export const CheckoutForm = () => {
           >
             Log in
           </span>
-          for faster checkout.
+          for faster checkout
         </Typography>
       </Box>
 
@@ -119,33 +119,36 @@ export const CheckoutForm = () => {
         {(["Information", "Shipping", "Payment"] as OptionType[]).map(
           (option, index) => (
             <Box key={option} width="100%" sx={{ marginBottom: "30px" }}>
-              {/* Título del acordeón con borde condicional */}
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  p: 2,
-                  borderBottom:
-                    expanded === option ? "none" : "1px solid #D2D2D7",
-                  transition: "border-bottom 0.2s ease-in-out",
-                }}
-              >
-                <Typography
-                  variant="h6"
+              <a onClick={() => handleSelect(option)}>
+                {/* Título del acordeón con borde condicional */}
+                <Box
                   sx={{
-                    fontSize: "12px",
-                    color: expanded === option ? "#000" : "inherit",
-                    opacity: expanded === option ? 1 : 0.6,
-                    transition:
-                      "color 0.2s ease-in-out, opacity 0.2s ease-in-out",
-                    textTransform: "uppercase",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    p: 2,
+                    borderBottom:
+                      expanded === option ? "none" : "1px solid #D2D2D7",
+                    transition: "border-bottom 0.2s ease-in-out",
                   }}
                 >
-                  <span style={{ fontSize: "17px" }}>{index + 1}</span>
-                  {titleMap[option]}
-                </Typography>
-              </Box>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontSize: "12px",
+                      color: expanded === option ? "#000" : "inherit",
+                      opacity: expanded === option ? 1 : 0.6,
+                      transition:
+                        "color 0.2s ease-in-out, opacity 0.2s ease-in-out",
+                    }}
+                  >
+                    <span style={{ fontSize: "17px", marginRight: "5px" }}>
+                      {index + 1}
+                    </span>
+                    {titleMap[option]}
+                  </Typography>
+                </Box>
+              </a>
 
               {/* Contenido desplegable */}
               <Collapse in={expanded === option}>
@@ -175,14 +178,13 @@ export const CheckoutForm = () => {
           backgroundColor: "#f5f5f5",
           borderRadius: "10px",
           width: "420px",
-          height: "95px",
+          height: "85px",
           marginTop: "30px",
           marginBottom: "30px",
-          color: "rgba(60, 60, 60, 0.93)",
         }}
       >
-        <Typography variant="body1">
-          To continue with your purchase you must register firs
+        <Typography sx={{ fontWeight: 400, color: "#3C3C3C" }}>
+          To continue with your purchase you must register first
         </Typography>
       </Box>
       <Button

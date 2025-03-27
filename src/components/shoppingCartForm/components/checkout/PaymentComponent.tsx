@@ -13,6 +13,27 @@ export const PaymentComponent = () => {
   const [checked2, setChecked2] = useState(false);
   const [checked3, setChecked3] = useState(false);
 
+  const [valor, setValor] = useState("");
+
+  const handleChange = (e: { target: { value: any } }) => {
+    let value = e.target.value;
+
+    // Permitir solo números y "/"
+    value = value.replace(/[^0-9/]/g, "");
+
+    // Formatear como mm/yy
+    if (value.length === 2 && !value.includes("/")) {
+      value = value + "/";
+    }
+
+    // Limitar longitud a 5 caracteres (mm/yy)
+    if (value.length > 5) {
+      return;
+    }
+
+    setValor(value);
+  };
+
   return (
     <Box sx={{ width: "100%", padding: "16px" }}>
       <Box display="flex" flexDirection="column" gap={2} sx={{ width: "100%" }}>
@@ -85,8 +106,10 @@ export const PaymentComponent = () => {
             id="expiration-date"
             variant="outlined"
             placeholder="MM/YY"
+            value={valor}
+            onChange={handleChange}
+            inputProps={{ pattern: "^(0[1-9]|1[0-2])\\/\\d{2}$" }}
             fullWidth
-            inputProps={{ maxLength: 5 }} // Limita la entrada a 5 caracteres (MM/YY)
             sx={{
               flex: 1,
               "& .MuiOutlinedInput-root": {

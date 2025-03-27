@@ -62,7 +62,7 @@ export const CheckoutSummarySelect = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            padding: "10px",
+            padding: "7px",
             boxShadow: "none",
             backgroundColor: "transparent",
             marginBottom: index !== products.length - 1 ? 1 : 0,
@@ -91,8 +91,10 @@ export const CheckoutSummarySelect = () => {
             }}
           >
             <Box sx={{ flex: 1 }}>
-              <Typography variant="h6">{product.title}</Typography>
-              <Typography variant="body1">
+              <Typography variant="h6" sx={{ fontSize: "18px" }}>
+                {product.title}
+              </Typography>
+              <Typography variant="body1" sx={{ color: "rgba(0, 0, 0, 0.63)" }}>
                 Quantity {product.quantity}
               </Typography>
             </Box>

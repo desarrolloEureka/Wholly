@@ -12,7 +12,7 @@ import { useState } from "react";
 export const SupplementsIngredients = () => {
   const references = [
     {
-      id: "1",
+      id: "1B",
       content: t(
         "1 TW. Medications & Mothers' Milk. 1991- . Springer Publishing Company. Available from https://www.halesmeds.comConsultado el 10 de Abril de 2024TEXTO COMPLETO (ENLACE A FUENTE ORIGINAL)"
       ),
@@ -22,50 +22,52 @@ export const SupplementsIngredients = () => {
   const accordionData = [
     {
       id: "panel1",
-      title: t("Ciprofibrato"),
+      title: t("supplementsForm.Ciprofibrato"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
       ),
     },
     {
       id: "panel2",
-      title: t("Levemir"),
+      title: t("supplementsForm.Levemir"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
       ),
     },
     {
       id: "panel3",
-      title: t("Locusim"),
+      title: t("supplementsForm.Locusim"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
       ),
     },
     {
       id: "panel4",
-      title: t("Ultrasomes"),
+      title: t("supplementsForm.Ultrasomes"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
       ),
     },
     {
       id: "panel5",
-      title: t("Epidermosil"),
+      title: t("supplementsForm.Epidermosil"),
       content: t(
         "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
       ),
     },
   ];
-  const [expanded, setExpanded] = useState<string | false>(false);
 
+  const [expanded, setExpanded] = useState<string | false>(false);
+  const [expanded1, setExpanded1] = useState<string | false>(false);
+
+  // Maneja los acordeones de la primera sección
   const handleChange =
     (panel: string) => (_: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
 
-  const handleToggle = () => {
-    setExpanded((prev) => (prev ? false : "1"));
-  };
+  // Maneja los acordeones de la segunda sección (independiente)
+
   return (
     <Box
       sx={{
@@ -99,7 +101,7 @@ export const SupplementsIngredients = () => {
             width: "90%",
           }}
         >
-          Main ingredients
+          {t("supplementsForm.Main_ingredients")}
         </Typography>
         {accordionData.map(({ id, title, content }) => (
           <Accordion
@@ -151,7 +153,7 @@ export const SupplementsIngredients = () => {
               color: "#A5AB94",
             }}
           >
-            Excipient Ingredients
+            {t("supplementsForm.Excipient_Ingredients")}
           </Typography>
         </Box>
         <Typography
@@ -175,7 +177,7 @@ export const SupplementsIngredients = () => {
               marginTop: "55px",
             }}
           >
-            Bibliography
+            {t("supplementsForm.Bibliography")}
           </Typography>
         </Box>
         <Typography
@@ -184,17 +186,19 @@ export const SupplementsIngredients = () => {
             marginTop: "15px",
             color: "#3C3C3C",
             borderBottom: "1px solid rgba(60, 60, 60, 0.55)",
-            display: "inline-block", // Se ajusta al ancho del texto
+            display: "inline-block",
             cursor: "pointer",
             marginBottom: "25px",
           }}
-          onClick={handleToggle}
+          onClick={() => setExpanded1((prev) => (prev ? false : "1B"))}
         >
-          {expanded ? "Close list" : "List of 5 references"}
+          {expanded1
+            ? t("supplementsForm.Close_list")
+            : t("supplementsForm.List")}
         </Typography>
 
         {/* Muestra los acordeones solo cuando expanded es true */}
-        {expanded &&
+        {expanded1 &&
           references.map(({ id, content }) => (
             <Accordion
               key={id}
