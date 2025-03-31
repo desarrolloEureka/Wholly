@@ -5,23 +5,29 @@ import { InformationComponent } from "./components/checkout/InformationComponent
 import { ShippingComponent } from "./components/checkout/ShippingComponent";
 import { PaymentComponent } from "./components/checkout/PaymentComponent";
 import { useNavigate } from "react-router-dom";
-
-type OptionType = "Information" | "Shipping" | "Payment";
-
-// Mapeo de nombres personalizados SOLO para los acordeones
-const titleMap: Record<OptionType, string> = {
-  Information: " Contact information ",
-  Shipping: " Shipping details",
-  Payment: " Payment",
-};
+import { useTranslation } from "react-i18next";
 
 export const CheckoutForm = () => {
-  const [expanded, setExpanded] = useState<OptionType | null>(null);
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  type OptionType = "Information" | "Shipping" | "Payment";
+  const [expanded, setExpanded] = useState<OptionType | null>("Information");
+
+  const titleMap: Record<OptionType, string> = {
+    Information: t("shoppingCart.informationTitle"),
+    Shipping: t("shoppingCart.shippingTitle"),
+    Payment: t("shoppingCart.paymentTitle"),
+  };
+
   const handleNextStep = (nextStep: OptionType) => {
     setExpanded(nextStep);
   };
 
-  // Contenido asociado a cada opción
+  const handleSelect = (option: OptionType) => {
+    setExpanded((prev) => (prev === option ? null : option));
+  };
+
   const content: Record<OptionType, JSX.Element> = {
     Information: (
       <InformationComponent onOpen={() => handleNextStep("Shipping")} />
@@ -29,11 +35,6 @@ export const CheckoutForm = () => {
     Shipping: <ShippingComponent onOpen={() => handleNextStep("Payment")} />,
     Payment: <PaymentComponent />,
   };
-
-  const handleSelect = (option: OptionType) => {
-    setExpanded((prev) => (prev === option ? null : option));
-  };
-  const navigate = useNavigate();
 
   return (
     <Box sx={{ padding: "35px 45px 35px 45px" }}>
@@ -65,7 +66,7 @@ export const CheckoutForm = () => {
                   textTransform: "uppercase",
                 }}
               >
-                {option}
+                {t(`shoppingCart.${option}`)}
               </Typography>
               <ChevronRightIcon
                 sx={{
@@ -98,7 +99,7 @@ export const CheckoutForm = () => {
         }}
       >
         <Typography sx={{ fontWeight: 500, color: "#3C3C3C" }}>
-          Already have an account?
+          {t("shoppingCart.AlreadyAccount")}
           <span
             onClick={() => navigate("/login")}
             style={{
@@ -108,9 +109,9 @@ export const CheckoutForm = () => {
               marginLeft: "4px",
             }}
           >
-            Log in
+            {t("shoppingCart.Login")}
           </span>
-          for faster checkout
+          {t("shoppingCart.forCheckout")}
         </Typography>
       </Box>
 
@@ -119,7 +120,10 @@ export const CheckoutForm = () => {
         {(["Information", "Shipping", "Payment"] as OptionType[]).map(
           (option, index) => (
             <Box key={option} width="100%" sx={{ marginBottom: "30px" }}>
-              <a onClick={() => handleSelect(option)}>
+              <Box
+                onClick={() => handleSelect(option)}
+                sx={{ cursor: "pointer" }}
+              >
                 {/* Título del acordeón con borde condicional */}
                 <Box
                   sx={{
@@ -148,7 +152,7 @@ export const CheckoutForm = () => {
                     {titleMap[option]}
                   </Typography>
                 </Box>
-              </a>
+              </Box>
 
               {/* Contenido desplegable */}
               <Collapse in={expanded === option}>
@@ -184,7 +188,7 @@ export const CheckoutForm = () => {
         }}
       >
         <Typography sx={{ fontWeight: 400, color: "#3C3C3C" }}>
-          To continue with your purchase you must register first
+          {t("shoppingCart.continueRegister")}
         </Typography>
       </Box>
       <Button
@@ -198,7 +202,7 @@ export const CheckoutForm = () => {
         }}
         onClick={() => navigate("/register")}
       >
-        REGISTER
+        {t("shoppingCart.register")}
       </Button>
     </Box>
   );

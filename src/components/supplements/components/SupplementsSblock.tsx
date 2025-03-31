@@ -7,11 +7,13 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { t } from "i18next";
 import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
+import { useTranslation } from "react-i18next";
 
 export const SupplementsSblock = () => {
+  const { t } = useTranslation();
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detecta si es móvil
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md")); // Detecta si es tablet
@@ -20,50 +22,38 @@ export const SupplementsSblock = () => {
     {
       id: "panel0",
       number: "00",
-      title: t("Description"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
-      ),
+      title: t("supplementsForm.Description"),
+      content: t("supplementsForm.Lorem"),
     },
     {
       id: "panel1",
       number: "01",
-      title: t("Indications"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
-      ),
+      title: t("supplementsForm.Indications"),
+      content: t("supplementsForm.Lorem1 "),
     },
     {
       id: "panel2",
       number: "02",
-      title: t("How to use"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
-      ),
+      title: t("supplementsForm.HowUse"),
+      content: t("supplementsForm.Lorem2 "),
     },
     {
       id: "panel3",
       number: "03",
-      title: t("Precautions"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
-      ),
+      title: t("supplementsForm.Precautions"),
+      content: t("supplementsForm.Lorem3 "),
     },
     {
       id: "panel4",
       number: "04",
-      title: t("Interactions"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
-      ),
+      title: t("supplementsForm.Interactions"),
+      content: t("supplementsForm.Lorem4 "),
     },
     {
       id: "panel5",
       number: "05",
-      title: t("Contraindications"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut."
-      ),
+      title: t("supplementsForm.Contraindications"),
+      content: t("supplementsForm.Lorem5 "),
     },
   ];
 
@@ -107,7 +97,7 @@ export const SupplementsSblock = () => {
             width: "100%",
           }}
         >
-          Sun Block
+          {t("supplementsForm.SunBlock")}
         </Typography>
         {accordionSblock.map(({ id, number, title, content }) => (
           <Accordion
@@ -209,7 +199,7 @@ export const SupplementsSblock = () => {
                   color: "#3C3C3C",
                 }}
               >
-                Reference
+                {t("supplementsForm.Reference")}
               </Typography>
               <Typography
                 sx={{
@@ -246,7 +236,7 @@ export const SupplementsSblock = () => {
                   color: "#3C3C3C",
                 }}
               >
-                Recommended application time
+                {t("supplementsForm.RecommendedTime")}
               </Typography>
               <Typography
                 sx={{
@@ -260,7 +250,7 @@ export const SupplementsSblock = () => {
                   fontWeight: 400,
                 }}
               >
-                6 months
+                {t("supplementsForm.months")}
               </Typography>
             </Box>
           </Box>
@@ -285,7 +275,7 @@ export const SupplementsSblock = () => {
                 color: "#3C3C3C",
               }}
             >
-              This product is compatible with you
+              {t("supplementsForm.productCompatible")}
             </Typography>
           </Box>
         </Box>

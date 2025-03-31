@@ -7,8 +7,13 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export const PaymentComponent = () => {
+  const { t } = useTranslation();
+  const Navigate = useNavigate();
+
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
   const [checked3, setChecked3] = useState(false);
@@ -51,7 +56,7 @@ export const PaymentComponent = () => {
                 }}
               />
             }
-            label="Visa 3655"
+            label="Visa3655"
           />
           <FormControlLabel
             control={
@@ -65,7 +70,7 @@ export const PaymentComponent = () => {
                 }}
               />
             }
-            label="Visa 1324"
+            label="Visa1324"
           />
           <FormControlLabel
             control={
@@ -79,17 +84,17 @@ export const PaymentComponent = () => {
                 }}
               />
             }
-            label="Mastercard 0329"
+            label="Mastercard0329"
           />
         </Box>
 
-        <Typography>Pay by card. Your payment is secure.</Typography>
+        <Typography>{t("shoppingCart.SecurePaymentMessage")}</Typography>
 
         {/* Número de tarjeta */}
         <TextField
           id="card-number"
           variant="outlined"
-          placeholder="Card Number"
+          placeholder={t("shoppingCart.CardNumber")}
           fullWidth
           sx={{
             flex: 1,
@@ -105,7 +110,7 @@ export const PaymentComponent = () => {
           <TextField
             id="expiration-date"
             variant="outlined"
-            placeholder="MM/YY"
+            placeholder={t("shoppingCart.ExpirationDate")}
             value={valor}
             onChange={handleChange}
             inputProps={{ pattern: "^(0[1-9]|1[0-2])\\/\\d{2}$" }}
@@ -128,7 +133,7 @@ export const PaymentComponent = () => {
           <TextField
             id="cvv-code"
             variant="outlined"
-            placeholder="CVV Code"
+            placeholder={t("shoppingCart.CVVCode")}
             fullWidth
             type="password"
             inputProps={{ maxLength: 4 }}
@@ -146,6 +151,7 @@ export const PaymentComponent = () => {
         <Button
           variant="contained"
           fullWidth
+          onClick={() => Navigate("/PaymentVerification")}
           sx={{
             marginTop: "30px",
             borderRadius: "16px",
@@ -154,7 +160,7 @@ export const PaymentComponent = () => {
             textTransform: "uppercase",
           }}
         >
-          MAKE A PURCHASE
+          {t("shoppingCart.MakeAPurchase")}
         </Button>
       </Box>
     </Box>

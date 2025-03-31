@@ -6,10 +6,12 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import { t } from "i18next";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const SupplementsIngredients = () => {
+  const { t } = useTranslation();
+
   const references = [
     {
       id: "1B",
@@ -23,37 +25,27 @@ export const SupplementsIngredients = () => {
     {
       id: "panel1",
       title: t("supplementsForm.Ciprofibrato"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
-      ),
+      content: t("supplementsForm.LoremIpsum1"),
     },
     {
       id: "panel2",
       title: t("supplementsForm.Levemir"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
-      ),
+      content: t("supplementsForm.LoremIpsum1"),
     },
     {
       id: "panel3",
       title: t("supplementsForm.Locusim"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
-      ),
+      content: t("supplementsForm.LoremIpsum2"),
     },
     {
       id: "panel4",
       title: t("supplementsForm.Ultrasomes"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
-      ),
+      content: t("supplementsForm.LoremIpsum3"),
     },
     {
       id: "panel5",
       title: t("supplementsForm.Epidermosil"),
-      content: t(
-        "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. "
-      ),
+      content: t("supplementsForm.LoremIpsum4"),
     },
   ];
 
@@ -164,9 +156,7 @@ export const SupplementsIngredients = () => {
             color: "#3C3C3C",
           }}
         >
-          Lorem ipsum, dolor sit amet, consectetur adipiscing elit. Integer
-          mattis, nunc augue vel lacinia, erat euismod ut. Sed eleifend, tellus
-          non tincidunt aliquet, dolor sit amet, consectetur adipiscing elit.
+          {t("supplementsForm.LoremTex")}
         </Typography>
         <Box sx={{ borderBottom: "1px solid #A5AB94" }}>
           <Typography

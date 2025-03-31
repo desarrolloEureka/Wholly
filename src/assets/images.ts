@@ -27,6 +27,14 @@ import fondo_categories_path from "./category.png";
 import fondo_InternalCategoriesty_path from "./InternalCategoriesty.png";
 import Session_1_path from "./Session_1.png";
 import Session_2_path from "./Session_2.png";
+import blog_1_path from "./blog_1.png";
+import blog_2_path from "./blog_2.png";
+import blog_3_path from "./blog_3.png";
+import blog_4_path from "./blog_4.png";
+import blog_5_path from "./blog_5.png";
+import blog_6_path from "./blog_6.png";
+import Blogin_path from "./Blogin.png";
+import sunBlock_path from "./sunBlock.png";
 
 const logo_app = logo_app_path;
 const fondo_login = fondo_login_path;
@@ -60,6 +68,15 @@ const fondo_InternalCategoriesty = fondo_InternalCategoriesty_path;
 const Session_1 = Session_1_path;
 const Session_2 = Session_2_path;
 
+const blog_1 = blog_1_path;
+const blog_2 = blog_2_path;
+const blog_3 = blog_3_path;
+const blog_4 = blog_4_path;
+const blog_5 = blog_5_path;
+const blog_6 = blog_6_path;
+const Blogin = Blogin_path;
+const sunBlock = sunBlock_path;
+
 export {
   logo_app,
   fondo_login,
@@ -90,4 +107,12 @@ export {
   fondo_InternalCategoriesty,
   Session_1,
   Session_2,
+  blog_1,
+  blog_2,
+  blog_3,
+  blog_4,
+  blog_5,
+  blog_6,
+  Blogin,
+  sunBlock,
 };

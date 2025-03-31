@@ -1,6 +1,9 @@
 import { Box, Button, TextField } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export const ShippingComponent = ({ onOpen }: { onOpen: () => void }) => {
+  const { t } = useTranslation();
+
   return (
     <Box>
       <Box
@@ -13,7 +16,7 @@ export const ShippingComponent = ({ onOpen }: { onOpen: () => void }) => {
         <TextField
           id="outlined-basic"
           variant="outlined"
-          placeholder="Recipients Name"
+          placeholder={t("shoppingCart.RecipientsName")}
           sx={{
             width: "58%",
             "& .MuiOutlinedInput-root": {
@@ -25,10 +28,9 @@ export const ShippingComponent = ({ onOpen }: { onOpen: () => void }) => {
         <TextField
           id="outlined-basic2"
           variant="outlined"
-          placeholder="Address name"
+          placeholder={t("shoppingCart.AddressName")}
           sx={{
             width: "58%",
-
             "& .MuiOutlinedInput-root": {
               borderRadius: "16px",
               height: "48px",
@@ -39,7 +41,7 @@ export const ShippingComponent = ({ onOpen }: { onOpen: () => void }) => {
           <TextField
             id="outlined-basic-1"
             variant="outlined"
-            placeholder="Adress"
+            placeholder={t("shoppingCart.Address")}
             fullWidth
             sx={{
               flex: 1,
@@ -52,7 +54,7 @@ export const ShippingComponent = ({ onOpen }: { onOpen: () => void }) => {
           <TextField
             id="outlined-basic-2"
             variant="outlined"
-            placeholder="Contact Number "
+            placeholder={t("shoppingCart.ContactNumber")}
             fullWidth
             sx={{
               flex: 1,
@@ -66,7 +68,7 @@ export const ShippingComponent = ({ onOpen }: { onOpen: () => void }) => {
         <TextField
           id="outlined-basic3"
           variant="outlined"
-          placeholder="Zip code"
+          placeholder={t("shoppingCart.ZipCode")}
           sx={{
             "& .MuiOutlinedInput-root": {
               borderRadius: "16px",
@@ -78,7 +80,7 @@ export const ShippingComponent = ({ onOpen }: { onOpen: () => void }) => {
           <TextField
             id="outlined-basic-1"
             variant="outlined"
-            placeholder="City"
+            placeholder={t("shoppingCart.City")}
             fullWidth
             sx={{
               flex: 1,
@@ -91,7 +93,7 @@ export const ShippingComponent = ({ onOpen }: { onOpen: () => void }) => {
           <TextField
             id="outlined-basic-2"
             variant="outlined"
-            placeholder="State"
+            placeholder={t("shoppingCart.State")}
             fullWidth
             sx={{
               flex: 1,
@@ -112,7 +114,7 @@ export const ShippingComponent = ({ onOpen }: { onOpen: () => void }) => {
           }}
           onClick={onOpen}
         >
-          CONTINUE PAYMENT
+          {t("shoppingCart.ContinuePayment")}
         </Button>
       </Box>
     </Box>

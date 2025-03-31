@@ -12,6 +12,12 @@ import { Categories } from "./views/Categories";
 import { InternalCategoriesty } from "./views/InternalCategoriesty";
 import { Supplements } from "./views/Supplements";
 import { ShoppingCart } from "./views/ShoppingCart";
+import { PaymentVerification } from "./views/PaymentVerification";
+import { PurchaseSummary } from "./views/PurchaseSummary";
+import { Blog } from "./views/Blog";
+import { InternalBlog } from "./views/InternalBlog";
+import { Support } from "./views/Support";
+import { Us } from "./views/Us";
 
 function App() {
   return (
@@ -29,6 +35,16 @@ function App() {
             element={<InternalCategoriesty />}
           />
           <Route path="/shoppingCart" element={<ShoppingCart />} />
+          <Route
+            path="/PaymentVerification"
+            element={<PaymentVerification />}
+          />
+          <Route path="/PurchaseSummary" element={<PurchaseSummary />} />
+          <Route path="/Blog" element={<Blog />} />
+
+          <Route path="/internalBlog" element={<InternalBlog />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/about_us" element={<Us />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

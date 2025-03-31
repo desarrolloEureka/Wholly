@@ -1,12 +1,14 @@
 import { Box, Typography } from "@mui/material";
-import { t } from "i18next";
 import CustomAppBar from "../components/customAppBar/CustomAppBar";
 import FooterApp from "../components/footerApp/FooterApp";
 import { HomeCategories } from "../components/homeForm/components/homeCategories/HomeCategories";
 import { HomeExclusive } from "../components/homeForm/components/homeExclusive/HomeExclusive";
 import { InternalCategoriestyform } from "../components/categoriesForm.ts/componets/internalCategoriestyform/InternalCategoriestyform";
+import { useTranslation } from "react-i18next";
 
 export const InternalCategoriesty = () => {
+  const { t } = useTranslation();
+
   return (
     <Box justifyContent="space-between">
       <Box className="bg_InternalCategoriesty_image">
@@ -23,7 +25,7 @@ export const InternalCategoriesty = () => {
             color: "#Ffff",
           }}
         >
-          The best supplements for your skin care
+          {t("categoriesIternal.supplementsSkinCare")}
         </Typography>
       </Box>
 
@@ -45,7 +47,7 @@ export const InternalCategoriesty = () => {
             fontSize: "2.1rem",
           }}
         >
-          {t("Skin Care")}
+          {t("categoriesIternal.SkinCare")}
         </Typography>
       </Box>
       <InternalCategoriestyform />
@@ -80,7 +82,7 @@ export const InternalCategoriesty = () => {
             fontSize: "2.1rem",
           }}
         >
-          {t("You may also like")}
+          {t("categoriesIternal.YouLike")}
         </Typography>
         <HomeCategories />
       </Box>
