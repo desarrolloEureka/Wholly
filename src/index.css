@@ -54,6 +54,13 @@ h6 {
   box-shadow: inset 600px 0px 200px rgba(0, 0, 0, 0.288); /* Sombra dentro de la imagen hacia la derecha */
   min-height: 80vh;
 }
+.bg_support {
+  background: url(./assets/support.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 600px 0px 200px rgba(0, 0, 0, 0.288); /* Sombra dentro de la imagen hacia la derecha */
+  min-height: 80vh;
+}
 .bg_InternalCategoriesty_image {
   background: url(./assets/InternalCategoriesty.png) no-repeat;
   background-size: cover;
