@@ -1,13 +1,15 @@
 import { Box, Typography } from "@mui/material";
-import { t } from "i18next";
 import CustomAppBar from "../components/customAppBar/CustomAppBar";
 import FooterApp from "../components/footerApp/FooterApp";
 import { Homevariety } from "../components/homeForm/components/homeVariety/HomeVariety";
 import { SupplementsIngredients } from "../components/supplements/components/SupplementsIngredients";
 import { SupplementsSblock } from "../components/supplements/components/SupplementsSblock";
 import { SupplementSession } from "../components/supplements/components/SupplementSsession";
+import { useTranslation } from "react-i18next";
 
 export const Supplements = () => {
+  const { t } = useTranslation();
+
   return (
     <Box justifyContent="space-between">
       <CustomAppBar />
@@ -40,7 +42,7 @@ export const Supplements = () => {
             fontSize: "2.1rem",
           }}
         >
-          {t("You may also like")}
+          {t("supplementsForm.YouLike")}
         </Typography>
       </Box>
       <Homevariety />

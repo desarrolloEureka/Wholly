@@ -1,38 +1,41 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
 import { useState } from "react";
 import { Session_1, Session_2, variety2 } from "../../../assets/images";
+import { useTranslation } from "react-i18next";
 
 export const SupplementSession = () => {
+  const { t } = useTranslation();
+
   const [products] = useState([
     {
       id: 1,
       src: Session_1,
-      title: "Sun Block 1",
-      subtitle: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem  1",
+      title: t("supplementsForm.SunBlock1"),
+      subtitle: t("supplementsForm.subtitle1"),
       description: "$10.99",
       rating: 3.5,
     },
     {
       id: 2,
       src: Session_2,
-      title: "Sun Block 2",
-      subtitle: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem  2",
+      title: t("supplementsForm.SunBlock2"),
+      subtitle: t("supplementsForm.subtitle2"),
       description: "$15.99",
       rating: 4.0,
     },
     {
       id: 3,
       src: Session_1,
-      title: "Sun Block 3",
-      subtitle: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem  3",
+      title: t("supplementsForm.SunBlock3"),
+      subtitle: t("supplementsForm.subtitle3"),
       description: "$20.99",
       rating: 4.5,
     },
     {
       id: 4,
       src: variety2,
-      title: "Sun Block 4",
-      subtitle: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem  3",
+      title: t("supplementsForm.SunBlock4"),
+      subtitle: t("supplementsForm.subtitle4"),
       description: "$19.99",
       rating: 4.5,
     },

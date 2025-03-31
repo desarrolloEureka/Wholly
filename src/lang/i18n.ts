@@ -2,7 +2,6 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { language } from "../globals/globals";
-
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -215,21 +214,153 @@ i18n
             learnMore: "APRENDE MÁS",
             date: "18 de enero de 2024",
           },
+          categories: {
+            knoWcategories: "Conozca nuestras categorías",
+          },
+          categoriesIternal: {
+            showProducts: "Mostrar más productos",
+            supplementsSkinCare:
+              "Los mejores suplementos para el cuidado de tu piel",
+            SkinCare: "Cuidado de la piel",
+            YouLike: "También te puede gustar",
+          },
           stepper: {
             nextButton: "Siguiente",
             backButton: "Atras",
           },
           supplementsForm: {
+            LoremIpsum1:
+              "ESPAñOL Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. ",
+            LoremIpsum2:
+              "ESPAñOL Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. ",
+            LoremIpsum3:
+              "ESPAñOL  Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. ",
+            LoremIpsum4:
+              "ESPAñOL Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. ",
+            LoremIpsum5:
+              "ESPAñOL Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. ",
             Ciprofibrato: "Ciprofibrato",
             Levemir: "Levemir",
             Locusim: "Locusim",
             Ultrasomes: "Ultrasomas",
             Epidermosil: "Epidermosil",
             Main_ingredients: "Ingredientes principales",
+            LoremTex:
+              "espñol Lorem ipsum, dolor sit amet, consectetur adipiscing elit. Integermattis, nunc augue vel lacinia, erat euismod ut. Sed eleifend, tellusnon tincidunt aliquet, dolor sit amet, consectetur adipiscing elit.",
             Excipient_Ingredients: "Ingredientes excipientes",
             Bibliography: "Bibliografía",
             List: "Lista de 5 referencias",
             Close_list: "Cerrar lista",
+            YouLike: "También te puede gustar",
+            SunBlock: "Bloqueador solar",
+            Description: "Descripción",
+            Indications: "Indicaciones",
+            HowUse: "Cómo usar",
+            Precautions: "Precauciones",
+            Interactions: "Interacciones",
+            Contraindications: "Contraindicaciones",
+            Lorem:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Lorem1:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Lorem2:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Lorem3:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Lorem4:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Lorem5:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Reference: "Referencia",
+            RecommendedTime: "Tiempo de aplicación recomendado",
+            months: "6 meses",
+            productCompatible: "Este producto es compatible contigo",
+            SunBlock1: "Bloqueador Solar 1",
+            SunBlock2: "Bloqueador Solar 2",
+            SunBlock3: "Bloqueador Solar 3",
+            SunBlock4: "Bloqueador Solar 4",
+            subtitle1: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 1",
+            subtitle2: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 2",
+            subtitle3: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 3",
+            subtitle4: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 4",
+          },
+          shoppingCart: {
+            Information: "Informacion",
+            Shipping: "Envío",
+            Payment: "Pago",
+            informationTitle: "Informacion de contacto",
+            shippingTitle: "Detalles de envío",
+            paymentTitle: "Pago",
+            AlreadyAccount: "¿Ya tienes una cuenta?",
+            Login: "Iniciar sesion",
+            forCheckout: "para un pago más rápido",
+            continueRegister:
+              "Para continuar con tu compra, primero debes registrarte",
+            register: "REGISTRARSE",
+            YourName: "Tu Nombre",
+            YourEmail: "Tu Correo Electronico",
+            YourPhoneNumber: "Tu Número de Telefono",
+            ContinueToShipping: "Continuar con el Envio",
+            PayByCard: "Paga con tarjeta. Tu pago es seguro.",
+            CardNumber: "Número de Tarjeta",
+            ExpirationDate: "MM/AA",
+            CVVCode: "Código CVV",
+            MakeAPurchase: "REALIZAR COMPRA",
+            SecurePaymentMessage: "Paga con tarjeta. Tu pago es seguro.",
+            YourPhone: "Tu Número de Teléfono",
+            RecipientsName: "Nombre del destinatario",
+            AddressName: "Nombre de la dirección",
+            Address: "Dirección",
+            ContactNumber: "Número de contacto",
+            ZipCode: "Código Postal",
+            City: "Ciudad",
+            State: "Estado",
+            ContinuePayment: "CONTINUAR PAGO",
+            ORDER_SUMMARY: "Resumen del pedido",
+            discountMessage:
+              "Si tienes un código de descuento, ingrésalo para redimirlo",
+            discountPlaceholder: "Código",
+            apply: "Aplicar",
+            subtotal: "Subtotal",
+            shipping: "Envío",
+            shippingMessage: "Se calculará en el siguiente paso",
+            total: "Total",
+            secureCheckout: "Pago seguro",
+          },
+          payForm: {
+            SuccessfulPurchase: "Compra Exitosa",
+            Description:
+              "español Lorem ipsum Lorem ipsum Lorem Lorem ipsum Lorem ipsum Lorem ipsum  Lorem   ipsum Lorem ipsum  Lorem Lorem ipsum Lorem ipsum Lorem ipsum  Lorem",
+
+            SeeOrder: "Ver Mi Pedido",
+            ReturnToBeginning: "Volver al Inicio",
+          },
+          PurchaseSummary: {
+            Created: "Creada",
+            Products: "Productos",
+            Amount: "Cantidad",
+            UnitValue: "Valor unitario",
+            Total: "Total",
+            Subtotal: "Subtotal",
+            Discounts: "Descuentos",
+            ShippingCost: "Costo de envío",
+            GuideNumber: "Número de guía",
+            TrackOrder: "Rastrear pedido",
+            ReturnButton: "Volver al inicio",
+          },
+          blogForm: {
+            SearchArticles: "Buscar artículos",
+            SearchButton: "Buscar",
+            blog: "Blog",
+            bestCare: "Mejor cuidado para prevenir el acné",
+            date: "Marzo 2025",
+            learnMore: "Saber más",
+            title: "EL MEJOR CUIDADO PARA PREVENIR EL ACNE",
+            paragraph1:
+              " Espanol Sed ut perspiciatis unde omnis iste natus error sit voluptatem Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+            paragraph2:
+              " Espanol Sed ut perspiciatis unde omnis iste natus error sit voluptatem Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\nNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.\n\nUt enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n\nBut I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.\n\nNo one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.",
+            products_help: "PRODUCTOS QUE PODRÍAN AYUDARTE",
           },
         },
       },
@@ -299,7 +430,7 @@ i18n
             category: "Category",
             blog: "Blog",
             Support: "Support",
-            aboutUs: "About us",
+            about_us: "About us",
             kits: "Kits",
             copyright: "Copyright © 2024 Wholly | All Rights Reserved | ",
             termsAndConditions: "Terms and conditions",
@@ -432,11 +563,31 @@ i18n
             learnMore: "LEARN MORE",
             date: "Jan 18, 2024",
           },
+          categories: {
+            knoWcategories: "Know our categories",
+          },
+          categoriesIternal: {
+            showProducts: "Show More Products",
+            supplementsSkinCare: "The best supplements for your skin care",
+            SkinCare: "Skin Care",
+            YouLike: "You may also like",
+          },
           stepper: {
             nextButton: "Next",
             backButton: "Back",
           },
           supplementsForm: {
+            LoremIpsum1:
+              "ingles Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. ",
+            LoremIpsum2:
+              "ingles Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. ",
+            LoremIpsum3:
+              "ingles  Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. ",
+            LoremIpsum4:
+              "ingles Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. ",
+            LoremIpsum5:
+              "ingles Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. ",
+
             Ciprofibrato: "Ciprofibrate",
             Levemir: "Levemir",
             Locusim: "Locusim",
@@ -444,9 +595,120 @@ i18n
             Epidermosil: "Epidermosil",
             Main_ingredients: "Main ingredients",
             Excipient_Ingredients: "Excipient Ingredients",
+            LoremTex:
+              "Lorem ipsum, dolor sit amet, consectetur adipiscing elit. Integermattis, nunc augue vel lacinia, erat euismod ut. Sed eleifend, tellusnon tincidunt aliquet, dolor sit amet, consectetur adipiscing elit.",
             Bibliography: "Bibliography",
             List: "List of 5 references",
             Close_list: "Close list",
+            YouLike: "You may also like",
+            SunBlock: "Sun Block",
+            Description: "Description",
+            Indications: "Indications",
+            HowUse: "How to use",
+            Precautions: "Precautions",
+            Interactions: "Interactions",
+            Contraindications: "Contraindications",
+            Lorem:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Lorem1:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Lorem2:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Lorem3:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Lorem4:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Lorem5:
+              "Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Sed eleifend tellus nonole tincidunt aliquet. Fusce aliquam mi felis. Lorem ipsum dolor sit amet, consectetur cdolor col adipiscing elit. Integer mattis nunc augue vel lacinia erat euismod ut.",
+            Reference: "Reference",
+            RecommendedTime: "Recommended application time",
+            months: "6 months",
+            productCompatible: "This product is compatible with you",
+            SunBlock1: "Sun Block 1",
+            SunBlock2: "Sun Block 2",
+            SunBlock3: "Sun Block 3",
+            SunBlock4: "Sun Block 4",
+            subtitle1: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 1",
+            subtitle2: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 2",
+            subtitle3: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 3",
+            subtitle4: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 4",
+          },
+          shoppingCart: {
+            Information: "Information ",
+            Shipping: "Shipping",
+            Payment: "Payment",
+            informationTitle: "Contact Information",
+            shippingTitle: "Shipping Details",
+            paymentTitle: "Payment",
+            AlreadyAccount: "Already have an account?",
+            Login: "Log in",
+            forCheckout: "for faster checkout",
+            continueRegister:
+              "To continue with your purchase you must register first",
+            register: "REGISTER",
+            YourName: "Your Name",
+            YourEmail: "Your Email",
+            YourPhoneNumber: "Your Phone Number",
+            ContinueToShipping: "Continue to Shipping",
+            PayByCard: "Pay by card. Your payment is secure.",
+            CardNumber: "Card Number",
+            ExpirationDate: "MM/YY",
+            CVVCode: "CVV Code",
+            MakeAPurchase: "MAKE A PURCHASE",
+            SecurePaymentMessage: "Pay by card. Your payment is secure.",
+            YourPhone: "Your Phone number",
+            RecipientsName: "Recipient's Name",
+            AddressName: "Address Name",
+            Address: "Address",
+            ContactNumber: "Contact Number",
+            ZipCode: "Zip Code",
+            City: "City",
+            State: "State",
+            ContinuePayment: "CONTINUE PAYMENT",
+            ORDER_SUMMARY: "Order Summary",
+            discountMessage:
+              "If you have a discount code, enter it to redeem it",
+            discountPlaceholder: "Code",
+            apply: "Apply",
+            subtotal: "Subtotal",
+            shipping: "Shipping",
+            shippingMessage: "Calculated at next step",
+            total: "Total",
+            secureCheckout: "Secure Checkout",
+          },
+          payForm: {
+            SuccessfulPurchase: "Successful Purchase",
+            Description:
+              "Lorem ipsum Lorem ipsum Lorem Lorem ipsum Lorem ipsum Lorem ipsum  Lorem   ipsum Lorem ipsum  Lorem Lorem ipsum Lorem ipsum Lorem ipsum  Lorem",
+            SeeOrder: "See My Order",
+            ReturnToBeginning: "Return to the Beginning",
+          },
+          PurchaseSummary: {
+            Created: "Created",
+            Products: "Products",
+            Amount: "Amount",
+            UnitValue: "Unit value",
+            Total: "Total",
+            Subtotal: "Subtotal",
+            Discounts: "Discounts",
+            ShippingCost: "Shipping Cost",
+            GuideNumber: "Guide number",
+            TrackOrder: "Track order",
+            ReturnButton: "Return to the beginning",
+          },
+          blogForm: {
+            SearchArticles: "Search for articles",
+            SearchButton: "Search",
+            blog: "Blog",
+            bestCare: "Best care to prevent acne",
+            date: "March 2025",
+            learnMore: "Learn more",
+            title: " BEST CARE TO PREVENT ACNE",
+            paragraph1:
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+            paragraph2:
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\nNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.\n\nUt enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n\nBut I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.\n\nNo one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.",
+            products_help: "PRODUCTS THAT COULD HELP YOU",
           },
         },
       },

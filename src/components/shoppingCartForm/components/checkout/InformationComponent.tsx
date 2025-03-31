@@ -1,6 +1,9 @@
 import { Box, TextField, Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export const InformationComponent = ({ onOpen }: { onOpen: () => void }) => {
+  const { t } = useTranslation();
+
   return (
     <Box>
       <Box
@@ -13,7 +16,7 @@ export const InformationComponent = ({ onOpen }: { onOpen: () => void }) => {
         <TextField
           id="outlined-basic"
           variant="outlined"
-          placeholder="Your Name"
+          placeholder={t("shoppingCart.YourName")}
           sx={{
             "& .MuiOutlinedInput-root": {
               borderRadius: "16px",
@@ -24,7 +27,7 @@ export const InformationComponent = ({ onOpen }: { onOpen: () => void }) => {
         <TextField
           id="outlined-basic"
           variant="outlined"
-          placeholder="Your Email "
+          placeholder={t("shoppingCart.YourEmail")}
           sx={{
             "& .MuiOutlinedInput-root": {
               borderRadius: "16px",
@@ -35,7 +38,7 @@ export const InformationComponent = ({ onOpen }: { onOpen: () => void }) => {
         <TextField
           id="outlined-basic"
           variant="outlined"
-          placeholder="Your Phone number "
+          placeholder={t("shoppingCart.YourPhoneNumber")}
           sx={{
             "& .MuiOutlinedInput-root": {
               borderRadius: "16px",
@@ -52,7 +55,7 @@ export const InformationComponent = ({ onOpen }: { onOpen: () => void }) => {
           }}
           onClick={onOpen}
         >
-          CONTINUE TO SHIPPING
+          {t("shoppingCart.ContinueToShipping")}
         </Button>
       </Box>
     </Box>

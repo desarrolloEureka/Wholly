@@ -109,8 +109,13 @@ const FooterApp = () => {
       </Box>
 
       <Box
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
       >
+        {/* Contenedor principal */}
         <Box
           sx={{
             display: "flex",
@@ -120,16 +125,28 @@ const FooterApp = () => {
             width: "90%",
             marginTop: "32px",
             marginBottom: "32px",
-            flexWrap: "wrap", // Asegura que los elementos se ajusten en pantallas pequeñas
+            flexWrap: "wrap",
+
+            "@media (max-width: 768px)": {
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+            },
           }}
         >
-          {/* Contenedor 1: Logo */}
+          {/* Contenedor del logo (móvil: arriba) */}
           <Box
             sx={{
               display: "flex",
               justifyContent: "start",
               alignItems: "center",
               flex: 1,
+
+              "@media (max-width: 768px)": {
+                justifyContent: "center",
+                order: -1, // Se mueve arriba en móvil
+                marginBottom: "16px",
+              },
             }}
           >
             <Button color="inherit">
@@ -144,15 +161,21 @@ const FooterApp = () => {
             </Button>
           </Box>
 
-          {/* Contenedor 2: Botones principales */}
+          {/* Contenedor de botones principales (móvil: en el medio) */}
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
               gap: 2,
               flex: 2,
-              flexWrap: "wrap", // Permite que los botones se ajusten en pantallas pequeñas
-              justifyContent: "space-evenly", // Asegura una distribución más homogénea en pantallas pequeñas
+              flexWrap: "wrap",
+              justifyContent: "space-evenly",
+
+              "@media (max-width: 768px)": {
+                justifyContent: "center",
+                flexDirection: "column",
+                gap: 1.5,
+              },
             }}
           >
             {[
@@ -179,15 +202,20 @@ const FooterApp = () => {
             ))}
           </Box>
 
-          {/* Contenedor 3: Redes sociales */}
+          {/* Contenedor de redes sociales (móvil: abajo) */}
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
               gap: 2,
               flex: 1,
-              flexWrap: "wrap", // Permite que los iconos se ajusten en pantallas pequeñas
-              justifyContent: "center", // Centra los iconos en pantallas pequeñas
+              flexWrap: "wrap",
+              justifyContent: "center",
+
+              "@media (max-width: 768px)": {
+                order: 1, // Se mueve abajo en móvil
+                marginTop: "16px",
+              },
             }}
           >
             {[
@@ -223,6 +251,7 @@ const FooterApp = () => {
           </Box>
         </Box>
 
+        {/* Divider */}
         <Box
           sx={{
             display: "flex",
@@ -236,17 +265,26 @@ const FooterApp = () => {
       </Box>
 
       <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        <Typography sx={{ my: 2, marginBottom: 3 }} variant="body2">
+        <Typography
+          sx={{
+            my: 2,
+            marginBottom: 3,
+            textAlign: "center", // Asegura que el texto dentro esté centrado
+            width: "100%", // Ocupa todo el ancho del contenedor
+          }}
+          variant="body2"
+        >
           {t("footerApp.copyright")}
           <InteractiveTextFooter>
             {t("footerApp.termsAndConditions")}
           </InteractiveTextFooter>
-          <span style={{ color: "#ccc", marginLeft: 3, marginRight: 3 }}>
-            {" "}
-            |{" "}
-          </span>
+          <span style={{ color: "#ccc", marginLeft: 3, marginRight: 3 }}></span>
           <InteractiveTextFooter>
             {t("footerApp.privacyPolicy")}
           </InteractiveTextFooter>

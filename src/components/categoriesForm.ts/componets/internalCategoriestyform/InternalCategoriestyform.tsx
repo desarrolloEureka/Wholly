@@ -1,10 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
-import { t } from "i18next";
 import { useNavigate } from "react-router-dom";
 import { variety1, variety2, variety3 } from "../../../../assets/images";
 import { ImagesVariety } from "../../../../globals/types";
+import { useTranslation } from "react-i18next";
 
 export const InternalCategoriestyform = () => {
+  const { t } = useTranslation();
+
   const imagesAreas: ImagesVariety[] = [
     {
       id: 1,
@@ -181,7 +183,7 @@ export const InternalCategoriestyform = () => {
             "&:hover": { backgroundColor: "#A5AB94", color: "#fff" },
           }}
         >
-          show more products
+          {t("categoriesIternal.showProducts")}
         </Button>
       </Box>
     </Box>
