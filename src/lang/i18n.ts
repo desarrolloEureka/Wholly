@@ -362,6 +362,15 @@ i18n
               " Espanol Sed ut perspiciatis unde omnis iste natus error sit voluptatem Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\nNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.\n\nUt enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n\nBut I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.\n\nNo one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.",
             products_help: "PRODUCTOS QUE PODRÍAN AYUDARTE",
           },
+          Support: {
+            Support: "Apoyo",
+            CustomerService: "Servicio al Cliente",
+            Description:
+              "A continuación, dinos qué nuevo problema deseas registrar y la empresa correspondiente a tu pedido se pondrá en contacto contigo por correo electrónico para resolver tu problema.",
+            YourEmail: "Tu Correo",
+            EmailPlaceholder: "Correo...",
+            SendComment: "Enviar comentario",
+          },
         },
       },
       en: {
@@ -709,6 +718,15 @@ i18n
             paragraph2:
               "Sed ut perspiciatis unde omnis iste natus error sit voluptatem Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\nNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.\n\nUt enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n\nBut I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.\n\nNo one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.",
             products_help: "PRODUCTS THAT COULD HELP YOU",
+          },
+          Support: {
+            Support: "support",
+            CustomerService: "Customer Service",
+            Description:
+              "Next, tell us what new issue you want to register and the company corresponding to your order will contact you by email to resolve your issue.",
+            YourEmail: "Your Email",
+            EmailPlaceholder: "Email...",
+            SendComment: "Send comment",
           },
         },
       },

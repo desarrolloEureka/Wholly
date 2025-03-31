@@ -34,7 +34,7 @@ export const CareBlog = () => {
             color: "rgba(35, 35, 35, 0.96)",
             textTransform: "capitalize",
             "&:hover": {
-              backgroundColor: "rgb(172, 180, 154)", // Color en el hover
+              backgroundColor: "rgb(172, 180, 154)",
             },
           }}
         >

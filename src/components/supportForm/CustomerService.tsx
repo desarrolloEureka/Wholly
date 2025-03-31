@@ -6,8 +6,11 @@ import {
   Button,
 } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
+import { useTranslation } from "react-i18next";
 
 export const CustomerService = () => {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
@@ -45,14 +48,12 @@ export const CustomerService = () => {
               marginBottom: "10px",
             }}
           >
-            Support Contact Form
+            {t("Support.CustomerService")}
           </Typography>
         </Box>
 
-        <Typography variant="body1" color="textSecondary">
-          Next, tell us what new issue you want to register and the company
-          corresponding to your order will contact you by email to resolve your
-          issue.
+        <Typography color="textSecondary">
+          {t("Support.Description")}
         </Typography>
         <TextField
           multiline
@@ -78,7 +79,7 @@ export const CustomerService = () => {
         >
           <EmailIcon sx={{ color: "#A5AB94", fontSize: 30 }} />
           <Typography sx={{ color: "#3C3C3C", fontSize: "14px" }}>
-            Your Email
+            {t("Support.YourEmail")}
           </Typography>
         </Box>
 
@@ -99,7 +100,7 @@ export const CustomerService = () => {
               backgroundColor: "#ffffff",
               boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.3)",
             }}
-            placeholder="Email..."
+            placeholder={t("Support.EmailPlaceholder")}
           />
         </Box>
       </Box>
@@ -122,7 +123,7 @@ export const CustomerService = () => {
             "&:hover": { backgroundColor: "#A5AB94" },
           }}
         >
-          Send comment
+          {t("Support.SendComment")}
         </Button>
       </Box>
     </Box>

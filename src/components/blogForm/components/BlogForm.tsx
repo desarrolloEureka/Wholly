@@ -10,8 +10,11 @@ import {
   blog_6,
 } from "../../../assets/images";
 import { ImagesCategories } from "../../../globals/types";
+import { useTranslation } from "react-i18next";
 
 export const BlogForm = () => {
+  const { t } = useTranslation();
+
   const imagesAreas: ImagesCategories[] = [
     {
       id: 1,
@@ -66,94 +69,113 @@ export const BlogForm = () => {
   const navigate = useNavigate();
 
   return (
-    <Box
-      sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gap: 2,
-        padding: "50px",
-        justifyItems: "center",
-      }}
-    >
-      {imagesAreas.map((item) => (
-        <Box
-          key={item.id}
-          sx={{
-            position: "relative",
-            width: "98%",
-            height: "500px",
-            cursor: "pointer",
-            overflow: "hidden",
-            borderRadius: "10px",
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.38)",
-          }}
-          onClick={() => navigate("/internalBlog")}
-        >
-          <img
-            src={item.src}
-            alt={item.title}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              transition: "transform 0.3s ease",
-            }}
-          />
+    <Box>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          paddingTop: "30px",
+          paddingBottom: "30px",
+          margin: "0 auto",
+          borderBottom: "1px solid #A5AB94",
+          width: "93%",
+        }}
+      >
+        <Typography variant="h5" textAlign="center" sx={{ color: "#A5AB94" }}>
+          {t("blogForm.blog")}
+        </Typography>
+      </Box>
 
-          {/* Texto superpuesto sobre la imagen */}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: 2,
+          padding: "50px",
+          justifyItems: "center",
+        }}
+      >
+        {imagesAreas.map((item) => (
           <Box
+            key={item.id}
             sx={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              width: "100%",
-              background: "rgba(0, 0, 0, 0.31)",
-              color: "white",
-              padding: "10px",
-              textAlign: "center",
-              height: "auto",
-              minHeight: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-              alignItems: "center",
+              position: "relative",
+              width: "98%",
+              height: "500px",
+              cursor: "pointer",
+              overflow: "hidden",
+              borderRadius: "10px",
+              boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.38)",
             }}
+            onClick={() => navigate("/internalBlog")}
           >
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: "bold",
-                marginBottom: "40px",
-                color: "#FBFFDD",
+            <img
+              src={item.src}
+              alt={item.title}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                transition: "transform 0.3s ease",
               }}
-            >
-              {item.title}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ marginBottom: "40px", width: "60%", color: "#FFFFFF" }}
-            >
-              {item.subtitle}
-            </Typography>
+            />
+
+            {/* Texto superpuesto sobre la imagen */}
             <Box
               sx={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                width: "100%",
+                background: "rgba(0, 0, 0, 0.31)",
+                color: "white",
+                padding: "10px",
+                textAlign: "center",
+                height: "auto",
+                minHeight: "100%",
                 display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
                 alignItems: "center",
-                cursor: "pointer",
-                marginBottom: "30px",
               }}
             >
               <Typography
-                variant="body2"
-                sx={{ marginRight: "5px", color: "#FFFFFF" }}
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  marginBottom: "40px",
+                  color: "#FBFFDD",
+                }}
               >
-                {item.description}
+                {item.title}
               </Typography>
-              <ChevronRightIcon sx={{ fontSize: 20, color: "white" }} />
+              <Typography
+                variant="body2"
+                sx={{ marginBottom: "40px", width: "60%", color: "#FFFFFF" }}
+              >
+                {item.subtitle}
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  marginBottom: "30px",
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  sx={{ marginRight: "5px", color: "#FFFFFF" }}
+                >
+                  {item.description}
+                </Typography>
+                <ChevronRightIcon sx={{ fontSize: 20, color: "white" }} />
+              </Box>
             </Box>
           </Box>
-        </Box>
-      ))}
+        ))}
+      </Box>
     </Box>
   );
 };
