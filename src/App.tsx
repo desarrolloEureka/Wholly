@@ -18,6 +18,10 @@ import { Blog } from "./views/Blog";
 import { InternalBlog } from "./views/InternalBlog";
 import { Support } from "./views/Support";
 import { Us } from "./views/Us";
+import { Kits } from "./views/Kits";
+import { InternalKits } from "./views/InternalKits";
+import { Comments } from "./views/Comments";
+import { EditProfile } from "./views/EditProfile";
 
 function App() {
   return (
@@ -45,6 +49,10 @@ function App() {
           <Route path="/internalBlog" element={<InternalBlog />} />
           <Route path="/support" element={<Support />} />
           <Route path="/about_us" element={<Us />} />
+          <Route path="/Kits" element={<Kits />} />
+          <Route path="/InternalKits" element={<InternalKits />} />
+          <Route path="/Comments" element={<Comments />} />
+          <Route path="/EditProfile" element={<EditProfile />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

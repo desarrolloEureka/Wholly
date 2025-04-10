@@ -6,6 +6,7 @@ import {
   AccordionDetails,
   useMediaQuery,
   useTheme,
+  Button,
 } from "@mui/material";
 import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
@@ -166,7 +167,7 @@ export const SupplementsSblock = () => {
             padding: "20px",
             borderRadius: "10px",
             width: isMobile || isTablet ? "100%" : "480px",
-            height: isMobile || isTablet ? "auto" : "250px",
+            height: isMobile || isTablet ? "auto" : "280px",
             textAlign: "center",
             backgroundColor: "#fff",
             boxShadow: "0px 1px 12px rgba(0, 0, 0, 0.35)",
@@ -277,6 +278,31 @@ export const SupplementsSblock = () => {
             >
               {t("supplementsForm.productCompatible")}
             </Typography>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end", // 👈 Esto alinea el botón a la derecha
+              width: "100%", // Opcional, para ocupar todo el contenedor
+            }}
+          >
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#a5ab94",
+                borderRadius: 1,
+                boxShadow: "2px 3px 5px rgba(0,0,0,0.2)",
+                paddingX: 4,
+                marginTop: "10px",
+                textTransform: "none",
+                fontWeight: 600,
+                height: "35px",
+                marginRight: "50px",
+                width: "105px",
+              }}
+            >
+              {t("supplementsForm.Register")}
+            </Button>
           </Box>
         </Box>
       </Box>
