@@ -35,6 +35,12 @@ import blog_5_path from "./blog_5.png";
 import blog_6_path from "./blog_6.png";
 import Blogin_path from "./Blogin.png";
 import sunBlock_path from "./sunBlock.png";
+import kits_1_path from "./kits_1.png";
+import kits_2_path from "./kits_2.png";
+import kits_3_path from "./kits_3.png";
+import kits_4_path from "./kits_4.png";
+import kits_5_path from "./kits_5.png";
+import kits_6_path from "./kits_6.png";
 
 const logo_app = logo_app_path;
 const fondo_login = fondo_login_path;
@@ -77,6 +83,13 @@ const blog_6 = blog_6_path;
 const Blogin = Blogin_path;
 const sunBlock = sunBlock_path;
 
+const kits_1 = kits_1_path;
+const kits_2 = kits_2_path;
+const kits_3 = kits_3_path;
+const kits_4 = kits_4_path;
+const kits_5 = kits_5_path;
+const kits_6 = kits_6_path;
+
 export {
   logo_app,
   fondo_login,
@@ -115,4 +128,10 @@ export {
   blog_6,
   Blogin,
   sunBlock,
+  kits_1,
+  kits_2,
+  kits_3,
+  kits_4,
+  kits_5,
+  kits_6,
 };

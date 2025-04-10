@@ -14,8 +14,13 @@ i18n
     resources: {
       es: {
         translation: {
+          alertError: {
+            description: "¿Seguro que deseas cerrar tu sesión?",
+          },
           general: {
             hola: "Hola",
+            no: "No",
+            yes: "Si",
           },
           footerApp: {
             compatibleProducts: "Productos compatibles",
@@ -78,9 +83,11 @@ i18n
             home: "Inicio",
             support: "Apoyo",
             aboutUs: "Sobre nosotras",
-            kits: "Equipos",
+            kits: "kits",
+            comments: "Comentarios",
             login: "Ingresar",
             register: "Registro",
+
             nameLogin: "iniciar sesion",
             nameRecord: "Registro",
             en: "En",
@@ -283,6 +290,7 @@ i18n
             subtitle2: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 2",
             subtitle3: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 3",
             subtitle4: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 4",
+            Register: "Registrarse",
           },
           shoppingCart: {
             Information: "Informacion",
@@ -371,12 +379,24 @@ i18n
             EmailPlaceholder: "Correo...",
             SendComment: "Enviar comentario",
           },
+          Kits: {
+            title: "Soluciones completas para todas sus necesidades",
+            completeKits: "Kits completos",
+          },
+          Comments: {
+            knoWcomments: "Comentarios y calificación",
+          },
         },
       },
       en: {
         translation: {
+          alertError: {
+            description: "¿Seguro que deseas cerrar tu sesión?",
+          },
           general: {
             hello: "Hello",
+            no: "No",
+            yes: "Yes",
           },
           customAppBar: {
             category: "Category",
@@ -385,6 +405,7 @@ i18n
             support: "Support",
             aboutUs: "About us",
             kits: "Kits",
+            comments: "Comments",
             login: "Login",
             register: "Register",
             nameLogin: "Login",
@@ -641,6 +662,7 @@ i18n
             subtitle2: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 2",
             subtitle3: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 3",
             subtitle4: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem 4",
+            Register: "Register",
           },
           shoppingCart: {
             Information: "Information ",
@@ -727,6 +749,13 @@ i18n
             YourEmail: "Your Email",
             EmailPlaceholder: "Email...",
             SendComment: "Send comment",
+          },
+          Kits: {
+            title: "Complete solutions for all your needs",
+            completeKits: "Complete kits",
+          },
+          Comments: {
+            knoWcomments: "Comments and rating",
           },
         },
       },

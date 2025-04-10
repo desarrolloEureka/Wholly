@@ -14,6 +14,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { IsActiveLangButton } from "./customAppBarTypes";
 import DrawerMobile from "./components/drawerMobile/DrawerMobile";
 import { Box } from "@mui/material";
+import { UserMenu } from "./UserMenu";
 
 const CustomAppBar: React.FC = () => {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ const CustomAppBar: React.FC = () => {
     };
 
   return (
-    <Box>
+    <Box sx={{ position: "relative" }}>
       <AppBar
         position="static"
         sx={{
@@ -190,6 +191,7 @@ const CustomAppBar: React.FC = () => {
                   { label: "support", key: "support" },
                   { label: "aboutUs", key: "about_us" },
                   { label: "kits", key: "kits" },
+                  { label: "comments", key: "comments" },
                 ].map((button, index) => (
                   <Button
                     key={button.label + index}
@@ -319,11 +321,11 @@ const CustomAppBar: React.FC = () => {
               >
                 {t("customAppBar.nameRecord")}
               </Button>
+              <UserMenu />
             </Box>
           )}
         </Toolbar>
       </AppBar>
-      {/*{ Componente del menú lateral Drawer para navegación en dispositivos móviles}*/}
 
       <DrawerMobile openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
     </Box>
