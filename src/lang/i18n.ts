@@ -386,6 +386,24 @@ i18n
           Comments: {
             knoWcomments: "Comentarios y calificación",
           },
+          Us: {
+            welcome: "Bienvenido a Wholly",
+            ourStory: "Nuestra historia",
+            About: "Acerca de",
+            Lorem:
+              "Lorem ipsum about qurs invers to de thurd Lorem ipsum about qurs invers to de thurd Lorem ipsum about qurs",
+            RegisterDescription: "Regístrate y descubre lo mejor para ti",
+            Register: "REGISTRAR",
+            loremstats: "Lorem ipsum lorem aqurium",
+            loremstats2:
+              "Posuere urna nec tincidunt praesent. Egestas maecenas pharetra convallis posuere. Ipsum nunc aliquet bibendum enim. Sem integer vitae justo eget magna fermentum iaculis eu non.",
+            users: "USUARIOS",
+            supplements: "SUPLEMENTOS",
+            references: "REFERENCIAS",
+            mission: "Misión",
+            lorem3:
+              "Posuere urna nec tincidunt praesent. Egestas maecenas pharetraconvallis posuere. Ipsum nunc aliquet bibendum enim. Sem integervitae justo eget magna fermentum iaculis eu non. Posuere urna nectincidunt praesent. Egestas maecenas pharetra convallis posuere.Ipsum nunc aliquet bibendum enim. Sem integer vitae justo eget magnafermentum iaculis eu non.",
+          },
         },
       },
       en: {
@@ -756,6 +774,24 @@ i18n
           },
           Comments: {
             knoWcomments: "Comments and rating",
+          },
+          Us: {
+            welcome: "Welcome to Wholly",
+            ourStory: "Our Story",
+            About: "About",
+            Lorem:
+              "ingles Lorem ipsum about qurs invers to de thurd Lorem ipsum about qurs invers to de thurd Lorem ipsum about qurs",
+            RegisterDescription: "Register and discover the best for you",
+            Register: "REGISTER",
+            loremstats: " Lorem ipsum lorem aqurium",
+            loremstats2:
+              "ingles Posuere urna nec tincidunt praesent. Egestas maecenas pharetra convallis posuere. Ipsum nunc aliquet bibendum enim. Sem integer vitae justo eget magna fermentum iaculis eu non.",
+            users: "USERS",
+            supplements: "SUPPLEMENTS",
+            references: "REFERENCES",
+            mission: "Mission",
+            lorem3:
+              " ingles Posuere urna nec tincidunt praesent. Egestas maecenas pharetraconvallis posuere. Ipsum nunc aliquet bibendum enim. Sem integervitae justo eget magna fermentum iaculis eu non. Posuere urna nectincidunt praesent. Egestas maecenas pharetra convallis posuere.Ipsum nunc aliquet bibendum enim. Sem integer vitae justo eget magnafermentum iaculis eu non.",
           },
         },
       },
