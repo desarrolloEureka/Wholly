@@ -22,6 +22,9 @@ import { Kits } from "./views/Kits";
 import { InternalKits } from "./views/InternalKits";
 import { Comments } from "./views/Comments";
 import { EditProfile } from "./views/EditProfile";
+import { Addresses } from "./views/Addresses";
+import { PaymentMethods } from "./views/PaymentMethods";
+import { Orders } from "./views/Orders";
 
 function App() {
   return (
@@ -45,7 +48,6 @@ function App() {
           />
           <Route path="/PurchaseSummary" element={<PurchaseSummary />} />
           <Route path="/Blog" element={<Blog />} />
-
           <Route path="/internalBlog" element={<InternalBlog />} />
           <Route path="/support" element={<Support />} />
           <Route path="/about_us" element={<Us />} />
@@ -53,6 +55,9 @@ function App() {
           <Route path="/InternalKits" element={<InternalKits />} />
           <Route path="/Comments" element={<Comments />} />
           <Route path="/EditProfile" element={<EditProfile />} />
+          <Route path="/Addresses" element={<Addresses />} />
+          <Route path="/PaymentMethods" element={<PaymentMethods />} />
+          <Route path="/Orders" element={<Orders />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

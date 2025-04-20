@@ -20,7 +20,7 @@ export const Comments = () => {
           ml: "5%",
           fontSize: "1.8rem",
           fontWeight: 100,
-          color: "#000",
+          color: "#3C3C3C",
         }}
       >
         {t("Comments.knoWcomments")}

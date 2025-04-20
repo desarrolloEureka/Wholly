@@ -37,34 +37,50 @@ export const HomeSupplement = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "end",
-        justifyContent: "end",
-        padding: 5,
+        alignItems: { xs: "center", md: "flex-end" },
+        justifyContent: { xs: "center", md: "flex-end" },
+        padding: { xs: 2, sm: 3, md: 5 },
         backgroundColor: "rgba(173, 173, 173, 0.22)",
         backdropFilter: "blur(6px)",
         borderRadius: 4,
         boxShadow: 3,
-        width: "100%",
+        width: { xs: "80%", md: "100%" },
         marginTop: "60px",
         marginBottom: "45px",
+        textAlign: { xs: "center", md: "left" },
       }}
     >
       <Typography
         variant="h3"
-        sx={{ mb: 4, fontFamily: "Montserrat ", color: "#3C3C3C" }}
+        sx={{
+          mb: 2,
+          fontFamily: "Montserrat",
+          color: "#3C3C3C",
+          fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
+        }}
       >
         {t("homeform.title")}
       </Typography>
-      <Typography sx={{ fontSize: "1.8rem", color: "#333", mb: 4 }}>
+
+      <Typography
+        sx={{
+          fontSize: { xs: "1.1rem", sm: "1.4rem", md: "1.8rem" },
+          color: "#333",
+          mb: 4,
+        }}
+      >
         {t("homeform.subtitle")}
       </Typography>
+
       <Box
-        gap={5}
+        gap={3}
         sx={{
-          alignSelf: "flex-start",
+          alignSelf: { xs: "center", md: "flex-start" },
           display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
           justifyContent: "flex-start",
           width: "100%",
+          mb: 3,
         }}
       >
         <FormControl component="fieldset">
@@ -75,7 +91,11 @@ export const HomeSupplement = () => {
             aria-label="options"
             name="radio-buttons-group3"
             row
-            sx={{ gap: "40px", mb: "30px" }}
+            sx={{
+              gap: { xs: "20px", md: "40px" },
+              flexWrap: "wrap",
+              justifyContent: { xs: "center", md: "flex-start" },
+            }}
           >
             <FormControlLabel
               value="option1"
@@ -91,7 +111,7 @@ export const HomeSupplement = () => {
                 />
               }
               label={
-                <span style={{ fontSize: "1.1rem" }}>
+                <span style={{ fontSize: "1rem" }}>
                   {t("homeform.supplements")}
                 </span>
               }
@@ -110,7 +130,7 @@ export const HomeSupplement = () => {
                 />
               }
               label={
-                <span style={{ fontSize: "1.1rem" }}>
+                <span style={{ fontSize: "1rem" }}>
                   {t("homeform.indications")}
                 </span>
               }
@@ -122,12 +142,12 @@ export const HomeSupplement = () => {
       <CardContent
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
           alignItems: "center",
           justifyContent: "center",
           gap: 2,
           width: "100%",
-          padding: "0",
-          marginBottom: "30px",
+          padding: 0,
         }}
       >
         <TextField

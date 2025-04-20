@@ -30,7 +30,7 @@ const ReviewScore = () => {
       >
         G
       </Avatar>
-      <Typography fontWeight="bold" fontSize="3.2rem">
+      <Typography fontWeight="bold" fontSize="3.2rem" sx={{ color: "#3C3C3C" }}>
         {rating}
       </Typography>
 
@@ -39,7 +39,7 @@ const ReviewScore = () => {
           component="span"
           fontWeight="normal"
           fontSize="1.5rem"
-          sx={{ marginLeft: "10px" }}
+          sx={{ marginLeft: "10px", color: "#3C3C3C" }}
         >
           Wholly
         </Typography>

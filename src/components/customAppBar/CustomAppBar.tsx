@@ -175,7 +175,14 @@ const CustomAppBar: React.FC = () => {
 
           {/* Menú en pantallas grandes */}
           {!isSmallScreen && (
-            <Box sx={{ width: "45%", display: "flex", flexDirection: "row" }}>
+            <Box
+              sx={{
+                width: { lg: "45%", md: "10%" },
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+              }}
+            >
               <Box
                 sx={{
                   display: "flex",
@@ -217,11 +224,13 @@ const CustomAppBar: React.FC = () => {
           {!isSmallScreen && (
             <Box
               sx={{
-                marginLeft: "150px",
-                width: "40%",
+                marginLeft: { xs: 0, md: "110px" },
+                width: { xs: "100%", md: "45%" },
                 display: "flex",
                 alignItems: "center",
-                gap: 3,
+                gap: 2,
+                flexWrap: "wrap",
+                justifyContent: { xs: "center", md: "flex-start" }, // Centrado en pantallas pequeñas
               }}
             >
               {/* Idioma */}
@@ -268,6 +277,7 @@ const CustomAppBar: React.FC = () => {
                   minWidth: "auto",
                   boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.3)",
                   width: 44,
+                  flexShrink: 0, // Evita que se encoja mucho
                 }}
               >
                 <ShoppingBagOutlinedIcon />
@@ -284,9 +294,12 @@ const CustomAppBar: React.FC = () => {
                   borderRadius: "7px",
                   padding: "8px 16px",
                   textTransform: "none",
-                  width: 170,
+                  width: {
+                    xs: "100%", // móviles
+                    md: 140, // >=960px
+                    lg: 170,
+                  },
                   boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.5)",
-
                   transition: "box-shadow 0.3s ease-in-out",
                   "&:hover": {
                     backgroundColor: "transparent",
@@ -310,10 +323,14 @@ const CustomAppBar: React.FC = () => {
                   borderRadius: "7px",
                   padding: "8px 16px",
                   textTransform: "none",
+                  width: {
+                    xs: "100%", // móviles
+                    sm: 170, // >=600px
+                    md: 140, // >=960px
+                    lg: 170,
+                  },
                   transition: "box-shadow 0.3s ease-in-out",
                   boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.5)",
-
-                  width: 170,
                   "&:hover": {
                     boxShadow: "0px 4px 7px rgba(0, 0, 0, 0.5)",
                   },
@@ -321,6 +338,7 @@ const CustomAppBar: React.FC = () => {
               >
                 {t("customAppBar.nameRecord")}
               </Button>
+
               <UserMenu />
             </Box>
           )}

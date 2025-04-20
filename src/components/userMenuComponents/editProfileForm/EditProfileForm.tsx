@@ -8,10 +8,10 @@ import {
   Typography,
 } from "@mui/material";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import { OptionsButtons } from "../../globals/types";
-import { InteractiveText } from "../../globals/elements";
-import { ContentStepper } from "../registerForm/components/contentStepper/ContentStepper";
-import { ContentStepperSpecial } from "../registerForm/components/contentStepperSpecial/ContentStepperSpecial";
+import { OptionsButtons } from "../../../globals/types";
+import { InteractiveText } from "../../../globals/elements";
+import { ContentStepper } from "../../registerForm/components/contentStepper/ContentStepper";
+import { ContentStepperSpecial } from "../../registerForm/components/contentStepperSpecial/ContentStepperSpecial";
 import { EditStepOne } from "./components/EditStepOne";
 
 const EditProfileForm = () => {

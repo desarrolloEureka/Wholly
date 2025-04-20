@@ -41,6 +41,7 @@ export const HomeCategories = () => {
           maxWidth: "100%", // Reducir el ancho máximo del contenedor
           margin: { xs: "0 auto", md: "0 auto" },
           marginTop: { xs: "500px", md: "0px" },
+          marginBottom: "100px",
           position: "relative",
           overflow: "hidden", // Para ocultar las imágenes fuera del contenedor
         }}

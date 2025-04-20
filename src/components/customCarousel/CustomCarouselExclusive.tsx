@@ -15,124 +15,161 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
 
   const itemTemplate = (item: ImagesExclusive) => {
     return (
-      <Box
-        key={item.id}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "80%",
-          borderRadius: "10px",
-          marginBottom: "60px",
-          marginTop: "10%",
-          marginLeft: "10px",
-          gap: "10px",
-        }}
-      >
-        <img
-          src={item.src}
-          alt={item.title}
-          style={{
-            width: "100%",
-            height: "230px",
-            objectFit: "cover",
-            transition: "transform 0.3s ease",
-            borderRadius: "10px ",
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.38)",
-          }}
-        />
-        {/* Contenedor del título y subtítulo */}
-
+      <Box>
         <Box
+          key={item.id}
           sx={{
-            width: "100%",
-            padding: "10px 15px",
-            textAlign: "start",
-            borderTop: "none",
-
-            borderRadius: "0 0 10px 10px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            width: {
+              xs: "50%",
+              md: "80%",
+            },
+            borderRadius: "10px",
+            marginBottom: {
+              xs: "40px",
+              md: "60px",
+            },
+            marginTop: {
+              xs: "20px",
+              md: "10%",
+            },
+            marginLeft: {
+              xs: "auto",
+              md: "10px",
+            },
+            marginRight: {
+              xs: "auto",
+            },
+            gap: "10px",
           }}
         >
-          <Typography
-            variant="h4"
-            sx={{
-              fontSize: "1.2rem",
-              fontWeight: "bold",
-              color: textColor,
+          <img
+            src={item.src}
+            alt={item.title}
+            style={{
+              width: "100%",
+              height: "230px",
+              objectFit: "cover",
+              transition: "transform 0.3s ease",
+              borderRadius: "10px",
+              boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.38)",
             }}
-          >
-            {item.title}
-          </Typography>
-
-          <Typography
-            sx={{
-              fontSize: "1.0rem",
-              marginTop: "3px",
-              color: textColor,
-              marginBottom: "8px",
-            }}
-          >
-            {item.subtitle}
-          </Typography>
-          <Typography
-            sx={{
-              display: "flex",
-              alignItems: "start",
-              width: "50%",
-              cursor: "pointer",
-              transition: "transform 0.2s ease-in-out",
-              fontFamily: "Montserrat, sans-serif",
-              fontWeight: "bold",
-              fontSize: "0.8rem",
-            }}
-          >
-            <span
-              style={{
-                textDecoration: "line-through",
-                opacity: 0.6,
-                marginRight: "10px",
-              }}
-            >
-              {item.description}
-            </span>
-            {item.description1}
-            <span
-              style={{
-                opacity: 0.6,
-                marginLeft: "7px",
-              }}
-            >
-              {item.description2}
-            </span>
-          </Typography>
+          />
 
           <Box
             sx={{
-              display: "flex",
-              alignItems: "start",
-              width: "50%",
-              cursor: "pointer",
-              transition: "transform 0.2s ease-in-out",
-              fontFamily: "Montserrat, sans-serif",
-              fontWeight: "bold",
-              fontSize: "0.9rem",
-              marginTop: "15px",
-              color: textColor,
-              "&:hover": {
-                transform: "translateX(5px)",
+              width: "100%",
+              padding: {
+                xs: "10px 12px",
+                md: "10px 15px",
               },
+              textAlign: "start",
+              borderTop: "none",
+              borderRadius: "0 0 10px 10px",
             }}
           >
-            {item.description3}
-            <ChevronRightIcon
+            <Typography
+              variant="h4"
               sx={{
-                fontSize: 20,
+                fontSize: {
+                  xs: "1rem",
+                  md: "1.2rem",
+                },
+                fontWeight: "bold",
                 color: textColor,
-                position: "relative",
-                top: "-2.5px",
               }}
-            />
+            >
+              {item.title}
+            </Typography>
+
+            <Typography
+              sx={{
+                fontSize: {
+                  xs: "0.95rem",
+                  md: "1.0rem",
+                },
+                marginTop: "3px",
+                color: textColor,
+                marginBottom: "8px",
+              }}
+            >
+              {item.subtitle}
+            </Typography>
+
+            <Typography
+              sx={{
+                display: "flex",
+                alignItems: "start",
+                width: {
+                  xs: "100%",
+                  md: "50%",
+                },
+                cursor: "pointer",
+                transition: "transform 0.2s ease-in-out",
+                fontFamily: "Montserrat, sans-serif",
+                fontWeight: "bold",
+                fontSize: {
+                  xs: "0.75rem",
+                  md: "0.8rem",
+                },
+              }}
+            >
+              <span
+                style={{
+                  textDecoration: "line-through",
+                  opacity: 0.6,
+                  marginRight: "10px",
+                }}
+              >
+                {item.description}
+              </span>
+              {item.description1}
+              <span
+                style={{
+                  opacity: 0.6,
+                  marginLeft: "7px",
+                }}
+              >
+                {item.description2}
+              </span>
+            </Typography>
+
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "start",
+                width: {
+                  xs: "100%",
+                  md: "50%",
+                },
+                cursor: "pointer",
+                transition: "transform 0.2s ease-in-out",
+                fontFamily: "Montserrat, sans-serif",
+                fontWeight: "bold",
+                fontSize: {
+                  xs: "0.85rem",
+                  md: "0.9rem",
+                },
+                marginTop: "15px",
+                color: textColor,
+                "&:hover": {
+                  transform: "translateX(5px)",
+                },
+              }}
+            >
+              {item.description3}
+              <ChevronRightIcon
+                sx={{
+                  fontSize: 20,
+                  color: textColor,
+                  position: "relative",
+                  top: "-2.5px",
+                }}
+              />
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -143,14 +180,13 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
     <div className="card">
       <Carousel
         value={images}
-        numVisible={4}
+        numVisible={3}
         numScroll={2}
         responsiveOptions={responsiveOptions}
         className="custom-carousel"
         circular
-        autoplayInterval={3000}
+        autoplayInterval={images.length > 3 ? 3000 : 0} // Solo autoplay si hay más de 3
         itemTemplate={itemTemplate}
-        showIndicators={false}
       />
     </div>
   );

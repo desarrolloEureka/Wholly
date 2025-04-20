@@ -48,15 +48,24 @@ export const RegisterHome = () => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        alignItems: "center",
+        flexDirection: {
+          xs: "column", // móvil: columna
+          sm: "column", // tableta: también columna
+          md: "row", // escritorio: en fila como antes
+        },
+        alignItems: {
+          xs: "center",
+          sm: "center",
+          md: "center",
+        },
         gap: { xs: 3, md: 30 },
         marginLeft: "4%",
         marginBottom: 0,
-        height: "80vh",
-        marginTop: "5%",
+        height: { xs: "6vh", sm: "60vh", md: "100vh" },
+        marginTop: { xs: "20%", sm: "8%", md: "5%" },
       }}
     >
+      {/* Lado izquierdo */}
       <Box
         sx={{
           display: "flex",
@@ -94,18 +103,21 @@ export const RegisterHome = () => {
           {t("homeform.register")}
         </Button>
       </Box>
-      {/* pendiente */}
+
+      {/* Lado derecho: se oculta en móviles */}
       <Box
         sx={{
-          display: "flex",
+          display: {
+            xs: "none", // oculto en móvil
+            sm: "flex", // visible desde tablet
+          },
           alignItems: "center",
           justifyContent: "start",
           flexDirection: "column",
           marginTop: "5%",
           marginLeft: "1%",
           marginRight: "7%",
-          width: { xs: "80%", md: "60%" },
-
+          width: { sm: "80%", md: "60%" },
           height: "100vh",
         }}
       >
@@ -129,7 +141,6 @@ export const RegisterHome = () => {
             overflow: "hidden",
           }}
         >
-          {/* Botón de cierre */}
           <IconButton
             sx={{
               position: "absolute",
@@ -167,6 +178,7 @@ export const RegisterHome = () => {
             {t("homeform.loremText")}
           </Typography>
         </Box>
+
         <Box
           sx={{
             width: "100%",
