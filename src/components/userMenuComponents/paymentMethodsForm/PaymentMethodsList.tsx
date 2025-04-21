@@ -13,6 +13,11 @@ const paymentMethods: PaymentMethod[] = [
   { id: 1, type: "Visa", last4: "3675", expDate: "****" },
   { id: 2, type: "Visa", last4: "3675", expDate: "****" },
   { id: 3, type: "Mastercard", last4: "3675", expDate: "****" },
+  { id: 3, type: "Mastercard", last4: "3675", expDate: "****" },
+  { id: 3, type: "Mastercard", last4: "3675", expDate: "****" },
+  { id: 3, type: "Mastercard", last4: "3675", expDate: "****" },
+
+  { id: 3, type: "Mastercard", last4: "3675", expDate: "****" },
 ];
 
 const PaymentMethodsList = ({
@@ -27,7 +32,7 @@ const PaymentMethodsList = ({
   };
 
   return (
-    <Box p={4} sx={{ backgroundColor: "#ece8e1", minHeight: "100vh" }}>
+    <Box p={2} sx={{ backgroundColor: "#ece8e1", minHeight: "100vh" }}>
       <Button
         variant="outlined"
         startIcon={<Add />}
@@ -42,7 +47,7 @@ const PaymentMethodsList = ({
           display: "flex",
           flexWrap: "wrap",
           gap: 2,
-          maxHeight: 320,
+          height: "80vh",
           overflowY: "auto",
           "&::-webkit-scrollbar": {
             width: "6px",
@@ -65,7 +70,8 @@ const PaymentMethodsList = ({
               boxShadow: 3,
               backgroundColor: "#fff",
               p: 2,
-              width: { xs: "100%", sm: "calc(35% - 8px)" },
+              height: "180px",
+              width: "360px",
               position: "relative",
               cursor: "pointer",
               transition: "0.2s",

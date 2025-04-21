@@ -6,6 +6,7 @@ import {
   useTheme,
   MobileStepper,
   Typography,
+  IconButton,
 } from "@mui/material";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { OptionsButtons } from "../../../globals/types";
@@ -13,8 +14,10 @@ import { InteractiveText } from "../../../globals/elements";
 import { ContentStepper } from "../../registerForm/components/contentStepper/ContentStepper";
 import { ContentStepperSpecial } from "../../registerForm/components/contentStepperSpecial/ContentStepperSpecial";
 import { EditStepOne } from "./components/EditStepOne";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import AddIcon from "@mui/icons-material/Add";
 
-const EditProfileForm = () => {
+const EditProfileForm = ({ edit }: { edit: string | undefined }) => {
   const stepOneRef = useRef<{ validateForm: () => boolean }>(null);
   const theme = useTheme();
   const { t } = useTranslation();
@@ -155,8 +158,105 @@ const EditProfileForm = () => {
           {t("registerForm.later")}
         </InteractiveText>
       </Box>
-      <Box sx={{ width: "100%", minHeight: 400, p: 2 }}>
+
+      <Box
+        sx={{
+          width: "100%",
+          minHeight: 400,
+          p: 2,
+          position: "relative",
+        }}
+      >
+        {edit && (
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-end",
+              marginLeft: "-150px",
+            }}
+          >
+            <Box
+              sx={{
+                width: 130,
+                height: 130,
+                borderRadius: "50%",
+                backgroundColor: "#FFFFFF",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+              }}
+            >
+              <CameraAltIcon sx={{ fontSize: 40, color: "#757575" }} />
+              <IconButton
+                sx={{
+                  position: "absolute",
+                  right: 4,
+                  bottom: 4,
+                  width: 24,
+                  height: 24,
+                  borderRadius: "50%",
+                  backgroundColor: "#fff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: 1,
+                }}
+              >
+                <AddIcon sx={{ fontSize: 16, color: "#757575" }} />
+              </IconButton>
+            </Box>
+          </Box>
+        )}
         {steps[activeStep].description}
+        {edit && (
+          <Box
+            sx={{
+              position: "absolute",
+              bottom: 40,
+              right: 30,
+            }}
+          >
+            <Box sx={{ display: "flex", gap: 2 }}>
+              <Button
+                variant="outlined"
+                sx={{
+                  borderRadius: "12px",
+                  textTransform: "none",
+                  color: "#3C3C3C",
+                  borderColor: "#A5AB94",
+                  width: "140px",
+                  px: 4,
+                  "&:hover": {
+                    backgroundColor: "#f5f5f5",
+                    borderColor: "#A5AB94",
+                  },
+                }}
+              >
+                {t("registerForm.cancel")}
+              </Button>
+
+              <Button
+                variant="contained"
+                sx={{
+                  borderRadius: "12px",
+                  textTransform: "none",
+                  backgroundColor: "#a8ae9c",
+                  color: "#fff",
+                  px: 4,
+                  width: "140px",
+
+                  "&:hover": {
+                    backgroundColor: "#949b89",
+                  },
+                }}
+              >
+                {t("registerForm.save")}
+              </Button>
+            </Box>
+          </Box>
+        )}
       </Box>
       <MobileStepper
         variant="text"

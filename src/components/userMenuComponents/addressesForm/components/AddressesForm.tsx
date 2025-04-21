@@ -24,11 +24,12 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
     <Box>
       <Box
         sx={{
-          width: "60%",
+          width: "75%",
           display: "flex",
           flexDirection: "column",
           gap: 3,
-          marginTop: "20px",
+          paddingTop: "50px",
+          margin: "0 auto",
         }}
       >
         <Box>

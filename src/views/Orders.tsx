@@ -48,8 +48,8 @@ export const Orders = () => {
                 onClick={() => setActiveTab("history")}
                 sx={{
                   cursor: "pointer",
-                  color: activeTab === "history" ? "#A5AB94" : "#C0C0C0",
-                  fontWeight: activeTab === "history" ? "bold" : "normal",
+                  color: activeTab === "history" ? "#A5AB94" : "#B9B9B9",
+                  fontWeight: activeTab === "history" ? 500 : "normal",
                   borderBottom:
                     activeTab === "history" ? "1px solid #A5AB94" : "none",
                   pb: 0.5,
@@ -61,7 +61,7 @@ export const Orders = () => {
                 onClick={() => setActiveTab("active")}
                 sx={{
                   cursor: "pointer",
-                  color: activeTab === "active" ? "#A5AB94" : "#C0C0C0",
+                  color: activeTab === "active" ? "#A5AB94" : "#B9B9B9",
                   fontWeight: activeTab === "active" ? 500 : "normal",
                   borderBottom:
                     activeTab === "active" ? "1px solid #A5AB94" : "none",

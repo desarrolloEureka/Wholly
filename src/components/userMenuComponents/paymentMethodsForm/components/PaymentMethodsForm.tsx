@@ -26,11 +26,12 @@ const PaymentMethodsForm = ({ onBack }: { onBack: () => void }) => {
     <Box>
       <Box
         sx={{
-          width: "50%",
+          width: "75%",
           display: "flex",
           flexDirection: "column",
           gap: 3,
-          marginTop: "20px",
+          paddingTop: "50px",
+          margin: "0 auto",
         }}
       >
         {/* Card Number */}

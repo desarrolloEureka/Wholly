@@ -2,8 +2,11 @@ import { Box, Container } from "@mui/material";
 import CustomAppBar from "../components/customAppBar/CustomAppBar";
 import EditProfileForm from "../components/userMenuComponents/editProfileForm/EditProfileForm";
 import FooterApp from "../components/footerApp/FooterApp";
+import { useParams } from "react-router-dom";
 
 export const EditProfile = () => {
+  const { edit } = useParams();
+  console.log(edit); // "123"
   return (
     <Box justifyContent="space-between">
       <CustomAppBar />
@@ -17,7 +20,7 @@ export const EditProfile = () => {
             borderRadius: "8px",
           }}
         >
-          <EditProfileForm />
+          <EditProfileForm edit={edit} />
         </Container>
       </Box>
 

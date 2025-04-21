@@ -54,7 +54,7 @@ function App() {
           <Route path="/Kits" element={<Kits />} />
           <Route path="/InternalKits" element={<InternalKits />} />
           <Route path="/Comments" element={<Comments />} />
-          <Route path="/EditProfile" element={<EditProfile />} />
+          <Route path="/EditProfile/:edit" element={<EditProfile />} />
           <Route path="/Addresses" element={<Addresses />} />
           <Route path="/PaymentMethods" element={<PaymentMethods />} />
           <Route path="/Orders" element={<Orders />} />

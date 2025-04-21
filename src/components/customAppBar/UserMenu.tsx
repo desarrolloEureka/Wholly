@@ -25,7 +25,7 @@ export const UserMenu = () => {
     {
       label: t("userMenu.editProfile"),
       icon: <EditOutlinedIcon sx={{ fontSize: 30, marginRight: "10px" }} />,
-      onClick: () => navigate("/EditProfile"),
+      onClick: () => navigate("/EditProfile/true"),
     },
     {
       label: t("userMenu.myClinicalHistory"),

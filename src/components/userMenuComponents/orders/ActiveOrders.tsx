@@ -50,7 +50,6 @@ export const ActiveOrders = ({ onAddNew }: { onAddNew: () => void }) => {
         boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
         overflowX: "auto",
         width: "100%",
-        mr: "250px",
       }}
     >
       <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
