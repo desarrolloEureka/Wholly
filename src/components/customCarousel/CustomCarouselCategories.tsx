@@ -75,9 +75,9 @@ const CustomCarouselCategories = ({
               sx={{
                 fontSize: {
                   xs: "1rem", // Más pequeño para móvil
-                  sm: "1.2rem",
+                  sm: "1.4rem",
                 },
-                fontWeight: "bold",
+                fontWeight: 600,
                 color: textColor,
               }}
             >
@@ -119,13 +119,15 @@ const CustomCarouselCategories = ({
                 },
               }}
             >
-              {item.description}
+              <Typography variant="h6" sx={{ fontSize: "17px" }}>
+                {item.description}
+              </Typography>
               <ChevronRightIcon
                 sx={{
                   fontSize: 20,
                   color: textColor,
                   position: "relative",
-                  top: "-2.5px",
+                  bottom: "-2.9px",
                 }}
               />
             </Box>

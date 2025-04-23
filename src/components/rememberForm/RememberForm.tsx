@@ -1,10 +1,11 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { Email } from "./components/email/Email";
 import { useState } from "react";
 import { Code } from "./components/code/Code";
 import { useNavigate } from "react-router-dom";
 import { Passwords } from "./components/passwords/Passwords";
+import { PasswordRecovered } from "./components/recovered/PasswordRecovered";
 
 export const RememberForm = () => {
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ export const RememberForm = () => {
         return <Code setCode={setCode} />;
       case 2:
         return <Passwords />;
+      case 3:
+        return <PasswordRecovered />;
       default:
         return <Email />;
     }
@@ -37,6 +40,8 @@ export const RememberForm = () => {
       } else {
         console.log("codigo invalido");
       }
+    } else if (step === 2) {
+      setStep(3);
     } else {
       navigate("/login");
       console.log("validar contrasenas");
@@ -78,7 +83,9 @@ export const RememberForm = () => {
           fontWeight: "bold",
         }}
       >
-        {t("loginForm.Recover_password")}
+        <Typography variant="h3" sx={{ fontSize: "1.5rem" }}>
+          {t("loginForm.Recover_password")}
+        </Typography>
       </Box>
 
       <Box
@@ -115,7 +122,9 @@ export const RememberForm = () => {
           ? t("loginForm.button_step_one")
           : step === 1
           ? t("loginForm.button_step_two")
-          : t("loginForm.button_step_three")}
+          : step === 2
+          ? t("loginForm.button_step_three")
+          : t("loginForm.button_step_four")}
       </Button>
     </Box>
   );

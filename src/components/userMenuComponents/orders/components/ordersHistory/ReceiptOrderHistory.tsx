@@ -47,6 +47,7 @@ export const ReceiptOrderHistory = () => {
                 {t("PurchaseSummary.ShippingCost")}
               </Typography>
               <Typography
+                variant="h6"
                 sx={{ marginBottom: "8px", fontSize: "18px", color: "#000" }}
               >
                 {t("PurchaseSummary.Total")}
@@ -129,7 +130,7 @@ export const ReceiptOrderHistory = () => {
             flex: 1,
           }}
         >
-          <Typography variant="h6" sx={{ mb: 2, fontSize: "17px" }}>
+          <Typography variant="h5" sx={{ mb: 2, fontSize: "22px" }}>
             {t("OrdersHistory.Qualification")}
           </Typography>
 
@@ -172,7 +173,7 @@ export const ReceiptOrderHistory = () => {
 
         {/* Columna de comentarios */}
         <Box sx={{ flex: 2, ml: 4 }}>
-          <Typography variant="h6" sx={{ mb: 2, fontSize: "17px" }}>
+          <Typography variant="h5" sx={{ mb: 2, fontSize: "22px" }}>
             {t("OrdersHistory.Comments")}
           </Typography>
           <TextField

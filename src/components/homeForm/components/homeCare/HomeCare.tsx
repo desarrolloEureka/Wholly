@@ -69,7 +69,7 @@ export const HomeCare = () => {
         </Button>
         <Box>
           <Typography
-            variant="h4"
+            variant="h3"
             sx={{
               marginRight: "40px",
               fontSize: "1.2rem",
@@ -116,7 +116,7 @@ export const HomeCare = () => {
             width: "50%",
             cursor: "pointer",
             transition: "transform 0.2s ease-in-out",
-            marginLeft: "73%", // Mueve el Box al extremo derecho
+            marginLeft: "68%", // Mueve el Box al extremo derecho
             "&:hover": {
               transform: "translateX(5px)",
             },

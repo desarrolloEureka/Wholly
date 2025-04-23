@@ -45,8 +45,10 @@ export const Orders = () => {
               sx={{ mb: 2 }}
             >
               <Typography
+                variant="h1"
                 onClick={() => setActiveTab("history")}
                 sx={{
+                  fontSize: "16px",
                   cursor: "pointer",
                   color: activeTab === "history" ? "#A5AB94" : "#B9B9B9",
                   fontWeight: activeTab === "history" ? 500 : "normal",
@@ -58,8 +60,10 @@ export const Orders = () => {
                 {t("Orders.OrdersHistory")}
               </Typography>
               <Typography
+                variant="h1"
                 onClick={() => setActiveTab("active")}
                 sx={{
+                  fontSize: "16px",
                   cursor: "pointer",
                   color: activeTab === "active" ? "#A5AB94" : "#B9B9B9",
                   fontWeight: activeTab === "active" ? 500 : "normal",

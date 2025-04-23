@@ -47,7 +47,7 @@ export const Home = () => {
         }}
       >
         <Typography
-          variant="h3"
+          variant="h1"
           sx={{
             marginTop: "5%",
             marginBottom: "3%",

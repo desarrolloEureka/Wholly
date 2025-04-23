@@ -33,7 +33,7 @@ export const OurStory = () => {
         }}
       >
         <Box sx={{ flex: 1, textAlign: "center", px: 4 }}>
-          <Typography variant="h5" fontWeight="bold" gutterBottom>
+          <Typography variant="h4" fontWeight="bold" gutterBottom>
             {t("Us.ourStory")}
           </Typography>
           <Typography

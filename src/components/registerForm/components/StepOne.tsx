@@ -169,23 +169,19 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
         }}
       >
         {generalError && (
-          <Typography
-            variant="body1"
-            color="error"
-            sx={{ marginBottom: "16px" }}
-          >
+          <Typography color="error" sx={{ marginBottom: "16px" }}>
             {generalError}
           </Typography>
         )}
         <Box>
           <Typography
-            variant="h5"
+            variant="h3"
             sx={{
               fontSize: "27px", // Nota: notación camelCase para 'fontSize'
               textDecorationSkipInk: "none",
             }}
           >
-            {t("registerForm.registrationTitle")}{" "}
+            {t("registerForm.registrationTitle")}
             <span
               style={{
                 fontFamily: "Gabriela",
@@ -225,7 +221,7 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
             }}
           >
             <FormControl fullWidth sx={{ marginBottom: "16px" }}>
-              <Typography>
+              <Typography variant="h6">
                 <Box
                   style={{
                     display: "flex",
@@ -252,7 +248,7 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
             </FormControl>
 
             <FormControl fullWidth sx={{ marginBottom: "16px" }}>
-              <Typography>
+              <Typography variant="h6">
                 <Box
                   style={{
                     display: "flex",
@@ -279,7 +275,7 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
             </FormControl>
 
             <FormControl fullWidth sx={{ marginBottom: "16px" }}>
-              <Typography>
+              <Typography variant="h6">
                 <Box
                   style={{
                     display: "flex",
@@ -308,7 +304,7 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
             </FormControl>
 
             <FormControl fullWidth sx={{ marginBottom: "16px" }}>
-              <Typography>
+              <Typography variant="h6">
                 <Box
                   style={{
                     display: "flex",
@@ -348,7 +344,7 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
             </FormControl>
 
             <FormControl fullWidth sx={{ marginBottom: "16px" }}>
-              <Typography>
+              <Typography variant="h6">
                 <Box
                   style={{
                     display: "flex",
@@ -399,7 +395,7 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
             }}
           >
             <FormControl fullWidth sx={{ marginBottom: "16px" }}>
-              <Typography>
+              <Typography variant="h6">
                 <Box
                   style={{
                     display: "flex",
@@ -427,7 +423,7 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
               />
             </FormControl>
 
-            <Typography>
+            <Typography variant="h6">
               <Box
                 style={{
                   display: "flex",
@@ -474,7 +470,7 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
               {/* Primer Box para las opciones Biológicas */}
               <Box display="flex" justifyContent="space-around" gap={5}>
                 <FormControl component="fieldset">
-                  <Typography>
+                  <Typography variant="h6">
                     <Box
                       style={{
                         display: "flex",
@@ -530,7 +526,7 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
               {/* Segundo Box para las opciones de Género */}
               <Box display="flex" justifyContent="space-around" gap={5}>
                 <FormControl component="fieldset">
-                  <Typography>
+                  <Typography variant="h6">
                     <Box
                       style={{
                         display: "flex",
@@ -601,7 +597,7 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
               {/* Tercer Box para las opciones  */}
               <Box display="flex" justifyContent="space-around" gap={5}>
                 <FormControl component="fieldset">
-                  <Typography>
+                  <Typography variant="h6">
                     <Box
                       style={{
                         display: "flex",

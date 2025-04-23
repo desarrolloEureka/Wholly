@@ -16,7 +16,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Futura, sans-serif", // Fuente por defecto para todo
+    fontFamily: "Arial, sans-serif", // Fuente por defecto para todo
     h1: {
       fontFamily: "Mango, sans-serif",
       fontWeight: 700,
@@ -30,15 +30,15 @@ const theme = createTheme({
       fontWeight: 500,
     },
     h4: {
-      fontFamily: "Mango, sans-serif",
+      fontFamily: "Futura, sans-serif",
       fontWeight: 500,
     },
     h5: {
-      fontFamily: "Mango, sans-serif",
+      fontFamily: "Futura, sans-serif",
       fontWeight: 400,
     },
     h6: {
-      fontFamily: "Mango, sans-serif",
+      fontFamily: "Futura, sans-serif",
       fontWeight: 400,
     },
   },

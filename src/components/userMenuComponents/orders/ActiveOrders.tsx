@@ -77,7 +77,7 @@ export const ActiveOrders = ({ onAddNew }: { onAddNew: () => void }) => {
                     borderBottom: "none", // quitamos la línea individual de cada celda
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontSize: "12px" }}>
+                  <Typography variant="h4" sx={{ fontSize: "18px" }}>
                     {header}
                   </Typography>
                 </TableCell>

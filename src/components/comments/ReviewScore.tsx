@@ -36,15 +36,20 @@ const ReviewScore = () => {
 
       <Box>
         <Typography
+          variant="h6"
           component="span"
-          fontWeight="normal"
-          fontSize="1.5rem"
-          sx={{ marginLeft: "10px", color: "#3C3C3C" }}
+          fontSize="1.6rem"
+          sx={{ color: "#3C3C3C" }}
         >
           Wholly
         </Typography>
 
-        <Typography fontSize="1.2rem" color="text.secondary" sx={{ mb: 1 }}>
+        <Typography
+          variant="h6"
+          fontSize="1.6rem"
+          color="text.secondary"
+          sx={{ mb: 0 }}
+        >
           Personalized supplements
         </Typography>
 

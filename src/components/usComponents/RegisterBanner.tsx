@@ -20,6 +20,7 @@ const RegisterBanner = () => {
       }}
     >
       {/* Imagen */}
+
       <Box
         component="img"
         src={SmallFace}

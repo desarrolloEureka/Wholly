@@ -39,7 +39,9 @@ const PaymentMethodsList = ({
         sx={{ mb: 4, borderRadius: 8, textTransform: "none", width: "12%" }}
         onClick={onAddPaymentMethod}
       >
-        {t("PaymentMethodsForm.new")}
+        <Typography variant="h6" fontSize={17}>
+          {t("PaymentMethodsForm.new")}
+        </Typography>
       </Button>
 
       <Box

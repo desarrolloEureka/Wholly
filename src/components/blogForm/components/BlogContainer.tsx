@@ -89,7 +89,7 @@ export const BlogContainer = () => {
         </Button>
         <Box>
           <Typography
-            variant="h4"
+            variant="h3"
             sx={{
               marginRight: "40px",
               fontSize: "1.2rem",
@@ -142,7 +142,7 @@ export const BlogContainer = () => {
             },
           }}
         >
-          <Typography>{t("blogForm.learnMore")}</Typography>
+          <Typography variant="h6">{t("blogForm.learnMore")}</Typography>
           <ChevronRightIcon sx={{ fontSize: 20, color: "#FBFFDD" }} />
         </Box>
       </Box>

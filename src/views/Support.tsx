@@ -26,7 +26,7 @@ export const Support = () => {
           pb={2}
         >
           <Typography
-            variant="h6"
+            variant="h3"
             borderBottom="1px solid #3C3C3C"
             sx={{
               padding: "15px",

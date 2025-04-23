@@ -58,7 +58,7 @@ export const CheckoutForm = () => {
               <Typography
                 variant="h6"
                 sx={{
-                  fontSize: "9px",
+                  fontSize: "18px",
                   color: expanded === option ? "#A5AB94" : " #A5AB94",
                   opacity: expanded === option ? 1 : 0.6,
                   transition:
@@ -139,7 +139,7 @@ export const CheckoutForm = () => {
                   <Typography
                     variant="h6"
                     sx={{
-                      fontSize: "12px",
+                      fontSize: "20px",
                       color: expanded === option ? "#000" : "inherit",
                       opacity: expanded === option ? 1 : 0.6,
                       transition:
@@ -156,7 +156,7 @@ export const CheckoutForm = () => {
 
               {/* Contenido desplegable */}
               <Collapse in={expanded === option}>
-                <Box>{content[option]}</Box>
+                <Box>{content[option]} </Box>
 
                 <Box
                   sx={{

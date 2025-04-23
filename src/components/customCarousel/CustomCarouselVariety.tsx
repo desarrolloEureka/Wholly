@@ -83,13 +83,9 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           }}
         >
           <Typography
-            variant="h6"
+            variant="h5"
             sx={{
-              fontSize: {
-                xs: "1rem",
-                md: "1.1rem",
-              },
-              fontWeight: "bold",
+              fontWeight: 600,
               marginTop: "8px",
               color: textColor,
             }}

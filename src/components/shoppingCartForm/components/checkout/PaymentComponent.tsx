@@ -88,8 +88,9 @@ export const PaymentComponent = () => {
           />
         </Box>
 
-        <Typography>{t("shoppingCart.SecurePaymentMessage")}</Typography>
-
+        <Typography variant="h6" sx={{ fontSize: "1.1rem" }}>
+          {t("shoppingCart.SecurePaymentMessage")}
+        </Typography>
         {/* Número de tarjeta */}
         <TextField
           id="card-number"

@@ -114,7 +114,7 @@ export const InternalCategoriestyform = () => {
                   variant="h4"
                   sx={{
                     marginTop: "10px",
-                    fontSize: "1.2rem",
+                    fontSize: "1.4rem",
                     fontWeight: "bold",
                     color: textColor,
                   }}

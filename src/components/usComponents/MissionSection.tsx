@@ -20,8 +20,8 @@ const MissionSection = () => {
           <Typography
             variant="h3"
             sx={{
-              fontFamily: "'Playfair Display', serif",
-              fontWeight: "bold",
+              fontSize: 36,
+              fontWeight: 500,
               color: "#333",
               mb: 2,
             }}

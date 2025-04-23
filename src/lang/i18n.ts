@@ -72,10 +72,13 @@ i18n
             repeat_password: "Repita la contraseña",
             button_step_one: "Enviar Código",
             button_step_two: "Verificar Código",
-            button_step_three: "Enviar Password",
+            button_step_three: "Guardar contraseña",
+            button_step_four: "Iniciar sesión",
             errorEmail: "El correo es obligatorio",
             errorPassword: "El password es obligatorio",
             errorTerms: "Debes aceptar los terminos y condiciones",
+            passwordRecovery:
+              "Su contraseña ha sido creada exitosamente, regrese al inicio para ingresar al sistema.",
           },
           customAppBar: {
             category: "Categoría",
@@ -219,7 +222,7 @@ i18n
             shopNowExclusive2: "COMPRA AHORA",
             shopNowExclusive3: "COMPRA AHORA",
             blog: "Blog",
-            bestCare: "Mejor cuidado para prevenir el acné",
+            bestCare: "Mejor cuidado para prevenir el acne",
             learnMore: "APRENDE MÁS",
             date: "18 de enero de 2024",
           },
@@ -262,9 +265,9 @@ i18n
             Close_list: "Cerrar lista",
             YouLike: "También te puede gustar",
             SunBlock: "Bloqueador solar",
-            Description: "Descripción",
+            Description: "Descripcion",
             Indications: "Indicaciones",
-            HowUse: "Cómo usar",
+            HowUse: "Como usar",
             Precautions: "Precauciones",
             Interactions: "Interacciones",
             Contraindications: "Contraindicaciones",
@@ -336,6 +339,7 @@ i18n
             shippingMessage: "Se calculará en el siguiente paso",
             total: "Total",
             secureCheckout: "Pago seguro",
+            quantity: "Cantidad",
           },
           payForm: {
             SuccessfulPurchase: "Compra Exitosa",
@@ -364,7 +368,7 @@ i18n
             blog: "Blog",
             bestCare: "Mejor cuidado para prevenir el acné",
             date: "Marzo 2025",
-            learnMore: "Saber más",
+            learnMore: "Saber mas",
             title: "EL MEJOR CUIDADO PARA PREVENIR EL ACNE",
             paragraph1:
               " Espanol Sed ut perspiciatis unde omnis iste natus error sit voluptatem Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
@@ -386,7 +390,7 @@ i18n
             completeKits: "Kits completos",
           },
           Comments: {
-            knoWcomments: "Comentarios y calificación",
+            knoWcomments: "Comentarios y calificacion",
           },
           Us: {
             welcome: "Bienvenido a Wholly",
@@ -402,12 +406,12 @@ i18n
             users: "USUARIOS",
             supplements: "SUPLEMENTOS",
             references: "REFERENCIAS",
-            mission: "Misión",
+            mission: "Mision",
             lorem3:
               "Posuere urna nec tincidunt praesent. Egestas maecenas pharetraconvallis posuere. Ipsum nunc aliquet bibendum enim. Sem integervitae justo eget magna fermentum iaculis eu non. Posuere urna nectincidunt praesent. Egestas maecenas pharetra convallis posuere.Ipsum nunc aliquet bibendum enim. Sem integer vitae justo eget magnafermentum iaculis eu non.",
           },
           userMenu: {
-            settings: "Configuración",
+            settings: "Configuracion",
             editProfile: "Editar perfil",
             myClinicalHistory: "Mi historial clínico",
             myOrders: "Mis pedidos",
@@ -424,6 +428,7 @@ i18n
             zipCode: "Codigo postal",
             city: "Ciudad",
             state: "Estado",
+            defaultAddress: "Direccion predeterminada para compras",
             cancel: "Cancelar",
             save: "Guardar",
           },
@@ -503,9 +508,12 @@ i18n
             button_step_one: "Send code",
             button_step_two: "Verify code",
             button_step_three: "Save password",
+            button_step_four: "Log in",
             errorEmail: "The email is requiered",
             errorPassword: "The password is required",
             errorTerms: "You must accept the terms and conditions",
+            passwordRecovery:
+              "Your password has been created successfully, return to the home page to log in to the system.",
           },
           footerApp: {
             compatibleProducts: "Compatible products",
@@ -776,6 +784,7 @@ i18n
             shippingMessage: "Calculated at next step",
             total: "Total",
             secureCheckout: "Secure Checkout",
+            quantity: "Quantity",
           },
           payForm: {
             SuccessfulPurchase: "Successful Purchase",
@@ -863,6 +872,7 @@ i18n
             zipCode: "Zip code",
             city: "City",
             state: "State",
+            defaultAddress: "Default address for shopping",
             cancel: "Cancel",
             save: "Save",
           },

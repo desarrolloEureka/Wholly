@@ -9,7 +9,7 @@ const StatsSection = () => {
   return (
     <Box sx={{ px: 4, py: 8 }}>
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
+        <Typography variant="h3" sx={{ fontWeight: 500, mb: 2, fontSize: 26 }}>
           {t("Us.loremstats")}
         </Typography>
         <Typography variant="body1" sx={{ color: "#444", maxWidth: 600 }}>

@@ -37,7 +37,7 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
             <PersonPin sx={{ color: "#3C3C3C" }} />
             <Typography
               variant="h6"
-              sx={{ color: "#3C3C3C", fontSize: "0.9rem" }}
+              sx={{ color: "#3C3C3C", fontSize: "1.3rem" }}
             >
               {t("addressesForm.addressName")}
             </Typography>
@@ -68,7 +68,7 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
             <LocationOn sx={{ color: "#3C3C3C" }} />
             <Typography
               variant="h6"
-              sx={{ color: "#3C3C3C", fontSize: "0.9rem" }}
+              sx={{ color: "#3C3C3C", fontSize: "1.3rem" }}
             >
               {t("addressesForm.address")}
             </Typography>
@@ -98,7 +98,7 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
               <Phone sx={{ color: "#3C3C3C" }} />
               <Typography
                 variant="h6"
-                sx={{ color: "#3C3C3C", fontSize: "0.9rem" }}
+                sx={{ color: "#3C3C3C", fontSize: "1.3rem" }}
               >
                 {t("addressesForm.contactNumber")}
               </Typography>
@@ -127,7 +127,7 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
               <LocalLibrary sx={{ color: "#3C3C3C" }} />
               <Typography
                 variant="h6"
-                sx={{ color: "#3C3C3C", fontSize: "0.9rem" }}
+                sx={{ color: "#3C3C3C", fontSize: "1.3rem" }}
               >
                 {t("addressesForm.zipCode")}
               </Typography>
@@ -158,7 +158,7 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
               <PinDrop sx={{ color: "#3C3C3C" }} />
               <Typography
                 variant="h6"
-                sx={{ color: "#3C3C3C", fontSize: "0.9rem" }}
+                sx={{ color: "#3C3C3C", fontSize: "1.3rem" }}
               >
                 {t("addressesForm.city")}
               </Typography>
@@ -193,7 +193,7 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
               <Map sx={{ color: "#3C3C3C" }} />
               <Typography
                 variant="h6"
-                sx={{ color: "#3C3C3C", fontSize: "0.9rem" }}
+                sx={{ color: "#3C3C3C", fontSize: "1.3rem" }}
               >
                 {t("addressesForm.state")}
               </Typography>
@@ -237,7 +237,7 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
               }}
             />
           }
-          label="Default address for shopping"
+          label={t("addressesForm.defaultAddress")}
           sx={{ pl: 1 }}
         />
 

@@ -65,7 +65,9 @@ const AddressList = ({ onAddNew }: { onAddNew: () => void }) => {
           startIcon={<Add />}
           sx={{ mb: 4, borderRadius: 8, textTransform: "none" }}
         >
-          {t("addressesForm.newAddress")}
+          <Typography variant="h6" fontSize={17}>
+            {t("addressesForm.newAddress")}
+          </Typography>
         </Button>
 
         <Box
@@ -104,7 +106,10 @@ const AddressList = ({ onAddNew }: { onAddNew: () => void }) => {
               >
                 <Box display="flex" alignItems="center" mb={1}>
                   <LocationOn sx={{ color: "#94a18c", mr: 1 }} />
-                  <Typography sx={{ fontWeight: "bold", color: "#94a18c" }}>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontSize: 20, fontWeight: "bold", color: "#94a18c" }}
+                  >
                     {address.label}
                   </Typography>
                 </Box>

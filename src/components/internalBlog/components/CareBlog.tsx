@@ -42,7 +42,7 @@ export const CareBlog = () => {
         </Button>
         <Box>
           <Typography
-            variant="h4"
+            variant="h3"
             sx={{
               marginRight: "40px",
               fontSize: "1.2rem",

@@ -78,7 +78,7 @@ export const RegisterHome = () => {
       >
         <Typography
           variant="h3"
-          sx={{ mb: 4, fontSize: "2.1rem", color: "#3C3C3C" }}
+          sx={{ mb: 4, fontSize: "1.8rem", color: "#3C3C3C" }}
         >
           {t("homeform.title2")}
         </Typography>
@@ -153,7 +153,7 @@ export const RegisterHome = () => {
           </IconButton>
 
           <Typography
-            variant="h1"
+            variant="h4"
             sx={{
               fontSize: "1.1rem",
               marginBottom: "10px",
@@ -202,7 +202,7 @@ export const RegisterHome = () => {
               onChange={handleChange(id)}
             >
               <AccordionSummary expandIcon={<AddIcon />}>
-                <Typography>{title}</Typography>
+                <Typography variant="h6">{title}</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>{content}</Typography>

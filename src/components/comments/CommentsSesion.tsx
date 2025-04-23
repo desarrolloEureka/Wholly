@@ -161,7 +161,7 @@ export const CommentsSesion = () => {
                 <Avatar sx={{ bgcolor: "#A5AB94", width: 66, height: 66 }}>
                   <PersonOutline sx={{ fontSize: 38 }} />
                 </Avatar>
-                <Typography sx={{ fontWeight: "bold", fontSize: 16 }}>
+                <Typography variant="h4" sx={{ fontSize: 18 }}>
                   {comment.name}
                 </Typography>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>

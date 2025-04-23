@@ -76,9 +76,9 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
               sx={{
                 fontSize: {
                   xs: "1rem",
-                  md: "1.2rem",
+                  md: "1.3rem",
                 },
-                fontWeight: "bold",
+                fontWeight: 600,
                 color: textColor,
               }}
             >
@@ -160,13 +160,15 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
                 },
               }}
             >
-              {item.description3}
+              <Typography variant="h4" sx={{ fontSize: "17px" }}>
+                {item.description3}
+              </Typography>
               <ChevronRightIcon
                 sx={{
                   fontSize: 20,
                   color: textColor,
                   position: "relative",
-                  top: "-2.5px",
+                  bottom: "-2.9px",
                 }}
               />
             </Box>

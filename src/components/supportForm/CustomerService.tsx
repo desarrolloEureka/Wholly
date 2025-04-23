@@ -38,7 +38,7 @@ export const CustomerService = () => {
           }}
         >
           <Typography
-            variant="h5"
+            variant="h4"
             color="#A5AB94"
             borderBottom="1px solid #3C3C3C"
             sx={{

@@ -1,7 +1,6 @@
 import { Box, Button, Drawer, Typography } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
@@ -27,11 +26,7 @@ export const UserMenu = () => {
       icon: <EditOutlinedIcon sx={{ fontSize: 30, marginRight: "10px" }} />,
       onClick: () => navigate("/EditProfile/true"),
     },
-    {
-      label: t("userMenu.myClinicalHistory"),
-      icon: <SettingsOutlinedIcon sx={{ fontSize: 35, marginRight: "10px" }} />,
-      onClick: () => navigate("/"),
-    },
+
     {
       label: t("userMenu.myOrders"),
       icon: (
@@ -54,6 +49,7 @@ export const UserMenu = () => {
       icon: (
         <HelpOutlineOutlinedIcon sx={{ fontSize: 35, marginRight: "10px" }} />
       ),
+      onClick: () => navigate("/support"),
     },
     {
       label: t("userMenu.logOut"),
@@ -109,10 +105,10 @@ export const UserMenu = () => {
             />
           </Button>
           <Typography
+            variant="h3"
             sx={{
               color: "#3C3C3C",
-              fontFamily: "Roboto,sans-serif",
-              fontSize: "22px",
+              fontSize: "18px",
               fontWeight: "bold",
             }}
           >
@@ -136,7 +132,9 @@ export const UserMenu = () => {
               }}
             >
               {item.icon}
-              {item.label}
+              <Typography variant="h6" sx={{ fontSize: "20px" }}>
+                {item.label}
+              </Typography>
             </Button>
           </Box>
         ))}

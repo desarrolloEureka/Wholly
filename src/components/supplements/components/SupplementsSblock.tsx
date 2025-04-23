@@ -86,9 +86,10 @@ export const SupplementsSblock = () => {
         }}
       >
         <Typography
-          variant="h5"
+          variant="h3"
           gutterBottom
           sx={{
+            fontSize: "1.8rem",
             color: "rgba(31, 31, 31, 0.85)",
             marginTop: isMobile || isTablet ? "20px" : "70px",
             marginBottom: "10px",
@@ -138,7 +139,7 @@ export const SupplementsSblock = () => {
               </Typography>
               <Typography
                 variant="h6"
-                sx={{ color: "#3C3C3C", fontSize: "1.0rem" }}
+                sx={{ color: "#3C3C3C", fontSize: "19px" }}
               >
                 {title}
               </Typography>
@@ -193,10 +194,10 @@ export const SupplementsSblock = () => {
               }}
             >
               <Typography
-                variant="h6"
+                variant="h4"
                 sx={{
-                  fontWeight: "bold",
-                  fontSize: "0.8rem",
+                  fontWeight: 500,
+                  fontSize: "1.3rem",
                   color: "#3C3C3C",
                 }}
               >
@@ -228,11 +229,11 @@ export const SupplementsSblock = () => {
               }}
             >
               <Typography
-                variant="h6"
+                variant="h4"
                 sx={{
-                  fontSize: "0.8rem",
-                  fontWeight: "bold",
-                  width: "44%",
+                  fontSize: "1.1rem",
+                  fontWeight: 500,
+                  width: "50%",
                   textAlign: "left",
                   color: "#3C3C3C",
                 }}
@@ -272,7 +273,7 @@ export const SupplementsSblock = () => {
               sx={{
                 width: "80%",
                 backgroundColor: "#ffff",
-                marginLeft: "80px",
+                marginLeft: "71px",
                 color: "#3C3C3C",
               }}
             >
