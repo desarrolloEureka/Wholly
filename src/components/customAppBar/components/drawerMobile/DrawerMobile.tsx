@@ -25,7 +25,6 @@ import {
   Build as BuildIcon,
   AccountCircle as AccountCircleIcon,
   Edit as EditIcon,
-  History as HistoryIcon,
   ShoppingCart as ShoppingCartIcon,
   LocationOn as LocationOnIcon,
   Payment as PaymentIcon,
