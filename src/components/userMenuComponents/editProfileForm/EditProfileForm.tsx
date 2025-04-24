@@ -1,14 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { useRef, useState } from 'react';
-import {
-  Box,
-  Button,
-  useTheme,
-  MobileStepper,
-  Typography,
-  IconButton,
-} from '@mui/material';
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import MobileStepper from '@mui/material/MobileStepper';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
 import { OptionsButtons } from '../../../globals/types';
 import { InteractiveText } from '../../../globals/elements';
 import { ContentStepper } from '../../registerForm/components/contentStepper/ContentStepper';
@@ -16,7 +13,9 @@ import { ContentStepperSpecial } from '../../registerForm/components/contentStep
 import { EditStepOne } from './components/EditStepOne';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import AddIcon from '@mui/icons-material/Add';
-import { useNavigate } from 'react-router-dom';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import useTheme from '@mui/material/styles/useTheme';
 
 const EditProfileForm = ({ edit }: { edit: string | undefined }) => {
   const navigate = useNavigate();
