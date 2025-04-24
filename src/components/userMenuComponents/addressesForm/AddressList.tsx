@@ -1,6 +1,6 @@
-import { Box, Typography, IconButton, Button, Stack } from "@mui/material";
-import { Edit, Delete, Add, LocationOn } from "@mui/icons-material";
-import { useTranslation } from "react-i18next";
+import { Box, Typography, IconButton, Button, Stack } from '@mui/material';
+import { Edit, Delete, Add, LocationOn } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 
 type Address = {
   id: number;
@@ -14,24 +14,59 @@ type Address = {
 const addressList: Address[] = [
   {
     id: 1,
-    label: "Default address",
-    addressLine: "8001 S Orange Blossom Trl",
-    city: "Orlando, FL 32809",
-    phone: "+01 309 749 4631",
+    label: 'Default address',
+    addressLine: '8001 S Orange Blossom Trl',
+    city: 'Orlando, FL 32809',
+    phone: '+01 309 749 4631',
   },
   {
     id: 2,
-    label: "Mom",
-    addressLine: "8001 S Orange Blossom Trl",
-    city: "Orlando, FL 32809",
-    phone: "+01 309 749 4631",
+    label: 'Mom',
+    addressLine: '8001 S Orange Blossom Trl',
+    city: 'Orlando, FL 32809',
+    phone: '+01 309 749 4631',
   },
   {
     id: 3,
-    label: "Mom",
-    addressLine: "8001 S Orange Blossom Trl",
-    city: "Orlando, FL 32809",
-    phone: "+01 309 749 4631",
+    label: 'Mom',
+    addressLine: '8001 S Orange Blossom Trl',
+    city: 'Orlando, FL 32809',
+    phone: '+01 309 749 4631',
+  },
+  {
+    id: 3,
+    label: 'Mom',
+    addressLine: '8001 S Orange Blossom Trl',
+    city: 'Orlando, FL 32809',
+    phone: '+01 309 749 4631',
+  },
+  {
+    id: 3,
+    label: 'Mom',
+    addressLine: '8001 S Orange Blossom Trl',
+    city: 'Orlando, FL 32809',
+    phone: '+01 309 749 4631',
+  },
+  {
+    id: 3,
+    label: 'Mom',
+    addressLine: '8001 S Orange Blossom Trl',
+    city: 'Orlando, FL 32809',
+    phone: '+01 309 749 4631',
+  },
+  {
+    id: 3,
+    label: 'Mom',
+    addressLine: '8001 S Orange Blossom Trl',
+    city: 'Orlando, FL 32809',
+    phone: '+01 309 749 4631',
+  },
+  {
+    id: 3,
+    label: 'Mom',
+    addressLine: '8001 S Orange Blossom Trl',
+    city: 'Orlando, FL 32809',
+    phone: '+01 309 749 4631',
   },
 ];
 
@@ -50,39 +85,38 @@ const AddressList = ({ onAddNew }: { onAddNew: () => void }) => {
     <Box
       p={4}
       sx={{
-        backgroundColor: "#ece8e1",
-        minHeight: "70vh",
-        display: "flex",
-        justifyContent: "center",
-        margin: "0 auto",
+        minHeight: '80vh',
+        display: 'flex',
+        justifyContent: 'center',
+        margin: '0 auto',
       }}
     >
       {/* Wrapper que contiene todo el contenido */}
-      <Box sx={{ width: "80%" }}>
+      <Box sx={{ width: '80%' }}>
         <Button
-          variant="outlined"
+          variant='outlined'
           onClick={onAddNew}
           startIcon={<Add />}
-          sx={{ mb: 4, borderRadius: 8, textTransform: "none" }}
+          sx={{ mb: 4, borderRadius: 8, textTransform: 'none' }}
         >
-          <Typography variant="h6" fontSize={17}>
-            {t("addressesForm.newAddress")}
+          <Typography variant='h6' fontSize={17}>
+            {t('addressesForm.newAddress')}
           </Typography>
         </Button>
 
         <Box
           sx={{
-            maxHeight: 420,
-            overflowY: "auto",
-            "&::-webkit-scrollbar": {
-              width: "6px",
+            maxHeight: 560,
+            overflowY: 'auto',
+            '&::-webkit-scrollbar': {
+              width: '6px',
             },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "#ccc",
-              borderRadius: "6px",
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: '#ccc',
+              borderRadius: '6px',
             },
-            "&::-webkit-scrollbar-track": {
-              backgroundColor: "transparent",
+            '&::-webkit-scrollbar-track': {
+              backgroundColor: 'transparent',
             },
           }}
         >
@@ -94,58 +128,69 @@ const AddressList = ({ onAddNew }: { onAddNew: () => void }) => {
                 sx={{
                   borderRadius: 2,
                   boxShadow: 3,
-                  backgroundColor: "#fff",
+                  backgroundColor: '#fff',
                   p: 2,
-                  position: "relative",
-                  cursor: "pointer",
-                  transition: "0.2s",
-                  "&:hover": {
+                  position: 'relative',
+                  cursor: 'pointer',
+                  transition: '0.2s',
+                  '&:hover': {
                     boxShadow: 6,
                   },
                 }}
               >
-                <Box display="flex" alignItems="center" mb={1}>
-                  <LocationOn sx={{ color: "#94a18c", mr: 1 }} />
+                <Box display='flex' alignItems='center' mb={1}>
+                  <LocationOn sx={{ color: '#94a18c', mr: 1 }} />
                   <Typography
-                    variant="h6"
-                    sx={{ fontSize: 20, fontWeight: "bold", color: "#94a18c" }}
+                    variant='h6'
+                    sx={{ fontSize: 20, fontWeight: 'bold', color: '#94a18c' }}
                   >
                     {address.label}
                   </Typography>
                 </Box>
 
-                <Typography variant="body2">{address.addressLine}</Typography>
-                <Typography variant="body2">{address.city}</Typography>
-                <Typography variant="body2">{address.phone}</Typography>
+                <Typography variant='body2'>{address.addressLine}</Typography>
+                <Typography variant='body2'>{address.city}</Typography>
+                <Typography variant='body2'>{address.phone}</Typography>
 
                 <Box
                   onClick={(e) => e.stopPropagation()}
                   sx={{
-                    position: "absolute",
+                    position: 'absolute',
                     top: 8,
                     right: 8,
-                    display: "flex",
+                    display: 'flex',
                     gap: 1,
                   }}
                 >
                   <IconButton
                     onClick={() => handleDelete(address.id)}
-                    sx={{ color: "#a8b49a" }}
+                    sx={{ color: '#a8b49a' }}
                   >
                     <Edit />
                   </IconButton>
                 </Box>
-                <IconButton
-                  onClick={() => handleEdit(address.id)}
+                <Box
+                  onClick={(e) => e.stopPropagation()}
                   sx={{
-                    display: "flex",
-                    left: "94%",
-                    alignItems: "center",
-                    color: "#e57373",
+                    position: 'absolute',
+                    bottom: 8,
+                    right: 8,
+                    display: 'flex',
+                    gap: 1,
                   }}
                 >
-                  <Delete />
-                </IconButton>
+                  <IconButton
+                    onClick={() => handleEdit(address.id)}
+                    sx={{
+                      display: 'flex',
+                      right: 0,
+                      alignItems: 'center',
+                      color: '#e57373',
+                    }}
+                  >
+                    <Delete />
+                  </IconButton>
+                </Box>
               </Box>
             ))}
           </Stack>

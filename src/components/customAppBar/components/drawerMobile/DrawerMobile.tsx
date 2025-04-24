@@ -1,6 +1,8 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import ErrorIcon from '@mui/icons-material/Error';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ExpandLess from '@mui/icons-material/ExpandLess';
 import {
   Box,
   Drawer,
@@ -12,7 +14,7 @@ import {
   ListItemIcon,
   ListItemText,
   Collapse,
-} from "@mui/material";
+} from '@mui/material';
 import {
   ArrowBack as ArrowBackIcon,
   Home as HomeIcon,
@@ -28,8 +30,9 @@ import {
   LocationOn as LocationOnIcon,
   Payment as PaymentIcon,
   ExitToApp as LogoutIcon,
-} from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+} from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import Alert from '../../../alert/Alert';
 
 interface DrawerMobileProps {
   openDrawer: boolean;
@@ -41,20 +44,28 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({
   setOpenDrawer,
 }) => {
   const { t } = useTranslation();
-  const [openProfile, setOpenProfile] = React.useState(false);
+  const [showLogOut, setShowLogOut] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
   const handleProfileClick = () => setOpenProfile(!openProfile);
-  const TEXT_COLOR = "#3C3C3C";
+  const TEXT_COLOR = '#3C3C3C';
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    console.log('oooooo');
+
+    setOpenDrawer(false);
+    setShowLogOut(true);
+  };
 
   return (
     <Box>
       <Drawer
-        anchor="left"
+        anchor='left'
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         PaperProps={{
           sx: {
-            borderRadius: "12px",
+            borderRadius: '12px',
             boxShadow: 3,
             m: 2,
             width: 250,
@@ -68,26 +79,26 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({
               <ArrowBackIcon />
             </IconButton>
             <Typography
-              variant="h6"
+              variant='h6'
               sx={{
                 fontWeight: 400,
-                textAlign: "center",
+                textAlign: 'center',
                 flexGrow: 1,
-                marginRight: "40px",
+                marginRight: '40px',
                 color: TEXT_COLOR,
               }}
             >
-              {t("customAppBar.menu")}
+              {t('customAppBar.menu')}
             </Typography>
           </ListItem>
           {/* Home */}
           <ListItem disablePadding>
-            <ListItemButton onClick={() => navigate("/")}>
+            <ListItemButton onClick={() => navigate('/')}>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText
-                primary={t("customAppBar.home")}
+                primary={t('customAppBar.home')}
                 sx={{ color: TEXT_COLOR }}
               />
             </ListItemButton>
@@ -99,26 +110,54 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({
                 <AccountCircleIcon />
               </ListItemIcon>
               <ListItemText
-                primary={t("customAppBar.profile")}
+                primary={t('customAppBar.profile')}
                 sx={{ color: TEXT_COLOR }}
               />
               {openProfile ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
           </ListItem>
           {/* Submenú de Profile */}
-          <Collapse in={openProfile} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding sx={{ pl: 2 }}>
+          <Collapse in={openProfile} timeout='auto' unmountOnExit>
+            <List component='div' disablePadding sx={{ pl: 2 }}>
               {[
-                { label: "edit_profile", icon: <EditIcon /> },
-                { label: "clinical_history", icon: <HistoryIcon /> },
-                { label: "orders", icon: <ShoppingCartIcon /> },
-                { label: "addresses", icon: <LocationOnIcon /> },
-                { label: "payment_methods", icon: <PaymentIcon /> },
-                { label: "support", icon: <SupportIcon /> },
-                { label: "logout", icon: <LogoutIcon /> },
+                {
+                  label: 'edit_profile',
+                  key: 'edit_profile',
+                  route: '/EditProfile/true',
+                  icon: <EditIcon />,
+                },
+                {
+                  label: 'orders',
+                  key: 'orders',
+                  route: '/Orders',
+                  icon: <ShoppingCartIcon />,
+                },
+                {
+                  label: 'addresses',
+                  key: 'addresses',
+                  route: '/Addresses',
+                  icon: <LocationOnIcon />,
+                },
+                {
+                  label: 'payment_methods',
+                  key: 'payment_methods',
+                  route: '/PaymentMethods',
+                  icon: <PaymentIcon />,
+                },
+                {
+                  label: 'aboutUs',
+                  key: 'about_us',
+                  route: '/about_us',
+                  icon: <SupportIcon />,
+                },
+                { label: 'logout', key: 'logout', icon: <LogoutIcon /> },
               ].map((item) => (
                 <ListItem key={item.label} disablePadding>
-                  <ListItemButton>
+                  <ListItemButton
+                    onClick={() =>
+                      item.route ? navigate(item.route) : handleLogout()
+                    }
+                  >
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText
                       primary={t(`customAppBar.${item.label}`)}
@@ -132,30 +171,30 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({
           {/* Botones principales */}
           {[
             {
-              label: "category",
-              key: "category",
+              label: 'category',
+              key: 'category',
               icon: <CategoryIcon />,
-              route: "/category",
+              route: '/category',
             },
             {
-              label: "blog",
-              key: "blog",
+              label: 'blog',
+              key: 'blog',
               icon: <ArticleIcon />,
-              route: "/blog",
+              route: '/blog',
             },
             {
-              label: "support",
-              key: "support",
+              label: 'support',
+              key: 'support',
               icon: <SupportIcon />,
-              route: "/support",
+              route: '/support',
             },
             {
-              label: "aboutUs",
-              key: "about_us",
+              label: 'aboutUs',
+              key: 'about_us',
               icon: <InfoIcon />,
-              route: "/about-us",
+              route: '/about_us',
             },
-            { label: "kits", key: "kits", icon: <BuildIcon />, route: "/kits" },
+            { label: 'kits', key: 'kits', icon: <BuildIcon />, route: '/kits' },
           ].map((item) => (
             <ListItem key={item.label} disablePadding>
               <ListItemButton onClick={() => navigate(item.route)}>
@@ -169,6 +208,13 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({
           ))}
         </List>
       </Drawer>
+      <Alert
+        showLogOut={showLogOut}
+        setShowLogOut={setShowLogOut}
+        isConfirm={true}
+        icon={<ErrorIcon sx={{ color: 'red', fontSize: 60 }} />}
+        description={t('alertError.description')}
+      />
     </Box>
   );
 };
