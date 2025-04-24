@@ -53,25 +53,25 @@ export const PurchaseSummaryForm = () => {
       >
         <Typography
           variant="h6"
-          sx={{ fontSize: "12px", flex: 3, textAlign: "center" }}
+          sx={{ fontSize: "19px", flex: 3, textAlign: "center" }}
         >
           {t("PurchaseSummary.Products")}
         </Typography>
         <Typography
           variant="h6"
-          sx={{ fontSize: "12px", flex: 0.8, textAlign: "center" }}
+          sx={{ fontSize: "19px", flex: 0.8, textAlign: "center" }}
         >
           {t("PurchaseSummary.Amount")}
         </Typography>
         <Typography
           variant="h6"
-          sx={{ fontSize: "12px", flex: 1.9, textAlign: "center" }}
+          sx={{ fontSize: "19px", flex: 1.9, textAlign: "center" }}
         >
           {t("PurchaseSummary.UnitValue")}
         </Typography>
         <Typography
           variant="h6"
-          sx={{ fontSize: "12px", flex: 1, textAlign: "center" }}
+          sx={{ fontSize: "19px", flex: 1, textAlign: "center" }}
         >
           {t("PurchaseSummary.Total")}
         </Typography>

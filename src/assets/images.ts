@@ -41,6 +41,7 @@ import kits_3_path from "./kits_3.png";
 import kits_4_path from "./kits_4.png";
 import kits_5_path from "./kits_5.png";
 import kits_6_path from "./kits_6.png";
+import Small_face_path from "./small_face.png";
 
 const logo_app = logo_app_path;
 const fondo_login = fondo_login_path;
@@ -89,6 +90,7 @@ const kits_3 = kits_3_path;
 const kits_4 = kits_4_path;
 const kits_5 = kits_5_path;
 const kits_6 = kits_6_path;
+const SmallFace = Small_face_path;
 
 export {
   logo_app,
@@ -134,4 +136,5 @@ export {
   kits_4,
   kits_5,
   kits_6,
+  SmallFace,
 };

@@ -30,21 +30,26 @@ const ReviewScore = () => {
       >
         G
       </Avatar>
-      <Typography fontWeight="bold" fontSize="3.2rem">
+      <Typography fontWeight="bold" fontSize="3.2rem" sx={{ color: "#3C3C3C" }}>
         {rating}
       </Typography>
 
       <Box>
         <Typography
+          variant="h6"
           component="span"
-          fontWeight="normal"
-          fontSize="1.5rem"
-          sx={{ marginLeft: "10px" }}
+          fontSize="1.6rem"
+          sx={{ color: "#3C3C3C" }}
         >
           Wholly
         </Typography>
 
-        <Typography fontSize="1.2rem" color="text.secondary" sx={{ mb: 1 }}>
+        <Typography
+          variant="h6"
+          fontSize="1.6rem"
+          color="text.secondary"
+          sx={{ mb: 0 }}
+        >
           Personalized supplements
         </Typography>
 

@@ -39,10 +39,12 @@ export const PurchaseSummary = () => {
             color: "#A5AB94",
           }}
         >
-          <Typography variant="h5" fontWeight="bold ">
+          <Typography variant="h3" fontWeight={500} fontSize={28}>
             Order #A010
           </Typography>
-          <Typography color="#000000">11/04/2024 </Typography>
+          <Typography variant="h6" color="#000000">
+            11/04/2024
+          </Typography>
           <Typography>{t("PurchaseSummary.Created")}</Typography>
         </Box>
 

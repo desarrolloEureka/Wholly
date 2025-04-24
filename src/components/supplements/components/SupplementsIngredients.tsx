@@ -83,9 +83,10 @@ export const SupplementsIngredients = () => {
         }}
       >
         <Typography
-          variant="h4"
+          variant="h3"
           gutterBottom
           sx={{
+            fontSize: "1.8rem",
             color: "#A5AB94",
             paddingBottom: "5px",
             borderBottom: "1px solid #A5AB94",
@@ -118,8 +119,8 @@ export const SupplementsIngredients = () => {
               }
             >
               <Typography
-                variant="h6"
-                sx={{ color: "#3C3C3C", fontSize: "1.0rem" }}
+                variant="h4"
+                sx={{ color: "#3C3C3C", fontSize: "1.2rem" }}
               >
                 {title}
               </Typography>
@@ -139,9 +140,10 @@ export const SupplementsIngredients = () => {
       >
         <Box sx={{ borderBottom: "1px solid #A5AB94" }}>
           <Typography
-            variant="h4"
+            variant="h3"
             gutterBottom
             sx={{
+              fontSize: "1.8rem",
               color: "#A5AB94",
             }}
           >
@@ -160,9 +162,10 @@ export const SupplementsIngredients = () => {
         </Typography>
         <Box sx={{ borderBottom: "1px solid #A5AB94" }}>
           <Typography
-            variant="h4"
+            variant="h3"
             gutterBottom
             sx={{
+              fontSize: "1.8rem",
               color: "#A5AB94",
               marginTop: "55px",
             }}

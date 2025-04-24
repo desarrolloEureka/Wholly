@@ -129,11 +129,17 @@ export const KitsSession = () => {
 
         {/* Contenido a la izquierda */}
         <Box sx={{ minWidth: "300px", flex: 1 }}>
-          <Typography variant="h4" sx={{ fontWeight: 700, mb: 2 }}>
+          <Typography
+            variant="h3"
+            sx={{ fontSize: "2.1rem", fontWeight: 600, mb: 2 }}
+          >
             {selectedProduct.title}
           </Typography>
 
-          <Typography sx={{ fontSize: "1.2rem", color: "#555", mb: 2 }}>
+          <Typography
+            variant="h4"
+            sx={{ fontSize: "1.2rem", color: "#555", mb: 2 }}
+          >
             {selectedProduct.subtitle}
           </Typography>
 

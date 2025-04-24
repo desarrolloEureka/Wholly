@@ -12,13 +12,13 @@ export const Categories = () => {
       <Box className="bg_Category_image">
         <CustomAppBar />
         <Typography
-          variant="h6"
+          variant="h3"
           sx={{
             textAlign: "start",
             width: "100%",
             mt: "11%",
             ml: "5%",
-            fontSize: "3.5rem",
+            fontSize: "3.1rem",
             fontWeight: 100,
             color: "#FBFFDD",
           }}

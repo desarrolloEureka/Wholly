@@ -126,8 +126,9 @@ export const SupplementSession = () => {
             }}
           >
             <Typography
-              variant="h4"
+              variant="h3"
               sx={{
+                fontSize: "1.8rem",
                 fontWeight: "bold",
                 color: "#3C3C3C",
                 marginBottom: "35px",
@@ -137,6 +138,7 @@ export const SupplementSession = () => {
             </Typography>
 
             <Typography
+              variant="h6"
               sx={{ fontSize: "1.5rem", color: "gray", marginBottom: "30px" }}
             >
               {selectedProduct.subtitle}
@@ -169,6 +171,8 @@ export const SupplementSession = () => {
                 opacity: 0.6,
                 marginLeft: "7px",
                 marginBottom: "11px",
+                fontSize: "1.2rem",
+
                 marginTop: "11px",
               }}
             >

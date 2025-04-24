@@ -1,8 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export const ReceiptGuide = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   return (
     <Box>
@@ -117,6 +119,7 @@ export const ReceiptGuide = () => {
       </Box>
       <Button
         variant="contained"
+        onClick={() => navigate("/")}
         sx={{
           display: "flex",
           borderRadius: "12px", // Bordes redondeados

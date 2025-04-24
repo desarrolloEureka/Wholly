@@ -28,8 +28,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { useTranslation } from "react-i18next";
-import { StepOneHandle } from "../../../globals/types";
-import ErrorLabel from "../../errorLabel/ErrorLabel";
+import { StepOneHandle } from "../../../../globals/types";
+import ErrorLabel from "../../../errorLabel/ErrorLabel";
 const dataErrors = {
   name: false,
   email: false,

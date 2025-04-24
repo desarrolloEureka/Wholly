@@ -82,7 +82,11 @@ export const BlogForm = () => {
           width: "93%",
         }}
       >
-        <Typography variant="h5" textAlign="center" sx={{ color: "#A5AB94" }}>
+        <Typography
+          variant="h3"
+          textAlign="center"
+          sx={{ color: "#A5AB94", fontSize: "1.6rem" }}
+        >
           {t("blogForm.blog")}
         </Typography>
       </Box>
@@ -141,9 +145,9 @@ export const BlogForm = () => {
               }}
             >
               <Typography
-                variant="h6"
+                variant="h4"
                 sx={{
-                  fontWeight: "bold",
+                  fontWeight: 500,
                   marginBottom: "40px",
                   color: "#FBFFDD",
                 }}
@@ -151,7 +155,6 @@ export const BlogForm = () => {
                 {item.title}
               </Typography>
               <Typography
-                variant="body2"
                 sx={{ marginBottom: "40px", width: "60%", color: "#FFFFFF" }}
               >
                 {item.subtitle}
@@ -165,8 +168,12 @@ export const BlogForm = () => {
                 }}
               >
                 <Typography
-                  variant="body2"
-                  sx={{ marginRight: "5px", color: "#FFFFFF" }}
+                  variant="h6"
+                  sx={{
+                    marginRight: "5px",
+                    color: "#FFFFFF",
+                    fontSize: "1.1rem",
+                  }}
                 >
                   {item.description}
                 </Typography>

@@ -82,6 +82,7 @@ export const HomeExclusive = () => {
             color: "#3C3C3C",
             padding: "10px",
             borderRadius: "8px",
+            fontSize: "2.1rem",
           }}
         >
           {t("homeform.Exclusive")}

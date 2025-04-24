@@ -44,8 +44,9 @@ export const VarietyBlog = () => {
         }}
       >
         <Typography
-          variant="h5"
+          variant="h3"
           sx={{
+            fontSize: "1.5rem",
             paddingTop: "10px", // Espacio entre la línea y el texto
             color: "#A5AB94",
           }}
@@ -111,7 +112,7 @@ export const VarietyBlog = () => {
                     variant="h4"
                     sx={{
                       marginTop: "10px",
-                      fontSize: "1.2rem",
+                      fontSize: "1.3rem",
                       fontWeight: "bold",
                       color: textColor,
                     }}

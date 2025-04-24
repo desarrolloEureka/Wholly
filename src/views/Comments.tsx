@@ -12,15 +12,15 @@ export const Comments = () => {
     <Box justifyContent="space-between">
       <CustomAppBar />
       <Typography
-        variant="h6"
+        variant="h3"
         sx={{
           textAlign: "start",
           width: "100%",
           mt: "5%",
           ml: "5%",
-          fontSize: "1.8rem",
-          fontWeight: 100,
-          color: "#000",
+          fontSize: "1.6rem",
+          fontWeight: 600,
+          color: "#3C3C3C",
         }}
       >
         {t("Comments.knoWcomments")}

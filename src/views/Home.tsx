@@ -25,12 +25,12 @@ export const Home = () => {
             height: "80vh",
             width: {
               xs: "90%", // 90% del ancho en pantallas extra pequeñas
-              sm: "70%", // 70% del ancho en pantallas pequeñas
+              sm: "80%", // 70% del ancho en pantallas pequeñas
               md: "50%", // 50% del ancho en pantallas medianas
               lg: "40%", // 40% del ancho en pantallas grandes
               xl: "38%", // 38% del ancho en pantallas extra grandes
             },
-            marginRight: "100px", // Mueve el contenedor hacia la derecha
+            marginRight: { sm: "10px", md: "100px" }, // Mueve el contenedor hacia la derecha
           }}
         >
           <HomeSupplement />
@@ -47,7 +47,7 @@ export const Home = () => {
         }}
       >
         <Typography
-          variant="h3"
+          variant="h1"
           sx={{
             marginTop: "5%",
             marginBottom: "3%",

@@ -48,15 +48,24 @@ export const RegisterHome = () => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        alignItems: "center",
+        flexDirection: {
+          xs: "column", // móvil: columna
+          sm: "column", // tableta: también columna
+          md: "row", // escritorio: en fila como antes
+        },
+        alignItems: {
+          xs: "center",
+          sm: "center",
+          md: "center",
+        },
         gap: { xs: 3, md: 30 },
         marginLeft: "4%",
         marginBottom: 0,
-        height: "80vh",
-        marginTop: "5%",
+        height: { xs: "6vh", sm: "60vh", md: "100vh" },
+        marginTop: { xs: "20%", sm: "8%", md: "5%" },
       }}
     >
+      {/* Lado izquierdo */}
       <Box
         sx={{
           display: "flex",
@@ -69,7 +78,7 @@ export const RegisterHome = () => {
       >
         <Typography
           variant="h3"
-          sx={{ mb: 4, fontSize: "2.1rem", color: "#3C3C3C" }}
+          sx={{ mb: 4, fontSize: "1.8rem", color: "#3C3C3C" }}
         >
           {t("homeform.title2")}
         </Typography>
@@ -94,18 +103,21 @@ export const RegisterHome = () => {
           {t("homeform.register")}
         </Button>
       </Box>
-      {/* pendiente */}
+
+      {/* Lado derecho: se oculta en móviles */}
       <Box
         sx={{
-          display: "flex",
+          display: {
+            xs: "none", // oculto en móvil
+            sm: "flex", // visible desde tablet
+          },
           alignItems: "center",
           justifyContent: "start",
           flexDirection: "column",
           marginTop: "5%",
           marginLeft: "1%",
           marginRight: "7%",
-          width: { xs: "80%", md: "60%" },
-
+          width: { sm: "80%", md: "60%" },
           height: "100vh",
         }}
       >
@@ -129,7 +141,6 @@ export const RegisterHome = () => {
             overflow: "hidden",
           }}
         >
-          {/* Botón de cierre */}
           <IconButton
             sx={{
               position: "absolute",
@@ -142,7 +153,7 @@ export const RegisterHome = () => {
           </IconButton>
 
           <Typography
-            variant="h1"
+            variant="h4"
             sx={{
               fontSize: "1.1rem",
               marginBottom: "10px",
@@ -167,6 +178,7 @@ export const RegisterHome = () => {
             {t("homeform.loremText")}
           </Typography>
         </Box>
+
         <Box
           sx={{
             width: "100%",
@@ -190,7 +202,7 @@ export const RegisterHome = () => {
               onChange={handleChange(id)}
             >
               <AccordionSummary expandIcon={<AddIcon />}>
-                <Typography>{title}</Typography>
+                <Typography variant="h6">{title}</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>{content}</Typography>

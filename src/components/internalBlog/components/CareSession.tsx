@@ -37,11 +37,11 @@ export const CareSession = () => {
               }}
             >
               <Typography
-                variant="h4"
+                variant="h3"
                 sx={{
-                  maxWidth: "97%",
+                  maxWidth: "82%",
                   marginBottom: "40px",
-                  fontSize: "1.65rem",
+                  fontSize: "1.3rem",
                   color: "#A5AB94",
                   marginTop: "20px",
                 }}

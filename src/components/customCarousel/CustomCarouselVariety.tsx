@@ -10,8 +10,8 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
   const responsiveOptions = [
     { breakpoint: "1400px", numVisible: 3, numScroll: 1 },
     { breakpoint: "1199px", numVisible: 3, numScroll: 1 },
-    { breakpoint: "767px", numVisible: 1, numScroll: 1 },
-    { breakpoint: "575px", numVisible: 1, numScroll: 1 },
+    { breakpoint: "767px", numVisible: 2, numScroll: 1 },
+    { breakpoint: "575px", numVisible: 2, numScroll: 1 },
   ];
 
   const backgroundColor = "#ffff";
@@ -27,21 +27,41 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          width: "58%",
+          width: {
+            xs: "90%", // en móviles ocupa casi todo el ancho
+            md: "58%", // mismo valor en pantallas medianas o más grandes
+          },
           borderRadius: "10px",
-          marginBottom: "15px",
-          marginTop: "5px",
-          marginLeft: "100px",
+          marginBottom: {
+            xs: "20px",
+            md: "15px",
+          },
+          marginTop: {
+            xs: "10px",
+            md: "5px",
+          },
+          marginLeft: {
+            xs: "auto",
+            md: "100px",
+          },
+          marginRight: {
+            xs: "auto",
+          },
           cursor: "pointer",
         }}
         onClick={() => navigate("/Supplements")}
       >
-        <img
+        <Box
+          component="img"
           src={item.src}
           alt={item.title}
-          style={{
+          sx={{
             width: "100%",
-            height: "255px",
+            height: {
+              xs: "190px", // altura para móviles
+              sm: "220px", // tablets pequeñas
+              md: "255px", // pantallas medianas en adelante
+            },
             objectFit: "cover",
             transition: "transform 0.3s ease",
             borderRadius: "10px 10px 0 0",
@@ -52,7 +72,10 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           sx={{
             width: "100%",
             backgroundColor: backgroundColor,
-            padding: "10px 15px",
+            padding: {
+              xs: "10px 12px",
+              md: "10px 15px",
+            },
             textAlign: "start",
             border: "1px solid rgba(60, 60, 60, 0.64)",
             borderTop: "none",
@@ -60,10 +83,9 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           }}
         >
           <Typography
-            variant="h6"
+            variant="h5"
             sx={{
-              fontSize: "1.1rem",
-              fontWeight: "bold",
+              fontWeight: 600,
               marginTop: "8px",
               color: textColor,
             }}
@@ -73,7 +95,10 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
 
           <Typography
             sx={{
-              fontSize: "1.0rem",
+              fontSize: {
+                xs: "0.95rem",
+                md: "1.0rem",
+              },
               marginTop: "3px",
               color: textColor,
               marginBottom: "8px",
@@ -81,16 +106,23 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           >
             {item.subtitle}
           </Typography>
+
           <Typography
             sx={{
               display: "flex",
               alignItems: "start",
-              width: "50%",
+              width: {
+                xs: "100%",
+                md: "50%",
+              },
               cursor: "pointer",
               transition: "transform 0.2s ease-in-out",
               fontFamily: "Montserrat, sans-serif",
               fontWeight: "bold",
-              fontSize: "0.8rem",
+              fontSize: {
+                xs: "0.75rem",
+                md: "0.8rem",
+              },
             }}
           >
             {item.description}

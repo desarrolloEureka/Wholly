@@ -9,12 +9,12 @@ export const CheckoutSummary = () => {
     <Box>
       <Box sx={{ padding: "8px 72px" }}>
         <Typography
-          variant="h6"
+          variant="h5"
           sx={{
             width: "50%",
             padding: "10px",
             color: "#3C3C3C",
-            fontSize: "12px",
+            fontSize: "22px",
             margin: "15px 0px",
             marginTop: "30px",
           }}
@@ -104,10 +104,13 @@ export const CheckoutSummary = () => {
               justifyContent: "space-between",
             }}
           >
-            <Typography sx={{ color: "#3C3C3C" }}>
+            <Typography variant="h6" sx={{ color: "#3C3C3C" }}>
               {t("shoppingCart.subtotal")}
             </Typography>
-            <Typography sx={{ color: "#3C3C3C", textAlign: "end" }}>
+            <Typography
+              variant="h6"
+              sx={{ color: "#3C3C3C", textAlign: "end" }}
+            >
               $100.00
             </Typography>
           </Box>
@@ -119,10 +122,13 @@ export const CheckoutSummary = () => {
               justifyContent: "space-between",
             }}
           >
-            <Typography sx={{ color: "#3C3C3C" }}>
+            <Typography variant="h6" sx={{ color: "#3C3C3C" }}>
               {t("shoppingCart.shipping")}
             </Typography>
-            <Typography sx={{ color: "#3C3C3C", textAlign: "end" }}>
+            <Typography
+              variant="h6"
+              sx={{ color: "#3C3C3C", textAlign: "end" }}
+            >
               {t("shoppingCart.shippingMessage")}
             </Typography>
           </Box>
@@ -147,10 +153,13 @@ export const CheckoutSummary = () => {
               margin: "0 auto",
             }}
           >
-            <Typography sx={{ color: "#3C3C3C" }}>
+            <Typography variant="h6" sx={{ color: "#3C3C3C" }}>
               {t("shoppingCart.total")}
             </Typography>
-            <Typography sx={{ color: "#3C3C3C", textAlign: "end" }}>
+            <Typography
+              variant="h6"
+              sx={{ color: "#3C3C3C", textAlign: "end" }}
+            >
               $100.00
             </Typography>
           </Box>

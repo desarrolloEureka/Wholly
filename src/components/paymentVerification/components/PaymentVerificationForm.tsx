@@ -18,10 +18,10 @@ export const PaymentVerificationForm = () => {
     >
       <Typography
         color={isclicked ? "#A5AB94" : "##FF0000"}
-        variant="h4"
+        variant="h3"
         gutterBottom
         onClick={() => setIsClicked(!isclicked)}
-        sx={{ marginBottom: "30px" }}
+        sx={{ fontSize: "30px", cursor: "pointer", marginBottom: "40px" }}
       >
         {isclicked == true
           ? t("payForm.SuccessfulPurchase")

@@ -1,4 +1,4 @@
-import { VisibilityOff, Visibility } from '@mui/icons-material';
+import { VisibilityOff, Visibility } from "@mui/icons-material";
 import {
   Box,
   Typography,
@@ -6,13 +6,13 @@ import {
   OutlinedInput,
   InputAdornment,
   IconButton,
-} from '@mui/material';
-import { t } from 'i18next';
-import React, { SetStateAction, useState } from 'react';
+} from "@mui/material";
+import { t } from "i18next";
+import React, { SetStateAction, useState } from "react";
 
 export const Passwords = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -33,81 +33,82 @@ export const Passwords = () => {
     setPassword(event.target.value);
   };
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: "100%" }}>
       <Box
         sx={{
-          width: '74%',
-          textAlign: 'center',
-          display: 'flex',
-          justifyContent: 'center', // Centra el contenido horizontalmente
-          alignItems: 'center', // Centra el contenido verticalmente si es necesario
-          margin: '0 auto', // Centra el contenedor en su contenedor principal
+          width: "74%",
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "center", // Centra el contenido horizontalmente
+          alignItems: "center", // Centra el contenido verticalmente si es necesario
+          margin: "0 auto", // Centra el contenedor en su contenedor principal
         }}
       >
         <Typography
           style={{
-            fontSize: '0.880rem',
-            marginTop: '28px',
-            textAlign: 'center', // Asegura que el texto esté centrado
+            fontSize: "0.880rem",
+            marginTop: "28px",
+            textAlign: "center", // Asegura que el texto esté centrado
           }}
         >
-          {t('loginForm.new_password_text')}
+          {t("loginForm.new_password_text")}
         </Typography>
       </Box>
 
       <Box
-        sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}
+        sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}
       >
         {/* Primer bloque */}
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '48%',
-            marginTop: '38px',
+            display: "flex",
+            flexDirection: "column",
+            width: "48%",
+            marginTop: "38px",
           }}
         >
           <Typography
-            variant='subtitle1'
+            variant="h6"
             sx={{
-              marginBottom: '8px',
-              fontSize: '0.690rem',
-              marginLeft: '0',
+              paddingBlock: "1.5px",
+
+              fontSize: "0.9rem",
+              marginLeft: "0",
             }}
           >
-            {t('loginForm.new_password')}
+            {t("loginForm.new_password")}
           </Typography>
           <FormControl
             sx={{
-              width: '100%',
-              height: '40px',
+              width: "100%",
+              height: "40px",
             }}
-            variant='outlined'
+            variant="outlined"
           >
             <OutlinedInput
-              id='-adornment-new-password'
-              type={showPassword ? 'text' : 'password'}
+              id="-adornment-new-password"
+              type={showPassword ? "text" : "password"}
               value={password}
               sx={{
-                fontSize: '0.875rem',
-                padding: '6px 8px',
-                height: '100%',
-                lineHeight: '1.5',
-                borderRadius: '8px',
+                fontSize: "0.875rem",
+                padding: "6px 8px",
+                height: "100%",
+                lineHeight: "1.5",
+                borderRadius: "8px",
               }}
               onChange={handleChange}
               endAdornment={
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   <IconButton
                     aria-label={
                       showPassword
-                        ? 'hide the password'
-                        : 'display the password'
+                        ? "hide the password"
+                        : "display the password"
                     }
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                     onMouseUp={handleMouseUpPassword}
-                    edge='end'
+                    edge="end"
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
@@ -120,54 +121,54 @@ export const Passwords = () => {
         {/* Segundo bloque */}
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '48%',
-            marginTop: '38px',
-            marginBottom: '20px ',
+            display: "flex",
+            flexDirection: "column",
+            width: "48%",
+            marginTop: "38px",
+            marginBottom: "20px ",
           }}
         >
           <Typography
-            variant='subtitle1'
+            variant="h4"
             sx={{
-              marginBottom: '8px',
-              fontSize: '0.690rem',
-              marginLeft: '0',
+              marginBottom: "8px",
+              fontSize: "0.9rem",
+              marginLeft: "0",
             }}
           >
-            {t('loginForm.repeat_password')}
+            {t("loginForm.repeat_password")}
           </Typography>
           <FormControl
             sx={{
-              width: '100%',
-              height: '40px',
+              width: "100%",
+              height: "40px",
             }}
-            variant='outlined'
+            variant="outlined"
           >
             <OutlinedInput
-              id='adornment-repeat-password'
-              type={showPassword ? 'text' : 'password'}
+              id="adornment-repeat-password"
+              type={showPassword ? "text" : "password"}
               value={password}
               sx={{
-                fontSize: '0.875rem',
-                padding: '6px 8px',
-                height: '100%',
-                lineHeight: '1.5',
-                borderRadius: '8px',
+                fontSize: "0.875rem",
+                padding: "6px 8px",
+                height: "100%",
+                lineHeight: "1.5",
+                borderRadius: "8px",
               }}
               onChange={handleChange}
               endAdornment={
-                <InputAdornment position='end'>
+                <InputAdornment position="end">
                   <IconButton
                     aria-label={
                       showPassword
-                        ? 'hide the password'
-                        : 'display the password'
+                        ? "hide the password"
+                        : "display the password"
                     }
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                     onMouseUp={handleMouseUpPassword}
-                    edge='end'
+                    edge="end"
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>

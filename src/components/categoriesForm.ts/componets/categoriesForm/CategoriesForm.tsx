@@ -117,11 +117,10 @@ export const CategoriesForm = () => {
               }}
             >
               <Typography
-                variant="body1"
+                variant="h4"
                 sx={{
-                  fontSize: "1.4rem",
-                  fontFamily: "Montserrat, sans-serif",
-                  fontWeight: "bold",
+                  fontSize: "1.8rem",
+                  fontWeight: 500,
                   color: textColor,
                 }}
               >
@@ -129,10 +128,8 @@ export const CategoriesForm = () => {
               </Typography>
 
               <Typography
-                variant="body2"
                 sx={{
                   fontSize: "1.2rem",
-                  fontFamily: "Montserrat, sans-serif",
                   marginTop: "4px",
                   color: textColor,
                   marginBottom: "28px",

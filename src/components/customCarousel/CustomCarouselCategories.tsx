@@ -26,91 +26,111 @@ const CustomCarouselCategories = ({
 
     const navigate = useNavigate();
     return (
-      <Box
-        key={item.id}
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "96%",
-          boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.38)",
-          borderRadius: "10px",
-          marginBottom: "20px",
-          marginTop: "10px",
-          marginLeft: "10px",
-          cursor: "pointer", //  Agregamos cursor pointer
-        }}
-        onClick={() => navigate("/category")} //  Ahora funciona correctamente
-      >
-        <img
-          src={item.src}
-          alt={item.title}
-          style={{
-            width: "100%",
-            height: "300px",
-            objectFit: "cover",
-            transition: "transform 0.3s ease",
-            borderRadius: "10px 10px 0 0 ",
-          }}
-        />
-
-        {/* Contenedor del título y subtítulo */}
+      <Box sx={{ height: { xs: "470px" }, marginTop: { xs: "10px" } }}>
         <Box
+          key={item.id}
           sx={{
-            width: "100%",
-            backgroundColor: backgroundColor,
-            padding: "15px 20px",
-            textAlign: "start",
-            borderRadius: "0 0 10px 10px",
-          }}
-        >
-          <Typography
-            variant="h4"
-            sx={{
-              fontSize: "1.2rem",
-              fontWeight: "bold",
-              color: textColor,
-            }}
-          >
-            {item.title}
-          </Typography>
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            width: {
+              xs: "45%", // Para pantallas móviles
+              md: "96%",
+            },
+            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.38)",
+            borderRadius: "10px",
+            marginBottom: "30px",
+            marginTop: "10px",
+            height: { xs: "450px" },
 
-          <Typography
-            sx={{
-              fontSize: "1.2rem",
-              marginTop: "4px",
-              color: textColor,
-              marginBottom: "28px",
+            margin: { xs: " 0 auto", sm: "10px" },
+            cursor: "pointer",
+          }}
+          onClick={() => navigate("/category")}
+        >
+          <img
+            src={item.src}
+            alt={item.title}
+            style={{
+              width: "100%",
+              height: "300px",
+              objectFit: "cover",
+              transition: "transform 0.3s ease",
+              borderRadius: "10px 10px 0 0 ",
             }}
-          >
-            {item.subtitle}
-          </Typography>
-          {/* texto interactivo */}
+          />
+
           <Box
             sx={{
-              display: "flex",
-              alignItems: "start",
-              width: "50%",
-              cursor: "pointer",
-              transition: "transform 0.2s ease-in-out",
-              fontWeight: "bold",
-              fontSize: "0.9rem",
-              color: textColor,
-              "&:hover": {
-                transform: "translateX(5px)",
-              },
+              width: "100%",
+              backgroundColor: backgroundColor,
+              padding: "15px 20px",
+              textAlign: "start",
+              borderRadius: "0 0 10px 10px",
             }}
           >
-            {item.description}
-            <ChevronRightIcon
+            <Typography
+              variant="h4"
               sx={{
-                fontSize: 20,
+                fontSize: {
+                  xs: "1rem", // Más pequeño para móvil
+                  sm: "1.4rem",
+                },
+                fontWeight: 600,
                 color: textColor,
-                position: "relative",
-                top: "-2.5px",
               }}
-            />
+            >
+              {item.title}
+            </Typography>
+
+            <Typography
+              sx={{
+                fontSize: {
+                  xs: "1rem",
+                  sm: "1.2rem",
+                },
+                marginTop: "4px",
+                color: textColor,
+                marginBottom: "28px",
+              }}
+            >
+              {item.subtitle}
+            </Typography>
+
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "start",
+                width: {
+                  xs: "100%", // que ocupe todo en móvil
+                  sm: "50%", // igual que ya tenías
+                },
+                cursor: "pointer",
+                transition: "transform 0.2s ease-in-out",
+                fontWeight: "bold",
+                fontSize: {
+                  xs: "0.85rem",
+                  sm: "0.9rem",
+                },
+                color: textColor,
+                "&:hover": {
+                  transform: "translateX(5px)",
+                },
+              }}
+            >
+              <Typography variant="h6" sx={{ fontSize: "17px" }}>
+                {item.description}
+              </Typography>
+              <ChevronRightIcon
+                sx={{
+                  fontSize: 20,
+                  color: textColor,
+                  position: "relative",
+                  bottom: "-2.9px",
+                }}
+              />
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -122,7 +142,7 @@ const CustomCarouselCategories = ({
       <Carousel
         value={images}
         numVisible={4}
-        numScroll={2}
+        numScroll={1}
         responsiveOptions={responsiveOptions}
         className="custom-carousel"
         circular
