@@ -37,9 +37,21 @@ export const CheckoutForm = () => {
   };
 
   return (
-    <Box sx={{ padding: "35px 45px 35px 45px" }}>
+    <Box
+      sx={{
+        padding: {
+          xs: "30px 10px 30px 10px",
+          sm: "none",
+          md: "35px 45px 35px 45px",
+        },
+      }}
+    >
       {/* Menú de selección (NO cambia los nombres) */}
-      <Box display="flex" gap={2} p={0}>
+      <Box
+        display={{ xs: "none", sm: "none", md: "none", lg: "flex" }}
+        gap={2}
+        p={0}
+      >
         {(["Information", "Shipping", "Payment"] as OptionType[]).map(
           (option) => (
             <Box
@@ -86,7 +98,7 @@ export const CheckoutForm = () => {
       <Box
         sx={{
           padding: "20px",
-          display: "flex",
+          display: { xs: "none", sm: "flex" },
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
@@ -116,7 +128,7 @@ export const CheckoutForm = () => {
       </Box>
 
       {/* Acordeones (Usan los nuevos nombres) */}
-      <Box sx={{ width: "80%" }}>
+      <Box sx={{ width: { xs: "100%", sm: "80%" } }}>
         {(["Information", "Shipping", "Payment"] as OptionType[]).map(
           (option, index) => (
             <Box key={option} width="100%" sx={{ marginBottom: "30px" }}>
@@ -181,7 +193,7 @@ export const CheckoutForm = () => {
           textAlign: "center",
           backgroundColor: "#f5f5f5",
           borderRadius: "10px",
-          width: "420px",
+          width: { xs: "100%", sm: "420px" },
           height: "85px",
           marginTop: "30px",
           marginBottom: "30px",
@@ -199,6 +211,7 @@ export const CheckoutForm = () => {
           boxShadow: "2px 3px 10px rgba(0, 0, 0, 0.5)",
           backgroundColor: "#A5AB94",
           height: "38px",
+          marginLeft: { xs: "35px", sm: "0px" },
         }}
         onClick={() => navigate("/register")}
       >

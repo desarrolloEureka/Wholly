@@ -14,10 +14,10 @@ export const Comments = () => {
       <Typography
         variant="h3"
         sx={{
-          textAlign: "start",
+          textAlign: { xs: "center", sm: "center", lg: "start" },
           width: "100%",
-          mt: "5%",
-          ml: "5%",
+          mt: { xs: "10%", sm: "5%", lg: "5%" },
+          ml: { sm: "0px", lg: "5%" },
           fontSize: "1.6rem",
           fontWeight: 600,
           color: "#3C3C3C",

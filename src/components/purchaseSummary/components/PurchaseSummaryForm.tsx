@@ -1,4 +1,13 @@
-import { Box, Card, CardMedia, CardContent, Typography } from "@mui/material";
+import {
+  Box,
+  CardMedia,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import { useState } from "react";
 import { Session_1, Session_2, variety2 } from "../../../assets/images";
 import { useTranslation } from "react-i18next";
@@ -28,134 +37,228 @@ export const PurchaseSummaryForm = () => {
       price: 15.99,
       quantity: 1,
     },
+    {
+      id: 4,
+      src: variety2,
+      title: "Lorem Ipsum z",
+      price: 15.99,
+      quantity: 1,
+    },
   ]);
 
   return (
-    <Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "20px",
-          fontWeight: "bold",
-          position: "relative",
-          paddingBottom: "20px",
-          color: "#A5AB94",
-          "&::after": {
-            content: '""',
-            position: "absolute",
-            bottom: 0,
-            left: "1%", // Ajusta la posición
-            width: "96%", // Ajusta el largo del borde
-            borderBottom: "1px solid #A5AB94",
-          },
-        }}
-      >
-        <Typography
-          variant="h6"
-          sx={{ fontSize: "19px", flex: 3, textAlign: "center" }}
+    <Box sx={{ p: { xs: 0, md: 2 }, borderRadius: 2, width: "100%" }}>
+      {/* Encabezado sólo visible en md+ */}
+      <Box sx={{ display: { xs: "none", sm: "block" } }}>
+        <Table
+          sx={{
+            tableLayout: "fixed",
+            width: "100%",
+            minWidth: "100%",
+          }}
         >
-          {t("PurchaseSummary.Products")}
-        </Typography>
-        <Typography
-          variant="h6"
-          sx={{ fontSize: "19px", flex: 0.8, textAlign: "center" }}
-        >
-          {t("PurchaseSummary.Amount")}
-        </Typography>
-        <Typography
-          variant="h6"
-          sx={{ fontSize: "19px", flex: 1.9, textAlign: "center" }}
-        >
-          {t("PurchaseSummary.UnitValue")}
-        </Typography>
-        <Typography
-          variant="h6"
-          sx={{ fontSize: "19px", flex: 1, textAlign: "center" }}
-        >
-          {t("PurchaseSummary.Total")}
-        </Typography>
+          <TableHead>
+            <TableRow sx={{ borderBottom: "2px solid #A5AB94" }}>
+              <TableCell
+                sx={{
+                  width: "40%",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    color: "#A5AB94",
+                  }}
+                >
+                  {t("PurchaseSummary.Products")}
+                </Typography>
+              </TableCell>
+              <TableCell
+                sx={{
+                  width: "20%",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    color: "#A5AB94",
+                  }}
+                >
+                  {t("PurchaseSummary.Amount")}
+                </Typography>
+              </TableCell>
+              <TableCell
+                sx={{
+                  width: "20%",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    color: "#A5AB94",
+                  }}
+                >
+                  {t("PurchaseSummary.UnitValue")}
+                </Typography>
+              </TableCell>
+              <TableCell
+                sx={{
+                  width: "20%",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    color: "#A5AB94",
+                  }}
+                >
+                  {t("PurchaseSummary.Total")}
+                </Typography>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+        </Table>
       </Box>
 
+      {/* Body para escritorio */}
       <Box
         sx={{
-          maxHeight: "300px",
+          maxHeight: 248,
           overflowY: "auto",
-          paddingRight: "10px",
-          "&::-webkit-scrollbar": {
-            width: "5px",
-          },
-          "&::-webkit-scrollbar-track": {
-            background: "transparent",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            background: "rgba(0, 0, 0, 0.3)",
-            borderRadius: "10px",
-          },
-          "&::-webkit-scrollbar-thumb:hover": {
-            background: "rgba(0, 0, 0, 0.5)",
-          },
+          overflowX: "visible",
+          display: { xs: "none", sm: "block" },
         }}
       >
-        {products.map((product, index) => (
-          <Card
-            key={product.id}
+        <Table
+          sx={{
+            tableLayout: "fixed",
+            width: "100%",
+            minWidth: "100%",
+          }}
+        >
+          <TableBody>
+            {products.map((product, index) => (
+              <TableRow key={product.id}>
+                <TableCell sx={{ width: "40%" }}>
+                  <Box display="flex" alignItems="center">
+                    <CardMedia
+                      component="img"
+                      image={product.src}
+                      alt={product.title}
+                      sx={{ width: 50, height: 50, borderRadius: 1, mr: 2 }}
+                    />
+                    <Typography>{product.title}</Typography>
+                  </Box>
+                </TableCell>
+                <TableCell sx={{ width: "20%" }}>{product.quantity}</TableCell>
+                <TableCell sx={{ width: "20%" }}>
+                  ${product.price.toFixed(2)}
+                </TableCell>
+                <TableCell sx={{ width: "20%" }}>
+                  {index === 0 ? "$64.18" : ""}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Box>
+
+      {/* Layout móvil tipo card */}
+
+      <Box sx={{ display: { xs: "block", sm: "none" } }}>
+        <Box sx={{ p: 2 }}>
+          <Box
             sx={{
               display: "flex",
-              alignItems: "center",
-              boxShadow: "none",
-              backgroundColor: "transparent",
-              padding: "15px 0",
+              justifyContent: "space-between",
+              py: 1,
+              px: 2,
+
+              fontWeight: "bold",
+              fontSize: "0.9rem",
+              color: "#A5AB94",
             }}
           >
-            <CardMedia
-              component="img"
-              sx={{ width: 100, height: 100, borderRadius: "12px" }}
-              image={product.src}
-              alt={product.title}
-            />
-
-            <CardContent
+            <Box>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 600, color: "#A5AB94" }}
+              >
+                {t("PurchaseSummary.Products")}
+              </Typography>
+            </Box>
+            <Box sx={{ textAlign: "right" }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 600, color: "#A5AB94" }}
+              >
+                {t("PurchaseSummary.UnitValue")}
+              </Typography>
+            </Box>
+          </Box>
+          {products.map((product) => (
+            <Box
+              key={product.id}
               sx={{
-                flexGrow: 1,
+                borderRadius: 2,
+                p: 2,
+                mb: 2,
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between",
-                gap: 17,
-                padding: "0 40px",
               }}
             >
-              <Typography
+              <Box
+                component="img"
+                src={product.src}
+                alt={product.title}
                 sx={{
-                  flex: 2,
-                  textAlign: "left",
-                  minWidth: "150px",
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
+                  width: 80,
+                  height: 80,
+                  borderRadius: 1,
+                  mr: 2,
+                  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                  backgroundColor: "#e0e0d4",
                 }}
-              >
-                {product.title}
-              </Typography>
+              />
+              <Box sx={{ flex: 1 }}>
+                <Typography sx={{ fontWeight: 500, fontSize: "1rem" }}>
+                  {product.title}
+                </Typography>
+                <Typography sx={{ fontWeight: 500, fontSize: "1rem" }}>
+                  0.7 0z / 20 ml
+                </Typography>
+              </Box>
+              <Box sx={{ textAlign: "right", minWidth: 80 }}>
+                <Typography sx={{ fontWeight: 500, fontSize: "1rem" }}>
+                  ${product.price.toFixed(2)}
+                </Typography>
+              </Box>
+            </Box>
+          ))}
+        </Box>
 
-              <Typography sx={{ flex: 1, textAlign: "center" }}>
-                {product.quantity}
-              </Typography>
-              <Typography sx={{ flex: 1, textAlign: "center" }}>
-                ${product.price.toFixed(2)}
-              </Typography>
-              <Typography
-                sx={{
-                  flex: 1,
-                  textAlign: "center",
-                  visibility: index === 0 ? "visible" : "hidden",
-                }}
-              >
-                12.30
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
+        <Box
+          sx={{
+            bgcolor: "#F1F3F7",
+            p: 2,
+            textAlign: "right",
+            fontWeight: "bold",
+            fontSize: "1rem",
+            color: "##000000",
+          }}
+        >
+          Total
+          <br />
+          $64.18
+        </Box>
       </Box>
     </Box>
   );

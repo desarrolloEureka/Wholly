@@ -43,7 +43,7 @@ export const PaymentComponent = () => {
     <Box sx={{ width: "100%", padding: "16px" }}>
       <Box display="flex" flexDirection="column" gap={2} sx={{ width: "100%" }}>
         {/* Checkbox con fondo visible */}
-        <Box display="flex" flexDirection="row" gap={1}>
+        <Box display="flex" flexDirection="row" gap={1} flexWrap="wrap">
           <FormControlLabel
             control={
               <Checkbox

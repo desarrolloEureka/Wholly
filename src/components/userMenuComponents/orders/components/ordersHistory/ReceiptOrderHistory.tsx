@@ -11,114 +11,145 @@ export const ReceiptOrderHistory = () => {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          gap: 22,
+          flexDirection: { xs: "column", sm: "row" },
+
+          gap: { xs: 10, sm: 2, md: "146px" },
           padding: "20px",
           marginTop: "40px",
         }}
       >
-        {/* Contenedor 1: Resumen */}
+        {/* Contenedor 1 */}
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
+            justifyContent: "space-between",
+            backgroundColor: "#F1F3F7",
+            padding: "30px",
+            borderRadius: "8px",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+            width: { xs: "100%", sm: "400px", md: "400px" },
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              backgroundColor: "#F1F3F7",
-              padding: "30px",
-              borderRadius: "8px",
-              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-              width: "300px",
-            }}
-          >
-            <Box sx={{ textAlign: "left", color: "rgba(0, 0, 0, 0.75)" }}>
-              <Typography sx={{ marginBottom: "8px" }}>
-                {t("PurchaseSummary.Subtotal")}
-              </Typography>
-              <Typography sx={{ marginBottom: "8px" }}>
-                {t("PurchaseSummary.Discounts")}
-              </Typography>
-              <Typography sx={{ marginBottom: "8px" }}>
-                {t("PurchaseSummary.ShippingCost")}
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{ marginBottom: "8px", fontSize: "18px", color: "#000" }}
-              >
-                {t("PurchaseSummary.Total")}
-              </Typography>
-            </Box>
+          {/* Columna izquierda */}
+          <Box sx={{ textAlign: "left", color: "rgba(0, 0, 0, 0.75)" }}>
+            <Typography sx={{ marginBottom: "8px" }}>
+              {t("PurchaseSummary.Subtotal")}
+            </Typography>
 
-            <Box sx={{ textAlign: "right", color: "rgba(0, 0, 0, 0.75)" }}>
-              <Typography sx={{ marginBottom: "8px" }}>$64.18</Typography>
-              <Typography sx={{ marginBottom: "8px" }}>-</Typography>
-              <Typography sx={{ marginBottom: "8px" }}>$0</Typography>
-              <Typography
-                sx={{ marginBottom: "8px", fontSize: "18px", color: "#000" }}
-              >
-                $64.18
-              </Typography>
-            </Box>
+            <Typography sx={{ marginBottom: "8px" }}>
+              {t("PurchaseSummary.Discounts")}
+            </Typography>
+            <Typography sx={{ marginBottom: "8px" }}>
+              {t("PurchaseSummary.ShippingCost")}
+            </Typography>
+            <Typography
+              sx={{ marginBottom: "8px", fontSize: "18px", color: "#000" }}
+            >
+              {t("PurchaseSummary.Total")}
+            </Typography>
+          </Box>
+
+          {/* Columna derecha */}
+          <Box sx={{ textAlign: "right", color: "rgba(0, 0, 0, 0.75)" }}>
+            <Typography sx={{ marginBottom: "8px" }}>$64.18</Typography>
+            <Typography sx={{ marginBottom: "8px" }}>-</Typography>
+            <Typography sx={{ marginBottom: "8px" }}>$0</Typography>
+            <Typography
+              sx={{ marginBottom: "8px", fontSize: "18px", color: "#000" }}
+            >
+              $64.18
+            </Typography>
           </Box>
         </Box>
-
-        {/* Contenedor 2: Guía */}
+        {/* Contenedor 2 */}
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "flex-end",
           }}
         >
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
+              flexDirection: "column",
               backgroundColor: "#F1F3F7",
               padding: "35px",
               borderRadius: "8px",
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-              width: "400px",
+              width: { xs: "100%", sm: "300px", md: "400px" },
             }}
           >
-            <Box color="rgb(40, 40, 40)">
-              <Typography sx={{ marginBottom: "8px", fontWeight: 300 }}>
-                {t("PurchaseSummary.GuideNumber")}
-              </Typography>
-              <Typography sx={{ marginBottom: "8px", fontWeight: 300 }}>
-                {t("PurchaseSummary.TrackOrder")}
-              </Typography>
+            <Box sx={{ display: "flex", flexDirection: "row", gap: 6 }}>
+              <Box>
+                <Typography sx={{ marginBottom: "8px", fontWeight: 300 }}>
+                  {t("PurchaseSummary.TrackOrder")}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography
+                  sx={{
+                    marginBottom: "8px",
+                  }}
+                >
+                  52856341
+                </Typography>
+              </Box>
             </Box>
-            <Box sx={{ textAlign: "right", color: "rgba(0, 0, 0, 0.63)" }}>
-              <Typography sx={{ marginBottom: "8px" }}>52856341</Typography>
-              <Typography
-                sx={{ marginBottom: "8px", textDecoration: "underline" }}
-              >
-                www.transport/usa/a.....
-              </Typography>
+            <Box sx={{ display: "flex", flexDirection: "row", gap: 6 }}>
+              <Box>
+                <Typography sx={{ marginBottom: "8px", fontWeight: 300 }}>
+                  {t("PurchaseSummary.GuideNumber")}
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                <Typography
+                  sx={{
+                    marginBottom: "8px",
+                    textDecoration: "underline",
+                    wordBreak: "break-word",
+                    overflowWrap: "break-word",
+                    maxWidth: "100%",
+                    whiteSpace: "normal",
+                  }}
+                >
+                  www.transport/usa/a.....
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </Box>
       </Box>
 
-      {/* Bloque de calificación y comentarios DEBAJO */}
       <Box
         sx={{
           display: "flex",
+          flexDirection: {
+            xs: "column", // mobile
+            sm: "column", // tablets
+            md: "row", // desktop
+          },
           justifyContent: "space-between",
-          alignItems: "flex-start",
+          alignItems: {
+            xs: "center",
+            md: "flex-start",
+          },
           backgroundColor: "#F1F3F7",
-          padding: "30px",
+          padding: {
+            xs: "20px",
+            md: "30px",
+          },
           borderRadius: "16px",
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-          margin: "40px 20px",
-          height: "260px",
+          margin: {
+            xs: "20px 10px",
+            md: "40px 20px",
+          },
+          height: {
+            xs: "auto",
+            md: "260px",
+          },
         }}
       >
         {/* Columna de calificación */}
@@ -128,6 +159,7 @@ export const ReceiptOrderHistory = () => {
             flexDirection: "column",
             alignItems: "center",
             flex: 1,
+            mb: { xs: 4, md: 0 },
           }}
         >
           <Typography variant="h5" sx={{ mb: 2, fontSize: "22px" }}>
@@ -172,7 +204,7 @@ export const ReceiptOrderHistory = () => {
         </Box>
 
         {/* Columna de comentarios */}
-        <Box sx={{ flex: 2, ml: 4 }}>
+        <Box sx={{ flex: 2, ml: { xs: 0, md: 4 }, width: "100%" }}>
           <Typography variant="h5" sx={{ mb: 2, fontSize: "22px" }}>
             {t("OrdersHistory.Comments")}
           </Typography>

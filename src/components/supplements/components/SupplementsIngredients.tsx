@@ -66,7 +66,12 @@ export const SupplementsIngredients = () => {
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "space-between",
-        flexDirection: "row",
+        flexDirection: {
+          xs: "column",
+          sm: "column", // En móviles y tabletas pequeñas
+          md: "row", // En tabletas medianas
+          lg: "row", // En pantallas medianas o más grandes
+        },
         marginTop: "5%",
         marginLeft: "3%",
         marginRight: "3%",
@@ -79,14 +84,18 @@ export const SupplementsIngredients = () => {
       {/* Sección de los Acordeones */}
       <Box
         sx={{
-          width: "45%",
+          width: {
+            xs: "100%",
+            sm: "100%",
+            md: "45%",
+          },
         }}
       >
         <Typography
           variant="h3"
           gutterBottom
           sx={{
-            fontSize: "1.8rem",
+            fontSize: { xs: "1.5rem", sm: "1.8rem" },
             color: "#A5AB94",
             paddingBottom: "5px",
             borderBottom: "1px solid #A5AB94",
@@ -135,7 +144,11 @@ export const SupplementsIngredients = () => {
       {/* Sección de Información */}
       <Box
         sx={{
-          width: "45%",
+          width: {
+            xs: "100%",
+            sm: "90%",
+            md: "45%",
+          },
         }}
       >
         <Box sx={{ borderBottom: "1px solid #A5AB94" }}>
@@ -143,7 +156,7 @@ export const SupplementsIngredients = () => {
             variant="h3"
             gutterBottom
             sx={{
-              fontSize: "1.8rem",
+              fontSize: { xs: "1.5rem", sm: "1.8rem" },
               color: "#A5AB94",
             }}
           >
@@ -165,7 +178,7 @@ export const SupplementsIngredients = () => {
             variant="h3"
             gutterBottom
             sx={{
-              fontSize: "1.8rem",
+              fontSize: { xs: "1.5rem", sm: "1.8rem" },
               color: "#A5AB94",
               marginTop: "55px",
             }}

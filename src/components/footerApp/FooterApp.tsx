@@ -1,4 +1,8 @@
-import { Box, Button, Divider, styled, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 import {
   facebook_Footer,
   instagram_Footer,
@@ -8,9 +12,12 @@ import {
   youTube_Footer,
 } from "../../assets/images";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const FooterApp = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const InteractiveTextFooter = styled("span")({
     cursor: "pointer",
     color: "#ffff",
@@ -21,6 +28,13 @@ const FooterApp = () => {
       textDecorationColor: "#FBFFDD",
     },
   });
+  const buttons = [
+    { text: t("footerApp.category"), path: "/category" },
+    { text: t("footerApp.blog"), path: "/blog" },
+    { text: t("footerApp.Support"), path: "/support" },
+    { text: t("footerApp.about_us"), path: "/about_us" },
+    { text: t("footerApp.kits"), path: "/kits" },
+  ];
 
   return (
     <Box
@@ -149,7 +163,7 @@ const FooterApp = () => {
               },
             }}
           >
-            <Button color="inherit">
+            <Button onClick={() => navigate("/")} color="inherit">
               <img
                 style={{
                   width: 78,
@@ -178,16 +192,11 @@ const FooterApp = () => {
               },
             }}
           >
-            {[
-              t("footerApp.category"),
-              t("footerApp.blog"),
-              t("footerApp.Support"),
-              t("footerApp.about_us"),
-              t("footerApp.kits"),
-            ].map((text, index) => (
+            {buttons.map((item, index) => (
               <Button
                 key={index}
                 color="inherit"
+                onClick={() => navigate(item.path)}
                 sx={{
                   textTransform: "none",
                   "&:hover": {
@@ -197,7 +206,7 @@ const FooterApp = () => {
                   },
                 }}
               >
-                {text}
+                {item.text}
               </Button>
             ))}
           </Box>

@@ -11,7 +11,7 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
     { breakpoint: "1400px", numVisible: 3, numScroll: 1 },
     { breakpoint: "1199px", numVisible: 3, numScroll: 1 },
     { breakpoint: "767px", numVisible: 2, numScroll: 1 },
-    { breakpoint: "575px", numVisible: 2, numScroll: 1 },
+    { breakpoint: "575px", numVisible: 1, numScroll: 1 },
   ];
 
   const backgroundColor = "#ffff";
@@ -26,10 +26,12 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-between",
+
           width: {
-            xs: "90%", // en móviles ocupa casi todo el ancho
-            md: "58%", // mismo valor en pantallas medianas o más grandes
+            xs: "55%", // en móviles ocupa casi todo el ancho
+            sm: "70%", // mismo valor en pantallas medianas o más grandes
+            md: "63%", // mismo valor en pantallas medianas o más grandes
           },
           borderRadius: "10px",
           marginBottom: {
@@ -40,13 +42,7 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
             xs: "10px",
             md: "5px",
           },
-          marginLeft: {
-            xs: "auto",
-            md: "100px",
-          },
-          marginRight: {
-            xs: "auto",
-          },
+          margin: "0 auto",
           cursor: "pointer",
         }}
         onClick={() => navigate("/Supplements")}
@@ -58,9 +54,9 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
           sx={{
             width: "100%",
             height: {
-              xs: "190px", // altura para móviles
+              xs: "290px", // altura para móviles
               sm: "220px", // tablets pequeñas
-              md: "255px", // pantallas medianas en adelante
+              md: "275px", // pantallas medianas en adelante
             },
             objectFit: "cover",
             transition: "transform 0.3s ease",

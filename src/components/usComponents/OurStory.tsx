@@ -29,10 +29,17 @@ export const OurStory = () => {
           flexDirection: { xs: "column", md: "row" },
           alignItems: "center",
           justifyContent: "space-between",
-          marginRight: "190px",
+          marginRight: { md: "10px", lg: "190px" },
         }}
       >
-        <Box sx={{ flex: 1, textAlign: "center", px: 4 }}>
+        <Box
+          sx={{
+            flex: 1,
+            textAlign: "center",
+            pl: { xs: "0px", md: "32px" },
+            pr: { xs: "0px", md: "32px" },
+          }}
+        >
           <Typography variant="h4" fontWeight="bold" gutterBottom>
             {t("Us.ourStory")}
           </Typography>
@@ -83,6 +90,10 @@ export const OurStory = () => {
             maxWidth: 500,
             width: "100%",
             height: "auto",
+            display: {
+              xs: "none",
+              lg: "block",
+            },
           }}
         />
       </Box>

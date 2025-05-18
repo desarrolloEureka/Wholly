@@ -94,7 +94,11 @@ export const BlogForm = () => {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
+          gridTemplateColumns: {
+            xs: "repeat(1, 1fr)", // 1 columna en móviles
+            sm: "repeat(2, 1fr)", // 2 columnas en tablets
+            lg: "repeat(3, 1fr)", // 3 columnas en pantallas grandes,
+          },
           gap: 2,
           padding: "50px",
           justifyItems: "center",

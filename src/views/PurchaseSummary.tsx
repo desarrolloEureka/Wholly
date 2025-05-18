@@ -17,14 +17,15 @@ export const PurchaseSummary = () => {
           display: "flex",
           justifyContent: "center",
           flexDirection: "column", // Hace que los elementos estén en columnas
+          paddingRight: { xs: "0px", md: "16px" },
+          paddingLeft: { xs: "0px", md: "16px" },
           alignItems: "center",
           minHeight: "90vh",
           width: {
             xs: "90%",
-            sm: "80%",
-            md: "50%",
-            lg: "40%",
-            xl: "38%",
+            sm: "100%",
+            md: "100%",
+            lg: "100%",
           },
         }}
       >
@@ -47,18 +48,22 @@ export const PurchaseSummary = () => {
           </Typography>
           <Typography>{t("PurchaseSummary.Created")}</Typography>
         </Box>
-
-        <Box
-          sx={{
-            backgroundColor: "#E8E4DE",
-            padding: "10px 50px",
-            paddingBottom: "30px",
-            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.2)",
-          }}
-        >
-          <PurchaseSummaryForm />
+        <Box sx={{ width: { xs: "94%", md: "84%" } }}>
+          <Box
+            sx={{
+              backgroundColor: "#E8E4DE",
+              padding: { xs: "0px 0px", md: "10px 50px" },
+              paddingBottom: { xs: "0px", md: "30px" },
+              width: "100%",
+              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.2)",
+              justifyContent: "center",
+              margin: "0 auto",
+            }}
+          >
+            <PurchaseSummaryForm />
+          </Box>
+          <ReceiptGuide />
         </Box>
-        <ReceiptGuide />
       </Container>
 
       <FooterApp />

@@ -7,11 +7,11 @@ export const CheckoutSummary = () => {
   const { t } = useTranslation();
   return (
     <Box>
-      <Box sx={{ padding: "8px 72px" }}>
+      <Box sx={{ padding: { xs: "8px 22px", sm: "8px 72px" } }}>
         <Typography
           variant="h5"
           sx={{
-            width: "50%",
+            width: { xs: "60%", sm: "50%", md: "60%" },
             padding: "10px",
             color: "#3C3C3C",
             fontSize: "22px",
@@ -148,7 +148,7 @@ export const CheckoutSummary = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
-              width: "485px",
+              width: { xs: "auto", sm: "485px", md: "auto" },
               alignItems: "center",
               margin: "0 auto",
             }}

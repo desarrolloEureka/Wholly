@@ -1,5 +1,7 @@
 import { Carousel } from "primereact/carousel";
-import { Box, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
 import { ImagesExclusive } from "../../globals/types";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
@@ -25,6 +27,7 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
             justifyContent: "center",
             width: {
               xs: "50%",
+              sm: "80%",
               md: "80%",
             },
             borderRadius: "10px",

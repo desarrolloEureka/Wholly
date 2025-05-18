@@ -9,19 +9,20 @@ const ReviewScore = () => {
     <Box
       display="flex"
       alignItems="center"
+      flexDirection={{ xs: "column", md: "row" }}
       gap={3}
       sx={{
-        marginLeft: "80px",
-        padding: "20px",
+        marginLeft: { xs: "0px", md: "80px" },
+        padding: { xs: "10px", md: "20px" },
         borderRadius: "12px",
       }}
     >
       <Avatar
         sx={{
-          width: 70,
-          height: 70,
+          width: { xs: 50, md: 70 },
+          height: { xs: 50, md: 70 },
           color: "#000",
-          fontSize: 24,
+          fontSize: { xs: 20, md: 24 },
           backgroundColor: "#E8E4DE",
           fontWeight: "bold",
           border: "2px solid #000",
@@ -30,15 +31,20 @@ const ReviewScore = () => {
       >
         G
       </Avatar>
-      <Typography fontWeight="bold" fontSize="3.2rem" sx={{ color: "#3C3C3C" }}>
+
+      <Typography
+        fontWeight="bold"
+        fontSize={{ xs: "2rem", md: "3.2rem" }}
+        sx={{ color: "#3C3C3C" }}
+      >
         {rating}
       </Typography>
 
-      <Box>
+      <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
         <Typography
           variant="h6"
           component="span"
-          fontSize="1.6rem"
+          fontSize={{ xs: "1.2rem", md: "1.6rem" }}
           sx={{ color: "#3C3C3C" }}
         >
           Wholly
@@ -46,7 +52,7 @@ const ReviewScore = () => {
 
         <Typography
           variant="h6"
-          fontSize="1.6rem"
+          fontSize={{ xs: "1.2rem", md: "1.6rem" }}
           color="text.secondary"
           sx={{ mb: 0 }}
         >
@@ -54,14 +60,23 @@ const ReviewScore = () => {
         </Typography>
 
         {/* Estrellas */}
-        <Box display="flex" alignItems="center" gap={0.5} sx={{ mb: 1 }}>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent={{ xs: "center", md: "flex-start" }}
+          gap={0.5}
+          sx={{ mb: 1 }}
+        >
           {[1, 2, 3, 4].map((i) => (
-            <Star key={i} fontSize="medium" sx={{ color: "#A5AB94" }} />
+            <Star key={i} fontSize="small" sx={{ color: "#A5AB94" }} />
           ))}
-          <StarBorder fontSize="medium" sx={{ color: "#9e9e9e" }} />
+          <StarBorder fontSize="small" sx={{ color: "#9e9e9e" }} />
         </Box>
 
-        <Typography fontSize="1rem" color="text.secondary">
+        <Typography
+          fontSize={{ xs: "0.85rem", md: "1rem" }}
+          color="text.secondary"
+        >
           {totalReviews} reviews
         </Typography>
       </Box>

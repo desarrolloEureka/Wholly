@@ -1,4 +1,6 @@
-import { Box, Button, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { variety1, variety2, variety3 } from "../../../../assets/images";
 import { ImagesVariety } from "../../../../globals/types";
@@ -66,12 +68,15 @@ export const InternalCategoriestyform = () => {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "150px",
+            gridTemplateColumns: {
+              xs: "repeat(2, 1fr)", // 2 columnas en móviles
+              sm: "repeat(3, 1fr)", // 2 columnas en pantallas medianas en adelante
+            },
+            gap: { xs: "15px", sm: "30px", md: "120px" },
             width: "100%",
             maxWidth: "1450px",
             margin: "0 auto",
-            paddingX: "70px",
+            paddingX: { xs: "10px", sm: "70px" },
           }}
         >
           {imagesAreas.map((item) => (
@@ -87,12 +92,13 @@ export const InternalCategoriestyform = () => {
               }}
               onClick={() => navigate("/Supplements")}
             >
-              <img
+              <Box
+                component="img"
                 src={item.src}
                 alt={item.title}
-                style={{
+                sx={{
                   width: "100%",
-                  height: "300px",
+                  height: { xs: "170px", md: "300px", sm: "230px" },
                   objectFit: "cover",
                   transition: "transform 0.3s ease",
                   borderRadius: "10px 10px 0 0",
@@ -102,7 +108,8 @@ export const InternalCategoriestyform = () => {
                 sx={{
                   width: "100%",
                   backgroundColor: backgroundColor,
-                  padding: "10px 15px",
+                  padding: { xs: "10px 12px", sm: "10px 15px" },
+                  height: { xs: "178px", md: "210px", sm: "210px" },
 
                   textAlign: "start",
                   border: "1px solid rgba(60, 60, 60, 0.64)",
@@ -114,7 +121,7 @@ export const InternalCategoriestyform = () => {
                   variant="h4"
                   sx={{
                     marginTop: "10px",
-                    fontSize: "1.4rem",
+                    fontSize: { xs: "1.2rem", sm: "1.4rem" },
                     fontWeight: "bold",
                     color: textColor,
                   }}
@@ -124,7 +131,7 @@ export const InternalCategoriestyform = () => {
 
                 <Typography
                   sx={{
-                    fontSize: "1rem",
+                    fontSize: { xs: "0.8rem", sm: "1rem" },
                     marginTop: "3px",
                     color: textColor,
                     marginBottom: "8px",
@@ -156,17 +163,19 @@ export const InternalCategoriestyform = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-end",
+          alignItems: { xs: "center", sm: "flex-end" },
           marginTop: "30px",
-          marginRight: "85px",
+          margin: { xs: "0 auto" },
+          paddingRight: { xs: "0", sm: "85px" },
         }}
       >
         <Typography
           sx={{
             fontSize: "1rem",
             fontWeight: 500,
-            marginBottom: "10px",
-            marginRight: "30px",
+            paddingBottom: "10px",
+            marginRight: { xs: "0", sm: "30px" },
+            marginTop: { xs: "10px", sm: "10px" },
             color: "#3C3C3C",
           }}
         >

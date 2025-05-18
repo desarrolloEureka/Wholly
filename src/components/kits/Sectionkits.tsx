@@ -1,4 +1,6 @@
-import { Box, Button, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ImagesVariety } from "../../globals/types";
@@ -73,12 +75,17 @@ export const Sectionkits = () => {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "150px",
+            gridTemplateColumns: {
+              xs: "repeat(2, 1fr)",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(2, 1fr)",
+              lg: "repeat(3, 1fr)", // 2 columnas en pantallas medianas en adelante
+            },
+            gap: { xs: "15px", sm: "30px", md: "120px" },
             width: "100%",
             maxWidth: "1450px",
             margin: "0 auto",
-            paddingX: "70px",
+            paddingX: { xs: "15px", sm: "70px" },
           }}
         >
           {imagesAreas.map((item) => (
@@ -94,19 +101,20 @@ export const Sectionkits = () => {
               }}
               onClick={() => navigate("/InternalKits")}
             >
-              <img
+              <Box
+                component="img"
                 src={item.src}
                 alt={item.title}
-                style={{
-                  width: "300px",
-                  height: "300px",
+                sx={{
+                  width: { xs: "190px", md: "300px", sm: "300px" },
+                  height: { xs: "170px", md: "300px", sm: "300px" },
                   objectFit: "cover",
                   borderRadius: "10px 10px 0 0",
                 }}
               />
               <Box
                 sx={{
-                  width: "300px",
+                  width: { xs: "190px", md: "300px", sm: "300px" },
                   backgroundColor: backgroundColor,
                   padding: "10px 15px",
 
@@ -162,17 +170,19 @@ export const Sectionkits = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-end",
+          alignItems: { xs: "center", sm: "flex-end" },
           marginTop: "30px",
-          marginRight: "85px",
+          margin: { xs: "0 auto" },
+          paddingRight: { xs: "0", sm: "85px" },
         }}
       >
         <Typography
           sx={{
             fontSize: "1rem",
             fontWeight: 500,
-            marginBottom: "10px",
-            marginRight: "30px",
+            paddingBottom: "10px",
+            marginRight: { xs: "0", sm: "30px" },
+            marginTop: { xs: "10px", sm: "10px" },
             color: "#3C3C3C",
           }}
         >

@@ -6,7 +6,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 export const OrderDetails = ({ onBackOrder }: { onBackOrder: () => void }) => {
   return (
-    <Box sx={{ width: "70%", margin: "0 auto" }}>
+    <Box sx={{ width: { sm: "80%", xs: "90%" }, margin: "0 auto" }}>
       <Button
         onClick={onBackOrder}
         sx={{
@@ -45,8 +45,8 @@ export const OrderDetails = ({ onBackOrder }: { onBackOrder: () => void }) => {
       <Box
         sx={{
           backgroundColor: "#E8E4DE",
-          padding: "10px 50px",
-          paddingBottom: "30px",
+          padding: { xs: "0px 0px", sm: "30px 40px" },
+          paddingBottom: { xs: "0px", sm: "30px" },
           boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.2)",
         }}
       >

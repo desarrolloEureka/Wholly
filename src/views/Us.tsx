@@ -26,9 +26,9 @@ export const Us = () => {
             borderBottom="1px solid #3C3C3C"
             sx={{
               padding: "15px",
-              width: "30%",
+              width: { xs: "61", sm: "57%", md: "45%", lg: "30%" },
               color: "#3C3C3C",
-              fontSize: "30px",
+              fontSize: { xs: "17px", sm: "30px" },
               marginLeft: "30px",
               marginBottom: "20px",
               marginTop: "24%",

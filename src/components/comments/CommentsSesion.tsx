@@ -11,7 +11,7 @@ import {
   ArrowForwardIos,
   PersonOutline,
 } from "@mui/icons-material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const CommentsSesion = () => {
   const [comments] = useState([
@@ -74,7 +74,24 @@ export const CommentsSesion = () => {
   ]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleCount = 3;
+  const [visibleCount, setVisibleCount] = useState(3); // inicial por defecto
+
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setVisibleCount(3); // escritorio
+      } else if (width >= 768) {
+        setVisibleCount(2); // tablet
+      } else {
+        setVisibleCount(1); // móvil
+      }
+    };
+
+    updateVisibleCount(); // al cargar
+    window.addEventListener("resize", updateVisibleCount); // al cambiar tamaño
+    return () => window.removeEventListener("resize", updateVisibleCount); // cleanup
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(prev - 1, 0));
@@ -94,12 +111,12 @@ export const CommentsSesion = () => {
   return (
     <Box
       sx={{
-        width: "100%",
+        width: { xs: "65%", md: "88%", lg: "100%" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         mt: 4,
-        position: "relative",
+        margin: "0 auto",
       }}
     >
       <Box
@@ -112,19 +129,6 @@ export const CommentsSesion = () => {
           position: "relative",
         }}
       >
-        <IconButton
-          onClick={handlePrev}
-          sx={{
-            position: "absolute",
-            left: -60,
-            top: "50%",
-            transform: "translateY(-50%)",
-            color: "#8B8F7C",
-          }}
-        >
-          <ArrowBackIos />
-        </IconButton>
-
         <Box
           sx={{
             display: "flex",
@@ -134,6 +138,18 @@ export const CommentsSesion = () => {
             width: "100%",
           }}
         >
+          <IconButton
+            onClick={handlePrev}
+            sx={{
+              position: "absolute",
+              left: { xs: -40, md: -60 },
+              top: "50%",
+              transform: "translateY(-50%)",
+              color: "#8B8F7C",
+            }}
+          >
+            <ArrowBackIos />
+          </IconButton>
           {visibleComments.map((comment) => (
             <Paper
               key={comment.id}
@@ -142,9 +158,11 @@ export const CommentsSesion = () => {
                 borderRadius: 4,
                 padding: 3,
                 backgroundColor: "#eef0ee",
-                minWidth: 350,
+                minWidth: { xs: 225, md: 280, lg: 350 },
                 maxWidth: 60,
+                height: { xs: 390, md: 380, lg: 400 },
                 flexShrink: 0,
+                overflow: "hidden", // ✅ previene contenido desbordado
                 textAlign: "left",
                 mb: 4,
               }}
@@ -154,7 +172,9 @@ export const CommentsSesion = () => {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "self-start",
+                  overflowX: "auto",
                   gap: 1,
+
                   mb: 2,
                 }}
               >
@@ -180,7 +200,7 @@ export const CommentsSesion = () => {
                 </Box>
               </Box>
 
-              <Typography sx={{ fontSize: 18, mb: 2 }}>
+              <Typography sx={{ fontSize: { xs: 14, md: 18 }, mb: 2 }}>
                 {comment.comment}
               </Typography>
               <Typography
@@ -191,20 +211,19 @@ export const CommentsSesion = () => {
               </Typography>
             </Paper>
           ))}
+          <IconButton
+            onClick={handleNext}
+            sx={{
+              position: "absolute",
+              right: { xs: -45, md: -60 },
+              top: "50%",
+              transform: "translateY(-50%)",
+              color: "#8B8F7C",
+            }}
+          >
+            <ArrowForwardIos />
+          </IconButton>
         </Box>
-
-        <IconButton
-          onClick={handleNext}
-          sx={{
-            position: "absolute",
-            right: -60,
-            top: "50%",
-            transform: "translateY(-50%)",
-            color: "#8B8F7C",
-          }}
-        >
-          <ArrowForwardIos />
-        </IconButton>
       </Box>
 
       {/* Indicadores de navegación */}

@@ -1,4 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
 import { useTranslation } from "react-i18next"; // Importar la función de traducción
 import {
   exclusive_1,

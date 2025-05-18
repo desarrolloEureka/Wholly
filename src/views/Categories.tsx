@@ -18,7 +18,7 @@ export const Categories = () => {
             width: "100%",
             mt: "11%",
             ml: "5%",
-            fontSize: "3.1rem",
+            fontSize: { xs: "1.8rem", md: "3.1rem" },
             fontWeight: 100,
             color: "#FBFFDD",
           }}

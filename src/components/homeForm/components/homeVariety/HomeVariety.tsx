@@ -35,12 +35,13 @@ export const Homevariety = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: { md: "row" },
           alignItems: "center",
           justifyContent: "center",
-          maxWidth: "98%", // Reducir el ancho máximo del contenedor
+          maxWidth: { md: "96%", sm: "100%" }, // Reducir el ancho máximo del contenedor
           margin: "0 auto",
           position: "relative",
+
           overflow: "hidden", // Para ocultar las imágenes fuera del contenedor
         }}
       >

@@ -10,7 +10,7 @@ export const OrderDetailsHistory = ({
   onBackOrder: () => void;
 }) => {
   return (
-    <Box sx={{ width: "70%", margin: "0 auto" }}>
+    <Box sx={{ width: "80%", margin: "0 auto" }}>
       <Button
         onClick={onBackOrder}
         sx={{
@@ -49,8 +49,8 @@ export const OrderDetailsHistory = ({
       <Box
         sx={{
           backgroundColor: "#E8E4DE",
-          padding: "10px 50px",
-          paddingBottom: "30px",
+          padding: { xs: "0px 0px", sm: "30px 40px" },
+          paddingBottom: { xs: "0px", sm: "30px" },
           boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.2)",
         }}
       >

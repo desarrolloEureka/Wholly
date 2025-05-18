@@ -35,7 +35,8 @@ const CustomCarouselCategories = ({
             alignItems: "center",
             justifyContent: "center",
             width: {
-              xs: "45%", // Para pantallas móviles
+              xs: "50%",
+              sm: "89%",
               md: "96%",
             },
             boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.38)",
@@ -44,7 +45,7 @@ const CustomCarouselCategories = ({
             marginTop: "10px",
             height: { xs: "450px" },
 
-            margin: { xs: " 0 auto", sm: "10px" },
+            margin: "0 auto",
             cursor: "pointer",
           }}
           onClick={() => navigate("/category")}

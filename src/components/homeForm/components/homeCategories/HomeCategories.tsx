@@ -1,7 +1,10 @@
 import { Box } from "@mui/material";
 import CustomCarouselCategories from "../../../customCarousel/CustomCarouselCategories";
 import { ImagesCategories } from "../../../../globals/types";
-import { rectangle1, rectangle2, rectangle3 } from "../../../../assets/images";
+import { rectangle1 } from "../../../../assets/images";
+import { rectangle2 } from "../../../../assets/images";
+import { rectangle3 } from "../../../../assets/images";
+
 import { useTranslation } from "react-i18next";
 
 export const HomeCategories = () => {
@@ -40,9 +43,7 @@ export const HomeCategories = () => {
           justifyContent: "center",
           maxWidth: "100%", // Reducir el ancho máximo del contenedor
           margin: { xs: "0 auto", md: "0 auto" },
-          marginTop: { xs: "500px", md: "0px" },
           marginBottom: "100px",
-          position: "relative",
           overflow: "hidden", // Para ocultar las imágenes fuera del contenedor
         }}
       >

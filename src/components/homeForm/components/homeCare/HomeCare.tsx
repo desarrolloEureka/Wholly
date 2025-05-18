@@ -1,4 +1,6 @@
-import { Box, Button, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import { imagen_2, VectorIcono } from "../../../../assets/images";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useTranslation } from "react-i18next";
@@ -17,21 +19,35 @@ export const HomeCare = () => {
       {/* Imagen de fondo */}
       <Box
         sx={{
+          position: "relative",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          margin: "60px 21%",
+          marginBottom: { sm: "0px", md: "30px" },
+          marginTop: { sm: "0px", md: "30px" },
+          width: { sm: "100%", md: "54%" },
+          height: { sm: "400px", md: "318px" }, // Ajusta la altura según necesites
+          boxShadow: "1px 0px 15px rgba(0, 0, 0, 0.5)",
+          backgroundImage: {
+            xs: "none",
+            sm: `url(${imagen_2})`,
+          },
+          backgroundSize: {
+            xs: "initial",
+            sm: "cover",
+            md: "800px",
+          },
+          backgroundPosition: {
+            xs: "initial",
+            sm: "center",
+          },
+          backgroundRepeat: {
+            xs: "initial",
+            sm: "no-repeat",
+          },
         }}
       >
-        <img
-          src={imagen_2}
-          alt="image"
-          style={{
-            width: "100%",
-            height: "auto",
-            boxShadow: "1px 0px 15px rgba(0, 0, 0, 0.5)",
-          }}
-        />
+        {/* Contenido encima de la imagen (si quieres) */}
       </Box>
 
       {/* Contenedor encima de la imagen */}
@@ -46,7 +62,7 @@ export const HomeCare = () => {
           padding: "25px",
           borderRadius: "16px",
           color: "#FBFFDD",
-          width: "30%",
+          width: { sm: "60%", md: "30%" },
         }}
       >
         <Button

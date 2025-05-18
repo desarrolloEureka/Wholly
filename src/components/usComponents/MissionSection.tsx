@@ -6,11 +6,11 @@ const MissionSection = () => {
   const { t } = useTranslation();
 
   return (
-    <Box sx={{ px: 4, py: 6 }}>
+    <Box sx={{ px: { xs: 2, sm: 4 }, py: { xs: 3, sm: 6 } }}>
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: { xs: "column", sm: "row" },
           alignItems: "center",
           gap: 4,
         }}
@@ -20,7 +20,7 @@ const MissionSection = () => {
           <Typography
             variant="h3"
             sx={{
-              fontSize: 36,
+              fontSize: { xs: 25, sm: 26, md: 36 },
               fontWeight: 500,
               color: "#333",
               mb: 2,
@@ -33,8 +33,8 @@ const MissionSection = () => {
             sx={{
               color: "#444",
               textAlign: "justify",
-              width: "85%",
-              fontSize: 20,
+              width: { xs: "100%", sm: "100%" },
+              fontSize: { xs: 14, sm: 15, md: 20 },
             }}
           >
             {t("Us.lorem3")}
@@ -48,8 +48,8 @@ const MissionSection = () => {
           src={SmallFace}
           alt="Mission"
           sx={{
-            maxWidth: "100%",
-            maxHeight: "100%",
+            maxWidth: { xs: "100%", sm: "55%", md: "55%", lg: "100%" },
+            maxHeight: { xs: "200px", sm: "230px", md: "100%" },
             height: "400px",
             width: "700px",
             objectFit: "contain",

@@ -38,21 +38,37 @@ h6 {
   background: url(./assets/Home.png) no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  min-height: 55vh;
+}
+@media (min-width: 1025px) {
+  .bg_Home_image {
+    min-height: 100vh;
+  }
 }
 .bg_Category_image {
   background: url(./assets/category.png) no-repeat;
   background-size: cover;
   background-position: center;
   box-shadow: inset 600px 0px 200px rgba(0, 0, 0, 0.288); /* Sombra dentro de la imagen hacia la derecha */
-  min-height: 80vh;
+  min-height: 40vh;
 }
+@media (min-width: 1025px) {
+  .bg_Category_image {
+    min-height: 80vh;
+  }
+}
+
 .bg_Blog {
   background: url(./assets/blog_principal.png) no-repeat;
   background-size: cover;
   background-position: center;
   box-shadow: inset 600px 0px 200px rgba(0, 0, 0, 0.288); /* Sombra dentro de la imagen hacia la derecha */
-  min-height: 80vh;
+  min-height: 60vh;
+}
+@media (min-width: 1025px) {
+  .bg_Blog {
+    min-height: 80vh;
+  }
 }
 .bg_user_menu {
   background-color: #ece9e2;
@@ -64,21 +80,48 @@ h6 {
   background-size: cover;
   background-position: center;
   box-shadow: inset 600px 0px 200px rgba(0, 0, 0, 0.288); /* Sombra dentro de la imagen hacia la derecha */
-  min-height: 80vh;
+  min-height: 50vh;
+}
+@media (min-width: 1025px) {
+  .bg_support {
+    min-height: 75vh;
+  }
 }
 .bg_us {
   background: url(./assets/us.png) no-repeat;
   background-size: cover;
   background-position: center;
   box-shadow: inset 600px 0px 200px rgba(0, 0, 0, 0.288); /* Sombra dentro de la imagen hacia la derecha */
-  min-height: 80vh;
+  min-height: 30vh;
+}
+@media (min-width: 1025px) {
+  .bg_us {
+    min-height: 55vh;
+  }
 }
 .bg_InternalCategoriesty_image {
   background: url(./assets/InternalCategoriesty.png) no-repeat;
   background-size: cover;
   background-position: center;
   box-shadow: inset 600px 0px 200px rgba(0, 0, 0, 0.288); /* Sombra dentro de la imagen hacia la derecha */
-  min-height: 70vh;
+  min-height: 40vh;
+}
+@media (min-width: 1025px) {
+  .bg_InternalCategoriesty_image {
+    min-height: 70vh;
+  }
+}
+.bg_Kits_image {
+  background: url(./assets/Kits.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 600px 0px 200px rgba(0, 0, 0, 0.288); /* Sombra dentro de la imagen hacia la derecha */
+  min-height: 50vh;
+}
+@media (min-width: 1025px) {
+  .bg_InternalCategoriesty_image {
+    min-height: 40vh;
+  }
 }
 
 .bg_register_image {

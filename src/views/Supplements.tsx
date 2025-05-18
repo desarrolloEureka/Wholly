@@ -6,6 +6,7 @@ import { SupplementsIngredients } from "../components/supplements/components/Sup
 import { SupplementsSblock } from "../components/supplements/components/SupplementsSblock";
 import { SupplementSession } from "../components/supplements/components/SupplementSsession";
 import { useTranslation } from "react-i18next";
+import { SupleInformationSection } from "../components/supplements/components/SupleInformationSection";
 
 export const Supplements = () => {
   const { t } = useTranslation();
@@ -15,6 +16,9 @@ export const Supplements = () => {
       <CustomAppBar />
 
       <SupplementSession />
+      <Box display={{ xs: "block", md: "none" }}>
+        <SupleInformationSection />
+      </Box>
 
       <Box
         sx={{
@@ -39,7 +43,7 @@ export const Supplements = () => {
             marginBottom: "3%",
             fontWeight: "bold",
             color: "#3C3C3C",
-            fontSize: "2.1rem",
+            fontSize: { xs: "1.5rem", sm: "2.1rem" },
           }}
         >
           {t("supplementsForm.YouLike")}

@@ -7,18 +7,30 @@ const StatsSection = () => {
   const { t } = useTranslation();
 
   return (
-    <Box sx={{ px: 4, py: 8 }}>
+    <Box sx={{ px: { xs: 2, sm: 4 }, py: { xs: 3, sm: 8 } }}>
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h3" sx={{ fontWeight: 500, mb: 2, fontSize: 26 }}>
+        <Typography
+          variant="h3"
+          sx={{ fontWeight: 500, mb: 2, fontSize: { xs: 15, sm: 26 } }}
+        >
           {t("Us.loremstats")}
         </Typography>
-        <Typography variant="body1" sx={{ color: "#444", maxWidth: 600 }}>
+        <Typography
+          sx={{ color: "#444", maxWidth: 600, fontSize: { xs: 11, sm: 20 } }}
+        >
           {t("Us.loremstats2")}
         </Typography>
       </Box>
 
       {/* Imágenes */}
-      <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", mb: 6 }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: { xs: "5px", sm: "16px" },
+          flexWrap: "wrap",
+          mb: 6,
+        }}
+      >
         {[blog_3, blog_1, blog_2].map((img, i, arr) => (
           <Box
             key={i}
@@ -26,9 +38,9 @@ const StatsSection = () => {
             src={img}
             alt={`img-${i}`}
             sx={{
-              width: { xs: "100%", sm: 460 },
+              width: { xs: "32%", sm: "31%", md: "32%", lg: 460 },
               objectFit: "cover",
-              height: 410,
+              height: { xs: 120, sm: 242, md: 310, lg: 410 },
               ...(i === arr.length - 1 && {
                 borderTopLeftRadius: "0px",
                 borderTopRightRadius: "50px",
@@ -45,11 +57,11 @@ const StatsSection = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-          gap: 36,
+          gap: { xs: "32px", sm: 12, md: 18, lg: 36 },
           maxWidth: 800,
           mx: "auto",
           my: 6,
-          pl: 6,
+          pl: { xs: "7px", sm: 0, md: 4, lg: 2 },
         }}
       >
         {[
@@ -58,12 +70,22 @@ const StatsSection = () => {
           { number: "300+", label: t("Us.references") },
         ].map((stat, i) => (
           <Box key={i} sx={{ textAlign: "center" }}>
-            <Typography variant="h3" sx={{ color: "#6D7D7D" }}>
+            <Typography
+              variant="h3"
+              sx={{
+                color: "#6D7D7D",
+                fontSize: { xs: 20, sm: 36, md: 39, lg: 60 },
+              }}
+            >
               {stat.number}
             </Typography>
             <Typography
               variant="h6"
-              sx={{ letterSpacing: 2, color: "#000000" }}
+              sx={{
+                letterSpacing: 2,
+                color: "#000000",
+                fontSize: { xs: 13, sm: 20, md: 26, lg: 30 },
+              }}
             >
               {stat.label}
             </Typography>

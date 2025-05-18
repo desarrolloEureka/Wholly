@@ -56,6 +56,7 @@ export const KitsSession = () => {
         elevation={0}
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           alignItems: "center",
           justifyContent: "center",
           borderRadius: 4,
@@ -63,7 +64,11 @@ export const KitsSession = () => {
           width: "100%",
           maxWidth: "1100px",
           backgroundColor: "#fff",
-          gap: 20,
+          paddingLeft: { xs: 4, md: 9, lg: 4 },
+          paddingRight: { xs: 4, md: 4, lg: 4 },
+          paddingTop: { xs: 4, md: 4, lg: 4 },
+          paddingBottom: { xs: 4, md: 4, lg: 4 },
+          gap: { xs: 10, md: 20 },
         }}
       >
         {/* Imagen a la derecha */}
@@ -82,7 +87,7 @@ export const KitsSession = () => {
             onClick={handlePrev}
             sx={{
               position: "absolute",
-              left: -60,
+              left: { xs: -20, md: -60 },
               top: "50%",
               transform: "translateY(-50%)",
               backgroundColor: "rgb(212, 216, 192)",
@@ -101,8 +106,8 @@ export const KitsSession = () => {
             src={selectedProduct.src}
             alt={selectedProduct.title}
             sx={{
-              width: 400,
-              height: 400,
+              width: { xs: 280, md: 400 },
+              height: { xs: 280, md: 400 },
               objectFit: "cover",
               borderRadius: 2,
               boxShadow: "0px 5px 10px rgba(0,0,0,0.1)",
@@ -114,7 +119,7 @@ export const KitsSession = () => {
             onClick={handleNext}
             sx={{
               position: "absolute",
-              right: -60,
+              right: { xs: -20, md: -60 },
               top: "50%",
               transform: "translateY(-50%)",
               backgroundColor: "rgb(212, 216, 192)",

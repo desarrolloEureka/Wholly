@@ -37,7 +37,7 @@ export const InternalKits = () => {
             marginBottom: "3%",
             fontWeight: "bold",
             color: "#3C3C3C",
-            fontSize: "2.1rem",
+            fontSize: { xs: "1.5rem", sm: "2.1rem" },
           }}
         >
           {t("supplementsForm.YouLike")}

@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import CustomAppBar from "../components/customAppBar/CustomAppBar";
 import FooterApp from "../components/footerApp/FooterApp";
 import { HomeCategories } from "../components/homeForm/components/homeCategories/HomeCategories";
@@ -11,7 +12,7 @@ export const Kits = () => {
 
   return (
     <Box justifyContent="space-between">
-      <Box className="bg_InternalCategoriesty_image">
+      <Box className="bg_Kits_image">
         <CustomAppBar />
         <Typography
           variant="h2"
@@ -20,7 +21,7 @@ export const Kits = () => {
             width: "50%",
             mt: "9%",
             marginLeft: "50px",
-            fontSize: "2.6rem",
+            fontSize: { xs: "1.9rem", md: "2.1rem" },
             fontWeight: 100,
             color: "#Ffff",
           }}
@@ -34,7 +35,7 @@ export const Kits = () => {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "center",
-          marginLeft: "90px",
+          marginLeft: { xs: "10px", md: "90px" },
         }}
       >
         <Typography
@@ -44,7 +45,7 @@ export const Kits = () => {
             marginBottom: "3%",
             fontWeight: "bold",
             color: "#3C3C3C",
-            fontSize: "2.1rem",
+            fontSize: { xs: "1.9rem", md: "2.1rem" },
           }}
         >
           {t("Kits.completeKits")}
@@ -79,7 +80,7 @@ export const Kits = () => {
             fontWeight: "bold",
             ml: "60px",
             color: "#3C3C3C",
-            fontSize: "2.1rem",
+            fontSize: { xs: "1.9rem", md: "2.1rem" },
           }}
         >
           {t("categoriesIternal.YouLike")}

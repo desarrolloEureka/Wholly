@@ -16,7 +16,7 @@ export const PaymentVerification = () => {
           height: "80vh",
           color: "red",
           width: {
-            xs: "90%", // 90% del ancho en pantallas extra pequeñas
+            xs: "100%", // 90% del ancho en pantallas extra pequeñas
             sm: "80%", // 70% del ancho en pantallas pequeñas
             md: "50%", // 50% del ancho en pantallas medianas
             lg: "40%", // 40% del ancho en pantallas grandes

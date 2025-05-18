@@ -66,9 +66,13 @@ export const CategoriesForm = () => {
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)", // Dos columnas
+        gridTemplateColumns: {
+          xs: "1fr", // 1 columna en pantallas pequeñas
+          sm: "repeat(2, 1fr)", // 2 columnas en pantallas medianas en adelante
+        },
         gap: 2,
-        padding: "50px",
+        padding: { xs: "30px", sm: "50px" },
+
         justifyItems: "center",
       }}
     >
@@ -85,6 +89,7 @@ export const CategoriesForm = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              height: "auto",
               width: "100%",
               boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.38)",
               borderRadius: "10px",

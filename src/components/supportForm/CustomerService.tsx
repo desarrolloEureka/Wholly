@@ -14,10 +14,10 @@ export const CustomerService = () => {
   return (
     <Box
       sx={{
-        pl: 32,
-        pr: 32,
-        pt: 5,
-        pb: 5,
+        pl: { xs: 6, md: 20, lg: 32 },
+        pr: { xs: 6, md: 20, lg: 32 },
+        pt: { xs: 6, md: 5, lg: 5 },
+        pb: { xs: 6, md: 5, lg: 5 },
         textAlign: "center",
         backgroundColor: "#EEF1F0",
         width: "95%",
@@ -88,7 +88,7 @@ export const CustomerService = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-start",
-            width: "35%",
+            width: { xs: "100%", sm: "45%", md: "35%" },
           }}
         >
           <OutlinedInput

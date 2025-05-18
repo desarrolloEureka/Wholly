@@ -1,12 +1,10 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Button,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -60,7 +58,7 @@ export const RegisterHome = () => {
         },
         gap: { xs: 3, md: 30 },
         marginLeft: "4%",
-        marginBottom: 0,
+        marginBottom: { xs: 50, sm: 38, md: 0 },
         height: { xs: "6vh", sm: "60vh", md: "100vh" },
         marginTop: { xs: "20%", sm: "8%", md: "5%" },
       }}

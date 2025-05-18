@@ -25,11 +25,13 @@ import { EditProfile } from "./views/EditProfile";
 import { Addresses } from "./views/Addresses";
 import { PaymentMethods } from "./views/PaymentMethods";
 import { Orders } from "./views/Orders";
+import { ScrollTop } from "./globals/ScrollTop";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <ScrollTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/category" element={<Categories />} />
