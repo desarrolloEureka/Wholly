@@ -151,7 +151,7 @@ export const BlogContainer = ({ blog, loading }: any) => {
               {new Intl.DateTimeFormat(
                 currentLang === "es" ? "es-ES" : "en-US",
                 { day: "numeric", month: "long", year: "numeric" }
-              ).format(new Date(blog.created_at))}
+              ).format(new Date(blog?.created_at))}
             </Typography>
           </Box>
         </Box>
