@@ -67,8 +67,8 @@ export const CareBlog = ({ blog, loading }: any) => {
             }}
           >
             {currentLang === "es"
-              ? blog.name_spanish || blog.name_english
-              : blog.name_english || blog.name_spanish}
+              ? blog?.name_spanish || blog?.name_english
+              : blog?.name_english || blog?.name_spanish}
           </Typography>
         </Box>
         <Box
