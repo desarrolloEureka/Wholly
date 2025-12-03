@@ -1,7 +1,6 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { variety1, variety2 } from "../../../assets/images";
-import { ImagesVariety } from "../../../globals/types";
+import { variety1 } from "../../../assets/images";
 import { useTranslation } from "react-i18next";
 import { ConfigConstants } from "../../../globals/config/config";
 
@@ -30,23 +29,6 @@ export const VarietyBlog = ({ products, loading }: any) => {
   if (!products || products.length === 0) {
     return <div style={{ textAlign: "center", padding: "2rem" }}>No hay ofertas disponibles.</div>;
   }
-
-  const imagesAreas: ImagesVariety[] = [
-    {
-      id: 1,
-      src: variety1,
-      title: t("homeform.titleVariety1"),
-      subtitle: t("homeform.subtitleVariety1"),
-      description: t("homeform.priceVariety1"),
-    },
-    {
-      id: 2,
-      src: variety2,
-      title: t("homeform.titleVariety2"),
-      subtitle: t("homeform.subtitleVariety2"),
-      description: t("homeform.priceVariety2"),
-    },
-  ];
 
   return (
     <Box>

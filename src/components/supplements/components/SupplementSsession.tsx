@@ -5,7 +5,7 @@ import { ConfigConstants } from "../../../globals/config/config";
 import { variety1 } from "../../../assets/images";
 
 export const SupplementSession = ({ supplement }: any) => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
   const currentLang = i18n.language;
   const images = supplement?.images || [];
   const [selectedImage, setSelectedImage] = useState("");

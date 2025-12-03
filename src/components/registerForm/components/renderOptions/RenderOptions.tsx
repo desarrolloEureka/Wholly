@@ -21,8 +21,7 @@ const RenderOptions = ({
   handleAddCustomOption?: any
 }) => {
 
-  const { t, i18n } = useTranslation();
-  const lang = i18n.language;
+  const { i18n } = useTranslation();
 
   return (
     <Box
@@ -46,7 +45,6 @@ const RenderOptions = ({
         const isSelected = selectedOptions && selectedOptions?.some((item: any) => item.id === val.id);
 
         const text = i18n.language === "es" ? val.name_spanish : val.name_english;
-        const description = i18n.language === "es" ? val.description_spanish : val.description_english;
 
         return (
           <Button

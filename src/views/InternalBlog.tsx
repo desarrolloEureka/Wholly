@@ -13,7 +13,6 @@ export const InternalBlog = () => {
   const { id } = useParams();
   const [blogDetail, setBlogDetail] = useState<any>(null);
   const [loadingBlog, setLoadingBlog] = useState(true);
-  const [errorBlog, setErrorBlog] = useState<string | null>(null);
 
   const fetchBlogDetail = async () => {
     try {
@@ -28,11 +27,9 @@ export const InternalBlog = () => {
         setBlogDetail(response);
       } else {
         console.error("Error en la respuesta:", response);
-        setErrorBlog("No se pudo cargar la información del blog.");
       }
     } catch (error) {
       console.error("Error de conexión:", error);
-      setErrorBlog("Error de conexión con el servidor.");
     } finally {
       setLoadingBlog(false);
     }

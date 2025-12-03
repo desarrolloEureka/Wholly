@@ -51,7 +51,6 @@ const RegisterForm = () => {
     options,
     setOptions,
     conditions,
-    setConditions,
     selectedTendencies,
     setSelectedTendencies,
     customTendency,

@@ -20,7 +20,7 @@ export const EditProfile = () => {
             borderRadius: '8px',
           }}
         >
-          <EditProfileForm edit={edit} />
+          <EditProfileForm />
         </Container>
       </Box>
 

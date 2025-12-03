@@ -17,7 +17,6 @@ export const ContentStepperSpecial = (props: any) => {
     setSearchTerm,
     errorMessage,
     setErrorMessage,
-    isError,
     setIsError,
     options,
     selectedTendencies,

@@ -23,10 +23,7 @@ const LoginForm = () => {
 
   const {
     showPassword,
-    setShowPassword,
-    password,
     setPassword,
-    email,
     setEmail,
     acceptedTerms,
     setAcceptedTerms,

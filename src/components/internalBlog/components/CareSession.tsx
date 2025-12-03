@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ConfigConstants } from "../../../globals/config/config";
 
 export const CareSession = ({ blog, loading }: any) => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const currentLang = i18n.language;
 
   if (loading) {

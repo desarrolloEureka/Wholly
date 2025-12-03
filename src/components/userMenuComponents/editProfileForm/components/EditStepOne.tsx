@@ -1,8 +1,6 @@
 import PersonIcon from "@mui/icons-material/Person";
 import {
   useState,
-  SetStateAction,
-  useImperativeHandle,
   forwardRef,
   useEffect,
 } from "react";
@@ -52,7 +50,7 @@ const dataErrors = {
   gender: false,
   optionsList: false,
 };
-export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
+export const EditStepOne = forwardRef<StepOneHandle>(() => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -68,8 +66,7 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
   const [called, setCalled] = useState<number | null>(null);
   const [errors, setErrors] = useState(dataErrors);
   const [generalError, setGeneralError] = useState<React.ReactNode>("");
-  const [loadingProfile, setLoadingProfile] = useState(true);
-  const [errorProfile, setErrorProfile] = useState("");
+  const [, setLoadingProfile] = useState(true);
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const [newImageFile, setNewImageFile] = useState<File | null>(null);
 
@@ -178,12 +175,10 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
         setCalled(response.called?.id ?? null);
         setProfileImage(response.image || null);
       } else {
-        setErrorProfile("No se pudo cargar el perfil.");
         console.error("Error respuesta perfil:", response);
       }
     } catch (error) {
       console.error("Error de conexión:", error);
-      setErrorProfile("Error de conexión con el servidor.");
     } finally {
       setLoadingProfile(false);
     }

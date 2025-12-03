@@ -10,11 +10,10 @@ import { ApiData } from "../globals/services/api";
 export const Blog = () => {
   const [blogs, setBlogs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [errorBlog, setErrorBlog] = useState<string | null>(null);
 
   const [latestBlog, setLatestBlog] = useState<any>(null);
   const [loadingLastBlog, setLoadingLastBlog] = useState(true);
-  const [errorLastBlog, setErrorLastBlog] = useState<string | null>(null);
+  const [, setErrorLastBlog] = useState<string | null>(null);
 
   const fetchBlogs = async () => {
     try {
@@ -30,11 +29,9 @@ export const Blog = () => {
         setBlogs(fetchedBlogs);
       } else {
         console.error("Error en la respuesta:", response);
-        setErrorBlog("No se pudieron cargar los blogs.");
       }
     } catch (error) {
       console.error("Error de conexión:", error);
-      setErrorBlog("Error de conexión con el servidor.");
     } finally {
       setLoading(false);
     }

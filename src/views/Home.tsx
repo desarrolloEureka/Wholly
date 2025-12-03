@@ -25,7 +25,6 @@ export const Home = () => {
   const [latestBlog, setLatestBlog] = useState<any>(null);
   const [supplementsAll, setSupplementsAll] = useState<any[]>([]);
   const [filteredSupplements, setFilteredSupplements] = useState<any[]>([]);
-  const [filteredIndications, setFilteredIndications] = useState<any[]>([]);
 
 
   const [loadingVarieties, setLoadingVarieties] = useState(true);
@@ -33,12 +32,6 @@ export const Home = () => {
   const [loadingExclusive, setLoadingExclusive] = useState(true);
   const [loadingBlog, setLoadingBlog] = useState(true);
   const [loadingSupplementsAll, setLoadingSupplementsAll] = useState(true);
-
-  const [errorVarieties, setErrorVarieties] = useState<string | null>(null);
-  const [errorCategories, setErrorCategories] = useState<string | null>(null);
-  const [errorExclusive, setErrorExclusive] = useState<string | null>(null);
-  const [errorBlog, setErrorBlog] = useState<string | null>(null);
-  const [errorSupplementsAll, setErrorSupplementsAll] = useState<string | null>(null);
 
   const [selectedValue, setSelectedValue] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -89,11 +82,9 @@ export const Home = () => {
         setVarieties(fetchedVarieties);
       } else {
         console.error('Error en la respuesta:', response);
-        setErrorVarieties('No se pudieron cargar las variedades.');
       }
     } catch (error) {
       console.error('Error de conexión:', error);
-      setErrorVarieties('Error de conexión con el servidor.');
     } finally {
       setLoadingVarieties(false);
     }
@@ -112,11 +103,9 @@ export const Home = () => {
         setCategories(fetchedCategories);
       } else {
         console.error('Error en la respuesta:', response);
-        setErrorCategories('No se pudieron cargar las categorías.');
       }
     } catch (error) {
       console.error('Error de conexión:', error);
-      setErrorCategories('Error de conexión con el servidor.');
     } finally {
       setLoadingCategories(false);
     }
@@ -135,11 +124,9 @@ export const Home = () => {
         setExclusiveOffers(fetchedExclusiveOffers);
       } else {
         console.error('Error en la respuesta:', response);
-        setErrorExclusive('No se pudieron cargar las ofertas exclusivas.');
       }
     } catch (error) {
       console.error('Error de conexión:', error);
-      setErrorExclusive('Error de conexión con el servidor.');
     } finally {
       setLoadingExclusive(false);
     }
@@ -158,11 +145,9 @@ export const Home = () => {
         setLatestBlog(fetchedBlog);
       } else {
         console.error('Error en la respuesta:', response);
-        setErrorBlog('No se pudo cargar el último blog.');
       }
     } catch (error) {
       console.error('Error de conexión:', error);
-      setErrorBlog('Error de conexión con el servidor.');
     } finally {
       setLoadingBlog(false);
     }
@@ -182,12 +167,9 @@ export const Home = () => {
       if (response?.status) {
         setSupplementsAll(fetchedSupplements);
         setFilteredSupplements(fetchedSupplements);
-      } else {
-        setErrorSupplementsAll("No se pudieron cargar los suplementos.");
       }
     } catch (error) {
       console.error("Error cargando suplementos:", error);
-      setErrorSupplementsAll("Error de conexión con el servidor.");
     } finally {
       setLoadingSupplementsAll(false);
     }

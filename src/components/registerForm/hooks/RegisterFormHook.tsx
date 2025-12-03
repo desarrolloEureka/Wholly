@@ -20,7 +20,7 @@ const dataErrors = {
     optionsList: false,
 };
 
-const RegisterFormHook = (props?: any, ref?: any) => {
+const RegisterFormHook = (ref?: any) => {
     const { t, i18n } = useTranslation();
     const lang = i18n.language;
 

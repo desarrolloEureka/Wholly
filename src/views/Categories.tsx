@@ -8,10 +8,9 @@ import { useEffect, useState } from "react";
 import { asyncSendApis } from "../globals/services/service";
 
 export const Categories = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const fetchCategories = async () => {
     try {
@@ -26,11 +25,9 @@ export const Categories = () => {
         setCategories(fetchedCategories);
       } else {
         console.error("Error en la respuesta:", response);
-        setError("No se pudieron cargar las categorías.");
       }
     } catch (error) {
       console.error("Error de conexión:", error);
-      setError("Error de conexión con el servidor.");
     } finally {
       setLoading(false);
     }

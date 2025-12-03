@@ -8,7 +8,6 @@ import {
 } from "../../../../assets/images.ts";
 import CustomCarouselExclusive from "../../../customCarousel/CustomCarouselExclusive.tsx";
 import { ImagesExclusive } from "../../../../globals/types.tsx";
-import { ConfigConstants } from "../../../../globals/config/config.tsx";
 
 export const HomeExclusive = ({ exclusiveOffers, loading }: any) => {
   const { t, i18n } = useTranslation();
