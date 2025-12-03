@@ -128,10 +128,13 @@ export const HomeCare = ({ blog, loading }: any) => {
           >
             <Typography sx={{ lineHeight: 1 }}>Wholly</Typography>
             <Typography sx={{ lineHeight: 1, marginTop: 1.5 }}>
-              {new Intl.DateTimeFormat(
-                currentLang === "es" ? "es-ES" : "en-US",
-                { day: "numeric", month: "long", year: "numeric" }
-              ).format(new Date(blog?.created_at))}
+              {blog?.created_at
+                ? new Intl.DateTimeFormat(
+                  currentLang === "es" ? "es-ES" : "en-US",
+                  { day: "numeric", month: "long", year: "numeric" }
+                ).format(new Date(blog.created_at))
+                : ""
+              }
             </Typography>
 
           </Box>
