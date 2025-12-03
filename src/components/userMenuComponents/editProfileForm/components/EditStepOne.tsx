@@ -4,7 +4,9 @@ import {
   SetStateAction,
   useImperativeHandle,
   forwardRef,
+  useEffect,
 } from "react";
+import Button from '@mui/material/Button';
 import KeyIcon from "@mui/icons-material/Key";
 import {
   Box,
@@ -30,6 +32,14 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { useTranslation } from "react-i18next";
 import { StepOneHandle } from "../../../../globals/types";
 import ErrorLabel from "../../../errorLabel/ErrorLabel";
+import { ApiData } from "../../../../globals/services/api";
+import { asyncSendApis } from "../../../../globals/services/service";
+import AddIcon from '@mui/icons-material/Add';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { ConfigConstants } from "../../../../globals/config/config";
+
 const dataErrors = {
   name: false,
   email: false,
@@ -44,6 +54,7 @@ const dataErrors = {
 };
 export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
@@ -52,11 +63,15 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [date1, setDate1] = useState(""); // Estado para el primer grupo
-  const [date2, setDate2] = useState(""); // Estado para el segundo grupo
-  const [date3, setDate3] = useState(""); // Estado para el tercer grupo
+  const [gender, setGender] = useState<number | null>(null);
+  const [biologicalSex, setBiologicalSex] = useState<number | null>(null);
+  const [called, setCalled] = useState<number | null>(null);
   const [errors, setErrors] = useState(dataErrors);
   const [generalError, setGeneralError] = useState<React.ReactNode>("");
+  const [loadingProfile, setLoadingProfile] = useState(true);
+  const [errorProfile, setErrorProfile] = useState("");
+  const [profileImage, setProfileImage] = useState<string | null>(null);
+  const [newImageFile, setNewImageFile] = useState<File | null>(null);
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -65,40 +80,33 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
     e: React.ChangeEvent<HTMLInputElement>
   ) => setConfirmPassword(e.target.value);
 
-  const handleChange1 = (event: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setDate1(event.target.value); // Actualiza el estado para el primer grupo
+  const handleChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = Number(e.target.value);
+    setGender(Number.isNaN(val) ? null : val);
   };
 
-  const handleChange2 = (event: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setDate2(event.target.value); // Actualiza el estado para el segundo grupo
+  const handleChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = Number(e.target.value);
+    setBiologicalSex(Number.isNaN(val) ? null : val);
   };
-
-  const handleChange3 = (event: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setDate3(event.target.value); // Actualiza el estado para el tercer grupo
+  const handleChange3 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = Number(e.target.value);
+    setCalled(Number.isNaN(val) ? null : val);
   };
 
   const validateForm = () => {
-    const newErrors = {
+    const newErrors: any = {
       name: !name,
-      email: !email,
-      confirmEmail: !confirmEmail,
-      password: !password,
-      confirmPassword: !confirmPassword,
       lastName: !lastName,
       dateOfBirth: !dateOfBirth,
-      biologicalSex: !date1,
-      gender: !date2,
-      optionsList: !date3,
+      email: !email,
+      confirmEmail: !confirmEmail,
+      //password: !password,
+      //confirmPassword: !confirmPassword,
+      biologicalSex: !biologicalSex,
+      gender: !gender,
+      optionsList: !called,
     };
-
-    console.log("newErrors", newErrors);
-    console.log("props", props);
 
     setErrors(newErrors);
 
@@ -150,15 +158,170 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
     return true;
   };
 
-  useImperativeHandle(ref, () => ({
-    validateForm,
-  }));
+  const getProfileData = async () => {
+    try {
+      const data: ApiData = {
+        token: await localStorage.getItem("Token"),
+        method: "GET",
+      };
 
-  console.log("error.name", errors.name);
+      const response = await asyncSendApis("/profiles/apiClient", data);
+
+      if (response.status) {
+        setName(response.first_name || "");
+        setLastName(response.last_name || "");
+        setEmail(response.email || "");
+        setConfirmEmail(response.email || "");
+        setDateOfBirth(response.birthday || "");
+        setGender(response.gender?.id ?? null);
+        setBiologicalSex(response.biological_sex?.id ?? null);
+        setCalled(response.called?.id ?? null);
+        setProfileImage(response.image || null);
+      } else {
+        setErrorProfile("No se pudo cargar el perfil.");
+        console.error("Error respuesta perfil:", response);
+      }
+    } catch (error) {
+      console.error("Error de conexión:", error);
+      setErrorProfile("Error de conexión con el servidor.");
+    } finally {
+      setLoadingProfile(false);
+    }
+  };
+
+  const sendPatchProfile = async () => {
+    try {
+      if (!validateForm()) return;
+
+      const bodyToSend: any = {
+        first_name: name,
+        last_name: lastName,
+        email: email,
+        gender: gender,
+        biological_sex: biologicalSex,
+        called: called,
+        birthday: dateOfBirth,
+        password: password,
+        //image: newImageFile
+      };
+
+      console.log('bodyToSend ', bodyToSend);
+
+      const data: ApiData = {
+        token: await localStorage.getItem("Token"),
+        method: "PATCH",
+        body: bodyToSend,
+        //form: 'multipart/form-data'
+      };
+
+      const response = await asyncSendApis("/profiles/apiClient", data);
+      console.log('response ', response);
+
+      if (response.status) {
+        Swal.fire({
+          icon: "success",
+          title: "Perfil actualizado",
+          text: "Tu información ha sido guardada correctamente.",
+          confirmButtonColor: "#a8ae9c",
+        });
+        return true;
+      } else {
+        console.error("Error al actualizar el perfil:", response);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "No se pudo actualizar el perfil.",
+          confirmButtonColor: "#d33",
+        });
+        return false;
+      }
+    } catch (error) {
+      console.error("Error de conexión PATCH:", error);
+      setGeneralError("Error al conectar con el servidor.");
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    getProfileData();
+  }, []);
 
   return (
     <Box>
       {/* header form */}
+      <Box
+        sx={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          marginLeft: '-150px',
+        }}
+      >
+        <Box
+          sx={{
+            width: 130,
+            height: 130,
+            borderRadius: '50%',
+            backgroundColor: '#FFFFFF',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative',
+          }}
+        >
+          {(newImageFile || profileImage) ? (
+            <img
+              src={
+                newImageFile
+                  ? URL.createObjectURL(newImageFile)
+                  : (profileImage ? ConfigConstants.webServiceName + profileImage : undefined)
+              }
+              alt="profile"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "50%",
+              }}
+            />
+          ) : (
+            <CameraAltIcon sx={{ fontSize: 40, color: "#757575" }} />
+          )}
+
+          <IconButton
+            component="label"   // ← FALTA ESTO
+            sx={{
+              position: 'absolute',
+              right: 4,
+              bottom: 4,
+              width: 24,
+              height: 24,
+              borderRadius: '50%',
+              backgroundColor: '#fff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: 1,
+            }}
+          >
+            <AddIcon sx={{ fontSize: 16, color: '#757575' }} />
+
+            <input
+              type="file"
+              accept="image/*"
+              hidden
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) {
+                  console.log('file ', file);
+                  setNewImageFile(file);
+                }
+              }}
+            />
+          </IconButton>
+        </Box>
+      </Box>
+
       <Box
         sx={{
           display: "flex",
@@ -485,33 +648,19 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
                   </Typography>
                   <FormLabel component="legend"></FormLabel>
                   <RadioGroup
-                    value={date1}
-                    onChange={handleChange1}
+                    value={biologicalSex}
+                    onChange={handleChange2}
                     aria-label="options"
                     name="radio-buttons-group1"
                     row
                     sx={{ gap: "30px" }}
                   >
                     <FormControlLabel
-                      value="option1"
+                      value={1}
                       control={
                         <Radio
                           sx={{
-                            color: date1 === "option1" ? "#FBFFDD" : "default",
-                            "&.Mui-checked": {
-                              color: "#FBFFDD",
-                            },
-                          }}
-                        />
-                      }
-                      label={t("registerForm.sexoOption1")}
-                    />
-                    <FormControlLabel
-                      value="option2"
-                      control={
-                        <Radio
-                          sx={{
-                            color: date1 === "option2" ? "#FBFFDD" : "default",
+                            color: biologicalSex === 1 ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -519,6 +668,20 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
                         />
                       }
                       label={t("registerForm.sexoOption2")}
+                    />
+                    <FormControlLabel
+                      value={2}
+                      control={
+                        <Radio
+                          sx={{
+                            color: biologicalSex === 2 ? "#FBFFDD" : "default",
+                            "&.Mui-checked": {
+                              color: "#FBFFDD",
+                            },
+                          }}
+                        />
+                      }
+                      label={t("registerForm.sexoOption1")}
                     />
                   </RadioGroup>
                 </FormControl>
@@ -542,19 +705,19 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
 
                   <FormLabel component="legend"></FormLabel>
                   <RadioGroup
-                    value={date2}
-                    onChange={handleChange2}
+                    value={gender}
+                    onChange={handleChange1}
                     aria-label="options"
                     name="radio-buttons-group2"
                     row
                     sx={{ gap: "30px" }}
                   >
                     <FormControlLabel
-                      value="option1"
+                      value={1}
                       control={
                         <Radio
                           sx={{
-                            color: date2 === "option1" ? "#FBFFDD" : "default",
+                            color: gender === 1 ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -564,11 +727,11 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.male")}
                     />
                     <FormControlLabel
-                      value="option2"
+                      value={2}
                       control={
                         <Radio
                           sx={{
-                            color: date2 === "option2" ? "#FBFFDD" : "default",
+                            color: gender === 2 ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -578,11 +741,11 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.female")}
                     />
                     <FormControlLabel
-                      value="option3"
+                      value={3}
                       control={
                         <Radio
                           sx={{
-                            color: date2 === "option3" ? "#FBFFDD" : "default",
+                            color: gender === 3 ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -612,7 +775,7 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
                   </Typography>
                   <FormLabel component="legend"></FormLabel>
                   <RadioGroup
-                    value={date3}
+                    value={called}
                     onChange={handleChange3}
                     aria-label="options"
                     name="radio-buttons-group3"
@@ -620,11 +783,11 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
                     sx={{ gap: "30px" }} // Ajusta el espacio entre botones
                   >
                     <FormControlLabel
-                      value="option1"
+                      value={1}
                       control={
                         <Radio
                           sx={{
-                            color: date3 === "option1" ? "#FBFFDD" : "default",
+                            color: called === 1 ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -634,11 +797,11 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.mr")}
                     />
                     <FormControlLabel
-                      value="option2"
+                      value={2}
                       control={
                         <Radio
                           sx={{
-                            color: date3 === "option2" ? "#FBFFDD" : "default",
+                            color: called === 2 ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -648,11 +811,11 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.mrs")}
                     />
                     <FormControlLabel
-                      value="option3"
+                      value={3}
                       control={
                         <Radio
                           sx={{
-                            color: date3 === "option3" ? "#FBFFDD" : "default",
+                            color: called === 3 ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -662,11 +825,11 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.miss")}
                     />
                     <FormControlLabel
-                      value="option4"
+                      value={4}
                       control={
                         <Radio
                           sx={{
-                            color: date2 === "option4" ? "#FBFFDD" : "default",
+                            color: biologicalSex === 4 ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -689,6 +852,55 @@ export const EditStepOne = forwardRef<StepOneHandle>((props, ref) => {
           }}
         />
       </Box>
+
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: 40,
+          right: 30,
+        }}
+      >
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button
+            variant='outlined'
+            sx={{
+              borderRadius: '12px',
+              textTransform: 'none',
+              color: '#3C3C3C',
+              borderColor: '#A5AB94',
+              width: '140px',
+              px: 4,
+              '&:hover': {
+                backgroundColor: '#f5f5f5',
+                borderColor: '#A5AB94',
+              },
+            }}
+            onClick={() => navigate('/')}
+          >
+            {t('registerForm.cancel')}
+          </Button>
+
+          <Button
+            variant='contained'
+            onClick={() => sendPatchProfile()}
+            sx={{
+              borderRadius: '12px',
+              textTransform: 'none',
+              backgroundColor: '#a8ae9c',
+              color: '#fff',
+              px: 4,
+              width: '140px',
+
+              '&:hover': {
+                backgroundColor: '#949b89',
+              },
+            }}
+          >
+            {t('registerForm.save')}
+          </Button>
+        </Box>
+      </Box>
+
     </Box>
   );
 });

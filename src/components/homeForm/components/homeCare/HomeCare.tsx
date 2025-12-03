@@ -1,10 +1,27 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import { imagen_2, VectorIcono } from "../../../../assets/images";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useTranslation } from "react-i18next";
 
-export const HomeCare = () => {
-  const { t } = useTranslation();
+export const HomeCare = ({ blog, loading }: any) => {
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "400px",
+        }}
+      >
+        <CircularProgress color="primary" size={60} />
+      </Box>
+    );
+  }
+
   return (
     <Box
       sx={{
@@ -21,6 +38,9 @@ export const HomeCare = () => {
           alignItems: "center",
           justifyContent: "center",
           margin: "60px 21%",
+          width: "1080px",
+          height: "430px",
+          overflow: "hidden",
         }}
       >
         <img
@@ -39,7 +59,7 @@ export const HomeCare = () => {
         sx={{
           position: "absolute",
           top: "50%",
-          left: "60%",
+          left: "53%",
           transform: "translate(-50%, -50%)",
           backgroundColor: "rgba(40, 40, 40, 0.5)",
           backdropFilter: "blur(6px)",
@@ -77,7 +97,9 @@ export const HomeCare = () => {
               marginBottom: "22px",
             }}
           >
-            {t("homeform.bestCare")}
+            {currentLang === "es"
+              ? blog.name_spanish || blog.name_english
+              : blog.name_english || blog.name_spanish}
           </Typography>
         </Box>
         <Box
@@ -105,7 +127,13 @@ export const HomeCare = () => {
             }}
           >
             <Typography sx={{ lineHeight: 1 }}>Wholly</Typography>
-            <Typography sx={{ lineHeight: 1 }}>{t("homeform.date")}</Typography>
+            <Typography sx={{ lineHeight: 1, marginTop: 1.5 }}>
+              {new Intl.DateTimeFormat(
+                currentLang === "es" ? "es-ES" : "en-US",
+                { day: "numeric", month: "long", year: "numeric" }
+              ).format(new Date(blog.created_at))}
+            </Typography>
+
           </Box>
         </Box>
 

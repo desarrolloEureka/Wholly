@@ -1,17 +1,28 @@
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { useState } from "react";
 import { OptionsButtons } from "../../../../globals/types";
+import { useTranslation } from "react-i18next";
 
 const RenderOptions = ({
   options,
   additionalButtons,
+  toggleOptionsSelection,
+  selectedOptions,
+  customOption,
+  setCustomOption,
+  handleAddCustomOption
 }: {
   options: OptionsButtons[];
   additionalButtons?: boolean;
+  toggleOptionsSelection?: any;
+  selectedOptions?: any;
+  customOption?: any,
+  setCustomOption?: any
+  handleAddCustomOption?: any
 }) => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log("options.length", options.length);
+
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
   return (
     <Box
@@ -30,43 +41,50 @@ const RenderOptions = ({
         overflowY: "auto", // Scroll vertical cuando se desborda
       }}
     >
-      {options.map((val, index) => (
-        <Button
-          key={val.name + index}
-          onClick={() => setSelectedIndex(index)}
-          variant={selectedIndex === index ? "contained" : "outlined"}
-          color={selectedIndex === index ? "primary" : "secondary"}
-          sx={{
-            border: selectedIndex === index ? "none" : "1px solid #A5AB95",
-            color: selectedIndex === index ? "#fff" : "#000",
-            backgroundColor:
-              selectedIndex === index ? "#A5AB94" : "transparent",
-            borderRadius: selectedIndex === index ? "16px" : "5px",
-            textTransform: "none",
-            fontSize: "14px",
-            width: "170px", // Permite flexibilidad
-            height: "40px",
-            // flex: '1 1 auto', // Permite que los botones se ajusten dinámicamente
-            "&:hover": {
-              backgroundColor: "#rgb(87, 90, 77)",
-            },
-          }}
-          disableElevation
-        >
-          <span
-            style={{
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              display: "block",
-              width: "100%", // Asegura que el texto respete el ancho del botón
-              textAlign: "center",
+
+      {options.map((val: any, index) => {
+        const isSelected = selectedOptions && selectedOptions?.some((item: any) => item.id === val.id);
+
+        const text = i18n.language === "es" ? val.name_spanish : val.name_english;
+        const description = i18n.language === "es" ? val.description_spanish : val.description_english;
+
+        return (
+          <Button
+            key={val.name_spanish + index}
+            onClick={() => toggleOptionsSelection(val)}
+            variant={isSelected ? "contained" : "outlined"}
+            color={isSelected ? "primary" : "secondary"}
+            sx={{
+              border: isSelected ? "none" : "1px solid #A5AB95",
+              color: isSelected ? "#fff" : "#000",
+              backgroundColor: isSelected ? "#A5AB94" : "transparent",
+              borderRadius: isSelected ? "16px" : "5px",
+              textTransform: "none",
+              fontSize: "14px",
+              width: "170px",
+              height: "40px",
+              "&:hover": {
+                backgroundColor: "#rgb(87, 90, 77)",
+              },
             }}
+            disableElevation
           >
-            {val.name}
-          </span>
-        </Button>
-      ))}
+            <span
+              style={{
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                display: "block",
+                width: "100%", // Asegura que el texto respete el ancho del botón
+                textAlign: "center",
+              }}
+            >
+              {text}
+            </span>
+          </Button>
+        );
+      })}
+
       <Box
         sx={{
           display: additionalButtons ? "flex" : "none",
@@ -86,6 +104,8 @@ const RenderOptions = ({
           id="custom-input"
           variant="standard"
           size="small"
+          value={customOption}
+          onChange={(e: any) => setCustomOption(e.target.value)}
           InputProps={{
             disableUnderline: false,
             sx: {
@@ -105,7 +125,7 @@ const RenderOptions = ({
       </Box>
 
       <Button
-        onClick={() => console.log("Botón clickeado")}
+        onClick={handleAddCustomOption}
         variant="text"
         startIcon={<AddCircleOutlineIcon />}
         sx={{

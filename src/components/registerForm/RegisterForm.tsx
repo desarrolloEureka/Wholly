@@ -1,65 +1,134 @@
-import { useTranslation } from "react-i18next";
-import { useRef, useState } from "react";
-import {
-  Box,
-  Button,
-  useTheme,
-  MobileStepper,
-  Typography,
-} from "@mui/material";
+import { Box, Button, MobileStepper, Typography, } from "@mui/material";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { StepOne } from "./components/StepOne";
-import { OptionsButtons } from "../../globals/types";
 import { ContentStepper } from "./components/contentStepper/ContentStepper";
 import { ContentStepperSpecial } from "./components/contentStepperSpecial/ContentStepperSpecial";
 import { InteractiveText } from "../../globals/elements";
+import RegisterFormHook from "./hooks/RegisterFormHook";
 
 const RegisterForm = () => {
-  const stepOneRef = useRef<{ validateForm: () => boolean }>(null);
-  const theme = useTheme();
-  const { t } = useTranslation();
-  const [activeStep, setActiveStep] = useState(0);
-
-  const options2: OptionsButtons[] = [
-    { id: 1, name: t("registerForm.options.oilyHair") },
-    { id: 2, name: t("registerForm.options.dryHair") },
-    { id: 3, name: t("registerForm.options.thinHair") },
-    { id: 4, name: t("registerForm.options.hairLoss") },
-    { id: 5, name: t("registerForm.options.aLotOfHair") },
-    { id: 6, name: t("registerForm.options.LoremIHair") },
-    { id: 7, name: t("registerForm.options.LoremIHair") },
-    { id: 8, name: t("registerForm.options.LoremIHair") },
-    { id: 9, name: t("registerForm.options.LoremIHair") },
-    { id: 10, name: t("registerForm.options.LoremIHair") },
-    { id: 11, name: t("registerForm.options.LoremIHair") },
-    { id: 12, name: t("registerForm.options.LoremIHair") },
-    { id: 13, name: t("registerForm.options.LoremIHair") },
-    { id: 14, name: t("registerForm.options.LoremIHair") },
-    { id: 15, name: t("registerForm.options.LoremIHair") },
-    { id: 16, name: t("registerForm.options.LoremIHair") },
-  ];
-
-  const options3: OptionsButtons[] = [
-    { id: 1, name: t("registerForm.options.walnuts") },
-    { id: 2, name: t("registerForm.options.brazilNuts") },
-  ];
-
-  const options4: OptionsButtons[] = [
-    { id: 1, name: t("registerForm.options.sertraline") },
-  ];
-
-  const options5: OptionsButtons[] = [
-    { id: 1, name: t("registerForm.options.epilepsy") },
-  ];
+  const {
+    t,
+    navigate,
+    name,
+    setName,
+    email,
+    setEmail,
+    confirmEmail,
+    setConfirmEmail,
+    lastName,
+    setLastName,
+    dateOfBirth,
+    setDateOfBirth,
+    password,
+    showPassword,
+    confirmPassword,
+    date1,
+    date2,
+    date3,
+    errors,
+    generalError,
+    handleClickShowPassword,
+    handlePasswordChange,
+    handleConfirmPasswordChange,
+    handleChange1,
+    handleChange2,
+    handleChange3,
+    theme,
+    activeStep,
+    handleNext,
+    handleBack,
+    idUser,
+    //Paso2 
+    searchTerm,
+    setSearchTerm,
+    errorMessage,
+    setErrorMessage,
+    errorMessageNoSelected,
+    setErrorMessageNoSelected,
+    isError,
+    setIsError,
+    options,
+    setOptions,
+    conditions,
+    setConditions,
+    selectedTendencies,
+    setSelectedTendencies,
+    customTendency,
+    setCustomTendency,
+    getDataTendency,
+    handleAddCustomTendency,
+    toggleTendencySelection,
+    selectedConditions,
+    toggleConditionSelection,
+    allergies,
+    selectedAllergies,
+    toggleAllergySelection,
+    medicines,
+    selectedMedicines,
+    toggleMedicineSelection,
+    diseases,
+    selectedDiseases,
+    toggleDiseaseSelection,
+  } = RegisterFormHook();
 
   const steps = [
     {
       label: t("registerForm.campaignSettings"),
-      description: <StepOne ref={stepOneRef} />,
+      description:
+        <StepOne
+          t={t}
+          name={name}
+          setName={setName}
+          email={email}
+          setEmail={setEmail}
+          confirmEmail={confirmEmail}
+          setConfirmEmail={setConfirmEmail}
+          lastName={lastName}
+          setLastName={setLastName}
+          dateOfBirth={dateOfBirth}
+          setDateOfBirth={setDateOfBirth}
+          password={password}
+          showPassword={showPassword}
+          confirmPassword={confirmPassword}
+          date1={date1}
+          date2={date2}
+          date3={date3}
+          errors={errors}
+          generalError={generalError}
+          handleClickShowPassword={handleClickShowPassword}
+          handlePasswordChange={handlePasswordChange}
+          handleConfirmPasswordChange={handleConfirmPasswordChange}
+          handleChange1={handleChange1}
+          handleChange2={handleChange2}
+          handleChange3={handleChange3}
+        />,
     },
     {
       label: "2",
-      description: <ContentStepperSpecial />,
+      description:
+        <ContentStepperSpecial
+          idUser={idUser}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          errorMessage={errorMessage}
+          setErrorMessage={setErrorMessage}
+          errorMessageNoSelected={errorMessageNoSelected}
+          setErrorMessageNoSelected={setErrorMessageNoSelected}
+          isError={isError}
+          setIsError={setIsError}
+          options={options}
+          setOptions={setOptions}
+          selectedTendencies={selectedTendencies}
+          setSelectedTendencies={setSelectedTendencies}
+          customTendency={customTendency}
+          setCustomTendency={setCustomTendency}
+          getDataTendency={getDataTendency}
+          handleAddCustomTendency={handleAddCustomTendency}
+          toggleTendencySelection={toggleTendencySelection}
+          errorMessageText={t("registerForm.ErrorMessageTendencies")}
+        />
+
     },
     {
       label: "3",
@@ -69,8 +138,12 @@ const RegisterForm = () => {
           title2={t("registerForm.conditions")}
           title3={t("registerForm.youHave")}
           placeholder="Hair...."
-          ButtonsOptions={options2}
+          ButtonsOptions={conditions}
           description={t("registerForm.enterDescription")}
+          toggleConditionSelection={toggleConditionSelection}
+          selectedOptions={selectedConditions}
+          errorMessageNoSelected={errorMessageNoSelected}
+          errorMessageText={t("registerForm.ErrorMessageConditions")}
         />
       ),
     },
@@ -82,8 +155,13 @@ const RegisterForm = () => {
           title2={t("registerForm.allergies")}
           title3={t("registerForm.youHave")}
           placeholder="Nuts..."
-          ButtonsOptions={options3}
+          ButtonsOptions={allergies}
           description={t("registerForm.enterDescription")}
+          toggleConditionSelection={toggleAllergySelection}
+          selectedOptions={selectedAllergies}
+          errorMessageNoSelected={errorMessageNoSelected}
+          errorMessageText={t("registerForm.ErrorMessageAllergies")}
+
         />
       ),
     },
@@ -95,8 +173,12 @@ const RegisterForm = () => {
           title2={t("registerForm.medicines")}
           title3={t("registerForm.youHave")}
           placeholder="Sertraline..."
-          ButtonsOptions={options4}
+          ButtonsOptions={medicines}
           description={t("registerForm.enterDescription")}
+          toggleConditionSelection={toggleMedicineSelection}
+          selectedOptions={selectedMedicines}
+          errorMessageNoSelected={errorMessageNoSelected}
+          errorMessageText={t("registerForm.ErrorMessageMedicines")}
         />
       ),
     },
@@ -108,8 +190,12 @@ const RegisterForm = () => {
           title2={t("registerForm.diseases")}
           title3={t("registerForm.youHave")}
           placeholder="Epilepsy...."
-          ButtonsOptions={options5}
+          ButtonsOptions={diseases}
           description={t("registerForm.enterDescription")}
+          toggleConditionSelection={toggleDiseaseSelection}
+          selectedOptions={selectedDiseases}
+          errorMessageNoSelected={errorMessageNoSelected}
+          errorMessageText={t("registerForm.ErrorMessageDiseases")}
         />
       ),
     },
@@ -117,16 +203,6 @@ const RegisterForm = () => {
 
   const maxSteps = steps.length;
 
-  const handleNext = () => {
-    if (stepOneRef.current && !stepOneRef.current.validateForm()) {
-      return;
-    }
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
 
   return (
     <Box
@@ -144,7 +220,7 @@ const RegisterForm = () => {
     >
       <Box sx={{ textAlign: "end", mt: 1, paddingRight: 2 }}>
         <InteractiveText
-          // onClick={() => navigate("/remember")}
+          onClick={() => navigate("/remember")}
           style={{
             textDecoration: "underline",
             fontFamily: "sans-serif",
@@ -170,10 +246,15 @@ const RegisterForm = () => {
           <Button
             size="small"
             onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
+          //disabled={activeStep === maxSteps - 1}
           >
             <Typography variant="h6" sx={{ fontSize: "18px" }}>
-              {t("stepper.nextButton")}
+              {activeStep === 5 ?
+                t("stepper.finishButton")
+                :
+                t("stepper.nextButton")
+              }
+
             </Typography>
 
             {theme.direction === "rtl" ? (

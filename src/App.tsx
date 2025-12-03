@@ -36,19 +36,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/remember" element={<RememberPassword />} />
-          <Route path="/Supplements" element={<Supplements />} />
-          <Route
-            path="/internalCategoriesty"
-            element={<InternalCategoriesty />}
-          />
+          <Route path="/Supplements/:id" element={<Supplements />} />
+          <Route path="/internalCategoriesty/:id" element={<InternalCategoriesty />} />
           <Route path="/shoppingCart" element={<ShoppingCart />} />
-          <Route
-            path="/PaymentVerification"
-            element={<PaymentVerification />}
-          />
+          <Route path="/PaymentVerification" element={<PaymentVerification />} />
           <Route path="/PurchaseSummary" element={<PurchaseSummary />} />
           <Route path="/Blog" element={<Blog />} />
-          <Route path="/internalBlog" element={<InternalBlog />} />
+          <Route path="/internalBlog/:id" element={<InternalBlog />} />
           <Route path="/support" element={<Support />} />
           <Route path="/about_us" element={<Us />} />
           <Route path="/Kits" element={<Kits />} />

@@ -14,8 +14,10 @@ import {
   LocalLibrary,
   Map,
   PinDrop,
+  Public,
 } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
+
 
 const AddressesForm = ({ onBack }: { onBack: () => void }) => {
   const { t } = useTranslation();
@@ -92,6 +94,37 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
           />
         </Box>
 
+
+        <Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <LocationOn sx={{ color: "#3C3C3C" }} />
+            <Typography
+              variant="h6"
+              sx={{ color: "#3C3C3C", fontSize: "1.3rem", mb: 1 }}
+            >
+              {t("addressesForm.complement")}
+            </Typography>
+          </Box>
+          <TextField
+            size="small"
+            fullWidth
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "15px",
+                backgroundColor: "#FFFFFF",
+                "& fieldset": {
+                  border: "2px solid #ccc",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#858585",
+                  borderWidth: "2px",
+                },
+              },
+            }}
+          />
+        </Box>
+
+
         <Box sx={{ display: "flex", gap: 6 }}>
           <Box sx={{ flex: 1 }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -153,21 +186,22 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
         </Box>
 
         <Box sx={{ display: "flex", gap: 6 }}>
+
           <Box sx={{ flex: 1 }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <PinDrop sx={{ color: "#3C3C3C" }} />
+              <Public sx={{ color: "#3C3C3C" }} />
               <Typography
                 variant="h6"
                 sx={{ color: "#3C3C3C", fontSize: "1.3rem" }}
               >
-                {t("addressesForm.city")}
+                {t("addressesForm.country")}
               </Typography>
             </Box>
             <TextField
               select
               fullWidth
               size="small"
-              name="city"
+              name="country"
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "15px",
@@ -182,9 +216,9 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
                 },
               }}
             >
-              <MenuItem value="Orlando">Orlando</MenuItem>
-              <MenuItem value="Miami">Miami</MenuItem>
-              <MenuItem value="Tampa">Tampa</MenuItem>
+              <MenuItem value="USA">USA</MenuItem>
+              <MenuItem value="Colombia">Colombia</MenuItem>
+              <MenuItem value="Mexico">México</MenuItem>
             </TextField>
           </Box>
 
@@ -222,6 +256,43 @@ const AddressesForm = ({ onBack }: { onBack: () => void }) => {
               <MenuItem value="FL 33601">FL 33601</MenuItem>
             </TextField>
           </Box>
+
+          <Box sx={{ flex: 1 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+              <PinDrop sx={{ color: "#3C3C3C" }} />
+              <Typography
+                variant="h6"
+                sx={{ color: "#3C3C3C", fontSize: "1.3rem" }}
+              >
+                {t("addressesForm.city")}
+              </Typography>
+            </Box>
+            <TextField
+              select
+              fullWidth
+              size="small"
+              name="city"
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "15px",
+                  backgroundColor: "#FFFFFF",
+                  "& fieldset": {
+                    border: "2px solid #ccc",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#858585",
+                    borderWidth: "2px",
+                  },
+                },
+              }}
+            >
+              <MenuItem value="Orlando">Orlando</MenuItem>
+              <MenuItem value="Miami">Miami</MenuItem>
+              <MenuItem value="Tampa">Tampa</MenuItem>
+            </TextField>
+          </Box>
+
+
         </Box>
 
         <FormControlLabel

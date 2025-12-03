@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, CircularProgress } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 import { useNavigate } from "react-router-dom";
@@ -11,56 +11,92 @@ import {
   rectangle6,
 } from "../../../../assets/images";
 import { ImagesCategories } from "../../../../globals/types";
+import { ConfigConstants } from "../../../../globals/config/config";
+import { useTranslation } from "react-i18next";
 
 const backgroundColors = ["#EEF1F0", "#A5AB94", "#E8E4DF"];
 const textColors = ["#3C3C3C", "#FBFFDD", "#3C3C3C"];
 
-export const CategoriesForm = () => {
-  const imagesAreas: ImagesCategories[] = [
+export const CategoriesForm = ({ categories, loading }: any) => {
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "400px",
+        }}
+      >
+        <CircularProgress color="primary" size={60} />
+      </Box>
+    );
+  }
+
+  if (!categories || categories.length === 0) {
+    return <div style={{ textAlign: "center", padding: "2rem" }}>No hay Categorias disponibles.</div>;
+  }
+
+  const defaultImages: ImagesCategories[] = [
     {
       id: 1,
       src: rectangle1,
       title: "Anti-aging",
-      subtitle: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
-      description: "SHOP NOW1",
+      description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
     },
     {
       id: 2,
       src: rectangle4,
       title: "Skin care",
-      subtitle: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
-      description: "SHOP NOW2",
+      description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
     },
     {
       id: 3,
       src: rectangle3,
       title: "Face care",
-      subtitle: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
-      description: "SHOP NOW3",
+      description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
     },
     {
       id: 4,
       src: rectangle5,
       title: "Anti-aging",
-      subtitle: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
-      description: "SHOP NOW4",
+      description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
     },
     {
       id: 5,
       src: rectangle7,
       title: "Skin care",
-      subtitle: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
-      description: "SHOP NOW5",
+      description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
     },
     {
       id: 6,
       src: rectangle6,
       title: "Face care",
-      subtitle: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
-      description: "SHOP NOW6",
+      description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
     },
   ];
-  const navigate = useNavigate();
+
+  const formattedCategories: ImagesCategories[] =
+    categories.length > 0
+      ? categories.map((item: any, index: number) => ({
+        id: item.id || index,
+        src: item.image
+          ? `${ConfigConstants.webServiceName}${item.image}`
+          : rectangle1,
+        title:
+          currentLang === "es"
+            ? item.name_spanish || item.name_english
+            : item.name_english || item.name_spanish,
+        description:
+          currentLang === "es"
+            ? item.description_spanish || item.description_english
+            : item.description_english || item.description_spanish,
+      }))
+      : defaultImages;
 
   return (
     <Box
@@ -72,7 +108,7 @@ export const CategoriesForm = () => {
         justifyItems: "center",
       }}
     >
-      {imagesAreas.map((item, index) => {
+      {formattedCategories.map((item, index) => {
         const backgroundColor =
           backgroundColors[index % backgroundColors.length];
         const textColor = textColors[index % textColors.length];
@@ -92,11 +128,12 @@ export const CategoriesForm = () => {
               marginTop: "10px",
               cursor: "pointer",
             }}
-            onClick={() => navigate("/InternalCategoriesty")}
+            onClick={() => navigate(`/InternalCategoriesty/${item.id}`)}
           >
             <img
               src={item.src}
               alt={item.title}
+              loading="lazy"
               style={{
                 width: "100%",
                 height: "300px",
@@ -133,9 +170,14 @@ export const CategoriesForm = () => {
                   marginTop: "4px",
                   color: textColor,
                   marginBottom: "28px",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
                 }}
               >
-                {item.subtitle}
+                {item.description}
               </Typography>
 
               {/* Texto interactivo */}
@@ -155,7 +197,7 @@ export const CategoriesForm = () => {
                   },
                 }}
               >
-                {item.description}
+                {t("homeform.ShopNow")}
                 <ChevronRightIcon
                   sx={{
                     fontSize: 20,

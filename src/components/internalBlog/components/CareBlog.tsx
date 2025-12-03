@@ -1,9 +1,25 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import { VectorIcono } from "../../../assets/images";
 import { useTranslation } from "react-i18next";
 
-export const CareBlog = () => {
-  const { t } = useTranslation();
+export const CareBlog = ({ blog, loading }: any) => {
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "400px",
+        }}
+      >
+        <CircularProgress color="primary" size={60} />
+      </Box>
+    );
+  }
 
   return (
     <Box>
@@ -50,7 +66,9 @@ export const CareBlog = () => {
               marginBottom: "22px",
             }}
           >
-            {t("blogForm.bestCare")}
+            {currentLang === "es"
+              ? blog.name_spanish || blog.name_english
+              : blog.name_english || blog.name_spanish}
           </Typography>
         </Box>
         <Box
@@ -78,7 +96,12 @@ export const CareBlog = () => {
             }}
           >
             <Typography sx={{ lineHeight: 1 }}>Wholly</Typography>
-            <Typography sx={{ lineHeight: 1 }}>{t("blogForm.date")}</Typography>
+            <Typography sx={{ lineHeight: 1, marginTop: 1.5 }}>
+              {new Intl.DateTimeFormat(
+                currentLang === "es" ? "es-ES" : "en-US",
+                { day: "numeric", month: "long", year: "numeric" }
+              ).format(new Date(blog.created_at))}
+            </Typography>
           </Box>
         </Box>
       </Box>

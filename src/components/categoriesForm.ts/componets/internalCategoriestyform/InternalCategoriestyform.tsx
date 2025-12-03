@@ -1,57 +1,17 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { variety1, variety2, variety3 } from "../../../../assets/images";
-import { ImagesVariety } from "../../../../globals/types";
+import { variety1 } from "../../../../assets/images";
 import { useTranslation } from "react-i18next";
+import { ConfigConstants } from "../../../../globals/config/config";
 
-export const InternalCategoriestyform = () => {
-  const { t } = useTranslation();
-
-  const imagesAreas: ImagesVariety[] = [
-    {
-      id: 1,
-      src: variety1,
-      title: t("homeform.titleVariety1"),
-      subtitle: t("homeform.subtitleVariety1"),
-      description: t("homeform.priceVariety1"),
-    },
-    {
-      id: 2,
-      src: variety2,
-      title: t("homeform.titleVariety2"),
-      subtitle: t("homeform.subtitleVariety2"),
-      description: t("homeform.priceVariety2"),
-    },
-    {
-      id: 3,
-      src: variety3,
-      title: t("homeform.titleVariety3"),
-      subtitle: t("homeform.subtitleVariety3"),
-      description: t("homeform.priceVariety3"),
-    },
-    {
-      id: 4,
-      src: variety1,
-      title: t("homeform.titleVariety1"),
-      subtitle: t("homeform.subtitleVariety1"),
-      description: t("homeform.priceVariety1"),
-    },
-    {
-      id: 5,
-      src: variety2,
-      title: t("homeform.titleVariety2"),
-      subtitle: t("homeform.subtitleVariety2"),
-      description: t("homeform.priceVariety2"),
-    },
-    {
-      id: 6,
-      src: variety3,
-      title: t("homeform.titleVariety3"),
-      subtitle: t("homeform.subtitleVariety3"),
-      description: t("homeform.priceVariety3"),
-    },
-  ];
-
+export const InternalCategoriestyform = ({
+  items,
+  onLoadMore,
+  hasMore,
+  totalItems
+}: any) => {
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
   const backgroundColor = "#ffff";
   const textColor = "#3C3C3C";
   const navigate = useNavigate();
@@ -74,7 +34,7 @@ export const InternalCategoriestyform = () => {
             paddingX: "70px",
           }}
         >
-          {imagesAreas.map((item) => (
+          {items?.map((item: any) => (
             <Box
               key={item.id}
               sx={{
@@ -85,11 +45,12 @@ export const InternalCategoriestyform = () => {
                 borderRadius: "10px",
                 cursor: "pointer",
               }}
-              onClick={() => navigate("/Supplements")}
+              onClick={() => navigate(`Supplements/${item.id}`)}
             >
               <img
-                src={item.src}
+                src={item?.image ? `${ConfigConstants.webServiceName}${item.image}` : variety1}
                 alt={item.title}
+                loading="lazy"
                 style={{
                   width: "100%",
                   height: "300px",
@@ -119,7 +80,9 @@ export const InternalCategoriestyform = () => {
                     color: textColor,
                   }}
                 >
-                  {item.title}
+                  {currentLang === "es"
+                    ? item.name_spanish || item.name_english
+                    : item.name_english || item.name_spanish}
                 </Typography>
 
                 <Typography
@@ -128,24 +91,39 @@ export const InternalCategoriestyform = () => {
                     marginTop: "3px",
                     color: textColor,
                     marginBottom: "8px",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    minHeight: "3em",
                   }}
                 >
-                  {item.subtitle}
+                  {currentLang === "es"
+                    ? item.short_description_spanish || item.short_description_english
+                    : item.short_description_english || item.short_description_spanish}
                 </Typography>
 
                 <Typography
                   sx={{
-                    display: "flex",
-                    alignItems: "start",
-                    width: "50%",
-                    cursor: "pointer",
-                    transition: "transform 0.2s ease-in-out",
-                    fontFamily: "Montserrat, sans-serif",
-                    fontWeight: "bold",
-                    fontSize: "0.8rem",
+                    fontSize: { xs: "0.75rem", md: "0.85rem" },
+                    color: textColor,
+                    marginTop: "5px",
+                    marginBottom: "6px",
+                    opacity: 0.8,
                   }}
                 >
-                  {item.description}
+                  SKU-<strong>{item.code}</strong>
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: { xs: "1rem", md: "1rem" },
+                    color: textColor,
+                  }}
+                >
+                  ${item.amount?.toLocaleString("es-CO") ?? "—"}
                 </Typography>
               </Box>
             </Box>
@@ -170,21 +148,25 @@ export const InternalCategoriestyform = () => {
             color: "#3C3C3C",
           }}
         >
-          1-60 of 1921 Results
+          {items.length > 0 ? `1-${items.length} of ${totalItems} Results` : "0 Results"}
+          {/*  1-60 of 1921 Result */}
         </Typography>
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "#fff",
-            borderRadius: "50px",
-            height: "45px",
-            color: "#000",
-            border: "2px solid #000",
-            "&:hover": { backgroundColor: "#A5AB94", color: "#fff" },
-          }}
-        >
-          {t("categoriesIternal.showProducts")}
-        </Button>
+        {hasMore && (
+          <Button
+            variant="contained"
+            onClick={onLoadMore}
+            sx={{
+              backgroundColor: "#fff",
+              borderRadius: "50px",
+              height: "45px",
+              color: "#000",
+              border: "2px solid #000",
+              "&:hover": { backgroundColor: "#A5AB94", color: "#fff" },
+            }}
+          >
+            {t("categoriesIternal.showProducts")}
+          </Button>
+        )}
       </Box>
     </Box>
   );

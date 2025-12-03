@@ -12,49 +12,117 @@ import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { useTranslation } from "react-i18next";
 
-export const SupplementsSblock = () => {
-  const { t } = useTranslation();
-
+export const SupplementsSblock = ({ supplement }: any) => {
+  const { i18n, t } = useTranslation();
+  const currentLang = i18n.language;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detecta si es móvil
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md")); // Detecta si es tablet
+  const token = localStorage.getItem("Token");
+  const isLogged = Boolean(token);
 
   const accordionSblock = [
     {
       id: "panel0",
       number: "00",
       title: t("supplementsForm.Description"),
-      content: t("supplementsForm.Lorem"),
+      content:
+        currentLang === "es"
+          ? supplement?.description_spanish
+          : supplement?.description_english,
     },
     {
       id: "panel1",
       number: "01",
       title: t("supplementsForm.Indications"),
-      content: t("supplementsForm.Lorem1 "),
+      content: supplement?.indications
+        ? supplement?.indications
+          .map((item: any) => {
+            const name =
+              currentLang === "es"
+                ? item?.name_spanish?.trim()
+                : item?.name_english?.trim() || item?.name_spanish?.trim();
+
+            const desc =
+              currentLang === "es"
+                ? item?.description_spanish?.trim()
+                : item?.description_english?.trim();
+
+            if (!name && !desc) return null;
+
+            return `• <strong>${name}</strong>: ${desc}`;
+          })
+          .filter(Boolean)
+          .join("<br/>")
+        : "",
     },
     {
       id: "panel2",
       number: "02",
       title: t("supplementsForm.HowUse"),
-      content: t("supplementsForm.Lorem2 "),
+      content:
+        currentLang === "es"
+          ? supplement?.use_spanish
+          : supplement?.use_spanish,
     },
     {
       id: "panel3",
       number: "03",
       title: t("supplementsForm.Precautions"),
-      content: t("supplementsForm.Lorem3 "),
+      content:
+        currentLang === "es"
+          ? supplement?.precaution_spanish
+          : supplement?.precaution_english,
     },
     {
       id: "panel4",
       number: "04",
       title: t("supplementsForm.Interactions"),
-      content: t("supplementsForm.Lorem4 "),
+      content: supplement?.interactions
+        ? supplement?.interactions
+          .map((item: any) => {
+            const name =
+              currentLang === "es"
+                ? item?.name_spanish?.trim()
+                : item?.name_english?.trim() || item?.name_spanish?.trim();
+
+            const desc =
+              currentLang === "es"
+                ? item?.description_spanish?.trim()
+                : item?.description_english?.trim();
+
+            if (!name && !desc) return null;
+
+            return `• <strong>${name}</strong>: ${desc}`;
+          })
+          .filter(Boolean)
+          .join("<br/>")
+        : "",
     },
     {
       id: "panel5",
       number: "05",
       title: t("supplementsForm.Contraindications"),
-      content: t("supplementsForm.Lorem5 "),
+      content: supplement?.contraindications
+        ? supplement?.contraindications
+          .map((item: any) => {
+            const name =
+              currentLang === "es"
+                ? item?.name_spanish?.trim()
+                : item?.name_english?.trim() || item?.name_spanish?.trim();
+
+            const desc =
+              currentLang === "es"
+                ? item?.description_spanish?.trim()
+                : item?.description_english?.trim();
+
+            if (!name && !desc) return null;
+
+            return `• <strong>${name}</strong>: ${desc}`;
+          })
+          .filter(Boolean)
+          .join("<br/>")
+        : "",
     },
   ];
 
@@ -64,6 +132,8 @@ export const SupplementsSblock = () => {
     (panel: string) => (_: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+
+  if (!supplement) return null;
 
   return (
     <Box
@@ -99,10 +169,18 @@ export const SupplementsSblock = () => {
             width: "100%",
           }}
         >
-          {t("supplementsForm.SunBlock")}
+          {currentLang === "es"
+            ? supplement?.name_spanish || supplement?.name_english
+            : supplement?.name_english || supplement?.name_spanish}
         </Typography>
         {accordionSblock.map(({ id, number, title, content }) => (
           <Accordion
+            key={id}
+            disableGutters
+            square
+            slotProps={{ transition: { unmountOnExit: true } }}
+            expanded={expanded === id}
+            onChange={handleChange(id)}
             sx={{
               overflow: "hidden",
               marginBottom: "10px",
@@ -111,12 +189,8 @@ export const SupplementsSblock = () => {
               backgroundColor: "#E8E4DE",
               borderBottom: id === "panel5" ? "none" : "1px solid #A5AB94",
               borderTop: "0",
-              "&:before": { display: "none" },
-              width: "100%",
+              "&:before": { display: "none" }
             }}
-            key={id}
-            expanded={expanded === id}
-            onChange={handleChange(id)}
           >
             <AccordionSummary
               expandIcon={
@@ -145,8 +219,12 @@ export const SupplementsSblock = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography sx={{ color: "#3C3C3C" }}>{content}</Typography>
+              <Typography
+                sx={{ color: "#3C3C3C" }}
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
             </AccordionDetails>
+
           </Accordion>
         ))}
       </Box>
@@ -215,7 +293,7 @@ export const SupplementsSblock = () => {
                   fontWeight: 400,
                 }}
               >
-                0.7 oz/20 ml
+                {supplement?.code}
               </Typography>
             </Box>
 
@@ -252,7 +330,7 @@ export const SupplementsSblock = () => {
                   fontWeight: 400,
                 }}
               >
-                {t("supplementsForm.months")}
+                {supplement?.max_time} Días 
               </Typography>
             </Box>
           </Box>
@@ -260,7 +338,7 @@ export const SupplementsSblock = () => {
           {/* Compatibility Message */}
           <Box
             sx={{
-              backgroundColor: "#A5AB94",
+              backgroundColor: supplement?.is_compatible ? "#A5AB94" : "#EE6C5A",
               width: "76%",
               display: "flex",
               flexDirection: "column",
@@ -277,8 +355,19 @@ export const SupplementsSblock = () => {
                 color: "#3C3C3C",
               }}
             >
-              {t("supplementsForm.productCompatible")}
+              {isLogged && (
+                supplement?.is_compatible ?
+                  <>
+                    {t("supplementsForm.productCompatible")}
+                  </>
+                  :
+                  <>
+                    {t("supplementsForm.productNotCompatible")}
+                  </>
+              )}
+
             </Typography>
+
           </Box>
           <Box
             sx={{

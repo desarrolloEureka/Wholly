@@ -7,6 +7,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
+    supportedLngs: ['en', 'es'],
     lng: language,
     interpolation: {
       escapeValue: false,
@@ -140,8 +141,12 @@ i18n
               'Ingresa el nombre de lo que estás buscando tantas veces como necesites y agrégalo uno por uno.',
             ErrorMessage:
               'No pudimos encontrar tu búsqueda, inténtalo nuevamente',
+            ErrorMessageTendencies: 'Debes seleccionar al menos una tendencia para continuar.',
+            ErrorMessageConditions: "Debes seleccionar al menos una condición para continuar.",
+            ErrorMessageAllergies: "Debes seleccionar al menos una alergia para continuar.",
+            ErrorMessageMedicines: "Debes seleccionar al menos una medicina para continuar.",
+            ErrorMessageDiseases: "Debes seleccionar al menos una enfermedad para continuar.",
             placeholder: 'Acné...',
-
             campaignSettings: 'Seleccionar configuración de la campaña',
             conditions: ' condiciones ',
             allergies: ' alergias ',
@@ -246,6 +251,7 @@ i18n
           },
           stepper: {
             nextButton: 'Siguiente',
+            finishButton: 'Finalizar',
             backButton: 'Atras',
           },
           supplementsForm: {
@@ -295,6 +301,7 @@ i18n
             RecommendedTime: 'Tiempo de aplicación recomendado',
             months: '6 meses',
             productCompatible: 'Este producto es compatible contigo',
+            productNotCompatible: 'Este suplemento no es compatible contigo',
             SunBlock1: 'Bloqueador Solar 1',
             SunBlock2: 'Bloqueador Solar 2',
             SunBlock3: 'Bloqueador Solar 3',
@@ -383,6 +390,7 @@ i18n
             paragraph2:
               ' Espanol Sed ut perspiciatis unde omnis iste natus error sit voluptatem Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\nNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.\n\nUt enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n\nBut I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.\n\nNo one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.',
             products_help: 'PRODUCTOS QUE PODRÍAN AYUDARTE',
+            see_more: 'Ver mas',
           },
           Support: {
             Support: 'Apoyo',
@@ -392,6 +400,9 @@ i18n
             YourEmail: 'Tu Correo',
             EmailPlaceholder: 'Correo...',
             SendComment: 'Enviar comentario',
+            ErrorMessageRequired: "Debes escribir un mensaje.",
+            ErrorEmailRequired: "Debes ingresar un correo.",
+            ErrorEmailInvalid: "El correo no es válido.",
           },
           Kits: {
             title: 'Soluciones completas para todas sus necesidades',
@@ -431,9 +442,11 @@ i18n
           addressesForm: {
             newAddress: 'Nueva direccion',
             addressName: 'Nombre de la direccion',
+            complement: 'Complemento',
             address: 'Direccion',
             contactNumber: 'Numero de contacto',
             zipCode: 'Codigo postal',
+            country: 'País',
             city: 'Ciudad',
             state: 'Estado',
             defaultAddress: 'Direccion predeterminada para compras',
@@ -594,6 +607,11 @@ i18n
             enterName:
               'Enter the name of what you are looking for as many times as you need and add them one by one.',
             ErrorMessage: "We couldn't find your search, please try again",
+            ErrorMessageTendencies: 'You must select at least one tendency to continue.',
+            ErrorMessageConditions: "You must select at least one condition to continue.",
+            ErrorMessageAllergies: "You must select at least one allergy to continue.",
+            ErrorMessageMedicines: "You must select at least one medicine to continue.",
+            ErrorMessageDiseases: "You must select at least one disease to continue.",
             placeholder: 'Acne...',
             campaignSettings: 'Select campaign settings',
             conditions: ' conditions ',
@@ -698,6 +716,7 @@ i18n
           },
           stepper: {
             nextButton: 'Next',
+            finishButton: 'Finish',
             backButton: 'Back',
           },
           supplementsForm: {
@@ -748,6 +767,7 @@ i18n
             RecommendedTime: 'Recommended application time',
             months: '6 months',
             productCompatible: 'This product is compatible with you',
+            productNotCompatible: 'This supplement is not compatible with you',
             SunBlock1: 'Sun Block 1',
             SunBlock2: 'Sun Block 2',
             SunBlock3: 'Sun Block 3',
@@ -835,6 +855,7 @@ i18n
             paragraph2:
               'Sed ut perspiciatis unde omnis iste natus error sit voluptatem Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.\n\nNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.\n\nUt enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n\nBut I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.\n\nNo one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.',
             products_help: 'PRODUCTS THAT COULD HELP YOU',
+            see_more: 'See more',
           },
           Support: {
             Support: 'support',
@@ -844,6 +865,9 @@ i18n
             YourEmail: 'Your Email',
             EmailPlaceholder: 'Email...',
             SendComment: 'Send comment',
+            ErrorMessageRequired: "You must write a message.",
+            ErrorEmailRequired: "You must enter an email.",
+            ErrorEmailInvalid: "The email is not valid.",
           },
           Kits: {
             title: 'Complete solutions for all your needs',
@@ -883,9 +907,11 @@ i18n
           addressesForm: {
             newAddress: 'New address',
             addressName: 'Address name',
+            complement: 'Complement',
             address: 'Address',
             contactNumber: 'Contact number',
             zipCode: 'Zip code',
+            country: 'Country',
             city: 'City',
             state: 'State',
             defaultAddress: 'Default address for shopping',

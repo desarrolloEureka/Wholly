@@ -12,24 +12,13 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
-import { useState, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const HomeSupplement = () => {
+export const HomeSupplement = ({ selectedValue, handleSelectOption, searchTerm, handleSearchChange, handleSearchClick }: any) => {
   const { t } = useTranslation();
-  const [selectedValue, setSelectedValue] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
-  };
-
-  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleSearchClick = () => {
-    console.log('Búsqueda activada:', searchTerm);
+  const handleRadioChange = (event: any) => {
+    handleSelectOption(event.target.value);
   };
 
   return (
@@ -87,7 +76,7 @@ export const HomeSupplement = () => {
           <FormLabel component='legend'></FormLabel>
           <RadioGroup
             value={selectedValue}
-            onChange={handleChange}
+            onChange={handleRadioChange}
             aria-label='options'
             name='radio-buttons-group3'
             row

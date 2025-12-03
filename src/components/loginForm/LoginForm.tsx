@@ -14,54 +14,39 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { logo_app } from "../../assets/images";
 import { InteractiveText } from "../../globals/elements";
 import ErrorLabel from "../errorLabel/ErrorLabel";
+import LoginFormHook from "./hooks/LoginFormHook";
 
 const LoginForm = () => {
-  const navigate = useNavigate();
-  const { t } = useTranslation();
-  const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
 
-  const [errorTerms, setErrorTerms] = useState(true);
-  const [errorEmail, setErrorEmail] = useState(true);
-  const [errorPassword, setErrorPassword] = useState(true);
-  const [isLogged, setIsLogged] = useState(false);
-
-  const textError = {
-    terms: t("loginForm.errorTerms"),
-    email: t("loginForm.errorEmail"),
-    password: t("loginForm.errorPassword"),
-  };
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
-
-  const handleMouseUpPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
-
-  const handleLogin = () => {
-    setIsLogged(true);
-    if (!errorTerms && !errorEmail && !errorPassword) {
-      setIsLogged(false);
-    }
-  };
-
-  console.log("email", email);
-  console.log("password", password);
+  const {
+    showPassword,
+    setShowPassword,
+    password,
+    setPassword,
+    email,
+    setEmail,
+    acceptedTerms,
+    setAcceptedTerms,
+    errorTerms,
+    setErrorTerms,
+    errorEmail,
+    setErrorEmail,
+    errorPassword,
+    setErrorPassword,
+    isLogged,
+    setIsLogged,
+    textError,
+    handleClickShowPassword,
+    handleMouseDownPassword,
+    handleMouseUpPassword,
+    handleLogin,
+    navigate,
+    t,
+    errorGeneral
+  } = LoginFormHook();
   const isMobile = useMediaQuery("(max-width: 768px)"); // Detecta si la pantalla es de móvil o tablet
 
   return (
@@ -97,14 +82,16 @@ const LoginForm = () => {
           marginBottom: "20px",
         }}
       />
-      {isLogged && (
+      {isLogged && (errorTerms || errorEmail || errorPassword || errorGeneral) && (
         <ErrorLabel
           text={
             errorTerms
               ? textError.terms
               : errorEmail
-              ? textError.email
-              : textError.password
+                ? textError.email
+                : errorPassword
+                  ? textError.password
+                  : 'Las credenciales proporcionadas no son válidas. '
           }
         />
       )}
@@ -290,6 +277,7 @@ const LoginForm = () => {
         <FormControlLabel
           control={
             <Checkbox
+              checked={acceptedTerms}
               sx={{
                 color: "default",
                 "&.Mui-checked": {
@@ -298,6 +286,7 @@ const LoginForm = () => {
               }}
               onChange={(e) => {
                 setIsLogged(false);
+                setAcceptedTerms(e.target.checked);
                 setErrorTerms(!e.target.checked);
               }}
             />

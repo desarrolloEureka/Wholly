@@ -9,45 +9,43 @@ import {
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export const SupplementsIngredients = () => {
-  const { t } = useTranslation();
+export const SupplementsIngredients = ({ supplement }: any) => {
+  const { i18n, t } = useTranslation();
+  const currentLang = i18n.language;
 
-  const references = [
-    {
-      id: "1B",
-      content: t(
-        "1 TW. Medications & Mothers' Milk. 1991- . Springer Publishing Company. Available from https://www.halesmeds.comConsultado el 10 de Abril de 2024TEXTO COMPLETO (ENLACE A FUENTE ORIGINAL)"
-      ),
-    },
-  ];
+  const accordionData = supplement?.main_ingredients?.map((item: any) => {
+    const title =
+      currentLang === "es"
+        ? item.main_ingredient
+        : item.main_ingredient_english || item.main_ingredient;
 
-  const accordionData = [
-    {
-      id: "panel1",
-      title: t("supplementsForm.Ciprofibrato"),
-      content: t("supplementsForm.LoremIpsum1"),
-    },
-    {
-      id: "panel2",
-      title: t("supplementsForm.Levemir"),
-      content: t("supplementsForm.LoremIpsum1"),
-    },
-    {
-      id: "panel3",
-      title: t("supplementsForm.Locusim"),
-      content: t("supplementsForm.LoremIpsum2"),
-    },
-    {
-      id: "panel4",
-      title: t("supplementsForm.Ultrasomes"),
-      content: t("supplementsForm.LoremIpsum3"),
-    },
-    {
-      id: "panel5",
-      title: t("supplementsForm.Epidermosil"),
-      content: t("supplementsForm.LoremIpsum4"),
-    },
-  ];
+    const content =
+      currentLang === "es"
+        ? item.description_spanish
+        : item.description_english;
+
+    return {
+      id: `main-${item.id}`,
+      title,
+      content,
+    };
+  });
+
+  const excipientsText = supplement?.excipients
+    ?.map((item: any) => {
+      const name =
+        currentLang === "es"
+          ? item.name_spanish
+          : item.name_english || item.name_spanish;
+
+      const desc =
+        currentLang === "es"
+          ? item.description_spanish
+          : item.description_english;
+
+      return `• <strong>${name}</strong>: ${desc}`;
+    })
+    .join("<br/>");
 
   const [expanded, setExpanded] = useState<string | false>(false);
   const [expanded1, setExpanded1] = useState<string | false>(false);
@@ -59,6 +57,8 @@ export const SupplementsIngredients = () => {
     };
 
   // Maneja los acordeones de la segunda sección (independiente)
+
+  if (!supplement) return null;
 
   return (
     <Box
@@ -96,8 +96,14 @@ export const SupplementsIngredients = () => {
         >
           {t("supplementsForm.Main_ingredients")}
         </Typography>
-        {accordionData.map(({ id, title, content }) => (
+        {accordionData.map(({ id, title, content }: any) => (
           <Accordion
+            key={id}
+            disableGutters
+            square
+            slotProps={{ transition: { unmountOnExit: true } }}
+            expanded={expanded === id}
+            onChange={handleChange(id)}
             sx={{
               overflow: "hidden",
               marginBottom: "8px",
@@ -107,9 +113,6 @@ export const SupplementsIngredients = () => {
               "&:before": { display: "none" },
               width: "90%",
             }}
-            key={id}
-            expanded={expanded === id}
-            onChange={handleChange(id)}
           >
             <AccordionSummary
               expandIcon={
@@ -150,16 +153,13 @@ export const SupplementsIngredients = () => {
             {t("supplementsForm.Excipient_Ingredients")}
           </Typography>
         </Box>
+
+
         <Typography
-          paragraph
-          sx={{
-            marginTop: "15px",
-            width: "84%",
-            color: "#3C3C3C",
-          }}
-        >
-          {t("supplementsForm.LoremTex")}
-        </Typography>
+          sx={{ marginTop: "15px", width: "84%", color: "#3C3C3C" }}
+          dangerouslySetInnerHTML={{ __html: excipientsText }}
+        />
+
         <Box sx={{ borderBottom: "1px solid #A5AB94" }}>
           <Typography
             variant="h3"
@@ -191,25 +191,28 @@ export const SupplementsIngredients = () => {
         </Typography>
 
         {/* Muestra los acordeones solo cuando expanded es true */}
-        {expanded1 &&
-          references.map(({ id, content }) => (
-            <Accordion
-              key={id}
-              sx={{
-                overflow: "hidden",
-                marginBottom: "8px",
-                boxShadow: "none",
-                paddingBottom: "8px",
-                borderTop: "1px solid #A5AB94",
-                "&:before": { display: "none" },
-                width: "90%",
-              }}
-            >
-              <AccordionDetails>
-                <Typography sx={{ color: "#3C3C3C" }}>{content}</Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
+        {expanded1 && (
+          <Accordion
+            disableGutters
+            square
+            slotProps={{ transition: { unmountOnExit: true } }}
+            sx={{
+              overflow: "hidden",
+              marginBottom: "8px",
+              boxShadow: "none",
+              paddingBottom: "8px",
+              borderTop: "1px solid #A5AB94",
+              "&:before": { display: "none" },
+              width: "90%",
+            }}
+          >
+            <AccordionDetails>
+              <Typography sx={{ color: "#3C3C3C" }}>
+                {supplement?.bibliography}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        )}
       </Box>
     </Box>
   );

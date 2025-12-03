@@ -2,6 +2,7 @@ import { Carousel } from "primereact/carousel";
 import { Box, Typography } from "@mui/material";
 import { ImagesExclusive } from "../../globals/types";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { useTranslation } from "react-i18next";
 
 const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
   const responsiveOptions = [
@@ -14,6 +15,7 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
   const textColor = "#3C3C3C";
 
   const itemTemplate = (item: ImagesExclusive) => {
+    const { t } = useTranslation();
     return (
       <Box>
         <Box
@@ -22,11 +24,13 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
-            width: {
-              xs: "50%",
-              md: "80%",
+            justifyContent: "flex-start",
+            width: "100%",
+            maxWidth: {
+              xs: "320px",
+              md: "450px",
             },
+            mx: "auto",
             borderRadius: "10px",
             marginBottom: {
               xs: "40px",
@@ -36,13 +40,13 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
               xs: "20px",
               md: "10%",
             },
-            marginLeft: {
+            /* marginLeft: {
               xs: "auto",
               md: "10px",
             },
             marginRight: {
               xs: "auto",
-            },
+            }, */
             gap: "10px",
           }}
         >
@@ -87,6 +91,11 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
 
             <Typography
               sx={{
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
                 fontSize: {
                   xs: "0.95rem",
                   md: "1.0rem",
@@ -94,9 +103,24 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
                 marginTop: "3px",
                 color: textColor,
                 marginBottom: "8px",
+                minHeight: "3em",
               }}
             >
-              {item.subtitle}
+              {item.description || ''}
+            </Typography>
+
+            <Typography
+              sx={{
+                fontSize: {
+                  xs: "0.95rem",
+                  md: "1.0rem",
+                },
+                marginTop: "1px",
+                color: textColor,
+                marginBottom: "8px",
+              }}
+            >
+              {item.code}
             </Typography>
 
             <Typography
@@ -124,16 +148,16 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
                   marginRight: "10px",
                 }}
               >
-                {item.description}
+                ${item.price?.toLocaleString("es-CO") ?? "—"}
               </span>
-              {item.description1}
+
               <span
                 style={{
                   opacity: 0.6,
                   marginLeft: "7px",
                 }}
               >
-                {item.description2}
+                ${item.price_final?.toLocaleString("es-CO") ?? "—"}
               </span>
             </Typography>
 
@@ -161,7 +185,7 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
               }}
             >
               <Typography variant="h4" sx={{ fontSize: "17px" }}>
-                {item.description3}
+                {t("homeform.ShopNow")}
               </Typography>
               <ChevronRightIcon
                 sx={{
@@ -179,11 +203,11 @@ const CustomCarouselExclusive = ({ images }: { images: ImagesExclusive[] }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card" style={{ width: "100%", overflow: "hidden" }}>
       <Carousel
         value={images}
         numVisible={3}
-        numScroll={2}
+        numScroll={1}
         responsiveOptions={responsiveOptions}
         className="custom-carousel"
         circular

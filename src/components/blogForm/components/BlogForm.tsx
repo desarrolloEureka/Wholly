@@ -1,5 +1,5 @@
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import {
   blog_1,
@@ -11,62 +11,102 @@ import {
 } from "../../../assets/images";
 import { ImagesCategories } from "../../../globals/types";
 import { useTranslation } from "react-i18next";
+import { ConfigConstants } from "../../../globals/config/config";
 
-export const BlogForm = () => {
-  const { t } = useTranslation();
+export const BlogForm = ({ blogs, loading }: any) => {
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
 
-  const imagesAreas: ImagesCategories[] = [
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "400px",
+        }}
+      >
+        <CircularProgress color="primary" size={60} />
+      </Box>
+    );
+  }
+
+  if (!blogs || blogs.length === 0) {
+    return <div style={{ textAlign: "center", padding: "2rem" }}>No hay Blogs disponibles.</div>;
+  }
+
+  const defaultImages: ImagesCategories[] = [
     {
       id: 1,
       src: blog_1,
       title: "Lorem Ipsumg",
-      subtitle:
+      description:
         "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-      description: "SEE MORE",
+      subtitle: "SEE MORE",
     },
     {
       id: 2,
       src: blog_2,
       title: "Lorem Ipsum",
-      subtitle:
+      description:
         "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-      description: "SEE MORE",
+      subtitle: "SEE MORE",
     },
     {
       id: 3,
       src: blog_3,
       title: "Lorem Ipsum",
-      subtitle:
+      description:
         "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-      description: "SEE MORE",
+      subtitle: "SEE MORE",
     },
     {
       id: 4,
       src: blog_4,
       title: "Lorem Ipsumg",
-      subtitle:
+      description:
         "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-      description: "SEE MORE",
+      subtitle: "SEE MORE",
     },
     {
       id: 5,
       src: blog_5,
       title: "Lorem Ipsum",
-      subtitle:
+      description:
         "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-      description: "SEE MORE",
+      subtitle: "SEE MORE",
     },
     {
       id: 6,
       src: blog_6,
       title: "Lorem Ipsum",
-      subtitle:
+      description:
         "With lots of unique blocks, you can easily build a page without coding. Build your next landing page.",
-      description: "SEE MORE",
+      subtitle: "SEE MORE",
     },
   ];
 
-  const navigate = useNavigate();
+  const formattedBlogs: ImagesCategories[] =
+    blogs.length > 0
+      ? blogs.map((item: any, index: number) => ({
+        id: item.id || index,
+        src: item.image
+          ? `${ConfigConstants.webServiceName}${item.image}`
+          : blog_1,
+        title:
+          currentLang === "es"
+            ? item.name_spanish || item.name_english
+            : item.name_english || item.name_spanish,
+        description:
+          currentLang === "es"
+            ? item.description_spanish || item.description_english
+            : item.description_english || item.description_spanish,
+        subtitle: "SEE MORE",
+      }))
+      : defaultImages;
+
 
   return (
     <Box>
@@ -100,7 +140,7 @@ export const BlogForm = () => {
           justifyItems: "center",
         }}
       >
-        {imagesAreas.map((item) => (
+        {formattedBlogs.map((item) => (
           <Box
             key={item.id}
             sx={{
@@ -112,7 +152,7 @@ export const BlogForm = () => {
               borderRadius: "10px",
               boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.38)",
             }}
-            onClick={() => navigate("/internalBlog")}
+            onClick={() => navigate(`/internalBlog/${item.id}`)}
           >
             <img
               src={item.src}
@@ -155,9 +195,20 @@ export const BlogForm = () => {
                 {item.title}
               </Typography>
               <Typography
-                sx={{ marginBottom: "40px", width: "60%", color: "#FFFFFF" }}
+                sx={{
+                  marginBottom: "40px",
+                  width: "60%",
+                  color: "#FFFFFF",
+
+                  display: "-webkit-box",
+                  WebkitLineClamp: 4,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+
+                }}
               >
-                {item.subtitle}
+                {item.description}
               </Typography>
               <Box
                 sx={{
@@ -175,7 +226,7 @@ export const BlogForm = () => {
                     fontSize: "1.1rem",
                   }}
                 >
-                  {item.description}
+                  {t("blogForm.see_more")}
                 </Typography>
                 <ChevronRightIcon sx={{ fontSize: 20, color: "white" }} />
               </Box>

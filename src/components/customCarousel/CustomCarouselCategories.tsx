@@ -3,12 +3,16 @@ import { Box, Typography } from "@mui/material";
 import { ImagesCategories } from "../../globals/types";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const CustomCarouselCategories = ({
   images,
 }: {
   images: ImagesCategories[];
 }) => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const responsiveOptions = [
     { breakpoint: "1400px", numVisible: 3, numScroll: 1 },
     { breakpoint: "1199px", numVisible: 3, numScroll: 1 },
@@ -24,9 +28,8 @@ const CustomCarouselCategories = ({
     const backgroundColor = backgroundColors[index % backgroundColors.length];
     const textColor = textColors[index % textColors.length];
 
-    const navigate = useNavigate();
     return (
-      <Box sx={{ height: { xs: "470px" }, marginTop: { xs: "10px" } }}>
+      <Box>
         <Box
           key={item.id}
           sx={{
@@ -43,7 +46,7 @@ const CustomCarouselCategories = ({
             marginBottom: "30px",
             marginTop: "10px",
             height: { xs: "450px" },
-
+            mx: "auto",
             margin: { xs: " 0 auto", sm: "10px" },
             cursor: "pointer",
           }}
@@ -52,6 +55,7 @@ const CustomCarouselCategories = ({
           <img
             src={item.src}
             alt={item.title}
+            loading="lazy"
             style={{
               width: "100%",
               height: "300px",
@@ -64,6 +68,7 @@ const CustomCarouselCategories = ({
           <Box
             sx={{
               width: "100%",
+              height: "100%",
               backgroundColor: backgroundColor,
               padding: "15px 20px",
               textAlign: "start",
@@ -84,20 +89,33 @@ const CustomCarouselCategories = ({
               {item.title}
             </Typography>
 
-            <Typography
+            <Box
               sx={{
-                fontSize: {
-                  xs: "1rem",
-                  sm: "1.2rem",
+                display: "flex",
+                alignItems: "start",
+                width: {
+                  xs: "100%", // que ocupe todo en móvil
+                  sm: "95%", // igual que ya tenías
                 },
-                marginTop: "4px",
+                cursor: "pointer",
+                transition: "transform 0.2s ease-in-out",
+                fontWeight: "bold",
+                fontSize: {
+                  xs: "0.85rem",
+                  sm: "0.9rem",
+                },
+                marginTop: '5px',
                 color: textColor,
-                marginBottom: "28px",
+                "&:hover": {
+                  transform: "translateX(5px)",
+                },
+                minHeight: "3.5em",
               }}
             >
-              {item.subtitle}
-            </Typography>
-
+              <Typography variant="h6" sx={{ fontSize: "17px" }}>
+                {item.description}
+              </Typography>
+            </Box>
             <Box
               sx={{
                 display: "flex",
@@ -120,7 +138,7 @@ const CustomCarouselCategories = ({
               }}
             >
               <Typography variant="h6" sx={{ fontSize: "17px" }}>
-                {item.description}
+                {t("homeform.ShopNow")}
               </Typography>
               <ChevronRightIcon
                 sx={{
@@ -138,14 +156,16 @@ const CustomCarouselCategories = ({
   };
 
   return (
-    <div className="card">
+    <div className="card" style={{ width: "100%", overflow: "hidden" }}>
       <Carousel
         value={images}
-        numVisible={4}
+        numVisible={3}
         numScroll={1}
         responsiveOptions={responsiveOptions}
         className="custom-carousel"
         circular
+        showIndicators={false}
+        showNavigators={false}
         autoplayInterval={3000}
         itemTemplate={itemTemplate}
       />

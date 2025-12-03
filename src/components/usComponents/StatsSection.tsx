@@ -1,10 +1,42 @@
 import { Box, Typography } from "@mui/material";
-
 import { blog_1, blog_2, blog_3 } from "../../assets/images";
 import { useTranslation } from "react-i18next";
+import { asyncSendApis } from "../../globals/services/service";
+import { ApiData } from "../../globals/services/api";
+import { useEffect, useState } from "react";
 
 const StatsSection = () => {
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState({
+    supplements: 0,
+    users: 0,
+    references: 0,
+  });
+
+  const fetchStats = async () => {
+    try {
+      const apiData: ApiData = {
+        token: await localStorage.getItem("Token"),
+        method: "GET",
+      };
+      const response = await asyncSendApis("/references/apiDashboardCounters", apiData);
+      console.log("STATS → ", response);
+      setStats({
+        supplements: response?.supplements || 0,
+        users: response?.users || 0,
+        references: response?.references || 0,
+      });
+    } catch (error) {
+      console.error("Error stats:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
 
   return (
     <Box sx={{ px: 4, py: 8 }}>
@@ -53,13 +85,13 @@ const StatsSection = () => {
         }}
       >
         {[
-          { number: "2K+", label: t("Us.users") },
-          { number: "20+", label: t("Us.supplements") },
-          { number: "300+", label: t("Us.references") },
+          { number: stats.users, label: t("Us.users") },
+          { number: stats.supplements, label: t("Us.supplements") },
+          { number: stats.references, label: t("Us.references") },
         ].map((stat, i) => (
           <Box key={i} sx={{ textAlign: "center" }}>
             <Typography variant="h3" sx={{ color: "#6D7D7D" }}>
-              {stat.number}
+              {loading ? "0" : stat.number}
             </Typography>
             <Typography
               variant="h6"

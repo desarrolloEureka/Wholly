@@ -11,9 +11,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import AddIcon from "@mui/icons-material/Add";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterHome = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const [expanded, setExpanded] = useState<string | false>(false);
 
@@ -61,8 +63,8 @@ export const RegisterHome = () => {
         gap: { xs: 3, md: 30 },
         marginLeft: "4%",
         marginBottom: 0,
-        height: { xs: "6vh", sm: "60vh", md: "100vh" },
-        marginTop: { xs: "20%", sm: "8%", md: "5%" },
+        height: { xs: "6vh", sm: "60vh", md: "80vh" },
+        marginTop: { xs: "20%", sm: "8%", md: "2%" },
       }}
     >
       {/* Lado izquierdo */}
@@ -87,6 +89,7 @@ export const RegisterHome = () => {
         </Typography>
         <Button
           variant="contained"
+          onClick={() => navigate('/register')}
           sx={{
             backgroundColor: " #A5AB94",
             borderRadius: "10px",
@@ -114,11 +117,10 @@ export const RegisterHome = () => {
           alignItems: "center",
           justifyContent: "start",
           flexDirection: "column",
-          marginTop: "5%",
           marginLeft: "1%",
           marginRight: "7%",
           width: { sm: "80%", md: "60%" },
-          height: "100vh",
+          height: "70vh",
         }}
       >
         <Box

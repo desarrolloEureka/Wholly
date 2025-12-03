@@ -1,47 +1,22 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
-import { useState } from "react";
-import { Session_1, Session_2, variety2 } from "../../../assets/images";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ConfigConstants } from "../../../globals/config/config";
+import { variety1 } from "../../../assets/images";
 
-export const SupplementSession = () => {
-  const { t } = useTranslation();
+export const SupplementSession = ({ supplement }: any) => {
+  const { i18n, t } = useTranslation();
+  const currentLang = i18n.language;
+  const images = supplement?.images || [];
+  const [selectedImage, setSelectedImage] = useState("");
 
-  const [products] = useState([
-    {
-      id: 1,
-      src: Session_1,
-      title: t("supplementsForm.SunBlock1"),
-      subtitle: t("supplementsForm.subtitle1"),
-      description: "$10.99",
-      rating: 3.5,
-    },
-    {
-      id: 2,
-      src: Session_2,
-      title: t("supplementsForm.SunBlock2"),
-      subtitle: t("supplementsForm.subtitle2"),
-      description: "$15.99",
-      rating: 4.0,
-    },
-    {
-      id: 3,
-      src: Session_1,
-      title: t("supplementsForm.SunBlock3"),
-      subtitle: t("supplementsForm.subtitle3"),
-      description: "$20.99",
-      rating: 4.5,
-    },
-    {
-      id: 4,
-      src: variety2,
-      title: t("supplementsForm.SunBlock4"),
-      subtitle: t("supplementsForm.subtitle4"),
-      description: "$19.99",
-      rating: 4.5,
-    },
-  ]);
+  useEffect(() => {
+    if (images.length) {
+      setSelectedImage(images[0]);
+    }
+  }, [images]);
 
-  const [selectedProduct, setSelectedProduct] = useState(products[0]);
+  if (!supplement) return null;
 
   return (
     <Box>
@@ -55,18 +30,18 @@ export const SupplementSession = () => {
         }}
       >
         {/* Lista de imágenes a la izquierda */}
-        <Box
-          sx={{ width: "8%", display: "flex", flexDirection: "column", gap: 2 }}
+        <Box sx={{ width: "8%", display: "flex", flexDirection: "column", gap: 2 }}
         >
-          {products.map((product) => (
+          {images.map((img: string, index: number) => (
             <Paper
-              key={product.id}
+              key={index}
+              onClick={() => setSelectedImage(img)}
               sx={{
                 cursor: "pointer",
                 overflow: "hidden",
                 borderRadius: 2,
                 boxShadow:
-                  selectedProduct.id === product.id
+                  selectedImage === img
                     ? "-3px 3px 6px rgba(0, 0, 0, 0.8)"
                     : "0px 4px 4px rgba(0, 0, 0, 0.58)",
                 width: 100,
@@ -75,16 +50,14 @@ export const SupplementSession = () => {
                 alignItems: "center",
                 justifyContent: "center",
               }}
-              onClick={() => setSelectedProduct(product)}
             >
               <img
-                src={product.src}
-                alt={product.title}
+                src={ConfigConstants.webServiceName + img}
+                alt={`img-${index}`}
                 style={{
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  borderRadius: "8px",
                 }}
               />
             </Paper>
@@ -103,8 +76,8 @@ export const SupplementSession = () => {
           }}
         >
           <img
-            src={selectedProduct.src}
-            alt={selectedProduct.title}
+            src={selectedImage ? ConfigConstants.webServiceName + selectedImage : variety1}
+            alt="selected"
             style={{
               width: 450,
               height: 450,
@@ -134,15 +107,18 @@ export const SupplementSession = () => {
                 marginBottom: "35px",
               }}
             >
-              {selectedProduct.title}
+              {currentLang === "es"
+                ? supplement?.name_spanish || supplement?.name_english
+                : supplement?.name_english || supplement?.name_spanish}
             </Typography>
 
-            <Typography
+
+            {/* <Typography
               variant="h6"
               sx={{ fontSize: "1.5rem", color: "gray", marginBottom: "30px" }}
             >
               {selectedProduct.subtitle}
-            </Typography>
+            </Typography> */}
             {/*<Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
               <Typography
                 variant="h6"
@@ -164,8 +140,21 @@ export const SupplementSession = () => {
               color="primary"
               sx={{ fontSize: "1.8rem", marginTop: "10px" }}
             >
-              {selectedProduct.description}
+              {(
+                currentLang === "es"
+                  ? supplement.description_spanish || supplement.description_english
+                  : supplement.description_english || supplement.description_spanish
+              )?.substring(0, 100) + "..."}
             </Typography>
+
+            <Typography
+              color="primary"
+              sx={{ fontSize: "1.8rem", marginTop: "10px" }}
+            >
+              {/*  {supplement?.reference?.price_total || 0} */}
+              ${supplement?.amount?.toLocaleString("es-CO") ?? "—"}
+            </Typography>
+
             <span
               style={{
                 opacity: 0.6,
@@ -176,7 +165,7 @@ export const SupplementSession = () => {
                 marginTop: "11px",
               }}
             >
-              10 units in stock
+              {supplement?.amount} units in stock
             </span>
 
             <Button
@@ -195,7 +184,7 @@ export const SupplementSession = () => {
           </Box>
         </Box>
       </Box>
-      <Typography sx={{ marginLeft: "50px" }}>See all - 12</Typography>
+      <Typography sx={{ marginLeft: "50px" }}>See all - {images.length || 0}</Typography>
     </Box>
   );
 };

@@ -1,10 +1,4 @@
 import PersonIcon from "@mui/icons-material/Person";
-import {
-  useState,
-  SetStateAction,
-  useImperativeHandle,
-  forwardRef,
-} from "react";
 import KeyIcon from "@mui/icons-material/Key";
 import {
   Box,
@@ -27,135 +21,35 @@ import EmailIcon from "@mui/icons-material/Email";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import { useTranslation } from "react-i18next";
-import { StepOneHandle } from "../../../globals/types";
-import ErrorLabel from "../../errorLabel/ErrorLabel";
-const dataErrors = {
-  name: false,
-  email: false,
-  confirmEmail: false,
-  password: false,
-  confirmPassword: false,
-  lastName: false,
-  dateOfBirth: false,
-  biologicalSex: false,
-  gender: false,
-  optionsList: false,
-};
-export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
-  const { t } = useTranslation();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [confirmEmail, setConfirmEmail] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [date1, setDate1] = useState(""); // Estado para el primer grupo
-  const [date2, setDate2] = useState(""); // Estado para el segundo grupo
-  const [date3, setDate3] = useState(""); // Estado para el tercer grupo
-  const [errors, setErrors] = useState(dataErrors);
-  const [generalError, setGeneralError] = useState<React.ReactNode>("");
 
-  const handleClickShowPassword = () => setShowPassword(!showPassword);
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setPassword(e.target.value);
-  const handleConfirmPasswordChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => setConfirmPassword(e.target.value);
-
-  const handleChange1 = (event: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setDate1(event.target.value); // Actualiza el estado para el primer grupo
-  };
-
-  const handleChange2 = (event: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setDate2(event.target.value); // Actualiza el estado para el segundo grupo
-  };
-
-  const handleChange3 = (event: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setDate3(event.target.value); // Actualiza el estado para el tercer grupo
-  };
-
-  const validateForm = () => {
-    const newErrors = {
-      name: !name,
-      email: !email,
-      confirmEmail: !confirmEmail,
-      password: !password,
-      confirmPassword: !confirmPassword,
-      lastName: !lastName,
-      dateOfBirth: !dateOfBirth,
-      biologicalSex: !date1,
-      gender: !date2,
-      optionsList: !date3,
-    };
-
-    console.log("newErrors", newErrors);
-    console.log("props", props);
-
-    setErrors(newErrors);
-
-    const hasErrors = Object.values(newErrors).some((error) => error);
-
-    if (hasErrors) {
-      setGeneralError(<ErrorLabel text="Todos los campos son requeridos" />);
-      return false;
-    }
-
-    // Validar que las contraseñas coincidan
-    if (password !== confirmPassword) {
-      setGeneralError("Las contraseñas no coinciden");
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        password: true,
-        confirmPassword: true,
-      }));
-      return false;
-    }
-
-    // Validar que los correos electrónicos coincidan
-    if (email !== confirmEmail) {
-      setGeneralError("Los correos electrónicos no coinciden");
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        email: true,
-        confirmEmail: true,
-      }));
-      return false;
-    }
-
-    // Validar formato de correo electrónico
-    const validateEmail = (email: string) => {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(String(email).toLowerCase());
-    };
-
-    if (!validateEmail(email)) {
-      setGeneralError("El correo electrónico no es válido");
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        email: true,
-      }));
-      return false;
-    }
-
-    setGeneralError("");
-    return true;
-  };
-
-  useImperativeHandle(ref, () => ({
-    validateForm,
-  }));
-
-  console.log("error.name", errors.name);
-
+export const StepOne = ((props: any) => {
+  const {
+    t,
+    name,
+    setName,
+    email,
+    setEmail,
+    confirmEmail,
+    setConfirmEmail,
+    lastName,
+    setLastName,
+    dateOfBirth,
+    setDateOfBirth,
+    password,
+    showPassword,
+    confirmPassword,
+    date1,
+    date2,
+    date3,
+    errors,
+    generalError,
+    handleClickShowPassword,
+    handlePasswordChange,
+    handleConfirmPasswordChange,
+    handleChange1,
+    handleChange2,
+    handleChange3,
+  } = props;
   return (
     <Box>
       {/* header form */}
@@ -476,10 +370,10 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                         display: "flex",
                         alignItems: "center",
                         gap: "8px",
-                        color: "#3C3C3C",
+                        color: errors.biologicalSex ? "red" : "#3C3C3C",
                       }}
                     >
-                      <AccessibilityNewIcon sx={{ color: "#3C3C3C" }} />
+                      <AccessibilityNewIcon sx={{ color: errors.biologicalSex ? "red" : "#3C3C3C" }} />
                       {t("registerForm.optionsListBiologicalSex")}
                     </Box>
                   </Typography>
@@ -493,11 +387,11 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                     sx={{ gap: "30px" }}
                   >
                     <FormControlLabel
-                      value="option1"
+                      value="1"
                       control={
                         <Radio
                           sx={{
-                            color: date1 === "option1" ? "#FBFFDD" : "default",
+                            color: date1 === "1" ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -507,11 +401,11 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.sexoOption1")}
                     />
                     <FormControlLabel
-                      value="option2"
+                      value="2"
                       control={
                         <Radio
                           sx={{
-                            color: date1 === "option2" ? "#FBFFDD" : "default",
+                            color: date1 === "2" ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -532,10 +426,10 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                         display: "flex",
                         alignItems: "center",
                         gap: "8px",
-                        color: "#3C3C3C",
+                        color: errors.gender ? "red" : "#3C3C3C",
                       }}
                     >
-                      <TransgenderIcon sx={{ color: "#3C3C3C" }} />
+                      <TransgenderIcon sx={{ color: errors.gender ? "red" : "#3C3C3C", }} />
                       {t("registerForm.optionsListGender")}
                     </Box>
                   </Typography>
@@ -550,11 +444,11 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                     sx={{ gap: "30px" }}
                   >
                     <FormControlLabel
-                      value="option1"
+                      value="1"
                       control={
                         <Radio
                           sx={{
-                            color: date2 === "option1" ? "#FBFFDD" : "default",
+                            color: date2 === "1" ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -564,11 +458,11 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.male")}
                     />
                     <FormControlLabel
-                      value="option2"
+                      value="2"
                       control={
                         <Radio
                           sx={{
-                            color: date2 === "option2" ? "#FBFFDD" : "default",
+                            color: date2 === "2" ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -578,11 +472,11 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.female")}
                     />
                     <FormControlLabel
-                      value="option3"
+                      value="3"
                       control={
                         <Radio
                           sx={{
-                            color: date2 === "option3" ? "#FBFFDD" : "default",
+                            color: date2 === "3" ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -603,10 +497,10 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                         display: "flex",
                         alignItems: "center",
                         gap: "8px",
-                        color: "#3C3C3C",
+                        color: errors.optionsList ? "red" : "#3C3C3C",
                       }}
                     >
-                      <MoreHorizIcon sx={{ color: "#3C3C3C" }} />
+                      <MoreHorizIcon sx={{ color: errors.optionsList ? "red" : "#3C3C3C", }} />
                       {t("registerForm.optionsList")}
                     </Box>
                   </Typography>
@@ -620,11 +514,11 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                     sx={{ gap: "30px" }} // Ajusta el espacio entre botones
                   >
                     <FormControlLabel
-                      value="option1"
+                      value="1"
                       control={
                         <Radio
                           sx={{
-                            color: date3 === "option1" ? "#FBFFDD" : "default",
+                            color: date3 === "1" ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -634,11 +528,11 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.mr")}
                     />
                     <FormControlLabel
-                      value="option2"
+                      value="2"
                       control={
                         <Radio
                           sx={{
-                            color: date3 === "option2" ? "#FBFFDD" : "default",
+                            color: date3 === "2" ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -648,11 +542,11 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.mrs")}
                     />
                     <FormControlLabel
-                      value="option3"
+                      value="3"
                       control={
                         <Radio
                           sx={{
-                            color: date3 === "option3" ? "#FBFFDD" : "default",
+                            color: date3 === "3" ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },
@@ -662,11 +556,11 @@ export const StepOne = forwardRef<StepOneHandle>((props, ref) => {
                       label={t("registerForm.miss")}
                     />
                     <FormControlLabel
-                      value="option4"
+                      value="4"
                       control={
                         <Radio
                           sx={{
-                            color: date2 === "option4" ? "#FBFFDD" : "default",
+                            color: date2 === "4" ? "#FBFFDD" : "default",
                             "&.Mui-checked": {
                               color: "#FBFFDD",
                             },

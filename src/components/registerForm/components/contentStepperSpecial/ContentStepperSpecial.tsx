@@ -8,27 +8,33 @@ import {
   Typography,
 } from "@mui/material";
 import { t } from "i18next";
-import { useState } from "react";
-import { OptionsButtons } from "../../../../globals/types";
 import ErrorLabel from "../../../errorLabel/ErrorLabel";
 import RenderOptions from "../renderOptions/RenderOptions";
 
-export const ContentStepperSpecial = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [errorMessage, setErrorMessage] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  const options: OptionsButtons[] = [
-    { id: 1, name: "Acne" },
-    { id: 2, name: "Facial acne" },
-  ];
+export const ContentStepperSpecial = (props: any) => {
+  const {
+    searchTerm,
+    setSearchTerm,
+    errorMessage,
+    setErrorMessage,
+    isError,
+    setIsError,
+    options,
+    selectedTendencies,
+    customTendency,
+    setCustomTendency,
+    handleAddCustomTendency,
+    toggleTendencySelection,
+    errorMessageNoSelected,
+    errorMessageText
+  } = props;
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
 
-    const hasResults = options.some((option) =>
-      option.name.toLowerCase().includes(value.toLowerCase())
+    const hasResults = options && options?.some((option: any) =>
+      option?.name_spanish?.toLowerCase()?.includes(value.toLowerCase())
     );
 
     if (value && !hasResults) {
@@ -40,8 +46,8 @@ export const ContentStepperSpecial = () => {
     }
   };
 
-  const filteredOptions = options.filter((option) =>
-    option.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredOptions = options && options?.filter((option: any) =>
+    option?.name_spanish.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -109,6 +115,24 @@ export const ContentStepperSpecial = () => {
                   </Typography>
                 </Box>
               )}
+              {errorMessageNoSelected && (
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "100%",
+                    textAlign: "center",
+                  }}
+                >
+                  <Typography
+                    color="error"
+                    sx={{ fontSize: "14px", fontWeight: "bold" }}
+                  >
+                    <ErrorLabel text={errorMessageText} />
+                  </Typography>
+                </Box>
+              )}
             </Box>
 
             <TextField
@@ -123,25 +147,24 @@ export const ContentStepperSpecial = () => {
                 boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
                 "& .MuiOutlinedInput-input": {
                   padding: "13px 25px",
-                  color: isError ? "error.main" : "inherit",
+                  color: errorMessage ? "red" : "black",
                 },
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "20px",
                   minHeight: "40px",
-                  borderColor: isError ? "error.main" : "rgba(0, 0, 0, 0.23)",
-                  "&:hover fieldset": {
-                    borderColor: isError ? "error.main" : "rgba(0, 0, 0, 0.5)",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: isError ? "error.main" : "primary.main",
-                  },
+                  borderColor: errorMessage ? "red" : "inherit",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: errorMessage ? "red !important" : "inherit",
                 },
               }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
-                      onClick={() => console.log("Botón presionado")}
+                      onClick={() =>
+                        console.log("Búsqueda activada:", searchTerm)
+                      }
                       sx={{
                         border: "1.5px solid rgba(0, 0, 0, 0.79)",
                         borderRadius: "50%",
@@ -149,9 +172,7 @@ export const ContentStepperSpecial = () => {
                         width: "28px",
                         height: "28px",
                         backgroundColor: "rgba(49, 48, 48, 0.06)",
-                        "&:hover": {
-                          backgroundColor: "rgba(49, 48, 48, 0.3)",
-                        },
+                        "&:hover": { backgroundColor: "rgba(49, 48, 48, 0.3)" },
                       }}
                     >
                       <KeyboardArrowRightOutlinedIcon fontSize="small" />
@@ -163,7 +184,15 @@ export const ContentStepperSpecial = () => {
           </CardContent>
         </Box>
       </Box>
-      <RenderOptions options={filteredOptions} additionalButtons />
+      <RenderOptions
+        options={filteredOptions}
+        toggleOptionsSelection={toggleTendencySelection}
+        selectedOptions={selectedTendencies}
+        customOption={customTendency}
+        setCustomOption={setCustomTendency}
+        handleAddCustomOption={handleAddCustomTendency}
+        additionalButtons
+      />
     </Box>
   );
 };

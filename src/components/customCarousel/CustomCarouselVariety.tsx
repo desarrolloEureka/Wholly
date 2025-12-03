@@ -4,34 +4,38 @@ import { Box, Typography } from "@mui/material";
 import { ImagesVariety } from "../../globals/types";
 import { useNavigate } from "react-router-dom";
 
+const responsiveOptions = [
+  { breakpoint: "1400px", numVisible: 3, numScroll: 1 },
+  { breakpoint: "1199px", numVisible: 3, numScroll: 1 },
+  { breakpoint: "991px", numVisible: 2, numScroll: 1 },
+  { breakpoint: "767px", numVisible: 1, numScroll: 1 },
+];
+const textColor = "#3C3C3C";
+
 const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const responsiveOptions = [
-    { breakpoint: "1400px", numVisible: 3, numScroll: 1 },
-    { breakpoint: "1199px", numVisible: 3, numScroll: 1 },
-    { breakpoint: "767px", numVisible: 2, numScroll: 1 },
-    { breakpoint: "575px", numVisible: 2, numScroll: 1 },
-  ];
-
-  const backgroundColor = "#ffff";
-  const textColor = "#3C3C3C";
   const navigate = useNavigate();
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const itemTemplate = (item: ImagesVariety) => {
     return (
       <Box
-        key={item.id}
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
-          width: {
-            xs: "90%", // en móviles ocupa casi todo el ancho
-            md: "58%", // mismo valor en pantallas medianas o más grandes
-          },
+          justifyContent: "flex-start",
+          width: "100%",
+          maxWidth: "350px",
+          height: "430px",
           borderRadius: "10px",
+          mx: "auto",
+          cursor: "pointer",
+          transition: "transform 0.3s ease",
+          "&:hover": {
+            transform: "scale(1.02)",
+          },
+          backgroundColor: "#fff",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
           marginBottom: {
             xs: "20px",
             md: "15px",
@@ -40,92 +44,50 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
             xs: "10px",
             md: "5px",
           },
-          marginLeft: {
-            xs: "auto",
-            md: "100px",
-          },
-          marginRight: {
-            xs: "auto",
-          },
-          cursor: "pointer",
         }}
-        onClick={() => navigate("/Supplements")}
+        onClick={() => navigate(`Supplements/${item.id}`)}
       >
         <Box
           component="img"
           src={item.src}
           alt={item.title}
+          loading="lazy"
           sx={{
             width: "100%",
-            height: {
-              xs: "190px", // altura para móviles
-              sm: "220px", // tablets pequeñas
-              md: "255px", // pantallas medianas en adelante
-            },
+            height: "230px",
             objectFit: "cover",
-            transition: "transform 0.3s ease",
             borderRadius: "10px 10px 0 0",
           }}
         />
 
-        <Box
-          sx={{
-            width: "100%",
-            backgroundColor: backgroundColor,
-            padding: {
-              xs: "10px 12px",
-              md: "10px 15px",
-            },
-            textAlign: "start",
-            border: "1px solid rgba(60, 60, 60, 0.64)",
-            borderTop: "none",
-            borderRadius: "0 0 10px 10px",
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{
-              fontWeight: 600,
-              marginTop: "8px",
-              color: textColor,
-            }}
-          >
+        <Box sx={{ flexGrow: 1, width: "100%", p: 2 }}>
+          <Typography variant="h6" sx={{ fontWeight: 600, color: textColor }}>
             {item.title}
           </Typography>
 
           <Typography
             sx={{
-              fontSize: {
-                xs: "0.95rem",
-                md: "1.0rem",
-              },
-              marginTop: "3px",
-              color: textColor,
-              marginBottom: "8px",
-            }}
-          >
-            {item.subtitle}
-          </Typography>
-
-          <Typography
-            sx={{
-              display: "flex",
-              alignItems: "start",
-              width: {
-                xs: "100%",
-                md: "50%",
-              },
-              cursor: "pointer",
-              transition: "transform 0.2s ease-in-out",
-              fontFamily: "Montserrat, sans-serif",
+              display: "-webkit-box",
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
               fontWeight: "bold",
-              fontSize: {
-                xs: "0.75rem",
-                md: "0.8rem",
-              },
+              fontSize: "0.8rem",
+              color: textColor,
+              minHeight: "4em",
+              mt: 1,
             }}
           >
             {item.description}
+          </Typography>
+
+          <Typography sx={{ opacity: 0.8, mt: 1 }}>
+            SKU-<strong>{item.code}</strong>
+          </Typography>
+
+          <Typography sx={{ fontWeight: "bold", mt: 1 }}>
+            ${item.amount?.toLocaleString("es-CO")}
           </Typography>
         </Box>
       </Box>
@@ -133,11 +95,11 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card" style={{ width: "100%", overflow: "hidden" }}>
       <Carousel
         value={images}
-        numVisible={4}
-        numScroll={2}
+        numVisible={3}
+        numScroll={1}
         responsiveOptions={responsiveOptions}
         className="custom-carousel"
         circular
@@ -147,16 +109,8 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
         onPageChange={(e) => setActiveIndex(e.page)}
       />
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "10px",
-          marginBottom: "60px",
-          gap: "15px",
-        }}
-      >
-        {images.map((_, index) => (
+      <Box sx={{ display: "flex", justifyContent: "center", mt: 2, mb: 6, gap: 2 }}>
+        {Array.from({ length: Math.ceil(images.length / 3) }).map((_, index) => (
           <Box
             key={index}
             onClick={() => setActiveIndex(index)}
@@ -165,7 +119,6 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
               height: "12px",
               borderRadius: "50%",
               backgroundColor: activeIndex === index ? "#000" : "#bbb",
-
               cursor: "pointer",
               transition: "background-color 0.3s ease",
             }}

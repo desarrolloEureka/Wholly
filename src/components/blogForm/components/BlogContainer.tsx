@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  CircularProgress,
   InputAdornment,
   TextField,
   Typography,
@@ -8,9 +9,28 @@ import {
 import { VectorIcono } from "../../../assets/images";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
-export const BlogContainer = () => {
-  const { t } = useTranslation();
+export const BlogContainer = ({ blog, loading }: any) => {
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
+  const navigate = useNavigate();
+
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "400px",
+        }}
+      >
+        <CircularProgress color="primary" size={60} />
+      </Box>
+    );
+  }
 
   return (
     <Box>
@@ -97,7 +117,9 @@ export const BlogContainer = () => {
               marginBottom: "22px",
             }}
           >
-            {t("blogForm.bestCare")}
+            {currentLang === "es"
+              ? blog.name_spanish || blog.name_english
+              : blog.name_english || blog.name_spanish}
           </Typography>
         </Box>
         <Box
@@ -125,7 +147,12 @@ export const BlogContainer = () => {
             }}
           >
             <Typography sx={{ lineHeight: 1 }}>Wholly</Typography>
-            <Typography sx={{ lineHeight: 1 }}>{t("blogForm.date")}</Typography>
+            <Typography sx={{ lineHeight: 1, marginTop: 1.5 }}>
+              {new Intl.DateTimeFormat(
+                currentLang === "es" ? "es-ES" : "en-US",
+                { day: "numeric", month: "long", year: "numeric" }
+              ).format(new Date(blog.created_at))}
+            </Typography>
           </Box>
         </Box>
 
@@ -141,6 +168,7 @@ export const BlogContainer = () => {
               transform: "translateX(5px)",
             },
           }}
+          onClick={() => navigate(`/internalBlog/${blog.id}`)}
         >
           <Typography variant="h6">{t("blogForm.learnMore")}</Typography>
           <ChevronRightIcon sx={{ fontSize: 20, color: "#FBFFDD" }} />

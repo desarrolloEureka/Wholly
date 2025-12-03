@@ -50,8 +50,6 @@ const DrawerMobile: React.FC<DrawerMobileProps> = ({
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log('oooooo');
-
     setOpenDrawer(false);
     setShowLogOut(true);
   };

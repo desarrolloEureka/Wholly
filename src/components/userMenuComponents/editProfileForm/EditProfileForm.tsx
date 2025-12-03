@@ -18,13 +18,12 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import useTheme from '@mui/material/styles/useTheme';
 
 const EditProfileForm = ({ edit }: { edit: string | undefined }) => {
-  const navigate = useNavigate();
   const stepOneRef = useRef<{ validateForm: () => boolean }>(null);
   const theme = useTheme();
   const { t } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
 
-  const options2: OptionsButtons[] = [
+  const options2: any[] = [
     { id: 1, name: t('registerForm.options.oilyHair') },
     { id: 2, name: t('registerForm.options.dryHair') },
     { id: 3, name: t('registerForm.options.thinHair') },
@@ -43,16 +42,16 @@ const EditProfileForm = ({ edit }: { edit: string | undefined }) => {
     { id: 16, name: t('registerForm.options.LoremIHair') },
   ];
 
-  const options3: OptionsButtons[] = [
+  const options3: any[] = [
     { id: 1, name: t('registerForm.options.walnuts') },
     { id: 2, name: t('registerForm.options.brazilNuts') },
   ];
 
-  const options4: OptionsButtons[] = [
+  const options4: any[] = [
     { id: 1, name: t('registerForm.options.sertraline') },
   ];
 
-  const options5: OptionsButtons[] = [
+  const options5: any[] = [
     { id: 1, name: t('registerForm.options.epilepsy') },
   ];
 
@@ -168,97 +167,9 @@ const EditProfileForm = ({ edit }: { edit: string | undefined }) => {
           position: 'relative',
         }}
       >
-        {edit && (
-          <Box
-            sx={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'flex-end',
-              marginLeft: '-150px',
-            }}
-          >
-            <Box
-              sx={{
-                width: 130,
-                height: 130,
-                borderRadius: '50%',
-                backgroundColor: '#FFFFFF',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
-              }}
-            >
-              <CameraAltIcon sx={{ fontSize: 40, color: '#757575' }} />
-              <IconButton
-                sx={{
-                  position: 'absolute',
-                  right: 4,
-                  bottom: 4,
-                  width: 24,
-                  height: 24,
-                  borderRadius: '50%',
-                  backgroundColor: '#fff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: 1,
-                }}
-              >
-                <AddIcon sx={{ fontSize: 16, color: '#757575' }} />
-              </IconButton>
-            </Box>
-          </Box>
-        )}
+       
         {steps[activeStep].description}
-        {edit && (
-          <Box
-            sx={{
-              position: 'absolute',
-              bottom: 40,
-              right: 30,
-            }}
-          >
-            <Box sx={{ display: 'flex', gap: 2 }}>
-              <Button
-                variant='outlined'
-                sx={{
-                  borderRadius: '12px',
-                  textTransform: 'none',
-                  color: '#3C3C3C',
-                  borderColor: '#A5AB94',
-                  width: '140px',
-                  px: 4,
-                  '&:hover': {
-                    backgroundColor: '#f5f5f5',
-                    borderColor: '#A5AB94',
-                  },
-                }}
-                onClick={() => navigate('/')}
-              >
-                {t('registerForm.cancel')}
-              </Button>
-
-              <Button
-                variant='contained'
-                sx={{
-                  borderRadius: '12px',
-                  textTransform: 'none',
-                  backgroundColor: '#a8ae9c',
-                  color: '#fff',
-                  px: 4,
-                  width: '140px',
-
-                  '&:hover': {
-                    backgroundColor: '#949b89',
-                  },
-                }}
-              >
-                {t('registerForm.save')}
-              </Button>
-            </Box>
-          </Box>
-        )}
+     
       </Box>
       <MobileStepper
         variant='text'

@@ -1,11 +1,35 @@
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { variety1, variety2 } from "../../../assets/images";
 import { ImagesVariety } from "../../../globals/types";
 import { useTranslation } from "react-i18next";
+import { ConfigConstants } from "../../../globals/config/config";
 
-export const VarietyBlog = () => {
-  const { t } = useTranslation();
+export const VarietyBlog = ({ products, loading }: any) => {
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
+  const backgroundColor = "#ffff";
+  const textColor = "#3C3C3C";
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "400px",
+        }}
+      >
+        <CircularProgress color="primary" size={60} />
+      </Box>
+    );
+  }
+
+  if (!products || products.length === 0) {
+    return <div style={{ textAlign: "center", padding: "2rem" }}>No hay ofertas disponibles.</div>;
+  }
 
   const imagesAreas: ImagesVariety[] = [
     {
@@ -23,10 +47,6 @@ export const VarietyBlog = () => {
       description: t("homeform.priceVariety2"),
     },
   ];
-
-  const backgroundColor = "#ffff";
-  const textColor = "#3C3C3C";
-  const navigate = useNavigate();
 
   return (
     <Box>
@@ -58,21 +78,26 @@ export const VarietyBlog = () => {
       <Box
         sx={{
           marginBottom: "50px",
+          width: "80%",
+          marginX: "auto",
         }}
       >
         <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
           <Box
             sx={{
               display: "grid",
+              gridAutoColumns: "100px",
               gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "150px",
+              justifyContent: "space-between",
+              columnGap: "150px",
+              rowGap: "100px",
               width: "100%",
-              maxWidth: "1450px",
+              //maxWidth: "1450px",
               margin: "0 auto",
-              paddingX: "70px",
+              paddingX: "50px",
             }}
           >
-            {imagesAreas.map((item) => (
+            {products.map((item: any) => (
               <Box
                 key={item.id}
                 sx={{
@@ -83,10 +108,10 @@ export const VarietyBlog = () => {
                   borderRadius: "10px",
                   cursor: "pointer",
                 }}
-                onClick={() => navigate("/Supplements")}
+                onClick={() => navigate(`Supplements/${item.id}`)}
               >
                 <img
-                  src={item.src}
+                  src={item?.image ? `${ConfigConstants.webServiceName}${item.image}` : variety1}
                   alt={item.title}
                   style={{
                     width: "100%",
@@ -101,7 +126,6 @@ export const VarietyBlog = () => {
                     width: "100%",
                     backgroundColor: backgroundColor,
                     padding: "10px 15px",
-
                     textAlign: "start",
                     border: "1px solid rgba(60, 60, 60, 0.64)",
                     borderTop: "none",
@@ -117,7 +141,9 @@ export const VarietyBlog = () => {
                       color: textColor,
                     }}
                   >
-                    {item.title}
+                    {currentLang === "es"
+                      ? item.name_spanish || item.name_english
+                      : item.name_english || item.name_spanish}
                   </Typography>
 
                   <Typography
@@ -126,25 +152,42 @@ export const VarietyBlog = () => {
                       marginTop: "3px",
                       color: textColor,
                       marginBottom: "8px",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      minHeight: "3em",
                     }}
                   >
-                    {item.subtitle}
+                    {currentLang === "es"
+                      ? item.description_spanish || item.description_english
+                      : item.description_english || item.description_spanish}
                   </Typography>
 
                   <Typography
                     sx={{
-                      display: "flex",
-                      alignItems: "start",
-                      width: "50%",
-                      cursor: "pointer",
-                      transition: "transform 0.2s ease-in-out",
-                      fontFamily: "Montserrat, sans-serif",
-                      fontWeight: "bold",
-                      fontSize: "0.8rem",
+                      fontSize: { xs: "0.75rem", md: "0.85rem" },
+                      color: textColor,
+                      marginTop: "5px",
+                      marginBottom: "6px",
+                      opacity: 0.8,
                     }}
                   >
-                    {item.description}
+                    SKU-<strong>{item.code}</strong>
                   </Typography>
+
+
+                  <Typography
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: { xs: "1rem", md: "1rem" },
+                      color: textColor,
+                    }}
+                  >
+                    ${item.amount?.toLocaleString("es-CO") ?? "—"}
+                  </Typography>
+
                 </Box>
               </Box>
             ))}
