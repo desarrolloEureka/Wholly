@@ -249,10 +249,11 @@ const RegisterFormHook = (ref?: any) => {
     };
 
     const registerSelectedTendencies = async () => {
-        if (!selectedTendencies || selectedTendencies.length === 0) {
-            setErrorMessageNoSelected(true);
-            return;
-        }
+        /* Ya no son requeridos de forma obligatoria
+         if (!selectedTendencies || selectedTendencies.length === 0) {
+             setErrorMessageNoSelected(true);
+             return;
+         }*/
 
         const selectedData = selectedTendencies.map((tendency) => ({
             tendency: tendency.id,
@@ -314,10 +315,11 @@ const RegisterFormHook = (ref?: any) => {
     };
 
     const registerSelectedConditions = async () => {
+        /* Ya no son requeridos de forma obligatoria
         if (!selectedConditions || selectedConditions.length === 0) {
             setErrorMessageNoSelected(true);
             return;
-        }
+        } */
 
         const selectedData = selectedConditions.map((condition) => ({
             condition: condition.id,
@@ -380,10 +382,11 @@ const RegisterFormHook = (ref?: any) => {
     };
 
     const registerSelectedAllergies = async () => {
+        /* Ya no son requeridos de forma obligatoria
         if (!selectedAllergies || selectedAllergies.length === 0) {
             setErrorMessageNoSelected(true);
             return;
-        }
+        } */
 
         const selectedData = selectedAllergies.map((allergy) => ({
             excipient_ingredient: allergy.id,
@@ -448,10 +451,11 @@ const RegisterFormHook = (ref?: any) => {
     };
 
     const registerSelectedMedicines = async () => {
+        /* Ya no son requeridos de forma obligatoria
         if (!selectedMedicines || selectedMedicines.length === 0) {
             setErrorMessageNoSelected(true);
             return;
-        }
+        } */
 
         const selectedData = selectedMedicines.map((medicine) => ({
             medicine: medicine.id,
@@ -515,10 +519,11 @@ const RegisterFormHook = (ref?: any) => {
     };
 
     const registerSelectedDiseases = async () => {
+        /* Ya no son requeridos de forma obligatoria
         if (!selectedDiseases || selectedDiseases.length === 0) {
             setErrorMessageNoSelected(true);
             return;
-        }
+        } */
 
         const selectedData = selectedDiseases.map((disease) => ({
             disease: disease.id,

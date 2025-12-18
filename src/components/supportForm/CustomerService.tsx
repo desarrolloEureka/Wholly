@@ -75,6 +75,7 @@ export const CustomerService = () => {
           title: "Solicitud enviada",
           text: "Tu mensaje fue enviado correctamente",
           confirmButtonText: "Aceptar",
+          confirmButtonColor: "#A5AB94",
         });
       } else {
         Swal.fire({

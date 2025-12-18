@@ -36,6 +36,7 @@ const RegisterForm = () => {
     handleChange3,
     theme,
     activeStep,
+    setActiveStep,
     handleNext,
     handleBack,
     idUser,
@@ -217,19 +218,21 @@ const RegisterForm = () => {
         boxShadow: " 0px 5px 16px rgba(0, 0, 0, 0.4)",
       }}
     >
-      <Box sx={{ textAlign: "end", mt: 1, paddingRight: 2 }}>
-        <InteractiveText
-          onClick={() => navigate("/remember")}
-          style={{
-            textDecoration: "underline",
-            fontFamily: "sans-serif",
-            fontSize: "0.845rem",
-            cursor: "pointer",
-          }}
-        >
-          {t("registerForm.later")}
-        </InteractiveText>
-      </Box>
+      {activeStep !== 0 && activeStep !== 5 && (
+        <Box sx={{ textAlign: "end", mt: 1, paddingRight: 2 }}>
+          <InteractiveText
+            onClick={() => setActiveStep((prevActiveStep) => prevActiveStep + 1)}
+            style={{
+              textDecoration: "underline",
+              fontFamily: "sans-serif",
+              fontSize: "0.845rem",
+              cursor: "pointer",
+            }}
+          >
+            {t("registerForm.later")}
+          </InteractiveText>
+        </Box>
+      )}
       <Box sx={{ width: "100%", minHeight: 400, p: 2 }}>
         {steps[activeStep].description}
       </Box>
