@@ -39,3 +39,21 @@ export interface ImagesExclusive {
   price?: any;
   price_final?: any;
 }
+
+export interface Address {
+  id: number;
+  address_name: string;
+  postal_code: string;
+  contact_number: string;
+  address: string;
+  complement: string;
+  is_main: boolean;
+  country: LocationGeneral;
+  departament: LocationGeneral;
+  city: LocationGeneral;
+}
+
+export interface LocationGeneral {
+  id: number;
+  name: string;
+}
