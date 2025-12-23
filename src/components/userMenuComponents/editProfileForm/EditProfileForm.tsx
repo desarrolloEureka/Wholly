@@ -18,6 +18,18 @@ const EditProfileForm = () => {
   const { t } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
 
+  const options: any[] = [
+    { id: 1, name_spanish: t('registerForm.options.oilyHair') },
+    { id: 2, name_spanish: t('registerForm.options.dryHair') },
+    { id: 3, name_spanish: t('registerForm.options.thinHair') },
+    { id: 4, name_spanish: t('registerForm.options.hairLoss') },
+    { id: 5, name_spanish: t('registerForm.options.aLotOfHair') },
+    { id: 6, name_spanish: t('registerForm.options.LoremIHair') },
+    { id: 7, name_spanish: t('registerForm.options.LoremIHair') },
+    { id: 8, name_spanish: t('registerForm.options.LoremIHair') },
+    { id: 9, name_spanish: t('registerForm.options.LoremIHair') },
+  ];
+
   const options2: any[] = [
     { id: 1, name: t('registerForm.options.oilyHair') },
     { id: 2, name: t('registerForm.options.dryHair') },
@@ -57,7 +69,7 @@ const EditProfileForm = () => {
     },
     {
       label: '2',
-      description: <ContentStepperSpecial />,
+      description: <ContentStepperSpecial options={options} searchTerm={""} />,
     },
     {
       label: '3',
