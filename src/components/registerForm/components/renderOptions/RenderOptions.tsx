@@ -4,23 +4,24 @@ import { OptionsButtons } from "../../../../globals/types";
 import { useTranslation } from "react-i18next";
 
 const RenderOptions = ({
+  step,
   options,
   additionalButtons,
   toggleOptionsSelection,
   selectedOptions,
   customOption,
   setCustomOption,
-  handleAddCustomOption
+  handleAddCustomOption,
 }: {
+  step?: string;
   options: OptionsButtons[];
   additionalButtons?: boolean;
   toggleOptionsSelection?: any;
   selectedOptions?: any;
-  customOption?: any,
-  setCustomOption?: any
-  handleAddCustomOption?: any
+  customOption?: any;
+  setCustomOption?: any;
+  handleAddCustomOption?: any;
 }) => {
-
   const { i18n } = useTranslation();
 
   return (
@@ -40,15 +41,21 @@ const RenderOptions = ({
         overflowY: "auto", // Scroll vertical cuando se desborda
       }}
     >
-
       {options.map((val: any, index) => {
-        const isSelected = selectedOptions && selectedOptions?.some((item: any) => item.id === val.id);
+        const isSelected =
+          selectedOptions &&
+          selectedOptions?.some((item: any) => item.id === val.id);
 
-        const text = i18n.language === "es" ? val.name_spanish : val.name_english;
+        const text =
+          step === "4"
+            ? val.name
+            : i18n.language === "es"
+            ? val.name_spanish
+            : val.name_english;
 
         return (
           <Button
-            key={val.name_spanish + index}
+            key={`allergy-${index}`}
             onClick={() => toggleOptionsSelection(val)}
             variant={isSelected ? "contained" : "outlined"}
             color={isSelected ? "primary" : "secondary"}

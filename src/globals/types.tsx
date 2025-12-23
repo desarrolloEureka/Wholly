@@ -5,6 +5,7 @@ export interface OptionsButtons {
   description_english: string;
   description_spanish: string;
   image: string | null;
+  type?: string;
 }
 
 export interface StepOneHandle {
