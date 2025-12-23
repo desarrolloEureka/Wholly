@@ -1,4 +1,4 @@
-import { Box, Button, MobileStepper, Typography, } from "@mui/material";
+import { Box, Button, MobileStepper, Typography } from "@mui/material";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { StepOne } from "./components/StepOne";
 import { ContentStepper } from "./components/contentStepper/ContentStepper";
@@ -40,7 +40,7 @@ const RegisterForm = () => {
     handleNext,
     handleBack,
     idUser,
-    //Paso2 
+    //Paso2
     searchTerm,
     setSearchTerm,
     errorMessage,
@@ -75,7 +75,7 @@ const RegisterForm = () => {
   const steps = [
     {
       label: t("registerForm.campaignSettings"),
-      description:
+      description: (
         <StepOne
           t={t}
           name={name}
@@ -102,11 +102,12 @@ const RegisterForm = () => {
           handleChange1={handleChange1}
           handleChange2={handleChange2}
           handleChange3={handleChange3}
-        />,
+        />
+      ),
     },
     {
       label: "2",
-      description:
+      description: (
         <ContentStepperSpecial
           idUser={idUser}
           searchTerm={searchTerm}
@@ -128,7 +129,7 @@ const RegisterForm = () => {
           toggleTendencySelection={toggleTendencySelection}
           errorMessageText={t("registerForm.ErrorMessageTendencies")}
         />
-
+      ),
     },
     {
       label: "3",
@@ -151,6 +152,7 @@ const RegisterForm = () => {
       label: "4",
       description: (
         <ContentStepper
+          step="4"
           title1={t("registerForm.selectThe")}
           title2={t("registerForm.allergies")}
           title3={t("registerForm.youHave")}
@@ -161,7 +163,6 @@ const RegisterForm = () => {
           selectedOptions={selectedAllergies}
           errorMessageNoSelected={errorMessageNoSelected}
           errorMessageText={t("registerForm.ErrorMessageAllergies")}
-
         />
       ),
     },
@@ -203,7 +204,6 @@ const RegisterForm = () => {
 
   const maxSteps = steps.length;
 
-
   return (
     <Box
       sx={{
@@ -221,7 +221,9 @@ const RegisterForm = () => {
       {activeStep !== 0 && activeStep !== 5 && (
         <Box sx={{ textAlign: "end", mt: 1, paddingRight: 2 }}>
           <InteractiveText
-            onClick={() => setActiveStep((prevActiveStep) => prevActiveStep + 1)}
+            onClick={() =>
+              setActiveStep((prevActiveStep) => prevActiveStep + 1)
+            }
             style={{
               textDecoration: "underline",
               fontFamily: "sans-serif",
@@ -248,15 +250,12 @@ const RegisterForm = () => {
           <Button
             size="small"
             onClick={handleNext}
-          //disabled={activeStep === maxSteps - 1}
+            //disabled={activeStep === maxSteps - 1}
           >
             <Typography variant="h6" sx={{ fontSize: "18px" }}>
-              {activeStep === 5 ?
-                t("stepper.finishButton")
-                :
-                t("stepper.nextButton")
-              }
-
+              {activeStep === 5
+                ? t("stepper.finishButton")
+                : t("stepper.nextButton")}
             </Typography>
 
             {theme.direction === "rtl" ? (

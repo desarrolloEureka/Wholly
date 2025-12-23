@@ -14,6 +14,7 @@ import ErrorLabel from "../../../errorLabel/ErrorLabel";
 import RenderOptions from "../renderOptions/RenderOptions";
 
 export const ContentStepper = ({
+  step,
   title1,
   title2,
   title3,
@@ -23,8 +24,9 @@ export const ContentStepper = ({
   toggleConditionSelection,
   selectedOptions,
   errorMessageNoSelected,
-  errorMessageText
+  errorMessageText,
 }: {
+  step?: string;
   title1?: string;
   title2?: string;
   title3?: string;
@@ -36,7 +38,6 @@ export const ContentStepper = ({
   errorMessageNoSelected?: any;
   errorMessageText?: any;
 }) => {
-
   //console.log('ButtonsOptions ', ButtonsOptions);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -46,9 +47,11 @@ export const ContentStepper = ({
     const value = e.target.value;
     setSearchTerm(value);
 
-    const hasResults = ButtonsOptions && ButtonsOptions?.some((option) =>
-      option.name_spanish.toLowerCase().includes(value.toLowerCase())
-    );
+    const hasResults =
+      ButtonsOptions &&
+      ButtonsOptions?.some((option) =>
+        option.name_spanish.toLowerCase().includes(value.toLowerCase())
+      );
 
     if (value && !hasResults) {
       setErrorMessage(true);
@@ -58,9 +61,15 @@ export const ContentStepper = ({
   };
 
   // Filtrar opciones
-  const filteredOptions = ButtonsOptions && ButtonsOptions?.filter((option) =>
-    option.name_spanish?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredOptions =
+    ButtonsOptions &&
+    (step === "4"
+      ? ButtonsOptions.filter((option) =>
+          option.name?.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      : ButtonsOptions.filter((option) =>
+          option.name_spanish?.toLowerCase().includes(searchTerm.toLowerCase())
+        ));
 
   return (
     <Box
@@ -100,9 +109,11 @@ export const ContentStepper = ({
           minHeight: "60px",
         }}
       >
-        <Box sx={{
-          minHeight: "22px"
-        }}>
+        <Box
+          sx={{
+            minHeight: "22px",
+          }}
+        >
           {errorMessage && (
             <Box
               sx={{
@@ -110,7 +121,7 @@ export const ContentStepper = ({
                 alignItems: "center",
                 justifyContent: "center",
                 width: "100%",
-                textAlign: "center"
+                textAlign: "center",
               }}
             >
               <Typography
@@ -203,6 +214,7 @@ export const ContentStepper = ({
 
       {/* Renderizar solo las opciones filtradas */}
       <RenderOptions
+        step={step}
         options={filteredOptions}
         toggleOptionsSelection={toggleConditionSelection}
         selectedOptions={selectedOptions}
