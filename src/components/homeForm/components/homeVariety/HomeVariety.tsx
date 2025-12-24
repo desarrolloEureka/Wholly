@@ -36,7 +36,7 @@ export const Homevariety = ({ varieties, loading }: any) => {
       description: t("homeform.subtitleVariety1"),
       amount: t("homeform.priceVariety1"),
       code: "1",
-      subtitle: ""
+      subtitle: "",
     },
     {
       id: 2,
@@ -45,7 +45,7 @@ export const Homevariety = ({ varieties, loading }: any) => {
       description: t("homeform.subtitleVariety2"),
       amount: t("homeform.priceVariety2"),
       code: "2",
-      subtitle: ""
+      subtitle: "",
     },
     {
       id: 3,
@@ -54,26 +54,29 @@ export const Homevariety = ({ varieties, loading }: any) => {
       description: t("homeform.subtitleVariety3"),
       amount: t("homeform.priceVariety3"),
       code: "3",
-      subtitle: ""
+      subtitle: "",
     },
   ];
 
   const imagesAreas: ImagesVariety[] =
     varieties && varieties.length > 0
       ? varieties.map((item: any) => ({
-        id: item.id,
-        src: item?.image ? `${ConfigConstants.webServiceName}${item.image}` : variety1,
-        title:
-          currentLang === "es"
-            ? item.name_spanish || item.name_english
-            : item.name_english || item.name_spanish,
-        description:
-          currentLang === "es"
-            ? item.description_spanish || item.description_english
-            : item.description_english || item.description_spanish,
-        amount: item.amount || 0,
-        code: item.code || 0
-      }))
+          id: item.id,
+          src: item?.image
+            ? `${ConfigConstants.webServiceName}${item.image}`
+            : variety1,
+          title:
+            currentLang === "es"
+              ? item.name_spanish || item.name_english
+              : item.name_english || item.name_spanish,
+          description:
+            currentLang === "es"
+              ? item.short_description_spanish || item.short_description_english
+              : item.short_description_english ||
+                item.short_description_spanish,
+          amount: item.amount || 0,
+          code: item.code || 0,
+        }))
       : defaultImages;
 
   //const imagesAreas: ImagesVariety[] = defaultImages;
@@ -92,7 +95,11 @@ export const Homevariety = ({ varieties, loading }: any) => {
           overflow: "hidden", // Para ocultar las imágenes fuera del contenedor
         }}
       >
-        <CustomCarouselVariety images={imagesAreas} />
+        {varieties.length ? (
+          <CustomCarouselVariety images={imagesAreas} />
+        ) : (
+          <span>{t("noResults.description")}</span>
+        )}
       </Box>
     </Box>
   );
