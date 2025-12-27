@@ -1,67 +1,41 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ImagesVariety } from "../../globals/types";
-import {
-  kits_1,
-  kits_2,
-  kits_3,
-  kits_4,
-  kits_5,
-  kits_6,
-} from "../../assets/images";
+
+// external components
+import useSWR from "swr";
+
+// types
+import type { Kit } from "../../globals/types";
+
+// utils
+import { fetcher } from "../../globals/fetcher/fetcher";
+import { useState } from "react";
 
 export const Sectionkits = () => {
-  const { t } = useTranslation();
-
-  const imagesAreas: ImagesVariety[] = [
-    {
-      id: 1,
-      src: kits_1,
-      title: t("homeform.titleVariety1"),
-      subtitle: t("homeform.subtitleVariety1"),
-      description: t("homeform.priceVariety1"),
-    },
-    {
-      id: 2,
-      src: kits_2,
-      title: t("homeform.titleVariety2"),
-      subtitle: t("homeform.subtitleVariety2"),
-      description: t("homeform.priceVariety2"),
-    },
-    {
-      id: 3,
-      src: kits_3,
-      title: t("homeform.titleVariety3"),
-      subtitle: t("homeform.subtitleVariety3"),
-      description: t("homeform.priceVariety3"),
-    },
-    {
-      id: 4,
-      src: kits_4,
-      title: t("homeform.titleVariety1"),
-      subtitle: t("homeform.subtitleVariety1"),
-      description: t("homeform.priceVariety1"),
-    },
-    {
-      id: 5,
-      src: kits_5,
-      title: t("homeform.titleVariety2"),
-      subtitle: t("homeform.subtitleVariety2"),
-      description: t("homeform.priceVariety2"),
-    },
-    {
-      id: 6,
-      src: kits_6,
-      title: t("homeform.titleVariety3"),
-      subtitle: t("homeform.subtitleVariety3"),
-      description: t("homeform.priceVariety3"),
-    },
-  ];
-
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language;
   const backgroundColor = "#ffff";
   const textColor = "#3C3C3C";
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  // GET data kits
+  const {
+    data: DataKits,
+    error: errorKits,
+    isLoading: isLoadingKits,
+  } = useSWR({ url: `/references/apiKits/?page=${currentPage}` }, fetcher);
+
+  // pagination validate
+  const page = DataKits?.page ?? 1;
+  const count = DataKits?.count ?? 0;
+  const pageSize = DataKits?.page_size ?? 0;
+  const start = count === 0 ? 0 : (page - 1) * pageSize + 1;
+  const end = Math.min(page * pageSize, count);
+  const hasMoreThanOnePage = count > pageSize;
+  const totalPages = Math.ceil(count / pageSize);
+  const isLastPage = page >= totalPages;
 
   return (
     <Box
@@ -69,129 +43,170 @@ export const Sectionkits = () => {
         marginBottom: "50px",
       }}
     >
-      <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
+      {errorKits && (
+        <span
+          style={{
+            fontSize: 16,
+            color: "red",
+          }}
+        >
+          {errorKits}
+        </span>
+      )}
+      {isLoadingKits ? (
         <Box
           sx={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "150px",
-            width: "100%",
-            maxWidth: "1450px",
-            margin: "0 auto",
-            paddingX: "70px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingY: 8,
           }}
         >
-          {imagesAreas.map((item) => (
-            <Box
-              key={item.id}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                borderRadius: "10px",
-                cursor: "pointer",
-              }}
-              onClick={() => navigate("/InternalKits")}
-            >
-              <img
-                src={item.src}
-                alt={item.title}
-                style={{
-                  width: "300px",
-                  height: "300px",
-                  objectFit: "cover",
-                  borderRadius: "10px 10px 0 0",
-                }}
-              />
+          <CircularProgress color="primary" size={60} />
+        </Box>
+      ) : (
+        <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "150px",
+              width: "100%",
+              maxWidth: "1450px",
+              margin: "0 auto",
+              paddingX: "70px",
+            }}
+          >
+            {(DataKits.results ?? []).map((item: Kit) => (
               <Box
+                key={`kit-${item.id}`}
                 sx={{
-                  width: "300px",
-                  backgroundColor: backgroundColor,
-                  padding: "10px 15px",
-
-                  textAlign: "start",
-                  border: "1px solid rgba(60, 60, 60, 0.64)",
-                  borderTop: "none",
-                  borderRadius: "0 0 10px 10px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "10px",
+                  cursor: "pointer",
+                }}
+                onClick={async () => {
+                  await localStorage.setItem("kitID", item.id.toString());
+                  navigate("/InternalKits");
                 }}
               >
-                <Typography
-                  variant="h4"
-                  sx={{
-                    marginTop: "10px",
-                    fontSize: "1.4rem",
-                    fontWeight: "bold",
-                    color: textColor,
+                <img
+                  src={item.image}
+                  alt={
+                    currentLang === "es" ? item.name_spanish : item.name_english
+                  }
+                  style={{
+                    width: "300px",
+                    height: "300px",
+                    objectFit: "cover",
+                    borderRadius: "10px 10px 0 0",
                   }}
-                >
-                  {item.title}
-                </Typography>
+                />
+                <Box
+                  sx={{
+                    width: "300px",
+                    backgroundColor: backgroundColor,
+                    padding: "10px 15px",
 
-                <Typography
-                  sx={{
-                    fontSize: "1rem",
-                    marginTop: "3px",
-                    color: textColor,
-                    marginBottom: "8px",
+                    textAlign: "start",
+                    border: "1px solid rgba(60, 60, 60, 0.64)",
+                    borderTop: "none",
+                    borderRadius: "0 0 10px 10px",
                   }}
                 >
-                  {item.subtitle}
-                </Typography>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      marginTop: "10px",
+                      fontSize: "1.4rem",
+                      fontWeight: "bold",
+                      color: textColor,
+                    }}
+                  >
+                    {currentLang === "es"
+                      ? item.name_spanish
+                      : item.name_english}
+                  </Typography>
 
-                <Typography
-                  sx={{
-                    display: "flex",
-                    alignItems: "start",
-                    width: "50%",
-                    cursor: "pointer",
-                    transition: "transform 0.2s ease-in-out",
-                    fontFamily: "Montserrat, sans-serif",
-                    fontWeight: "bold",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  {item.description}
-                </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "1rem",
+                      marginTop: "3px",
+                      color: textColor,
+                      marginBottom: "8px",
+                    }}
+                  >
+                    {currentLang === "es"
+                      ? item.description_spanish
+                      : item.description_english}
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      display: "flex",
+                      alignItems: "start",
+                      width: "50%",
+                      cursor: "pointer",
+                      transition: "transform 0.2s ease-in-out",
+                      fontFamily: "Montserrat, sans-serif",
+                      fontWeight: "bold",
+                      fontSize: "0.8rem",
+                    }}
+                  >
+                    {`$${item.value}`}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-          ))}
+            ))}
+          </Box>
         </Box>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-end",
-          marginTop: "30px",
-          marginRight: "85px",
-        }}
-      >
-        <Typography
+      )}
+      {!isLoadingKits && (
+        <Box
           sx={{
-            fontSize: "1rem",
-            fontWeight: 500,
-            marginBottom: "10px",
-            marginRight: "30px",
-            color: "#3C3C3C",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-end",
+            marginTop: "30px",
+            marginRight: "85px",
           }}
         >
-          1-60 of 1921 Results
-        </Typography>
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "#fff",
-            borderRadius: "50px",
-            height: "45px",
-            color: "#000",
-            border: "2px solid #000",
-            "&:hover": { backgroundColor: "#A5AB94", color: "#fff" },
-          }}
-        >
-          {t("categoriesIternal.showProducts")}
-        </Button>
-      </Box>
+          {!isLoadingKits && count > 0 && (
+            <Typography
+              sx={{
+                fontSize: "1rem",
+                fontWeight: 500,
+                marginBottom: "10px",
+                marginRight: "30px",
+                color: "#3C3C3C",
+              }}
+            >
+              {start}-{end} of {count} Results
+            </Typography>
+          )}
+
+          {!isLoadingKits && hasMoreThanOnePage && (
+            <Button
+              variant="contained"
+              disabled={isLastPage}
+              sx={{
+                backgroundColor: "#fff",
+                borderRadius: "50px",
+                height: "45px",
+                color: "#000",
+                border: "2px solid #000",
+                "&:hover": { backgroundColor: "#A5AB94", color: "#fff" },
+              }}
+              onClick={() => setCurrentPage((prev) => prev + 1)}
+            >
+              {t("categoriesIternal.showProducts")}
+            </Button>
+          )}
+        </Box>
+      )}
     </Box>
   );
 };

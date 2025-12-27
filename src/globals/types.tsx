@@ -58,3 +58,41 @@ export interface LocationGeneral {
   id: number;
   name: string;
 }
+
+export interface Kit {
+  id: number;
+  name_spanish: string;
+  name_english: string;
+  description_spanish: string;
+  description_english: string;
+  code: string;
+  percentage_discount: number;
+  value: number;
+  image?: string;
+}
+
+export interface Category {
+  id: number;
+  name_spanish: string;
+  name_english: string;
+  image?: string;
+  description_spanish: string;
+  description_english: string;
+  percentage_discount: number;
+  state: number;
+}
+
+export interface Supplement {
+  id: number;
+  name_spanish: string;
+  name_english: string;
+  description_spanish: string;
+  description_english: string;
+  sku: string;
+  price: number;
+  discount: number;
+  tax: number;
+  price_total: number;
+  price_final: number;
+  image?: string;
+}

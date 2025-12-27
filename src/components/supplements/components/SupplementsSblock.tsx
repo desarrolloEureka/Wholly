@@ -37,23 +37,23 @@ export const SupplementsSblock = ({ supplement }: any) => {
       title: t("supplementsForm.Indications"),
       content: supplement?.indications
         ? supplement?.indications
-          .map((item: any) => {
-            const name =
-              currentLang === "es"
-                ? item?.name_spanish?.trim()
-                : item?.name_english?.trim() || item?.name_spanish?.trim();
+            .map((item: any) => {
+              const name =
+                currentLang === "es"
+                  ? item?.name_spanish?.trim()
+                  : item?.name_english?.trim() || item?.name_spanish?.trim();
 
-            const desc =
-              currentLang === "es"
-                ? item?.description_spanish?.trim()
-                : item?.description_english?.trim();
+              const desc =
+                currentLang === "es"
+                  ? item?.description_spanish?.trim()
+                  : item?.description_english?.trim();
 
-            if (!name && !desc) return null;
+              if (!name && !desc) return null;
 
-            return `• <strong>${name}</strong>: ${desc}`;
-          })
-          .filter(Boolean)
-          .join("<br/>")
+              return `• <strong>${name}</strong>: ${desc}`;
+            })
+            .filter(Boolean)
+            .join("<br/>")
         : "",
     },
     {
@@ -63,7 +63,7 @@ export const SupplementsSblock = ({ supplement }: any) => {
       content:
         currentLang === "es"
           ? supplement?.use_spanish
-          : supplement?.use_spanish,
+          : supplement?.use_english,
     },
     {
       id: "panel3",
@@ -80,23 +80,23 @@ export const SupplementsSblock = ({ supplement }: any) => {
       title: t("supplementsForm.Interactions"),
       content: supplement?.interactions
         ? supplement?.interactions
-          .map((item: any) => {
-            const name =
-              currentLang === "es"
-                ? item?.name_spanish?.trim()
-                : item?.name_english?.trim() || item?.name_spanish?.trim();
+            .map((item: any) => {
+              const name =
+                currentLang === "es"
+                  ? item?.name_spanish?.trim()
+                  : item?.name_english?.trim() || item?.name_spanish?.trim();
 
-            const desc =
-              currentLang === "es"
-                ? item?.description_spanish?.trim()
-                : item?.description_english?.trim();
+              const desc =
+                currentLang === "es"
+                  ? item?.description_spanish?.trim()
+                  : item?.description_english?.trim();
 
-            if (!name && !desc) return null;
+              if (!name && !desc) return null;
 
-            return `• <strong>${name}</strong>: ${desc}`;
-          })
-          .filter(Boolean)
-          .join("<br/>")
+              return `• <strong>${name}</strong>: ${desc}`;
+            })
+            .filter(Boolean)
+            .join("<br/>")
         : "",
     },
     {
@@ -105,23 +105,23 @@ export const SupplementsSblock = ({ supplement }: any) => {
       title: t("supplementsForm.Contraindications"),
       content: supplement?.contraindications
         ? supplement?.contraindications
-          .map((item: any) => {
-            const name =
-              currentLang === "es"
-                ? item?.name_spanish?.trim()
-                : item?.name_english?.trim() || item?.name_spanish?.trim();
+            .map((item: any) => {
+              const name =
+                currentLang === "es"
+                  ? item?.name_spanish?.trim()
+                  : item?.name_english?.trim() || item?.name_spanish?.trim();
 
-            const desc =
-              currentLang === "es"
-                ? item?.description_spanish?.trim()
-                : item?.description_english?.trim();
+              const desc =
+                currentLang === "es"
+                  ? item?.description_spanish?.trim()
+                  : item?.description_english?.trim();
 
-            if (!name && !desc) return null;
+              if (!name && !desc) return null;
 
-            return `• <strong>${name}</strong>: ${desc}`;
-          })
-          .filter(Boolean)
-          .join("<br/>")
+              return `• <strong>${name}</strong>: ${desc}`;
+            })
+            .filter(Boolean)
+            .join("<br/>")
         : "",
     },
   ];
@@ -189,7 +189,7 @@ export const SupplementsSblock = ({ supplement }: any) => {
               backgroundColor: "#E8E4DE",
               borderBottom: id === "panel5" ? "none" : "1px solid #A5AB94",
               borderTop: "0",
-              "&:before": { display: "none" }
+              "&:before": { display: "none" },
             }}
           >
             <AccordionSummary
@@ -224,7 +224,6 @@ export const SupplementsSblock = ({ supplement }: any) => {
                 dangerouslySetInnerHTML={{ __html: content }}
               />
             </AccordionDetails>
-
           </Accordion>
         ))}
       </Box>
@@ -330,7 +329,7 @@ export const SupplementsSblock = ({ supplement }: any) => {
                   fontWeight: 400,
                 }}
               >
-                {supplement?.max_time} Días 
+                {supplement?.max_time} Días
               </Typography>
             </Box>
           </Box>
@@ -338,7 +337,9 @@ export const SupplementsSblock = ({ supplement }: any) => {
           {/* Compatibility Message */}
           <Box
             sx={{
-              backgroundColor: supplement?.is_compatible ? "#A5AB94" : "#EE6C5A",
+              backgroundColor: supplement?.is_compatible
+                ? "#A5AB94"
+                : "#EE6C5A",
               width: "76%",
               display: "flex",
               flexDirection: "column",
@@ -355,19 +356,13 @@ export const SupplementsSblock = ({ supplement }: any) => {
                 color: "#3C3C3C",
               }}
             >
-              {isLogged && (
-                supplement?.is_compatible ?
-                  <>
-                    {t("supplementsForm.productCompatible")}
-                  </>
-                  :
-                  <>
-                    {t("supplementsForm.productNotCompatible")}
-                  </>
-              )}
-
+              {isLogged &&
+                (supplement?.is_compatible ? (
+                  <>{t("supplementsForm.productCompatible")}</>
+                ) : (
+                  <>{t("supplementsForm.productNotCompatible")}</>
+                ))}
             </Typography>
-
           </Box>
           <Box
             sx={{

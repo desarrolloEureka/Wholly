@@ -20,13 +20,16 @@ import useSWR from "swr";
 // utils
 import { fetcher } from "../globals/fetcher/fetcher";
 
+// types
+import { Category } from "../globals/types";
+
 export const Home = () => {
   const { t } = useTranslation();
   const token = localStorage.getItem("Token");
   const isLogged = Boolean(token);
 
   const [varieties, setVarieties] = useState<any[]>([]);
-  const [categories, setCategories] = useState<any[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [exclusiveOffers, setExclusiveOffers] = useState<any[]>([]);
   const [latestBlog, setLatestBlog] = useState<any>(null);
   // const [supplementsAll, setSupplementsAll] = useState<any[]>([]);

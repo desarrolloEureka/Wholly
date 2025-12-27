@@ -5,50 +5,51 @@ import {
   InfoOutlined,
 } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
-import { Session_1, Session_2, variety2 } from "../../../assets/images";
+import { useEffect, useState } from "react";
 
-export const KitsSession = () => {
-  const { t } = useTranslation();
+// types
+import { KitSessionProps } from "./types";
 
-  const [products] = useState([
-    {
-      id: 1,
-      src: Session_1,
-      title: t("supplementsForm.SunBlock1"),
-      subtitle: t("supplementsForm.subtitle1"),
-      description: "$27.00",
-      rating: 4,
-    },
-    {
-      id: 2,
-      src: Session_2,
-      title: t("supplementsForm.SunBlock2"),
-      subtitle: t("supplementsForm.subtitle2"),
-      description: "$22.00",
-      rating: 4.5,
-    },
-    {
-      id: 3,
-      src: variety2,
-      title: t("supplementsForm.SunBlock3"),
-      subtitle: t("supplementsForm.subtitle3"),
-      description: "$19.99",
-      rating: 3.5,
-    },
-  ]);
-
+export const KitsSession = ({
+  kit,
+  references,
+  setCurrentReference,
+}: KitSessionProps) => {
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const items = references.results ?? [];
+  const total = items.length;
+  const selectedProduct = (references.results ?? [])[currentIndex];
+
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? products.length - 1 : prev - 1));
+    setCurrentIndex((prev) => {
+      const newIndex = prev === 0 ? total - 1 : prev - 1;
+      const newReferenceId = items[newIndex]?.reference_id ?? null;
+
+      setCurrentReference(newReferenceId);
+
+      return newIndex;
+    });
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => {
+      const newIndex = prev === total - 1 ? 0 : prev + 1;
+      const newReferenceId = items[newIndex]?.reference_id ?? null;
+
+      setCurrentReference(newReferenceId);
+
+      return newIndex;
+    });
   };
 
-  const selectedProduct = products[currentIndex];
+  useEffect(() => {
+    if (items.length > 0) {
+      setCurrentReference(items[0].reference_id);
+    }
+  }, [items, setCurrentReference]);
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -98,8 +99,8 @@ export const KitsSession = () => {
 
           <Box
             component="img"
-            src={selectedProduct.src}
-            alt={selectedProduct.title}
+            src={selectedProduct.image}
+            alt={selectedProduct.reference_id.toString()}
             sx={{
               width: 400,
               height: 400,
@@ -133,23 +134,25 @@ export const KitsSession = () => {
             variant="h3"
             sx={{ fontSize: "2.1rem", fontWeight: 600, mb: 2 }}
           >
-            {selectedProduct.title}
+            {currentLang === "es" ? kit.name_spanish : kit.name_english}
           </Typography>
 
           <Typography
             variant="h4"
             sx={{ fontSize: "1.2rem", color: "#555", mb: 2 }}
           >
-            {selectedProduct.subtitle}
+            {currentLang === "es"
+              ? kit.description_spanish
+              : kit.description_english}
           </Typography>
 
           <Typography sx={{ fontWeight: 600, fontSize: "1.5rem", mb: 1 }}>
-            {selectedProduct.description}
+            {`$${kit.value}`}
           </Typography>
 
-          <Typography sx={{ color: "#aaa", mb: 3 }}>
+          {/* <Typography sx={{ color: "#aaa", mb: 3 }}>
             10 units in stock
-          </Typography>
+          </Typography> */}
 
           <Button
             variant="contained"

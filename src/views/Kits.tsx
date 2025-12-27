@@ -6,8 +6,28 @@ import { HomeExclusive } from "../components/homeForm/components/homeExclusive/H
 import { useTranslation } from "react-i18next";
 import { Sectionkits } from "../components/kits/Sectionkits";
 
+// external components
+import useSWR from "swr";
+
+// utils
+import { fetcher } from "../globals/fetcher/fetcher";
+
 export const Kits = () => {
   const { t } = useTranslation();
+
+  // GET data categories
+  const {
+    data: DataCategories,
+    error: errorCategories,
+    isLoading: isLoadingCategories,
+  } = useSWR({ url: "/supplements/apiCategory" }, fetcher);
+
+  // GET data supplements exclusive offers
+  const {
+    data: DataExclusive,
+    error: errorExclusive,
+    isLoading: isLoadingExclusive,
+  } = useSWR({ url: "/references/apiSupplementExclusiveOffers" }, fetcher);
 
   return (
     <Box justifyContent="space-between">
@@ -57,7 +77,20 @@ export const Kits = () => {
           backgroundColor: "#E8E4DE",
         }}
       >
-        <HomeExclusive />
+        {errorExclusive && (
+          <span
+            style={{
+              fontSize: 16,
+              color: "red",
+            }}
+          >
+            {errorExclusive}
+          </span>
+        )}
+        <HomeExclusive
+          loading={isLoadingExclusive}
+          exclusiveOffers={DataExclusive}
+        />
         <Box
           sx={{
             display: "flex",
@@ -84,7 +117,21 @@ export const Kits = () => {
         >
           {t("categoriesIternal.YouLike")}
         </Typography>
-        <HomeCategories />
+
+        {errorCategories && (
+          <span
+            style={{
+              fontSize: 16,
+              color: "red",
+            }}
+          >
+            {errorCategories}
+          </span>
+        )}
+        <HomeCategories
+          loading={isLoadingCategories}
+          categories={DataCategories}
+        />
       </Box>
 
       <FooterApp />
