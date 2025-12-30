@@ -45,7 +45,7 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
             md: "5px",
           },
         }}
-        onClick={() => navigate(`Supplements/${item.id}`)}
+        onClick={() => navigate(`/Supplements/${item.id}`)}
       >
         <Box
           component="img"
@@ -109,21 +109,25 @@ const CustomCarouselVariety = ({ images }: { images: ImagesVariety[] }) => {
         onPageChange={(e) => setActiveIndex(e.page)}
       />
 
-      <Box sx={{ display: "flex", justifyContent: "center", mt: 2, mb: 6, gap: 2 }}>
-        {Array.from({ length: Math.ceil(images.length / 3) }).map((_, index) => (
-          <Box
-            key={index}
-            onClick={() => setActiveIndex(index)}
-            sx={{
-              width: "12px",
-              height: "12px",
-              borderRadius: "50%",
-              backgroundColor: activeIndex === index ? "#000" : "#bbb",
-              cursor: "pointer",
-              transition: "background-color 0.3s ease",
-            }}
-          />
-        ))}
+      <Box
+        sx={{ display: "flex", justifyContent: "center", mt: 2, mb: 6, gap: 2 }}
+      >
+        {Array.from({ length: Math.ceil(images.length / 3) }).map(
+          (_, index) => (
+            <Box
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              sx={{
+                width: "12px",
+                height: "12px",
+                borderRadius: "50%",
+                backgroundColor: activeIndex === index ? "#000" : "#bbb",
+                cursor: "pointer",
+                transition: "background-color 0.3s ease",
+              }}
+            />
+          )
+        )}
       </Box>
     </div>
   );

@@ -45,6 +45,17 @@ export const KitsSession = ({
     });
   };
 
+  const handleImage = (index: number) => {
+    setCurrentIndex(() => {
+      const newIndex = index;
+      const newReferenceId = items[newIndex]?.reference_id ?? null;
+
+      setCurrentReference(newReferenceId);
+
+      return newIndex;
+    });
+  };
+
   useEffect(() => {
     if (items.length > 0) {
       setCurrentReference(items[0].reference_id);
@@ -62,11 +73,48 @@ export const KitsSession = ({
           borderRadius: 4,
           padding: 4,
           width: "100%",
-          maxWidth: "1100px",
+          maxWidth: "90%",
           backgroundColor: "#fff",
-          gap: 20,
+          gap: 10,
         }}
       >
+        {/* Listado de imagenes */}
+        <Box
+          sx={{
+            minWidth: "109px",
+            height: "400px",
+            maxHeight: "400px",
+            overflowY: "auto",
+            display: "flex",
+            gap: 2,
+            flexDirection: "column",
+
+            scrollbarWidth: "none",
+            "&::-webkit-scrollbar": { width: 0 },
+          }}
+        >
+          {references?.results.map((item, index) => (
+            <Box
+              key={`reference-result-${index}`}
+              component="img"
+              src={item.image}
+              alt={item.reference_id.toString()}
+              sx={{
+                width: 109,
+                height: 109,
+                objectFit: "cover",
+                borderRadius: 2,
+                boxShadow: "0px 5px 10px rgba(0,0,0,0.1)",
+                border: currentIndex === index ? 2 : 1,
+                borderColor: "black",
+                backgroundColor: "#f5f1ed",
+                cursor: "pointer",
+              }}
+              onClick={() => handleImage(index)}
+            />
+          ))}
+        </Box>
+
         {/* Imagen a la derecha */}
         <Box
           sx={{
@@ -77,6 +125,7 @@ export const KitsSession = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            marginRight: 10,
           }}
         >
           <IconButton

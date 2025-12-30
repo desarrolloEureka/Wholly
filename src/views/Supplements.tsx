@@ -7,45 +7,46 @@ import { SupplementsSblock } from "../components/supplements/components/Suppleme
 import { SupplementSession } from "../components/supplements/components/SupplementSsession";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { ApiData } from "../globals/services/api";
-import { asyncSendApis } from "../globals/services/service";
+import useSWR from "swr";
+import { fetcher } from "../globals/fetcher/fetcher";
 
 export const Supplements = () => {
   const { t } = useTranslation(undefined, { useSuspense: false });
   const { id } = useParams();
 
-  const [supplement, setSupplement] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  // GET data supplements
+  const {
+    data: dataSupplements,
+    error: errorSupplements,
+    isLoading: isLoadingSupplements,
+  } = useSWR({ url: "/supplements/apiSupplementRandom" }, fetcher);
 
-  const fetchSupplementDetails = async () => {
-    try {
-      setLoading(true);
-      const apiData: ApiData = {
-        token: await localStorage.getItem("Token"),
-        method: "GET",
-      };
-
-      const response = await asyncSendApis(`/supplements/apiSupplementDetails/${id}`, apiData);
-      setSupplement(response);
-    } catch (error) {
-      console.error("Error obteniendo suplemento:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (id) {
-      fetchSupplementDetails();
-    }
-  }, [id]);
+  // GET data supplement
+  const {
+    data: dataSupplement,
+    error: errorSupplement,
+    isLoading: isLoadingSupplement,
+  } = useSWR(
+    id ? { url: `/supplements/apiSupplementDetails/${id}` } : null,
+    fetcher
+  );
 
   return (
     <Box justifyContent="space-between">
       <CustomAppBar />
 
-      {loading ? (
+      {errorSupplement && (
+        <span
+          style={{
+            fontSize: 16,
+            color: "red",
+          }}
+        >
+          {errorSupplement}
+        </span>
+      )}
+
+      {isLoadingSupplement ? (
         <Box
           sx={{
             height: "80vh",
@@ -58,23 +59,17 @@ export const Supplements = () => {
         </Box>
       ) : (
         <>
-          <SupplementSession
-            supplement={supplement}
-          />
+          <SupplementSession supplement={dataSupplement} />
 
           <Box
             sx={{
               backgroundColor: "#E8E4DE",
             }}
           >
-            <SupplementsSblock
-              supplement={supplement}
-            />
+            <SupplementsSblock supplement={dataSupplement} />
           </Box>
 
-          <SupplementsIngredients
-            supplement={supplement}
-          />
+          <SupplementsIngredients supplement={dataSupplement} />
 
           <Box
             sx={{
@@ -96,7 +91,20 @@ export const Supplements = () => {
               {t("supplementsForm.YouLike")}
             </Typography>
           </Box>
-          <Homevariety />
+          {errorSupplements && (
+            <span
+              style={{
+                fontSize: 16,
+                color: "red",
+              }}
+            >
+              {errorSupplements}
+            </span>
+          )}
+          <Homevariety
+            varieties={dataSupplements}
+            loading={isLoadingSupplements}
+          />
         </>
       )}
       <FooterApp />

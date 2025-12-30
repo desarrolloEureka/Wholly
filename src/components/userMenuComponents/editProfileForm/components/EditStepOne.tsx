@@ -1,10 +1,6 @@
 import PersonIcon from "@mui/icons-material/Person";
-import {
-  useState,
-  forwardRef,
-  useEffect,
-} from "react";
-import Button from '@mui/material/Button';
+import { useState, forwardRef, useEffect } from "react";
+import Button from "@mui/material/Button";
 import KeyIcon from "@mui/icons-material/Key";
 import {
   Box,
@@ -32,8 +28,8 @@ import { StepOneHandle } from "../../../../globals/types";
 import ErrorLabel from "../../../errorLabel/ErrorLabel";
 import { ApiData } from "../../../../globals/services/api";
 import { asyncSendApis } from "../../../../globals/services/service";
-import AddIcon from '@mui/icons-material/Add';
-import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import AddIcon from "@mui/icons-material/Add";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { ConfigConstants } from "../../../../globals/config/config";
@@ -200,7 +196,7 @@ export const EditStepOne = forwardRef<StepOneHandle>(() => {
         //image: newImageFile
       };
 
-      console.log('bodyToSend ', bodyToSend);
+      console.log("bodyToSend ", bodyToSend);
 
       const data: ApiData = {
         token: await localStorage.getItem("Token"),
@@ -210,7 +206,7 @@ export const EditStepOne = forwardRef<StepOneHandle>(() => {
       };
 
       const response = await asyncSendApis("/profiles/apiClient", data);
-      console.log('response ', response);
+      console.log("response ", response);
 
       if (response.status) {
         Swal.fire({
@@ -246,30 +242,32 @@ export const EditStepOne = forwardRef<StepOneHandle>(() => {
       {/* header form */}
       <Box
         sx={{
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'flex-end',
-          marginLeft: '-150px',
+          width: "100%",
+          display: "flex",
+          justifyContent: "flex-end",
+          marginLeft: "-150px",
         }}
       >
         <Box
           sx={{
             width: 130,
             height: 130,
-            borderRadius: '50%',
-            backgroundColor: '#FFFFFF',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
+            borderRadius: "50%",
+            backgroundColor: "#FFFFFF",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
           }}
         >
-          {(newImageFile || profileImage) ? (
+          {newImageFile || profileImage ? (
             <img
               src={
                 newImageFile
                   ? URL.createObjectURL(newImageFile)
-                  : (profileImage ? ConfigConstants.webServiceName + profileImage : undefined)
+                  : profileImage
+                  ? ConfigConstants.webServiceName + profileImage
+                  : undefined
               }
               alt="profile"
               style={{
@@ -284,22 +282,22 @@ export const EditStepOne = forwardRef<StepOneHandle>(() => {
           )}
 
           <IconButton
-            component="label"   // ← FALTA ESTO
+            component="label" // ← FALTA ESTO
             sx={{
-              position: 'absolute',
+              position: "absolute",
               right: 4,
               bottom: 4,
               width: 24,
               height: 24,
-              borderRadius: '50%',
-              backgroundColor: '#fff',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              borderRadius: "50%",
+              backgroundColor: "#fff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
               boxShadow: 1,
             }}
           >
-            <AddIcon sx={{ fontSize: 16, color: '#757575' }} />
+            <AddIcon sx={{ fontSize: 16, color: "#757575" }} />
 
             <input
               type="file"
@@ -308,7 +306,7 @@ export const EditStepOne = forwardRef<StepOneHandle>(() => {
               onChange={(e) => {
                 const file = e.target.files?.[0];
                 if (file) {
-                  console.log('file ', file);
+                  console.log("file ", file);
                   setNewImageFile(file);
                 }
               }}
@@ -428,6 +426,7 @@ export const EditStepOne = forwardRef<StepOneHandle>(() => {
                 }}
                 placeholder={t("registerForm.emailPlaceholder")}
                 value={email}
+                disabled
                 onChange={(e) => setEmail(e.target.value)}
               />
             </FormControl>
@@ -457,6 +456,7 @@ export const EditStepOne = forwardRef<StepOneHandle>(() => {
                 }}
                 placeholder={t("registerForm.confirmEmailPlaceholder")}
                 value={confirmEmail}
+                disabled
                 onChange={(e) => setConfirmEmail(e.target.value)}
               />
             </FormControl>
@@ -850,52 +850,51 @@ export const EditStepOne = forwardRef<StepOneHandle>(() => {
 
       <Box
         sx={{
-          position: 'absolute',
+          position: "absolute",
           bottom: 40,
           right: 30,
         }}
       >
-        <Box sx={{ display: 'flex', gap: 2 }}>
+        <Box sx={{ display: "flex", gap: 2 }}>
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={{
-              borderRadius: '12px',
-              textTransform: 'none',
-              color: '#3C3C3C',
-              borderColor: '#A5AB94',
-              width: '140px',
+              borderRadius: "12px",
+              textTransform: "none",
+              color: "#3C3C3C",
+              borderColor: "#A5AB94",
+              width: "140px",
               px: 4,
-              '&:hover': {
-                backgroundColor: '#f5f5f5',
-                borderColor: '#A5AB94',
+              "&:hover": {
+                backgroundColor: "#f5f5f5",
+                borderColor: "#A5AB94",
               },
             }}
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
           >
-            {t('registerForm.cancel')}
+            {t("registerForm.cancel")}
           </Button>
 
           <Button
-            variant='contained'
+            variant="contained"
             onClick={() => sendPatchProfile()}
             sx={{
-              borderRadius: '12px',
-              textTransform: 'none',
-              backgroundColor: '#a8ae9c',
-              color: '#fff',
+              borderRadius: "12px",
+              textTransform: "none",
+              backgroundColor: "#a8ae9c",
+              color: "#fff",
               px: 4,
-              width: '140px',
+              width: "140px",
 
-              '&:hover': {
-                backgroundColor: '#949b89',
+              "&:hover": {
+                backgroundColor: "#949b89",
               },
             }}
           >
-            {t('registerForm.save')}
+            {t("registerForm.save")}
           </Button>
         </Box>
       </Box>
-
     </Box>
   );
 });

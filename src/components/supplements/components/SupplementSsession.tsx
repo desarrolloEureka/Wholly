@@ -1,4 +1,4 @@
-import { Box, Button, Paper, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ConfigConstants } from "../../../globals/config/config";
@@ -30,37 +30,39 @@ export const SupplementSession = ({ supplement }: any) => {
         }}
       >
         {/* Lista de imágenes a la izquierda */}
-        <Box sx={{ width: "8%", display: "flex", flexDirection: "column", gap: 2 }}
+        <Box
+          sx={{
+            minWidth: "109px",
+            height: "400px",
+            maxHeight: "400px",
+            overflowY: "auto",
+            display: "flex",
+            gap: 2,
+            flexDirection: "column",
+
+            scrollbarWidth: "none",
+            "&::-webkit-scrollbar": { width: 0 },
+          }}
         >
           {images.map((img: string, index: number) => (
-            <Paper
-              key={index}
-              onClick={() => setSelectedImage(img)}
+            <Box
+              key={`reference-result-${index}`}
+              component="img"
+              src={ConfigConstants.webServiceName + img}
+              alt={`img-${index}`}
               sx={{
-                cursor: "pointer",
-                overflow: "hidden",
+                width: 109,
+                height: 109,
+                objectFit: "cover",
                 borderRadius: 2,
-                boxShadow:
-                  selectedImage === img
-                    ? "-3px 3px 6px rgba(0, 0, 0, 0.8)"
-                    : "0px 4px 4px rgba(0, 0, 0, 0.58)",
-                width: 100,
-                height: 100,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                boxShadow: "0px 5px 10px rgba(0,0,0,0.1)",
+                border: selectedImage === img ? 2 : 1,
+                borderColor: "black",
+                backgroundColor: "#f5f1ed",
+                cursor: "pointer",
               }}
-            >
-              <img
-                src={ConfigConstants.webServiceName + img}
-                alt={`img-${index}`}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-              />
-            </Paper>
+              onClick={() => setSelectedImage(img)}
+            />
           ))}
         </Box>
 
@@ -76,7 +78,11 @@ export const SupplementSession = ({ supplement }: any) => {
           }}
         >
           <img
-            src={selectedImage ? ConfigConstants.webServiceName + selectedImage : variety1}
+            src={
+              selectedImage
+                ? ConfigConstants.webServiceName + selectedImage
+                : variety1
+            }
             alt="selected"
             style={{
               width: 450,
@@ -108,10 +114,9 @@ export const SupplementSession = ({ supplement }: any) => {
               }}
             >
               {currentLang === "es"
-                ? supplement?.name_spanish || supplement?.name_english
-                : supplement?.name_english || supplement?.name_spanish}
+                ? supplement.name_spanish
+                : supplement.name_english}
             </Typography>
-
 
             {/* <Typography
               variant="h6"
@@ -138,24 +143,21 @@ export const SupplementSession = ({ supplement }: any) => {
             */}
             <Typography
               color="primary"
-              sx={{ fontSize: "1.8rem", marginTop: "10px" }}
+              sx={{ fontSize: "1.2rem", marginTop: "10px" }}
             >
-              {(
-                currentLang === "es"
-                  ? supplement.description_spanish || supplement.description_english
-                  : supplement.description_english || supplement.description_spanish
-              )?.substring(0, 100) + "..."}
+              {currentLang === "es"
+                ? supplement.description_spanish
+                : supplement.description_english}
             </Typography>
 
             <Typography
               color="primary"
               sx={{ fontSize: "1.8rem", marginTop: "10px" }}
             >
-              {/*  {supplement?.reference?.price_total || 0} */}
-              ${supplement?.amount?.toLocaleString("es-CO") ?? "—"}
+              {`$${supplement.amount}`}
             </Typography>
 
-            <span
+            {/* <span
               style={{
                 opacity: 0.6,
                 marginLeft: "7px",
@@ -166,7 +168,7 @@ export const SupplementSession = ({ supplement }: any) => {
               }}
             >
               {supplement?.amount} units in stock
-            </span>
+            </span> */}
 
             <Button
               variant="contained"
@@ -176,7 +178,7 @@ export const SupplementSession = ({ supplement }: any) => {
                 backgroundColor: "#A5AB94",
                 borderRadius: "40px",
                 height: "38px",
-                width: "28%",
+                width: "40%",
               }}
             >
               Add to basket
@@ -184,7 +186,9 @@ export const SupplementSession = ({ supplement }: any) => {
           </Box>
         </Box>
       </Box>
-      <Typography sx={{ marginLeft: "50px" }}>See all - {images.length || 0}</Typography>
+      {/* <Typography sx={{ marginLeft: "50px" }}>
+        See all - {images.length || 0}
+      </Typography> */}
     </Box>
   );
 };
