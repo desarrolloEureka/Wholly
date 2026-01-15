@@ -45,7 +45,7 @@ export const InternalCategoriestyform = ({
                 borderRadius: "10px",
                 cursor: "pointer",
               }}
-              onClick={() => navigate(`Supplements/${item.id}`)}
+              onClick={() => navigate(`/Supplements/${item.id}`)}
             >
               <img
                 src={item?.image ? `${ConfigConstants.webServiceName}${item.image}` : variety1}

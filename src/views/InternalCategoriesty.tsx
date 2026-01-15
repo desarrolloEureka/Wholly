@@ -12,6 +12,12 @@ import { asyncSendApis } from "../globals/services/service";
 import { ApiData } from "../globals/services/api";
 import { CircularProgress } from "@mui/material";
 
+// external components
+import useSWR from "swr";
+
+// utils
+import { fetcher } from "../globals/fetcher/fetcher";
+
 export const InternalCategoriesty = () => {
   const { id } = useParams();
   const { t } = useTranslation();
@@ -50,6 +56,13 @@ export const InternalCategoriesty = () => {
       setLoading(false);
     }
   };
+
+  // GET data supplements exclusive offers
+  const {
+    data: DataExclusive,
+    error: errorExclusive,
+    isLoading: isLoadingExclusive,
+  } = useSWR({ url: "/references/apiSupplementExclusiveOffers" }, fetcher);
 
   useEffect(() => {
     setItems([]);
@@ -126,7 +139,20 @@ export const InternalCategoriesty = () => {
           backgroundColor: "#E8E4DE",
         }}
       >
-        <HomeExclusive />
+        {errorExclusive && (
+          <span
+            style={{
+              fontSize: 16,
+              color: "red",
+            }}
+          >
+            {errorExclusive}
+          </span>
+        )}
+        <HomeExclusive
+          loading={isLoadingExclusive}
+          exclusiveOffers={DataExclusive}
+        />
 
         <Box
           sx={{
